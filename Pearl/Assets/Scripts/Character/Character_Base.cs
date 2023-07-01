@@ -9,11 +9,11 @@ using UnityEngine;
 
 public class Character_Base : MonoBehaviour
 {
-    public int Lv;
-    public int ATK;
-    public int Gun_ATK;
-    public int Gun_proficiency;
-    public int Health;
-    public int Critical;
-    public int Critical_Dmg;
+    public int Lv; // 레벨
+    public int ATK; // 공격력
+    public int Gun_ATK; // 총기 공격력
+    public int Gun_proficiency; // 총기 숙련도
+    public int Health; // 체력
+    public int Critical; // 크리티컬 확률
+    public int Critical_Dmg; // 크리티컬 데미지
 }
