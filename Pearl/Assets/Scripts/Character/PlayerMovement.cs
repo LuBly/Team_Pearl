@@ -23,13 +23,13 @@ public class PlayerMovement : MonoBehaviour
     private static PlayerMovement instance;
 
     Rigidbody2D rb;
-    SpriteRenderer spriter;
+    Transform trans;
     Animator anim;
     public float moveSpeed = 5f;
     void Awake()
     {
         rb=GetComponent<Rigidbody2D>();
-        spriter=GetComponent<SpriteRenderer>();
+        trans = GetComponent<Transform>();
         anim=GetComponent<Animator>();
     }
 
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (JoystickMovement.Instance.joyVec.x != 0)
         {
-            spriter.flipX = JoystickMovement.Instance.joyVec.x > 0;
+            trans.localScale = JoystickMovement.Instance.joyVec.x > 0 ? new Vector3(1,1,1) : new Vector3(-1, 1, 1);
         }
     }
 }
