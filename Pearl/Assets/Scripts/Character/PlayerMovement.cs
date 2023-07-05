@@ -23,10 +23,14 @@ public class PlayerMovement : MonoBehaviour
     private static PlayerMovement instance;
 
     Rigidbody2D rb;
+    SpriteRenderer spriter;
+    Animator anim;
     public float moveSpeed = 5f;
-    void Start()
+    void Awake()
     {
-        rb=GetComponent<Rigidbody2D>();    
+        rb=GetComponent<Rigidbody2D>();
+        spriter=GetComponent<SpriteRenderer>();
+        anim=GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -38,6 +42,15 @@ public class PlayerMovement : MonoBehaviour
         else//x,y 둘다 0 일때 멈추기
         {
             rb.velocity = Vector3.zero;
+        }
+    }
+    private void LateUpdate()
+    {
+        anim.SetFloat("Speed",rb.velocity.magnitude);
+
+        if (JoystickMovement.Instance.joyVec.x != 0)
+        {
+            spriter.flipX = JoystickMovement.Instance.joyVec.x > 0;
         }
     }
 }
