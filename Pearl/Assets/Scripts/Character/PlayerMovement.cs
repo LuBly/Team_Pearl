@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     Transform trans;
     Animator anim;
     public float moveSpeed = 5f;
+    private float scale = 0.7f;
     void Awake()
     {
         rb=GetComponent<Rigidbody2D>();
@@ -59,7 +61,9 @@ public class PlayerMovement : MonoBehaviour
         //조이스틱 방향에 따른 좌우 반전
         if (JoystickMovement.Instance.joyVec.x != 0)
         {
-            trans.localScale = JoystickMovement.Instance.joyVec.x > 0 ? new Vector3(1,1,1) : new Vector3(-1, 1, 1);
+            trans.localScale = JoystickMovement.Instance.joyVec.x > 0
+                ? new Vector3(scale, scale, 1.0f) 
+                : new Vector3(-scale, scale, 1.0f);
         }
     }
 }
