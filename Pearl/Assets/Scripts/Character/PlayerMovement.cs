@@ -46,8 +46,17 @@ public class PlayerMovement : MonoBehaviour
     }
     private void LateUpdate()
     {
-        anim.SetFloat("Speed",rb.velocity.magnitude);
-
+        //조이스틱 값이 들어갈 때 run anim 상태로 변환
+        if (JoystickMovement.Instance.joyVec == Vector3.zero)
+        {
+            anim.SetBool("isRun", false);
+        }
+        else
+        {
+            anim.SetBool("isRun", true);
+        }
+        
+        //조이스틱 방향에 따른 좌우 반전
         if (JoystickMovement.Instance.joyVec.x != 0)
         {
             trans.localScale = JoystickMovement.Instance.joyVec.x > 0 ? new Vector3(1,1,1) : new Vector3(-1, 1, 1);
