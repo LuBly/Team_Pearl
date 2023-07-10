@@ -12,15 +12,15 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private BoxCollider2D edge;
     
-    // box Collider ¿µ¿ªÀÇ ÃÖ¼Ò ÃÖ´ë xyz°ªÀ» Áö´Ô
+    // box Collider ì˜ì—­ì˜ ìµœì†Œ ìµœëŒ€ xyzê°’ì„ ì§€ë‹˜
     private Vector3 minBound;
     private Vector3 maxBound;
 
-    // Ä«¸Ş¶óÀÇ ¹İ³Êºñ, ¹İ³ôÀÌ °ªÀ» Áö´Ò º¯¼ö
+    // ì¹´ë©”ë¼ì˜ ë°˜ë„ˆë¹„, ë°˜ë†’ì´ ê°’ì„ ì§€ë‹ ë³€ìˆ˜
     private float halfWidth;
     private float halfHeight;
 
-    // Ä«¸Ş¶óÀÇ ¹İ³ôÀÌ °ªÀ» ±¸ÇÒ ¼Ó¼º ÀÌ¿ë
+    // ì¹´ë©”ë¼ì˜ ë°˜ë†’ì´ ê°’ì„ êµ¬í•  ì†ì„± ì´ìš©
     private Camera theCamera;
 
     private void Awake()
@@ -41,8 +41,8 @@ public class CameraController : MonoBehaviour
         minBound = edge.bounds.min; 
         maxBound = edge.bounds.max;
 
-        halfHeight = theCamera.orthographicSize;           // Ä«¸Ş¶óÀÇ ¹İ³ôÀÌ
-        halfWidth = halfHeight*Screen.width/Screen.height; // Ä«¸Ş¶óÀÇ ¹İ³Êºñ
+        halfHeight = theCamera.orthographicSize;           // ì¹´ë©”ë¼ì˜ ë°˜ë†’ì´
+        halfWidth = halfHeight*Screen.width/Screen.height; // ì¹´ë©”ë¼ì˜ ë°˜ë„ˆë¹„
     }
 
     void LateUpdate()

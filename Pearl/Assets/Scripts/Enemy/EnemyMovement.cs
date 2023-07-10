@@ -19,21 +19,21 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        //Ä³¸¯ÅÍÀÇ À§Ä¡ - ¸ó½ºÅÍÀÇ À§Ä¡ = ¹æÇâ
+        //ìºë¦­í„°ì˜ ìœ„ì¹˜ - ëª¬ìŠ¤í„°ì˜ ìœ„ì¹˜ = ë°©í–¥
         Vector2 dirVec = target.position - rigid.position;
-        Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;//ÇÁ·¹ÀÓ »ó°ü¾øÀÌ ÀÏÁ¤ °Å¸® ÀÌµ¿
+        Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;//í”„ë ˆì„ ìƒê´€ì—†ì´ ì¼ì • ê±°ë¦¬ ì´ë™
         rigid.MovePosition(rigid.position + nextVec);
-        rigid.velocity = Vector2.zero;//¹°¸® ¼Óµµ°¡ ÀÌµ¿¿¡ ¿µÇâÀ» ÁÖÁö ¾Êµµ·Ï ¼Óµµ Á¦°Å
+        rigid.velocity = Vector2.zero;//ë¬¼ë¦¬ ì†ë„ê°€ ì´ë™ì— ì˜í–¥ì„ ì£¼ì§€ ì•Šë„ë¡ ì†ë„ ì œê±°
     }
 
     private void LateUpdate()
     {
-        //Ä³¸¯ÅÍ°¡ ¸ó½ºÅÍ ±âÁØ ¿ŞÂÊ¿¡ ÀÖ´Â °æ¿ì scale ±×´ë·Î
+        //ìºë¦­í„°ê°€ ëª¬ìŠ¤í„° ê¸°ì¤€ ì™¼ìª½ì— ìˆëŠ” ê²½ìš° scale ê·¸ëŒ€ë¡œ
         if(target.position.x < rigid.position.x)
         {
             trans.transform.localScale = new Vector3(1, 1, 0);
         }
-        //Ä³¸¯ÅÍ°¡ ¸ó½ºÅÍ ±âÁØ ¿À¸¥ÂÊ¿¡ ÀÖ´Â °æ¿ì scale * -1
+        //ìºë¦­í„°ê°€ ëª¬ìŠ¤í„° ê¸°ì¤€ ì˜¤ë¥¸ìª½ì— ìˆëŠ” ê²½ìš° scale * -1
         else
         {
             trans.transform.localScale = new Vector3(-1,1,0);

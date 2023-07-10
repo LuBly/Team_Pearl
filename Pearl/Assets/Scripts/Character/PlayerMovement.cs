@@ -42,14 +42,14 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector3(JoystickMovement.Instance.joyVec.x, JoystickMovement.Instance.joyVec.y,0)*moveSpeed;
         }
-        else//x,y µÑ´Ù 0 ÀÏ¶§ ¸ØÃß±â
+        else//x,y ë‘˜ë‹¤ 0 ì¼ë•Œ ë©ˆì¶”ê¸°
         {
             rb.velocity = Vector3.zero;
         }
     }
     private void LateUpdate()
     {
-        //Á¶ÀÌ½ºÆ½ °ªÀÌ µé¾î°¥ ¶§ run anim »óÅÂ·Î º¯È¯
+        //ì¡°ì´ìŠ¤í‹± ê°’ì´ ë“¤ì–´ê°ˆ ë•Œ run anim ìƒíƒœë¡œ ë³€í™˜
         if (JoystickMovement.Instance.joyVec == Vector3.zero)
         {
             anim.SetBool("isRun", false);
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("isRun", true);
         }
         
-        //Á¶ÀÌ½ºÆ½ ¹æÇâ¿¡ µû¸¥ ÁÂ¿ì ¹ÝÀü
+        //ì¡°ì´ìŠ¤í‹± ë°©í–¥ì— ë”°ë¥¸ ì¢Œìš° ë°˜ì „
         if (JoystickMovement.Instance.joyVec.x != 0)
         {
             trans.localScale = JoystickMovement.Instance.joyVec.x > 0
