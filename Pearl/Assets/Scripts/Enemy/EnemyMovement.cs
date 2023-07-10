@@ -39,4 +39,9 @@ public class EnemyMovement : MonoBehaviour
             trans.transform.localScale = new Vector3(-1,1,0);
         }
     }
+
+    void OnEnable()
+    {
+        target = GameManager.instance.player.GetComponent<Rigidbody2D>();
+    }
 }
