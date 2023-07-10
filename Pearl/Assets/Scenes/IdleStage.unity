@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c0ec70e9f5a5b4abb16568b2af4295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 970622392}
   edge: {fileID: 1299996668}
 --- !u!1 &640732838
 GameObject:
@@ -692,6 +692,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!4 &970622392 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4105362945620786471, guid: c51102aa49ddd504ab8fe6d1d6c91338, type: 3}
+  m_PrefabInstance: {fileID: 970622386}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1010482071
 GameObject:
   m_ObjectHideFlags: 0
