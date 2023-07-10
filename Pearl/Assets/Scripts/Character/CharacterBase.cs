@@ -7,7 +7,7 @@ using UnityEngine;
 */
 
 
-public class Character_Base : MonoBehaviour
+public class CharacterBase : MonoBehaviour
 {
     public int Lv; // 레벨
     public int ATK; // 공격력
