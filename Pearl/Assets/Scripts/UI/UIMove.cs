@@ -4,7 +4,7 @@ using UnityEngine;
 
 //캔버스 위치 관리하는 스크립트 입니다.
 
-public class UI_Move : MonoBehaviour
+public class UIMove : MonoBehaviour
 {
     public bool Start_Parent_Pos;
     Vector3 pos;
