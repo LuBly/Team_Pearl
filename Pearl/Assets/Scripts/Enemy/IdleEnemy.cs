@@ -9,31 +9,39 @@ using UnityEngine;
 
 public class IdleEnemy : MonoBehaviour
 {
-    CharacterBase stat;
-    Ingame_Goods goods;
-    public int nowStage;
-    public int enemyHP;
-    public uint rewardGold, rewardManaStone;
+    CharacterBase stat; // 캐릭터 스탯
+    Ingame_Goods goods; // 현재 재화
+    public int nowStage; // 현재 스테이지
+    public int enemyHP; // 상대 체력
+    public uint rewardGold, rewardManaStone; // 보상 골드, 보상 마력석
 
     void Start()
     {
         stat = GameObject.Find("Main_Char").GetComponent<CharacterBase>();
         goods = GameObject.Find("Goods").GetComponent<Ingame_Goods>();
         SetEnemy(nowStage);
+        StartCoroutine(AttackRoutine());
     }
 
-    void FixedUpdate()
+    IEnumerator AttackRoutine() // 1초마다 몬스터 공격 설정
+    {
+        AttackEnemy();
+        StartCoroutine(AttackRoutine());
+        yield return new WaitForSecondsRealtime(1f);
+    }
+
+    void AttackEnemy() // 상대 공격 함수
     {
         enemyHP = enemyHP - (stat.ATK + stat.Gun_ATK);
         if(enemyHP <= 0) 
         {
             goods.Gold = goods.Gold + rewardGold;
             goods.Mana_Stone = goods.Mana_Stone + rewardManaStone;
-            Start();
+            SetEnemy(nowStage);
         }
     }
 
-    void SetEnemy(int stage)
+    void SetEnemy(int stage) //스테이지 별 상대 스펙 설정
     {
         switch(stage)
         {
