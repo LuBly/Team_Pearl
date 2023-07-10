@@ -27,12 +27,13 @@ public class PlayerMovement : MonoBehaviour
     Transform trans;
     Animator anim;
     public float moveSpeed = 5f;
-    private float scale = 0.7f;
+    private float scale;
     void Awake()
     {
         rb=GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
         anim=GetComponent<Animator>();
+        scale = trans.localScale.x;
     }
 
     void FixedUpdate()
