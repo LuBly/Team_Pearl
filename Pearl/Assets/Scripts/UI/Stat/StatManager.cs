@@ -18,7 +18,7 @@ public class StatManager : MonoBehaviour
         stat = GameObject.Find("Main_Char").GetComponent<CharacterBase>(); // 변수에 Main_Char 오브젝트의 CharacterBase 값 가져오기.
 
         Lv_text.text = stat.Lv.ToString();
-        ATK_text.text = stat.ATK.ToString();
+        ATK_text.text = stat.ATK.ToString() + "%";
         Gun_Attack_text.text = stat.Gun_ATK.ToString();
         Gun_Level_text.text = stat.Gun_proficiency.ToString();
         Health_text.text = stat.Health.ToString();
