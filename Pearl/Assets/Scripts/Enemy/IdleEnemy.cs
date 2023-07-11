@@ -12,23 +12,23 @@ public class IdleEnemy : MonoBehaviour
 {
     CharacterBase stat; // 캐릭터 스탯
     Ingame_Goods goods; // 현재 재화
-    public int nowStage; // 현재 스테이지 (1-1~5 = 1~5, 2-1~5 = 6~10, 3-1~5 = 10~15)
+    public int nowStage; // 현재 스테이지 (1-1~4 = 1~4, 2-1~4 = 5~8, 3-1~4 = 9~12)
+    public int nowChapter; //현재 챕터 (1, 2, 3)
     public int enemyHP, enemyATK, enemyRapid; // 상대 체력, 공격력, 공격속도
     public uint rewardGold, rewardManaStone; // 보상 골드, 보상 마력석
     public TextMeshProUGUI nowStageText;
     float now_DMG; // 현재 공격력
     int nowHP; // 현재 체력
-    bool flag = true; // 임시 플래그
 
-    void Start()
+    public void Awake()
     {
         stat = GameObject.Find("Main_Char").GetComponent<CharacterBase>();
         goods = GameObject.Find("Goods").GetComponent<Ingame_Goods>();
         NowHP_Set();
         Gun_DMG_Set();
         SetEnemy(nowStage);    
-        StartCoroutine(CharAttackRoutine());
-        StartCoroutine(EnemyAttackRoutine());
+        StartCoroutine("CharAttackRoutine");
+        StartCoroutine("EnemyAttackRoutine");
     }
 
     IEnumerator CharAttackRoutine() // 공격속도 마다 캐릭터 공격 설정
@@ -90,55 +90,63 @@ public class IdleEnemy : MonoBehaviour
                 rewardGold = 10;
                 rewardManaStone = 1;
                 nowStageText.text = "1 - 1";
+                nowChapter = 1;
                 break;
             case 2:
-                enemyHP = 1000;
+                enemyHP = 3000;
                 enemyATK = 50;
                 enemyRapid = 1;
-                rewardGold = 10;
-                rewardManaStone = 1;
+                rewardGold = 100;
+                rewardManaStone = 10;
                 nowStageText.text = "1 - 2";
+                nowChapter = 1;
                 break;
             case 3:
                 nowStageText.text = "1 - 3";
+                nowChapter = 1;
                 break;
             case 4:
                 nowStageText.text = "1 - 4";
+                nowChapter = 1;
                 break;
             case 5:
-                nowStageText.text = "1 - 5";
+                nowStageText.text = "2 - 1";
+                nowChapter = 2;
                 break;
             case 6:
-                nowStageText.text = "2 - 1";
+                nowStageText.text = "2 - 2";
+                nowChapter = 2;
                 break;
             case 7:
-                nowStageText.text = "2 - 2";
+                nowStageText.text = "2 - 3";
+                nowChapter = 2;
                 break;
             case 8:
-                nowStageText.text = "2 - 3";
+                nowStageText.text = "2 - 4";
+                nowChapter = 2;
                 break;
             case 9:
-                nowStageText.text = "2 - 4";
+                nowStageText.text = "3 - 1";
+                nowChapter = 3;
                 break;
             case 10:
-                nowStageText.text = "2 - 5";
+                nowStageText.text = "3 - 2";
+                nowChapter = 3;
                 break;
             case 11:
-                nowStageText.text = "3 - 1";
+                nowStageText.text = "3 - 3";
+                nowChapter = 3;
                 break;
             case 12:
-                nowStageText.text = "3 - 2";
-                break;
-            case 13:
-                nowStageText.text = "3 - 3";
-                break;
-            case 14:
                 nowStageText.text = "3 - 4";
-                break;
-            case 15:
-                nowStageText.text = "3 - 5";
+                nowChapter = 3;
                 break;
         }
 
+    }
+
+    public void Stoproutine() // 코루틴 전체 정지
+    {
+        StopAllCoroutines();
     }
 }
