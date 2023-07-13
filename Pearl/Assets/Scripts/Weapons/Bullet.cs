@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public float damage;//데미지
     public int per; //관통
+    public float lifeTime = 5.0f;
 
     Rigidbody2D rigid;
     void Awake()
@@ -35,5 +37,23 @@ public class Bullet : MonoBehaviour
             rigid.velocity = Vector2.zero;
             gameObject.SetActive(false);
         }
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(Delete());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(Delete());
+    }
+
+    IEnumerator Delete()
+    {
+        yield return new WaitForSeconds(lifeTime);
+        //총알 초기화
+        rigid.velocity = Vector2.zero;
+        gameObject.SetActive(false);
     }
 }
