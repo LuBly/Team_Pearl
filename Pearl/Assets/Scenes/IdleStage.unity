@@ -1394,7 +1394,8 @@ MonoBehaviour:
   id: 0
   prefabId: 1
   damage: 5
-  gunRapid: 0.5
+  gunRapid: 0.1
+  count: 1
 --- !u!1 &1970357485
 GameObject:
   m_ObjectHideFlags: 0
