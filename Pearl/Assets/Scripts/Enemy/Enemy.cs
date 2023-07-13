@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public float speed;
+    public float health;
+    public float maxHealth;
     public Rigidbody2D target;
     
-    bool isLive;
+    private bool isLive;
 
     Rigidbody2D rigid;
     Transform trans;
-    void Awake()
+    private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         //캐릭터의 위치 - 몬스터의 위치 = 방향
         Vector2 dirVec = target.position - rigid.position;
@@ -40,8 +42,41 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
+        isLive = true;
+        health = maxHealth;
+    }
+    //초기속성을 적용하는 함수
+    public void Init(SpawnData data)
+    {
+        maxHealth = data.health;
+        health = data.health;
+        speed = data.speed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Bullet"))
+            return;
+
+        health -= collision.GetComponent<Bullet>().damage;
+
+        if (health > 0)
+        {
+            // Live, HitAction
+        }
+        else
+        {
+            // Die
+            Dead();
+        }
+    }
+
+    private void Dead()
+    {   
+        //비활성화
+        gameObject.SetActive(false);
     }
 }

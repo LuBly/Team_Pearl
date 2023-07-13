@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage;//데미지
-    public int per; //관통
-    public float lifeTime = 5.0f;
+    public float damage;            // 데미지
+    public int per;                 // 관통
+    public float lifeTime = 5.0f;   // 총알이 사라지기까지의 시간 or 거리
+    //총의 특성상 거리로 두는게 좋을 것 같다.
+    //일단 임시 개발단계에선 시간으로 개발
 
     Rigidbody2D rigid;
     void Awake()
