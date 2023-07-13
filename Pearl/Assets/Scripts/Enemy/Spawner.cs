@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public int enemyId;
+    public int prefabId;
     public int maxCount;
     public int enemyCount;
 
@@ -22,8 +22,8 @@ public class Spawner : MonoBehaviour
     {
         if (curTime >= spawnTime && enemyCount < maxCount)
         {
-            int idx = Random.Range(0, spawnPoints.Length);
-            GameObject enemy = GameManager.instance.pool.Get(enemyId);
+            int idx = Random.Range(1, spawnPoints.Length);
+            GameObject enemy = GameManager.instance.pool.Get(prefabId);
             enemy.transform.position = spawnPoints[idx].position;
             enemyCount++;
             curTime = 0;

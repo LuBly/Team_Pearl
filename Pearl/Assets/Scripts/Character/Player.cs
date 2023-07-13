@@ -3,36 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    public static PlayerMovement Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<PlayerMovement>();
-                if (instance == null)
-                {
-                    var instanceContainer = new GameObject("PlayerMovement");
-                    instance = instanceContainer.AddComponent<PlayerMovement>();
-                }
-            }
-            return instance;
-        }
-    }
-    private static PlayerMovement instance;
-
     Rigidbody2D rb;
     Transform trans;
     Animator anim;
     public float moveSpeed = 5f;
+    public Scanner scanner;
+
     private float scale;
     void Awake()
     {
         rb=GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
         anim=GetComponent<Animator>();
+        scanner = GetComponent<Scanner>();
         scale = trans.localScale.x;
     }
 

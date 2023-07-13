@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 361886028}
   - component: {fileID: 361886029}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -412,20 +412,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3f76cb1319754459a9460480c3ea7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyId: 0
+  prefabId: 0
   maxCount: 10
   enemyCount: 0
   spawnTime: 0.1
   curTime: 0
-  spawnPoints:
-  - {fileID: 1691029849}
-  - {fileID: 355455260}
-  - {fileID: 2043896685}
-  - {fileID: 222150351}
-  - {fileID: 531255639}
-  - {fileID: 804934930}
-  - {fileID: 796093173}
-  - {fileID: 1588754320}
 --- !u!1 &531255638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,8 +1391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f9ee8729ebcaa43ad0a1d2bea3ad9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
-  prefabId: 0
+  id: 0
+  prefabId: 1
   damage: 5
   gunRapid: 0.5
 --- !u!1 &1970357485
