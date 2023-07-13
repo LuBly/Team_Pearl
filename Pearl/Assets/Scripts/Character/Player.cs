@@ -34,6 +34,12 @@ public class Player : MonoBehaviour
     }
     private void LateUpdate()
     {
+        //주변에 적이 있을 때 attack anim 상태로 변환
+        if (scanner.nearestTarget)
+            anim.SetBool("isAttack", true);
+        else
+            anim.SetBool("isAttack", false);
+
         //조이스틱 값이 들어갈 때 run anim 상태로 변환
         if (JoystickMovement.Instance.joyVec == Vector3.zero)
         {

@@ -56,8 +56,9 @@ public class Weapon : MonoBehaviour
     {   
         //대상이 없다면 발사 X
         if (!player.scanner.nearestTarget)
+        {
             return;
-
+        }
         //대상이 있다면 발사
         Vector3 targetPos = player.scanner.nearestTarget.position;
         // 속도(크기를 포함한 방향벡터) = 목표 위치 - 내 위치
