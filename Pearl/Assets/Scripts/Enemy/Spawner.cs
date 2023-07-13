@@ -11,7 +11,12 @@ public class Spawner : MonoBehaviour
     public float spawnTime;
     public float curTime;
 
-    public Transform[] spawnPoints;
+    private Transform[] spawnPoints;
+
+    void Awake()
+    {
+        spawnPoints = GetComponentsInChildren<Transform>();
+    }
 
     private void Update()
     {
