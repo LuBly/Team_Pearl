@@ -2,32 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
+    public int enemyId;
     public int maxCount;
     public int enemyCount;
 
     public float spawnTime;
     public float curTime;
-    public Transform[] spawnPoints;
-    public GameObject enemy;
 
-    
+    public Transform[] spawnPoints;
 
     private void Update()
     {
         if (curTime >= spawnTime && enemyCount < maxCount)
         {
             int idx = Random.Range(0, spawnPoints.Length);
-            SpawnEnemy(idx);
+            GameObject enemy = GameManager.instance.pool.Get(enemyId);
+            enemy.transform.position = spawnPoints[idx].position;
+            enemyCount++;
+            curTime = 0;
         }
         curTime += Time.deltaTime;
-    }
-
-    public void SpawnEnemy(int idx)
-    {
-        curTime = 0;
-        enemyCount++;
-        Instantiate(enemy, spawnPoints[idx]);
     }
 }
