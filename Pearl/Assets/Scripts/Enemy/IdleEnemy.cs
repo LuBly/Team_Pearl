@@ -25,6 +25,7 @@ public class IdleEnemy : MonoBehaviour
 
     int enemyHp, enemyAtk, enemyRapid; // 상대 체력, 공격력, 공격속도
     uint rewardGold, rewardManaStone; // 보상 골드, 보상 마력석*/
+    int stageText; // 스테이지 텍스트 작성용 변수
     public TextMeshProUGUI nowStageText;
     float nowDmg; // 현재 공격력
     int nowHp; // 현재 체력
@@ -102,11 +103,23 @@ public class IdleEnemy : MonoBehaviour
         rewardGold = enemyData[stage - 1].rewardGold; // 적 보상 골드 설정
         rewardManaStone = enemyData[stage - 1].rewardManaStone; // 적 보상 마력석 설정
         nowEnemySprite.sprite = enemySprite[stage - 1]; // 적 스프라이트 변경
-        if(stage >=1 && stage <=4) nowChapter = 1;
-        else if(stage >=5 && stage <=8) nowChapter = 2;
-        else if(stage >=9 && stage <=12) nowChapter = 3;
+        if(stage >=1 && stage <=4)
+        {
+            nowChapter = 1;
+            stageText = stage;
+        } 
+        else if(stage >=5 && stage <=8)
+        {
+            nowChapter = 2;
+            stageText = stage - 4;
+        }
+        else if(stage >=9 && stage <=12)
+        {
+            nowChapter = 3;
+            stageText = stage - 8;
+        }
         else nowChapter = 99; // Error!
-        nowStageText.text = nowChapter.ToString() + " - " + stage.ToString(); // 챕터 - 스테이지
+        nowStageText.text = nowChapter.ToString() + " - " + stageText.ToString(); // 챕터 - 스테이지
     }
 
     public void Stoproutine() // 코루틴 전체 정지
