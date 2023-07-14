@@ -2290,7 +2290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8695850258012345586, guid: 0a17aeeb56059ab419d346f79d830b29, type: 3}
       propertyPath: m_Name
-      value: edge
+      value: Edge
       objectReference: {fileID: 0}
     - target: {fileID: 8695850258012345586, guid: 0a17aeeb56059ab419d346f79d830b29, type: 3}
       propertyPath: m_Layer

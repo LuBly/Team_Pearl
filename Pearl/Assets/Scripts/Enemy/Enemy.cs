@@ -75,8 +75,9 @@ public class Enemy : MonoBehaviour
     }
 
     private void Dead()
-    {   
+    {
         //비활성화
+        isLive = false;
         gameObject.SetActive(false);
     }
 }

@@ -232,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8695850258012345587}
   m_Layer: 0
-  m_Name: edge
+  m_Name: Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
