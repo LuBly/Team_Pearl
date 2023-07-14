@@ -1052,7 +1052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1403,7 +1403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4045,7 +4045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7593,7 +7593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11795,13 +11795,76 @@ MonoBehaviour:
     enemyRapid: 1
     rewardGold: 25
     rewardManaStone: 1
-  - nowStage: 1
+  - nowStage: 5
     nowChapter: 2
     enemyHp: 300
     enemyAtk: 30
     enemyRapid: 1
     rewardGold: 30
     rewardManaStone: 1
+  - nowStage: 6
+    nowChapter: 2
+    enemyHp: 300
+    enemyAtk: 30
+    enemyRapid: 1
+    rewardGold: 30
+    rewardManaStone: 1
+  - nowStage: 7
+    nowChapter: 2
+    enemyHp: 300
+    enemyAtk: 30
+    enemyRapid: 1
+    rewardGold: 30
+    rewardManaStone: 1
+  - nowStage: 8
+    nowChapter: 2
+    enemyHp: 300
+    enemyAtk: 30
+    enemyRapid: 1
+    rewardGold: 30
+    rewardManaStone: 1
+  - nowStage: 9
+    nowChapter: 2
+    enemyHp: 300
+    enemyAtk: 30
+    enemyRapid: 1
+    rewardGold: 30
+    rewardManaStone: 1
+  - nowStage: 10
+    nowChapter: 2
+    enemyHp: 300
+    enemyAtk: 30
+    enemyRapid: 1
+    rewardGold: 30
+    rewardManaStone: 1
+  - nowStage: 11
+    nowChapter: 2
+    enemyHp: 300
+    enemyAtk: 30
+    enemyRapid: 1
+    rewardGold: 30
+    rewardManaStone: 1
+  - nowStage: 12
+    nowChapter: 2
+    enemyHp: 300
+    enemyAtk: 30
+    enemyRapid: 1
+    rewardGold: 30
+    rewardManaStone: 1
+  enemySprite:
+  - {fileID: 21300000, guid: da88a6bcbf1706a409007e9a0a2949b3, type: 3}
+  - {fileID: 21300000, guid: 283b986b48549674ab2c6128d296ecaa, type: 3}
+  - {fileID: 21300000, guid: d38b112131aea4540817aab7e2a222db, type: 3}
+  - {fileID: 21300000, guid: e725470deb4cd5e48869d437c2f7614a, type: 3}
+  - {fileID: 21300000, guid: 7b5003f1c938a804a8c25728d3f30398, type: 3}
+  - {fileID: 21300000, guid: bc2749f6e5a54a84cb59b4c89cabc01c, type: 3}
+  - {fileID: 21300000, guid: e78e9f6ac378f9147b219a4aa0ca0fb9, type: 3}
+  - {fileID: 21300000, guid: a23a7ced775ab28459e507d5c8cb8482, type: 3}
+  - {fileID: 21300000, guid: d04a3d55d9075d44998eae2c69b2bc78, type: 3}
+  - {fileID: 21300000, guid: 7e3aab7425bf756429ed8c04b4bd55ce, type: 3}
+  - {fileID: 21300000, guid: d6eb508d2823d8d448e2204650724e3b, type: 3}
+  - {fileID: 21300000, guid: 04562bc13a2407e40ae370dad404125b, type: 3}
+  nowEnemySprite: {fileID: 1847329710}
   nowStage: 1
   nowChapter: 1
   nowStageText: {fileID: 2056562779}

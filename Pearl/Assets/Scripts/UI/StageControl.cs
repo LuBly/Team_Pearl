@@ -75,19 +75,19 @@ public class StageControl : MonoBehaviour
         {
             Stage.nowStage = int.Parse(clickObject.name);
             Stage.Stoproutine();
-            Stage.Awake();
+            Stage.Start();
         }
         else if(now == 2)
         {
             Stage.nowStage = int.Parse(clickObject.name) + 4;
             Stage.Stoproutine();
-            Stage.Awake();
+            Stage.Start();
         }
         else if(now == 3)
         {
             Stage.nowStage = int.Parse(clickObject.name) + 8;
             Stage.Stoproutine();
-            Stage.Awake();
+            Stage.Start();
         }
     }
 }

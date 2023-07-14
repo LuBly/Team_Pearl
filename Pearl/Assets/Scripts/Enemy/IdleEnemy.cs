@@ -11,6 +11,8 @@ using TMPro;
 public class IdleEnemy : MonoBehaviour
 {
     public EnemyData[] enemyData;
+    public Sprite[] enemySprite; // 적 이미지 배열
+    public SpriteRenderer nowEnemySprite; // 현재 적 이미지
 
     CharacterBase stat; // 캐릭터 스탯
     IngameGoods goods; // 현재 재화
@@ -32,6 +34,11 @@ public class IdleEnemy : MonoBehaviour
         stat = GameObject.Find("MainChar").GetComponent<CharacterBase>();
         goods = GameObject.Find("Goods").GetComponent<IngameGoods>();
         backGround = GameObject.Find("BackGround").GetComponent<BackGroundManager>();
+        nowEnemySprite = GetComponent<SpriteRenderer>();
+    }
+
+    public void Start()
+    {
         NowHpSet();
         GunDmgSet();
         SetEnemy(nowStage);
@@ -89,93 +96,17 @@ public class IdleEnemy : MonoBehaviour
 
     void SetEnemy(int stage) //스테이지 별 상대 스펙 설정
     {
-        switch(stage)
-        {
-            case 1:
-                /*enemyHp = 1000;
-                enemyAtk = 10;
-                enemyRapid = 1;
-                rewardGold = 10;
-                rewardManaStone = 1;*/
-                enemyHp = enemyData[0].enemyHp;
-                enemyAtk = enemyData[0].enemyAtk;
-                enemyRapid = enemyData[0].enemyRapid;
-                rewardGold = enemyData[0].rewardGold;
-                rewardManaStone = enemyData[0].rewardManaStone;
-                nowStageText.text = "1 - 1";
-                nowChapter = 1;
-                break;
-            case 2:
-                /*enemyHp = 3000;
-                enemyAtk = 50;
-                enemyRapid = 1;
-                rewardGold = 100;
-                rewardManaStone = 10;*/
-                enemyHp = enemyData[1].enemyHp;
-                enemyAtk = enemyData[1].enemyAtk;
-                enemyRapid = enemyData[1].enemyRapid;
-                rewardGold = enemyData[1].rewardGold;
-                rewardManaStone = enemyData[1].rewardManaStone;
-                nowStageText.text = "1 - 2";
-                nowChapter = 1;
-                break;
-            case 3:
-                enemyHp = enemyData[2].enemyHp;
-                enemyAtk = enemyData[2].enemyAtk;
-                enemyRapid = enemyData[2].enemyRapid;
-                rewardGold = enemyData[2].rewardGold;
-                rewardManaStone = enemyData[2].rewardManaStone;
-                nowStageText.text = "1 - 3";
-                nowChapter = 1;
-                break;
-            case 4:
-                enemyHp = enemyData[3].enemyHp;
-                enemyAtk = enemyData[3].enemyAtk;
-                enemyRapid = enemyData[3].enemyRapid;
-                rewardGold = enemyData[3].rewardGold;
-                rewardManaStone = enemyData[3].rewardManaStone;
-                nowStageText.text = "1 - 4";
-                nowChapter = 1;
-                break;
-            case 5:
-                enemyHp = enemyData[4].enemyHp;
-                enemyAtk = enemyData[4].enemyAtk;
-                enemyRapid = enemyData[4].enemyRapid;
-                rewardGold = enemyData[4].rewardGold;
-                rewardManaStone = enemyData[4].rewardManaStone;
-                nowStageText.text = "2 - 1";
-                nowChapter = 2;
-                break;
-            case 6:
-                nowStageText.text = "2 - 2";
-                nowChapter = 2;
-                break;
-            case 7:
-                nowStageText.text = "2 - 3";
-                nowChapter = 2;
-                break;
-            case 8:
-                nowStageText.text = "2 - 4";
-                nowChapter = 2;
-                break;
-            case 9:
-                nowStageText.text = "3 - 1";
-                nowChapter = 3;
-                break;
-            case 10:
-                nowStageText.text = "3 - 2";
-                nowChapter = 3;
-                break;
-            case 11:
-                nowStageText.text = "3 - 3";
-                nowChapter = 3;
-                break;
-            case 12:
-                nowStageText.text = "3 - 4";
-                nowChapter = 3;
-                break;
-        }
-
+        enemyHp = enemyData[stage - 1].enemyHp; // 적 체력 설정
+        enemyAtk = enemyData[stage - 1].enemyAtk; //적 공격력 설정
+        enemyRapid = enemyData[stage - 1].enemyRapid; // 적 공격속도 설정
+        rewardGold = enemyData[stage - 1].rewardGold; // 적 보상 골드 설정
+        rewardManaStone = enemyData[stage - 1].rewardManaStone; // 적 보상 마력석 설정
+        nowEnemySprite.sprite = enemySprite[stage - 1]; // 적 스프라이트 변경
+        if(stage >=1 && stage <=4) nowChapter = 1;
+        else if(stage >=5 && stage <=8) nowChapter = 2;
+        else if(stage >=9 && stage <=12) nowChapter = 3;
+        else nowChapter = 99; // Error!
+        nowStageText.text = nowChapter.ToString() + " - " + stage.ToString(); // 챕터 - 스테이지
     }
 
     public void Stoproutine() // 코루틴 전체 정지
