@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 8968993}
   - component: {fileID: 8968996}
   m_Layer: 5
-  m_Name: UI_Skill
+  m_Name: UISkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce9ac86462935d46ba8a1e5b072ad44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Start_Parent_Pos: 0
+  startParentPos: 0
 --- !u!1 &17716331
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 17716332}
   - component: {fileID: 17716334}
   m_Layer: 3
-  m_Name: Main_Char
+  m_Name: MainChar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,13 +338,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Lv: 1
-  ATK: 0
-  Gun_ATK: 100
-  Gun_proficiency: 0
-  Gun_Rapid: 0.5
-  Health: 200
-  Critical: 20
-  Critical_Dmg: 50
+  atk: 0
+  gunAtk: 100
+  gunProficiency: 0
+  gunRapid: 0.5
+  health: 200
+  critical: 20
+  criticalDmg: 50
 --- !u!1 &44825237
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 100028390}
   - component: {fileID: 100028389}
   m_Layer: 5
-  m_Name: Gun_Level_txt
+  m_Name: GunLevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -719,14 +719,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2869f0cd5766daf458d4fea9193ecb4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NowLv_text: {fileID: 594584003}
-  NowDMG_text: {fileID: 524615919}
-  NowHP_text: {fileID: 187340940}
-  NowDMGLevel_text: {fileID: 162836491}
-  NowHpLevel_text: {fileID: 1708089472}
-  LVGoldText: {fileID: 1524558484}
-  DMGGoldText: {fileID: 1186221286}
-  HPGoldText: {fileID: 1656747870}
+  nowLvText: {fileID: 594584003}
+  nowDmgText: {fileID: 524615919}
+  nowHpText: {fileID: 187340940}
+  nowDmgLevelText: {fileID: 162836491}
+  nowHpLevelText: {fileID: 1708089472}
+  lvGoldText: {fileID: 1524558484}
+  dmgGoldText: {fileID: 1186221286}
+  hpGoldText: {fileID: 1656747870}
 --- !u!1 &162836489
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,7 +739,7 @@ GameObject:
   - component: {fileID: 162836492}
   - component: {fileID: 162836491}
   m_Layer: 5
-  m_Name: NowDMGLevel
+  m_Name: NowDmgLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1089,7 +1089,7 @@ GameObject:
   - component: {fileID: 206651036}
   - component: {fileID: 206651035}
   m_Layer: 5
-  m_Name: Gun_ATK_txt
+  m_Name: GunAtkText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1224,7 +1224,7 @@ GameObject:
   - component: {fileID: 219989914}
   - component: {fileID: 219989913}
   m_Layer: 5
-  m_Name: ATK_txt
+  m_Name: AtkText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1577,7 +1577,7 @@ GameObject:
   - component: {fileID: 245961721}
   - component: {fileID: 245961720}
   m_Layer: 5
-  m_Name: UI_Main
+  m_Name: UIMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1623,7 +1623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce9ac86462935d46ba8a1e5b072ad44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Start_Parent_Pos: 1
+  startParentPos: 0
 --- !u!114 &245961721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2716,7 +2716,7 @@ GameObject:
   - component: {fileID: 335022910}
   - component: {fileID: 335022909}
   m_Layer: 5
-  m_Name: BtnHP
+  m_Name: BtnHp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2789,7 +2789,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 110468674}
         m_TargetAssemblyTypeName: StatUpManager, Assembly-CSharp
-        m_MethodName: BtnHPClick
+        m_MethodName: BtnHpClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2801,7 +2801,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1847329709}
         m_TargetAssemblyTypeName: IdleEnemy, Assembly-CSharp
-        m_MethodName: NowHP_Set
+        m_MethodName: NowHpSet
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3206,7 +3206,7 @@ GameObject:
   - component: {fileID: 415744462}
   - component: {fileID: 415744461}
   m_Layer: 5
-  m_Name: Tag_txt
+  m_Name: TagText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3500,7 +3500,7 @@ GameObject:
   - component: {fileID: 455151626}
   - component: {fileID: 455151625}
   m_Layer: 5
-  m_Name: BtnDMG
+  m_Name: BtnDmg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3573,7 +3573,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 110468674}
         m_TargetAssemblyTypeName: StatUpManager, Assembly-CSharp
-        m_MethodName: BtnDMGClick
+        m_MethodName: BtnDmgClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3585,7 +3585,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1847329709}
         m_TargetAssemblyTypeName: IdleEnemy, Assembly-CSharp
-        m_MethodName: Gun_DMG_Set
+        m_MethodName: GunDmgSet
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3863,7 +3863,7 @@ GameObject:
   - component: {fileID: 524615920}
   - component: {fileID: 524615919}
   m_Layer: 5
-  m_Name: NowDMG
+  m_Name: NowDmg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4096,7 +4096,7 @@ GameObject:
   - component: {fileID: 550386463}
   - component: {fileID: 550386462}
   m_Layer: 5
-  m_Name: Btn_Close
+  m_Name: BtnClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4167,8 +4167,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8968996}
-        m_TargetAssemblyTypeName: UI_Move, Assembly-CSharp
-        m_MethodName: Return_Pos
+        m_TargetAssemblyTypeName: UIMove, Assembly-CSharp
+        m_MethodName: ReturnPos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4850,7 +4850,7 @@ GameObject:
   - component: {fileID: 679857751}
   - component: {fileID: 679857754}
   m_Layer: 5
-  m_Name: UI_Portal
+  m_Name: UIPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4952,7 +4952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce9ac86462935d46ba8a1e5b072ad44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Start_Parent_Pos: 0
+  startParentPos: 0
 --- !u!1 &684054773
 GameObject:
   m_ObjectHideFlags: 0
@@ -5101,7 +5101,7 @@ GameObject:
   - component: {fileID: 686228184}
   - component: {fileID: 686228183}
   m_Layer: 5
-  m_Name: Btn_Close
+  m_Name: BtnClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5172,8 +5172,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 679857754}
-        m_TargetAssemblyTypeName: UI_Move, Assembly-CSharp
-        m_MethodName: Return_Pos
+        m_TargetAssemblyTypeName: UIMove, Assembly-CSharp
+        m_MethodName: ReturnPos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5715,7 +5715,7 @@ GameObject:
   - component: {fileID: 844757626}
   - component: {fileID: 844757625}
   m_Layer: 5
-  m_Name: BtnLV
+  m_Name: BtnLv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5983,7 +5983,7 @@ GameObject:
   - component: {fileID: 858327905}
   - component: {fileID: 858327904}
   m_Layer: 5
-  m_Name: Health_txt
+  m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6118,7 +6118,7 @@ GameObject:
   - component: {fileID: 867658403}
   - component: {fileID: 867658402}
   m_Layer: 5
-  m_Name: Critical_txt
+  m_Name: CriticalText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6254,7 +6254,7 @@ GameObject:
   - component: {fileID: 868851204}
   - component: {fileID: 868851203}
   m_Layer: 5
-  m_Name: UI_Stage
+  m_Name: UIStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6293,7 +6293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce9ac86462935d46ba8a1e5b072ad44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Start_Parent_Pos: 0
+  startParentPos: 0
 --- !u!114 &868851204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6345,7 +6345,7 @@ GameObject:
   - component: {fileID: 901155496}
   - component: {fileID: 901155495}
   m_Layer: 5
-  m_Name: Btn_Close
+  m_Name: BtnClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6416,8 +6416,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1984226787}
-        m_TargetAssemblyTypeName: UI_Move, Assembly-CSharp
-        m_MethodName: Return_Pos
+        m_TargetAssemblyTypeName: UIMove, Assembly-CSharp
+        m_MethodName: ReturnPos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6639,9 +6639,9 @@ MonoBehaviour:
   nowGold: {fileID: 684054775}
   nowManaStone: {fileID: 2128685613}
   nowCrystal: {fileID: 1552970407}
-  Gold: 0
-  Mana_Stone: 0
-  Crystal: 0
+  gold: 0
+  manaStone: 0
+  crystal: 0
 --- !u!1 &1018257221
 GameObject:
   m_ObjectHideFlags: 0
@@ -6790,7 +6790,7 @@ GameObject:
   - component: {fileID: 1019455226}
   - component: {fileID: 1019455225}
   m_Layer: 5
-  m_Name: Btn_Close
+  m_Name: BtnClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6861,8 +6861,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2146805239}
-        m_TargetAssemblyTypeName: UI_Move, Assembly-CSharp
-        m_MethodName: Return_Pos
+        m_TargetAssemblyTypeName: UIMove, Assembly-CSharp
+        m_MethodName: ReturnPos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7210,7 +7210,7 @@ GameObject:
   - component: {fileID: 1149948912}
   - component: {fileID: 1149948914}
   m_Layer: 5
-  m_Name: Status_UI
+  m_Name: StatusUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7294,13 +7294,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f7242883363c54a9e2db2d824cb424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lv_text: {fileID: 1989430932}
-  ATK_text: {fileID: 219989913}
-  Gun_Attack_text: {fileID: 206651035}
-  Gun_Level_text: {fileID: 100028389}
-  Health_text: {fileID: 858327904}
-  Critical_text: {fileID: 867658402}
-  Critical_DMG_text: {fileID: 1960816176}
+  lvText: {fileID: 1989430932}
+  atkText: {fileID: 219989913}
+  gunAttackText: {fileID: 206651035}
+  gunLevelText: {fileID: 100028389}
+  healthText: {fileID: 858327904}
+  criticalText: {fileID: 867658402}
+  criticalDmgText: {fileID: 1960816176}
 --- !u!1 &1186221284
 GameObject:
   m_ObjectHideFlags: 0
@@ -7313,7 +7313,7 @@ GameObject:
   - component: {fileID: 1186221287}
   - component: {fileID: 1186221286}
   m_Layer: 5
-  m_Name: DMGGold
+  m_Name: DmgGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7667,7 +7667,7 @@ GameObject:
   - component: {fileID: 1210967006}
   - component: {fileID: 1210967005}
   m_Layer: 5
-  m_Name: Btn_Portal
+  m_Name: BtnPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7739,8 +7739,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 679857754}
-        m_TargetAssemblyTypeName: UI_Move, Assembly-CSharp
-        m_MethodName: SetParent_Pos
+        m_TargetAssemblyTypeName: UIMove, Assembly-CSharp
+        m_MethodName: SetParentPos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8012,7 +8012,7 @@ GameObject:
   - component: {fileID: 1233303632}
   - component: {fileID: 1233303631}
   m_Layer: 5
-  m_Name: Main_Display
+  m_Name: MainDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8181,7 +8181,7 @@ GameObject:
   - component: {fileID: 1261108735}
   - component: {fileID: 1261108734}
   m_Layer: 5
-  m_Name: Btn_Close
+  m_Name: BtnClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8253,7 +8253,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 868851203}
         m_TargetAssemblyTypeName: UIMove, Assembly-CSharp
-        m_MethodName: Return_Pos
+        m_MethodName: ReturnPos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8449,7 +8449,7 @@ GameObject:
   - component: {fileID: 1286427437}
   - component: {fileID: 1286427436}
   m_Layer: 5
-  m_Name: Btn_Close
+  m_Name: BtnClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8520,8 +8520,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2030320453}
-        m_TargetAssemblyTypeName: UI_Move, Assembly-CSharp
-        m_MethodName: Return_Pos
+        m_TargetAssemblyTypeName: UIMove, Assembly-CSharp
+        m_MethodName: ReturnPos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8985,7 +8985,7 @@ GameObject:
   - component: {fileID: 1469080397}
   - component: {fileID: 1469080396}
   m_Layer: 5
-  m_Name: Btn_Stage
+  m_Name: BtnStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9058,7 +9058,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 868851203}
         m_TargetAssemblyTypeName: UIMove, Assembly-CSharp
-        m_MethodName: SetParent_Pos
+        m_MethodName: SetParentPos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9386,7 +9386,7 @@ GameObject:
   - component: {fileID: 1524558485}
   - component: {fileID: 1524558484}
   m_Layer: 5
-  m_Name: LVGold
+  m_Name: LvGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9743,7 +9743,7 @@ GameObject:
   - component: {fileID: 1553662369}
   - component: {fileID: 1553662370}
   m_Layer: 5
-  m_Name: UI_Idle
+  m_Name: UIIdle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9859,7 +9859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce9ac86462935d46ba8a1e5b072ad44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Start_Parent_Pos: 1
+  startParentPos: 1
 --- !u!1 &1630241978
 GameObject:
   m_ObjectHideFlags: 0
@@ -10218,7 +10218,7 @@ GameObject:
   - component: {fileID: 1656747871}
   - component: {fileID: 1656747870}
   m_Layer: 5
-  m_Name: HPGold
+  m_Name: HpGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10564,7 +10564,7 @@ GameObject:
   - component: {fileID: 1708089473}
   - component: {fileID: 1708089472}
   m_Layer: 5
-  m_Name: NowHPLevel
+  m_Name: NowHpLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10834,7 +10834,7 @@ GameObject:
   - component: {fileID: 1747934665}
   - component: {fileID: 1747934664}
   m_Layer: 5
-  m_Name: UI_Goods
+  m_Name: UIGoods
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10873,7 +10873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce9ac86462935d46ba8a1e5b072ad44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Start_Parent_Pos: 1
+  startParentPos: 1
 --- !u!114 &1747934665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10924,7 +10924,7 @@ GameObject:
   - component: {fileID: 1755516920}
   - component: {fileID: 1755516919}
   m_Layer: 5
-  m_Name: NEG
+  m_Name: Neg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11329,7 +11329,7 @@ GameObject:
   - component: {fileID: 1810958607}
   - component: {fileID: 1810958606}
   m_Layer: 5
-  m_Name: Btn_Skill
+  m_Name: BtnSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11401,8 +11401,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8968996}
-        m_TargetAssemblyTypeName: UI_Move, Assembly-CSharp
-        m_MethodName: SetParent_Pos
+        m_TargetAssemblyTypeName: UIMove, Assembly-CSharp
+        m_MethodName: SetParentPos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11754,8 +11754,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nowStage: 2
   nowChapter: 1
-  enemyHP: 0
-  enemyATK: 0
+  enemyHp: 0
+  enemyAtk: 0
   enemyRapid: 0
   rewardGold: 0
   rewardManaStone: 0
@@ -11839,7 +11839,7 @@ GameObject:
   - component: {fileID: 1941177135}
   - component: {fileID: 1941177134}
   m_Layer: 5
-  m_Name: Tag_txt
+  m_Name: TagText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11994,7 +11994,7 @@ GameObject:
   - component: {fileID: 1960816177}
   - component: {fileID: 1960816176}
   m_Layer: 5
-  m_Name: Critical_DMG_txt
+  m_Name: CriticalDmgText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12265,7 +12265,7 @@ GameObject:
   - component: {fileID: 1984226784}
   - component: {fileID: 1984226787}
   m_Layer: 5
-  m_Name: UI_Equip
+  m_Name: UIEquip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12367,7 +12367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce9ac86462935d46ba8a1e5b072ad44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Start_Parent_Pos: 0
+  startParentPos: 0
 --- !u!1 &1989430929
 GameObject:
   m_ObjectHideFlags: 0
@@ -12380,7 +12380,7 @@ GameObject:
   - component: {fileID: 1989430933}
   - component: {fileID: 1989430932}
   m_Layer: 5
-  m_Name: Level_txt
+  m_Name: LevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12998,7 +12998,7 @@ GameObject:
   - component: {fileID: 2030320452}
   - component: {fileID: 2030320453}
   m_Layer: 5
-  m_Name: UI_Shop
+  m_Name: UIShop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13111,7 +13111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce9ac86462935d46ba8a1e5b072ad44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Start_Parent_Pos: 0
+  startParentPos: 0
 --- !u!1 &2056562778
 GameObject:
   m_ObjectHideFlags: 0
@@ -13260,7 +13260,7 @@ GameObject:
   - component: {fileID: 2056792836}
   - component: {fileID: 2056792835}
   m_Layer: 5
-  m_Name: Btn_Equip
+  m_Name: BtnEquip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13332,8 +13332,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1984226787}
-        m_TargetAssemblyTypeName: UI_Move, Assembly-CSharp
-        m_MethodName: SetParent_Pos
+        m_TargetAssemblyTypeName: UIMove, Assembly-CSharp
+        m_MethodName: SetParentPos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13664,7 +13664,7 @@ GameObject:
   - component: {fileID: 2079590770}
   - component: {fileID: 2079590769}
   m_Layer: 5
-  m_Name: Btn_Shop
+  m_Name: BtnShop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13736,8 +13736,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2030320453}
-        m_TargetAssemblyTypeName: UI_Move, Assembly-CSharp
-        m_MethodName: SetParent_Pos
+        m_TargetAssemblyTypeName: UIMove, Assembly-CSharp
+        m_MethodName: SetParentPos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13798,7 +13798,7 @@ GameObject:
   - component: {fileID: 2095873021}
   - component: {fileID: 2095873020}
   m_Layer: 5
-  m_Name: Btn_Stat
+  m_Name: BtnStat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13870,8 +13870,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2146805239}
-        m_TargetAssemblyTypeName: UI_Move, Assembly-CSharp
-        m_MethodName: SetParent_Pos
+        m_TargetAssemblyTypeName: UIMove, Assembly-CSharp
+        m_MethodName: SetParentPos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14068,7 +14068,7 @@ GameObject:
   - component: {fileID: 2146805236}
   - component: {fileID: 2146805239}
   m_Layer: 5
-  m_Name: UI_Stat
+  m_Name: UIStat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14173,4 +14173,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce9ac86462935d46ba8a1e5b072ad44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Start_Parent_Pos: 0
+  startParentPos: 0
