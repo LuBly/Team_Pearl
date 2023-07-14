@@ -11,112 +11,112 @@ using TMPro;
 public class StatUpManager : MonoBehaviour
 {
     CharacterBase stat;
-    Ingame_Goods goods;
-    GameObject NEG; // Not Enough Gold
-    public TextMeshProUGUI NowLv_text, NowDMG_text, NowHP_text, NowDMGLevel_text, NowHpLevel_text, LVGoldText, DMGGoldText, HPGoldText;
+    IngameGoods goods;
+    GameObject neg; // Not Enough Gold
+    public TextMeshProUGUI nowLvText, nowDmgText, nowHpText, nowDmgLevelText, nowHpLevelText, lvGoldText, dmgGoldText, hpGoldText;
     uint levelUpPoint, dmgUpPoint, hpUpPoint;
-    uint LVGold, DMGGold, HPGold;
+    uint lvGold, dmgGold, hpGold;
     bool flag; //NEG 중복 발생 방지
 
     void Start()
     {
-        stat = GameObject.Find("Main_Char").GetComponent<CharacterBase>(); // 변수에 Main_Char 오브젝트의 CharacterBase 값 가져오기.
-        goods = GameObject.Find("Goods").GetComponent<Ingame_Goods>();
-        NEG = GameObject.Find("NEG");
-        NEGDisappear();
+        stat = GameObject.Find("MainChar").GetComponent<CharacterBase>(); // 변수에 MainChar 오브젝트의 CharacterBase 값 가져오기.
+        goods = GameObject.Find("Goods").GetComponent<IngameGoods>();
+        neg = GameObject.Find("Neg");
+        NegDisappear();
         levelUpPoint = (uint)stat.Lv - 1; // 레벨업 포인트 초기화
-        dmgUpPoint = (uint)stat.ATK; // 공격력업 포인트 초기화
-        hpUpPoint = ((uint)stat.Health - 200) % 10; //체력업 포인트 초기화
-        LVGoldSetting();
-        DMGGoldSetting();
-        HPGoldSetting();
+        dmgUpPoint = (uint)stat.atk; // 공격력업 포인트 초기화
+        hpUpPoint = ((uint)stat.health - 200) % 10; //체력업 포인트 초기화
+        LvGoldSetting();
+        DmgGoldSetting();
+        HpGoldSetting();
     }
 
 
     void Update()
     {
-        NowLv_text.text = levelUpPoint.ToString();
-        NowDMG_text.text = stat.ATK.ToString() + "%";
-        NowDMGLevel_text.text = dmgUpPoint.ToString();
-        NowHpLevel_text.text = hpUpPoint.ToString();
-        NowHP_text.text = (hpUpPoint*10).ToString();
+        nowLvText.text = levelUpPoint.ToString();
+        nowDmgText.text = stat.atk.ToString() + "%";
+        nowDmgLevelText.text = dmgUpPoint.ToString();
+        nowHpLevelText.text = hpUpPoint.ToString();
+        nowHpText.text = (hpUpPoint*10).ToString();
     }
 
     public void BtnLvClick() // 레벨업 버튼 클릭
     {
-        if(goods.Gold >= LVGold)
+        if(goods.gold >= lvGold)
         {
-            goods.Gold = goods.Gold - LVGold;
+            goods.gold = goods.gold - lvGold;
             levelUpPoint = levelUpPoint + 1;
             stat.Lv = stat.Lv + 1;
-            LVGoldSetting();
+            LvGoldSetting();
         }
         else if(flag == false)
         {
-            NEGAppear();
-            Invoke("NEGDisappear", 1f);
+            NegAppear();
+            Invoke("NegDisappear", 1f);
         }
     }
 
-    public void BtnDMGClick() //공격력업 버튼 클릭
+    public void BtnDmgClick() //공격력업 버튼 클릭
     {
-        if(goods.Gold >= DMGGold)
+        if(goods.gold >= dmgGold)
         {
-            goods.Gold = goods.Gold - DMGGold;
+            goods.gold = goods.gold - dmgGold;
             dmgUpPoint = dmgUpPoint + 1;
-            stat.ATK = stat.ATK + 1;
-            DMGGoldSetting();
+            stat.atk = stat.atk + 1;
+            DmgGoldSetting();
         }
         else if(flag == false)
         {
-            NEGAppear();
-            Invoke("NEGDisappear", 1f);
+            NegAppear();
+            Invoke("NegDisappear", 1f);
         }
     }
 
-    public void BtnHPClick() //체력업 버튼 클릭
+    public void BtnHpClick() //체력업 버튼 클릭
     {
-        if(goods.Gold >= HPGold)
+        if(goods.gold >= hpGold)
         {
-            goods.Gold = goods.Gold - HPGold;
+            goods.gold = goods.gold - hpGold;
             hpUpPoint = hpUpPoint + 1;
-            stat.Health = stat.Health + 1;
-            HPGoldSetting();
+            stat.health = stat.health + 10;
+            HpGoldSetting();
         }
         else if(flag == false)
         {
-            NEGAppear();
-            Invoke("NEGDisappear", 1f);
+            NegAppear();
+            Invoke("NegDisappear", 1f);
         }
     }
 
-    void LVGoldSetting() //LV골드 세팅
+    void LvGoldSetting() //LV골드 세팅
     {
-        LVGold = (levelUpPoint + 1) * 50;
-        LVGoldText.text = LVGold.ToString();
+        lvGold = (levelUpPoint + 1) * 50;
+        lvGoldText.text = lvGold.ToString();
     }
 
-    void DMGGoldSetting() //DMG 골드 세팅
+    void DmgGoldSetting() //DMG 골드 세팅
     {
-        DMGGold = (dmgUpPoint + 1) * 50;
-        DMGGoldText.text = DMGGold.ToString();
+        dmgGold = (dmgUpPoint + 1) * 50;
+        dmgGoldText.text = dmgGold.ToString();
     }
 
-    void HPGoldSetting() //HP 골드 세팅
+    void HpGoldSetting() //HP 골드 세팅
     {
-        HPGold = (hpUpPoint + 1) * 50;
-        HPGoldText.text = HPGold.ToString();
+        hpGold = (hpUpPoint + 1) * 50;
+        hpGoldText.text = hpGold.ToString();
     }
 
-    void NEGAppear() //NEG 보이게
+    void NegAppear() //NEG 보이게
     {
         flag = true;
-        NEG.SetActive(true);
+        neg.SetActive(true);
     }
 
-    void NEGDisappear() //NEG 안보이게
+    void NegDisappear() //NEG 안보이게
     {
         flag = false;
-        NEG.SetActive(false);
+        neg.SetActive(false);
     }
 }
