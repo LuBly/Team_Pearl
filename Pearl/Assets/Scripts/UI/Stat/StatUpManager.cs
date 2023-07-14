@@ -80,7 +80,7 @@ public class StatUpManager : MonoBehaviour
         {
             goods.Gold = goods.Gold - HPGold;
             hpUpPoint = hpUpPoint + 1;
-            stat.Health = stat.Health + 1;
+            stat.Health = stat.Health + 10;
             HPGoldSetting();
         }
         else if(flag == false)

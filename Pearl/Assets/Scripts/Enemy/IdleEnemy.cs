@@ -59,7 +59,6 @@ public class IdleEnemy : MonoBehaviour
 
     void AttackChar() // enemy 공격 함수
     {
-        Debug.Log(nowHP);
         nowHP = nowHP - enemyATK;
         if(nowHP <= 0)
         {
