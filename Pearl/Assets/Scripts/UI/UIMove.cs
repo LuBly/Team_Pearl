@@ -4,27 +4,27 @@ using UnityEngine;
 
 //캔버스 위치 관리하는 스크립트 입니다.
 
-public class UI_Move : MonoBehaviour
+public class UIMove : MonoBehaviour
 {
-    public bool Start_Parent_Pos;
+    public bool startParentPos;
     Vector3 pos;
 
     void Start()
     {
         pos = transform.position;
 
-        if( Start_Parent_Pos )
+        if( startParentPos )
         {
-            SetParent_Pos();
+            SetParentPos();
         }
     }
 
-    public void SetParent_Pos()
+    public void SetParentPos()
     {
         transform.position = transform.parent.position;
     }
 
-    public void Return_Pos()
+    public void ReturnPos()
     {
         transform.position = pos;
     }
