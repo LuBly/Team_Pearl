@@ -14,6 +14,7 @@ public class IdleEnemy : MonoBehaviour
 
     CharacterBase stat; // 캐릭터 스탯
     IngameGoods goods; // 현재 재화
+    BackGroundManager backGround; //현재 배경
 
     [Header ("시작 스테이지 (1-1~4 = 1~4, 2-1~4 = 5~8, 3-1~4 = 9~12)")]
     public int nowStage; // 현재 스테이지 (1-1~4 = 1~4, 2-1~4 = 5~8, 3-1~4 = 9~12)
@@ -30,9 +31,11 @@ public class IdleEnemy : MonoBehaviour
     {
         stat = GameObject.Find("MainChar").GetComponent<CharacterBase>();
         goods = GameObject.Find("Goods").GetComponent<IngameGoods>();
+        backGround = GameObject.Find("BackGround").GetComponent<BackGroundManager>();
         NowHpSet();
         GunDmgSet();
-        SetEnemy(nowStage);    
+        SetEnemy(nowStage);
+        backGround.BackImageChange(nowChapter); //배경 이미지 변경
         StartCoroutine("CharAttackRoutine");
         StartCoroutine("EnemyAttackRoutine");
     }
