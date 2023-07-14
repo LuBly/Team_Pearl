@@ -11752,13 +11752,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97b6cf326a5bf2448f1d21efbe2d390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowStage: 2
+  enemyData:
+  - nowStage: 1
+    nowChapter: 1
+    enemyHp: 100
+    enemyAtk: 10
+    enemyRapid: 1
+    rewardGold: 10
+    rewardManaStone: 1
+  - nowStage: 2
+    nowChapter: 1
+    enemyHp: 150
+    enemyAtk: 15
+    enemyRapid: 1
+    rewardGold: 15
+    rewardManaStone: 1
+  - nowStage: 3
+    nowChapter: 1
+    enemyHp: 200
+    enemyAtk: 20
+    enemyRapid: 1
+    rewardGold: 20
+    rewardManaStone: 1
+  - nowStage: 4
+    nowChapter: 1
+    enemyHp: 250
+    enemyAtk: 25
+    enemyRapid: 1
+    rewardGold: 25
+    rewardManaStone: 1
+  - nowStage: 1
+    nowChapter: 2
+    enemyHp: 300
+    enemyAtk: 30
+    enemyRapid: 1
+    rewardGold: 30
+    rewardManaStone: 1
+  nowStage: 5
   nowChapter: 1
-  enemyHp: 0
-  enemyAtk: 0
-  enemyRapid: 0
-  rewardGold: 0
-  rewardManaStone: 0
   nowStageText: {fileID: 2056562779}
 --- !u!212 &1847329710
 SpriteRenderer:
