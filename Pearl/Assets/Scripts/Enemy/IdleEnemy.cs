@@ -123,7 +123,7 @@ public class IdleEnemy : MonoBehaviour
             stageText = stage - 8;
         }
         else nowChapter = 99; // Error!
-        nowStageText.text = nowChapter.ToString() + " - " + stageText.ToString() + " Sweeping"; // 챕터 - 스테이지
+        nowStageText.text = nowChapter.ToString() + " - " + stageText.ToString() + " 소탕중"; // 챕터 - 스테이지
     }
 
     public void Stoproutine() // 코루틴 전체 정지
