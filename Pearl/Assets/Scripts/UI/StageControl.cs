@@ -9,7 +9,6 @@ public class StageControl : MonoBehaviour
     IdleEnemy Stage;
     GameObject BtnLeft, BtnRight;
     public TextMeshProUGUI ChapterText;
-    int [] chapter = new int[] {1, 2, 3}; // 챕터 배열(1, 2, 3)
     int now;
 
     void Start()
