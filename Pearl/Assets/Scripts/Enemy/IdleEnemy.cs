@@ -79,7 +79,11 @@ public class IdleEnemy : MonoBehaviour
         nowHp = nowHp - enemyAtk;
         if(nowHp <= 0)
         {
-            nowStage = nowStage -1;
+            if(nowStage == 1) nowStage = 1; // 1-1이하로 감소 방지
+            else 
+            {
+                nowStage = nowStage - 1;
+            }
             NowHpSet();
             SetEnemy(nowStage);
         }
@@ -119,7 +123,7 @@ public class IdleEnemy : MonoBehaviour
             stageText = stage - 8;
         }
         else nowChapter = 99; // Error!
-        nowStageText.text = nowChapter.ToString() + " - " + stageText.ToString(); // 챕터 - 스테이지
+        nowStageText.text = nowChapter.ToString() + " - " + stageText.ToString() + " Sweeping"; // 챕터 - 스테이지
     }
 
     public void Stoproutine() // 코루틴 전체 정지
