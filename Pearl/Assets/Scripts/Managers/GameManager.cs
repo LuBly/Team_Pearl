@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public PoolManager pool;
     public Player player;
+    public Enemy[] enemies;
 
     void Awake()
     {

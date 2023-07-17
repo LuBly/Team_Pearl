@@ -8,11 +8,14 @@ public class Enemy : MonoBehaviour
     public float health;
     public float maxHealth;
     public Rigidbody2D target;
-    
+    public GameObject hpBackground;
+    public Transform hpPercent;
     private bool isLive;
 
     Rigidbody2D rigid;
     Transform trans;
+
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -34,11 +37,13 @@ public class Enemy : MonoBehaviour
         if(target.position.x < rigid.position.x)
         {
             trans.transform.localScale = new Vector3(1, 1, 0);
+            hpBackground.transform.localScale = new Vector3(1, 1, 0);
         }
         //캐릭터가 몬스터 기준 오른쪽에 있는 경우 scale * -1
         else
         {
-            trans.transform.localScale = new Vector3(-1,1,0);
+            trans.transform.localScale = new Vector3(-1, 1, 0);
+            hpBackground.transform.localScale = new Vector3(-1, 1, 0);
         }
     }
 
@@ -65,6 +70,7 @@ public class Enemy : MonoBehaviour
 
         if (health > 0)
         {
+            hpPercent.localScale = new Vector3(health / maxHealth, 1, 1);
             // Live, HitAction
         }
         else
