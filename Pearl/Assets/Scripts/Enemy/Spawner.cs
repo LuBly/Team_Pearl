@@ -37,10 +37,14 @@ public class Spawner : MonoBehaviour
 [System.Serializable]
 public class SpawnData //2차원 배열 [Stage][gen]_스테이지(입장시 선택)/1젠, 2젠, 3젠~~ (시간 단위로 소환)
 {
+    [Header("젠 시간")]
     public float spawnTime;
+    [Header("최대 소환 마리수")]
     public int maxCount;
-
+    [Header("몬스터 id")]
     public int prefabId;
+    [Header("체력")]
     public int health;
+    [Header("이동속도")]
     public float speed;
 }

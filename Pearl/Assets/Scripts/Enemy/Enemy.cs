@@ -7,8 +7,11 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float health;
     public float maxHealth;
+    [Header("몬스터가 따라갈 Player")]
     public Rigidbody2D target;
+    [Header("체력바 BackGround")]
     public GameObject hpBackground;
+    [Header("체력바")]
     public Transform hpPercent;
     private bool isLive;
 
@@ -70,8 +73,10 @@ public class Enemy : MonoBehaviour
 
         if (health > 0)
         {
-            hpPercent.localScale = new Vector3(health / maxHealth, 1, 1);
             // Live, HitAction
+            // 몬스터의 체력바 조정
+            hpPercent.localScale = new Vector3(health / maxHealth, 1, 1);
+            
         }
         else
         {

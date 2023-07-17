@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     Transform trans;
     Animator anim;
+    [Header("Player 이동속도")]
     public float moveSpeed = 5f;
     public Scanner scanner;
 
