@@ -41,7 +41,7 @@ public class Scanner : MonoBehaviour
                 angle = Vector2.SignedAngle(transform.right, dir);
             }
 
-            if (angle >= -45f && angle <= 45f)
+            if (angle >= -60f && angle <= 60f)
             {
                 float curDiff = Vector3.Distance(myPos, targetPos);
                 if (curDiff < diff)

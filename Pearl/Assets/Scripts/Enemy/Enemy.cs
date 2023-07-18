@@ -55,6 +55,7 @@ public class Enemy : MonoBehaviour
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
         isLive = true;
         health = maxHealth;
+        hpPercent.localScale = new Vector3(1, 1, 1);
     }
     //초기속성을 적용하는 함수
     public void Init(SpawnData data)
@@ -87,8 +88,9 @@ public class Enemy : MonoBehaviour
 
     private void Dead()
     {
-        //비활성화
+        // 비활성화, 화면에 젠 되어 있는 EnemyCount --
         isLive = false;
         gameObject.SetActive(false);
+        GameManager.instance.spawner.enemyCount--;
     }
 }
