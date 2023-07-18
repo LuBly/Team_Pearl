@@ -44,9 +44,9 @@ public class Enemy : MonoBehaviour
     private void LateUpdate()
     {
         //캐릭터와 몬스터 사이의 거리가 0.005보다 낮을경우 계속 flip하여 몬스터의 모습이 어색함.
-        //이를 방지하기 위해 target(Player)과 rigid(Enemy)의 거리가 0.05보다 클 때만 flip하도록 설정
+        //이를 방지하기 위해 target(Player)과 rigid(Enemy)의 거리가 0.01보다 클 때만 flip하도록 설정
         float distance = Vector2.Distance(target.position, rigid.position);
-        if (distance > 0.005f)
+        if (distance > 0.05f)
         {
             //캐릭터가 몬스터 기준 왼쪽에 있는 경우 scale 그대로
             if (target.position.x < rigid.position.x)

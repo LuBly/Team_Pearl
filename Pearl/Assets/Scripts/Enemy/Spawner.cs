@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
     }
 }
 [System.Serializable]
-public class SpawnData //2차원 배열 [Stage][gen]_스테이지(입장시 선택)/1젠, 2젠, 3젠~~ (시간 단위로 소환)
+public class SpawnData
 {
     [Header("젠 시간")]
     public float spawnTime;
