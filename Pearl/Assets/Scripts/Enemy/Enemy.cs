@@ -1,26 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed;
-    public float health;
-    public float maxHealth;
     [Header("몬스터가 따라갈 Player")]
     public Rigidbody2D target;
     [Header("체력바 BackGround")]
     public GameObject hpBackground;
     [Header("체력바")]
     public Transform hpPercent;
-    private bool isLive;
 
+    private bool isLive;
+    private float speed;
+    private float health;
+    private float maxHealth;
+    private float damage;
+
+    Animator anim;
     Rigidbody2D rigid;
     Transform trans;
-
+    Vector3 orig = new Vector3(1, 1, 0);
+    Vector3 flip_orig = new Vector3(-1, 1, 0);
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
     }
@@ -29,6 +35,7 @@ public class Enemy : MonoBehaviour
     {
         //캐릭터의 위치 - 몬스터의 위치 = 방향
         Vector2 dirVec = target.position - rigid.position;
+        
         Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;//프레임 상관없이 일정 거리 이동
         rigid.MovePosition(rigid.position + nextVec);
         rigid.velocity = Vector2.zero;//물리 속도가 이동에 영향을 주지 않도록 속도 제거
@@ -36,17 +43,23 @@ public class Enemy : MonoBehaviour
 
     private void LateUpdate()
     {
-        //캐릭터가 몬스터 기준 왼쪽에 있는 경우 scale 그대로
-        if(target.position.x < rigid.position.x)
+        //캐릭터와 몬스터 사이의 거리가 0.005보다 낮을경우 계속 flip하여 몬스터의 모습이 어색함.
+        //이를 방지하기 위해 target(Player)과 rigid(Enemy)의 거리가 0.05보다 클 때만 flip하도록 설정
+        float distance = Vector2.Distance(target.position, rigid.position);
+        if (distance > 0.005f)
         {
-            trans.transform.localScale = new Vector3(1, 1, 0);
-            hpBackground.transform.localScale = new Vector3(1, 1, 0);
-        }
-        //캐릭터가 몬스터 기준 오른쪽에 있는 경우 scale * -1
-        else
-        {
-            trans.transform.localScale = new Vector3(-1, 1, 0);
-            hpBackground.transform.localScale = new Vector3(-1, 1, 0);
+            //캐릭터가 몬스터 기준 왼쪽에 있는 경우 scale 그대로
+            if (target.position.x < rigid.position.x)
+            {
+                trans.transform.localScale = orig;
+                hpBackground.transform.localScale = orig;
+            }
+            //캐릭터가 몬스터 기준 오른쪽에 있는 경우 scale * -1
+            else
+            {
+                trans.transform.localScale = flip_orig;
+                hpBackground.transform.localScale = flip_orig;
+            }
         }
     }
 
@@ -55,7 +68,7 @@ public class Enemy : MonoBehaviour
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
         isLive = true;
         health = maxHealth;
-        hpPercent.localScale = new Vector3(1, 1, 1);
+        hpPercent.localScale = orig;
     }
     //초기속성을 적용하는 함수
     public void Init(SpawnData data)
@@ -63,26 +76,45 @@ public class Enemy : MonoBehaviour
         maxHealth = data.health;
         health = data.health;
         speed = data.speed;
+        damage = data.damage;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Bullet"))
-            return;
-
-        health -= collision.GetComponent<Bullet>().damage;
-
-        if (health > 0)
+        //피격 당할 때
+        if (collision.CompareTag("Bullet"))
         {
-            // Live, HitAction
-            // 몬스터의 체력바 조정
-            hpPercent.localScale = new Vector3(health / maxHealth, 1, 1);
-            
+            health -= collision.GetComponent<Bullet>().damage;
+
+            if (health > 0)
+            {
+                // Live, HitAction
+                // 몬스터의 체력바 조정
+                hpPercent.localScale = new Vector3(health / maxHealth, 1, 1);
+            }
+            else
+            {
+                // Die
+                Dead();
+            }
         }
-        else
+        //플레이어를 공격할 때
+        /*
+         * 플레이어를 공격할 수 있는 범위인 atked Range와 충돌
+         * playerInRange Trigger를 실행하여 EnemyAtk anim를 실행
+         */
+        if (collision.CompareTag("Player"))
         {
-            // Die
-            Dead();
+            anim.SetBool("isPlayerInRange", true);
+        }
+
+    }
+    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            anim.SetBool("isPlayerInRange", false);
         }
     }
 

@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     Animator anim;
     [Header("Player 이동속도")]
     public float moveSpeed = 5f;
+    public int hp = 100;
     public Scanner scanner;
 
     private float scale;
