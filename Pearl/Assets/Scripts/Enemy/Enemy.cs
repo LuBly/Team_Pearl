@@ -119,7 +119,6 @@ public class Enemy : MonoBehaviour
                 StartCoroutine("EnemyAttack");
                 GameManager.instance.player.curHp -= damage;
             }
-            
         }
     }
     IEnumerator EnemyAttack()
