@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     public float invincibleTime;
     public TextMeshProUGUI health;
     public Scanner scanner;
-    private bool isDamage;
     private float scale;
     void Awake()
     {
