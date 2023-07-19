@@ -30,12 +30,27 @@ public class Scanner : MonoBehaviour
         {
             Vector3 myPos = transform.position;
             Vector3 targetPos = target.transform.position;
-            float curDiff = Vector3.Distance(myPos, targetPos);
-            if (curDiff < diff)
+            Vector2 dir = targetPos - myPos;
+            float angle;
+            if (transform.localScale.x < 0)//왼쪽을 바라보고 있을 때
             {
-                diff = curDiff;
-                result = target.transform;
+                angle = Vector2.SignedAngle(-transform.right, dir);
             }
+            else
+            {
+                angle = Vector2.SignedAngle(transform.right, dir);
+            }
+
+            if (angle >= -60f && angle <= 60f)
+            {
+                float curDiff = Vector3.Distance(myPos, targetPos);
+                if (curDiff < diff)
+                {
+                    diff = curDiff;
+                    result = target.transform;
+                }
+            }
+            
         }
         return result;
     }

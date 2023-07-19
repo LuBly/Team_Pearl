@@ -13,9 +13,9 @@ public class StatUpManager : MonoBehaviour
     CharacterBase stat;
     IngameGoods goods;
     GameObject neg; // Not Enough Gold
-    public TextMeshProUGUI nowLvText, nowDmgText, nowHpText, nowDmgLevelText, nowHpLevelText, lvGoldText, dmgGoldText, hpGoldText;
-    uint levelUpPoint, dmgUpPoint, hpUpPoint;
-    uint lvGold, dmgGold, hpGold;
+    public TextMeshProUGUI nowSpeedText, nowDmgText, nowHpText, nowSpeedLevelText, nowDmgLevelText, nowHpLevelText, speedGoldText, dmgGoldText, hpGoldText;
+    uint speedUpPoint, dmgUpPoint, hpUpPoint;
+    uint speedGold, dmgGold, hpGold;
     bool flag; //NEG 중복 발생 방지
 
     void Start()
@@ -24,10 +24,10 @@ public class StatUpManager : MonoBehaviour
         goods = GameObject.Find("Goods").GetComponent<IngameGoods>();
         neg = GameObject.Find("Neg");
         NegDisappear();
-        levelUpPoint = (uint)stat.Lv - 1; // 레벨업 포인트 초기화
+        speedUpPoint = (uint)stat.moveSpeed - 1; // 레벨업 포인트 초기화
         dmgUpPoint = (uint)stat.atk; // 공격력업 포인트 초기화
         hpUpPoint = ((uint)stat.health - 200) % 10; //체력업 포인트 초기화
-        LvGoldSetting();
+        SpeedGoldSetting();
         DmgGoldSetting();
         HpGoldSetting();
     }
@@ -35,21 +35,22 @@ public class StatUpManager : MonoBehaviour
 
     void Update()
     {
-        nowLvText.text = levelUpPoint.ToString();
+        nowSpeedText.text = (stat.moveSpeed - 1).ToString();
+        nowSpeedLevelText.text = speedUpPoint.ToString();
         nowDmgText.text = stat.atk.ToString() + "%";
         nowDmgLevelText.text = dmgUpPoint.ToString();
         nowHpLevelText.text = hpUpPoint.ToString();
         nowHpText.text = (hpUpPoint*10).ToString();
     }
 
-    public void BtnLvClick() // 레벨업 버튼 클릭
+    public void BtnSpeedClick() // 레벨업 버튼 클릭
     {
-        if(goods.gold >= lvGold)
+        if(goods.gold >= speedGold)
         {
-            goods.gold = goods.gold - lvGold;
-            levelUpPoint = levelUpPoint + 1;
-            stat.Lv = stat.Lv + 1;
-            LvGoldSetting();
+            goods.gold = goods.gold - speedGold;
+            speedUpPoint = speedUpPoint + 1;
+            stat.moveSpeed = stat.moveSpeed + 1;
+            SpeedGoldSetting();
         }
         else if(flag == false)
         {
@@ -90,10 +91,10 @@ public class StatUpManager : MonoBehaviour
         }
     }
 
-    void LvGoldSetting() //LV골드 세팅
+    void SpeedGoldSetting() //LV골드 세팅
     {
-        lvGold = (levelUpPoint + 1) * 50;
-        lvGoldText.text = lvGold.ToString();
+        speedGold = (speedUpPoint + 1) * 50;
+        speedGoldText.text = speedGold.ToString();
     }
 
     void DmgGoldSetting() //DMG 골드 세팅

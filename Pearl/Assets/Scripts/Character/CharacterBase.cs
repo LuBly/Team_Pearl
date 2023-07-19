@@ -9,7 +9,6 @@ using UnityEngine;
 
 public class CharacterBase : MonoBehaviour
 {
-    public int Lv; // 레벨
     public int atk; // 공격력
     public int gunAtk; // 총기 공격력
     public int gunProficiency; // 총기 숙련도
@@ -17,4 +16,5 @@ public class CharacterBase : MonoBehaviour
     public int health; // 체력
     public int critical; // 크리티컬 확률
     public int criticalDmg; // 크리티컬 데미지
+    public int moveSpeed; // 이동속도
 }

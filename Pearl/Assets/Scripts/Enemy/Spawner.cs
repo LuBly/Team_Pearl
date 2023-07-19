@@ -5,8 +5,9 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public SpawnData[] spawnData;
-
-    private int enemyCount;
+    public int enemyCount;    // 현재 화면에 나타나 있는 Enemy의 수
+    [SerializeField]
+    private int maxCount = 30; // 화면에 나타날 수 있는 최대 마리수
     private float curTime;
     private Transform[] spawnPoints;
 
@@ -17,7 +18,7 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        if (curTime >= spawnData[0].spawnTime && enemyCount < spawnData[0].maxCount)
+        if (curTime >= spawnData[0].spawnTime && enemyCount < maxCount)
         {
             Spawn();
             enemyCount++;
@@ -35,12 +36,16 @@ public class Spawner : MonoBehaviour
     }
 }
 [System.Serializable]
-public class SpawnData //2차원 배열 [Stage][gen]_스테이지(입장시 선택)/1젠, 2젠, 3젠~~ (시간 단위로 소환)
+public class SpawnData
 {
+    [Header("젠 시간")]
     public float spawnTime;
-    public int maxCount;
-
+    [Header("몬스터 id")]
     public int prefabId;
+    [Header("체력")]
     public int health;
+    [Header("이동속도")]
     public float speed;
+    [Header("공격력")]
+    public float damage;
 }

@@ -11,13 +11,13 @@ using TMPro;
 public class StatManager : MonoBehaviour
 {
     CharacterBase stat;
-    public TextMeshProUGUI lvText, atkText, gunAttackText, gunLevelText, healthText, criticalText, criticalDmgText;
+    public TextMeshProUGUI speedText, atkText, gunAttackText, gunLevelText, healthText, criticalText, criticalDmgText;
 
     void Update()
     {
         stat = GameObject.Find("MainChar").GetComponent<CharacterBase>(); // 변수에 Main_Char 오브젝트의 CharacterBase 값 가져오기.
 
-        lvText.text = stat.Lv.ToString();
+        speedText.text = stat.moveSpeed.ToString();
         atkText.text = stat.atk.ToString() + "%";
         gunAttackText.text = stat.gunAtk.ToString();
         gunLevelText.text = stat.gunProficiency.ToString();

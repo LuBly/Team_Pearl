@@ -1,24 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
     Transform trans;
     Animator anim;
+    [Header("Player 이동속도")]
     public float moveSpeed = 5f;
+    [Header("Player MaxHp")]
+    public float maxHp = 100;
+    [Header("Player curHp")]
+    public float curHp;
+    [Header("무적시간 (초)")]
+    public float invincibleTime;
+    public TextMeshProUGUI health;
     public Scanner scanner;
-
     private float scale;
     void Awake()
     {
-        rb=GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
-        anim=GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         scanner = GetComponent<Scanner>();
         scale = trans.localScale.x;
+        curHp = maxHp;
     }
 
     void FixedUpdate()
@@ -34,9 +42,14 @@ public class Player : MonoBehaviour
     }
     private void LateUpdate()
     {
+        health.text = "Health : "+curHp.ToString();
         //주변에 적이 있을 때 attack anim 상태로 변환
         if (scanner.nearestTarget)
-            anim.SetBool("isAttack", true);
+        {
+            float distance = Vector2.Distance(scanner.nearestTarget.position, trans.position);
+            if(distance > 0.05f)
+                anim.SetBool("isAttack", true);
+        }
         else
             anim.SetBool("isAttack", false);
 
@@ -57,5 +70,6 @@ public class Player : MonoBehaviour
                 ? new Vector3(scale, scale, 1.0f) 
                 : new Vector3(-scale, scale, 1.0f);
         }
+
     }
 }
