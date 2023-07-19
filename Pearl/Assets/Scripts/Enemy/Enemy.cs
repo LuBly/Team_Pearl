@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private float health;
     private float maxHealth;
     private float damage;
+    private bool isDamage;
 
     Animator anim;
     Rigidbody2D rigid;
@@ -109,7 +110,25 @@ public class Enemy : MonoBehaviour
         }
 
     }
-    
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (!isDamage)
+            {
+                GameManager.instance.player.curHp -= damage;
+                StartCoroutine("EnemyAttack");
+            }
+            
+        }
+    }
+    IEnumerator EnemyAttack()
+    {
+        isDamage = true;
+        yield return new WaitForSecondsRealtime(1f);//몬스터 공격속도
+        isDamage = false;
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -118,6 +137,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
     private void Dead()
     {
         // 비활성화, 화면에 젠 되어 있는 EnemyCount --
@@ -125,4 +145,6 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(false);
         GameManager.instance.spawner.enemyCount--;
     }
+
+    
 }

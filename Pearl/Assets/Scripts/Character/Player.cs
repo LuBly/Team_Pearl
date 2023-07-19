@@ -73,32 +73,4 @@ public class Player : MonoBehaviour
         }
 
     }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            if (!isDamage)
-            {
-                curHp -= GameManager.instance.spawner.spawnData[0].damage;
-                StartCoroutine("Hurt");
-            }
-            
-        }
-    }
-    IEnumerator Hurt()
-    {
-        isDamage = true;
-        anim.SetBool("isHurt",true);
-        yield return new WaitForSecondsRealtime(0.01f);
-        
-        //현재 재생중인 애니메이션이 지속 (피격 모션)
-        float curAnimationTime = anim.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSecondsRealtime(curAnimationTime);
-        anim.SetBool("isHurt", false);
-
-        //무적시간 + 피격 모션시간 간의 무적 시간
-        yield return new WaitForSecondsRealtime(invincibleTime);
-        isDamage = false;
-    }
 }
