@@ -117,7 +117,6 @@ public class Enemy : MonoBehaviour
             if (isPlayerInRange)
             {
                 StartCoroutine("EnemyAttack");
-                GameManager.instance.player.curHp -= damage;
             }
         }
     }
@@ -125,6 +124,7 @@ public class Enemy : MonoBehaviour
     {
         isPlayerInRange = false;
         yield return new WaitForSecondsRealtime(1f);//몬스터 공격속도
+        GameManager.instance.player.curHp -= damage;
         isPlayerInRange = true;
     }
 
@@ -133,6 +133,8 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             anim.SetBool("isPlayerInRange", false);
+            StopCoroutine("EnemyAttack");
+            isPlayerInRange = true;
         }
     }
 
