@@ -657,6 +657,11 @@ MonoBehaviour:
     health: 10
     speed: 1
     damage: 10
+  - spawnTime: 0.3
+    prefabId: 1
+    health: 20
+    speed: 1.5
+    damage: 20
   enemyCount: 0
   maxCount: 10
 --- !u!1 &391674105
@@ -1440,6 +1445,7 @@ MonoBehaviour:
   maxHp: 100
   curHp: 0
   invincibleTime: 0.5
+  minDistance: 0.05
   health: {fileID: 1338649474}
   scanner: {fileID: 0}
 --- !u!61 &970622389
@@ -2105,6 +2111,7 @@ MonoBehaviour:
   pool: {fileID: 1670224360}
   spawner: {fileID: 361886029}
   player: {fileID: 970622388}
+  stageIdx: 1
 --- !u!4 &1509116659
 Transform:
   m_ObjectHideFlags: 0
@@ -2257,10 +2264,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a44fe753e783b438f3f16f78cf3ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
+  enemyPrefabs:
   - {fileID: 4839606553373449741, guid: 54a8bc04e1cfbfb479755d7870d098da, type: 3}
+  - {fileID: 4839606553373449741, guid: b3b0ae2291ef3de46b58c2287382045f, type: 3}
+  bulletPrefabs:
   - {fileID: 8590832229344618564, guid: eb84da81f18773f4d9921b7b87e80be4, type: 3}
-  - {fileID: 1973797488871700, guid: 48e06088b7e195f40898a828bd389ec3, type: 3}
+  - {fileID: 8590832229344618564, guid: 7ef89ef326009694986aae22077ab4e9, type: 3}
 --- !u!1 &1691029848
 GameObject:
   m_ObjectHideFlags: 0
@@ -2513,7 +2522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  prefabId: 1
+  prefabId: 0
   damage: 1
   gunRapid: 0.3
   count: 0

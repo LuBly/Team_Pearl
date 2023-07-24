@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public float curHp;
     [Header("무적시간 (초)")]
     public float invincibleTime;
+    [Header("(몬스터와 Player사이의)최소 거리")]
+    public float minDistance;
     public TextMeshProUGUI health;
     public Scanner scanner;
     private float scale;
@@ -47,7 +49,7 @@ public class Player : MonoBehaviour
         if (scanner.nearestTarget)
         {
             float distance = Vector2.Distance(scanner.nearestTarget.position, trans.position);
-            if(distance > 0.05f)
+            if(distance > minDistance)
                 anim.SetBool("isAttack", true);
         }
         else

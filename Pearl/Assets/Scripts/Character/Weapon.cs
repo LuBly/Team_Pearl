@@ -64,7 +64,7 @@ public class Weapon : MonoBehaviour
         // 속도(크기를 포함한 방향벡터) = 목표 위치 - 내 위치
         Vector3 dir = targetPos - transform.position;
         dir = dir.normalized;//정규화
-        Transform bullet = GameManager.instance.pool.Get(prefabId).transform;
+        Transform bullet = GameManager.instance.pool.BulletGet(prefabId).transform;
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.down, dir);
         bullet.GetComponent<Bullet>().Init(damage, count, dir);

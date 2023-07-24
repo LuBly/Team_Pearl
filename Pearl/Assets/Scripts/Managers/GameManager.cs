@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public PoolManager pool;
     public Spawner spawner;
     public Player player;
+    public int stageIdx;
 
     void Awake()
     {
