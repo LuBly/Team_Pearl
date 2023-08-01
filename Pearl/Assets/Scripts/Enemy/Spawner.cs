@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
         int idx = Random.Range(1, spawnPoints.Length);
         GameObject enemy = GameManager.instance.pool.EnemyGet(spawnData[stageIdx].prefabId);
         enemy.transform.position = spawnPoints[idx].position;
-        enemy.GetComponent<Enemy>().Init(spawnData[stageIdx]);
+        enemy.GetComponentInChildren<Enemy>().Init(spawnData[stageIdx]);
     }
 }
 [System.Serializable]
