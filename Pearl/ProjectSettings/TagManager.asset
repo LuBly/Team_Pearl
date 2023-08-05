@@ -7,11 +7,12 @@ TagManager:
   - Enemy
   - Weapon
   - Bullet
+  - Gun
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - PlayerAttackedRange
+  - Player
   - Water
   - UI
   - BackGround

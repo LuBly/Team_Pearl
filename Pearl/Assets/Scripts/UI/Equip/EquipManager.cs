@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class EquipManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class EquipManager : MonoBehaviour
     GameObject ar, sg, sr;
     public int equip;
     int id;
+    string reset; // OutlineControl 초기화용 변수
+    GameObject clickObject;
 
     void Awake()
     {
@@ -21,12 +24,18 @@ public class EquipManager : MonoBehaviour
         ar.SetActive(true);
         sg.SetActive(false);
         sr.SetActive(false);
+        reset = "reset";
     }
 
-    public void EquipClick() // 총기 아이콘 클릭 시 동작
+    public void GunClick() // 총기 아이콘 클릭 시 동작
     {
-        GameObject clickObject = EventSystem.current.currentSelectedGameObject;
-        equip = int.Parse(clickObject.name);
+        clickObject = EventSystem.current.currentSelectedGameObject; // 현재 클릭한 오브젝트 받아오기
+        equip = int.Parse(clickObject.name); // 클릭한 오브젝트 이름을 int형으로 치환
+        OutlineControl(clickObject.name); // Outline 동작
+    }
+
+    public void EquipClick() // 장착 버튼 클릭 시 동작
+    {
         GunDataRead();
     }
 
@@ -54,6 +63,7 @@ public class EquipManager : MonoBehaviour
 
     public void BtnARClick()
     {
+        OutlineControl(reset); // 아웃라인 제거
         ar.SetActive(true);
         sg.SetActive(false);
         sr.SetActive(false);
@@ -61,6 +71,7 @@ public class EquipManager : MonoBehaviour
 
     public void BtnSGClick()
     {
+        OutlineControl(reset);
         ar.SetActive(false);
         sg.SetActive(true);
         sr.SetActive(false);
@@ -68,10 +79,23 @@ public class EquipManager : MonoBehaviour
 
     public void BtnSRClick()
     {
+        OutlineControl(reset);
         ar.SetActive(false);
         sg.SetActive(false);
         sr.SetActive(true);
     }
 
+    void OutlineControl(string gunId) // 아웃라인 활성화 함수
+    {
+        GameObject [] obj = GameObject.FindGameObjectsWithTag("Gun"); // 태그 중 Gun을 가지고 있는 오브젝트 모두 검색
+        for(int i = 0; i < obj.Length; i++)
+        {
+            if(gunId == obj[i].name) // 현재 클릭된 오브젝트 이름과 같은 이름의 오브젝트일 경우
+            {
+                obj[i].GetComponent<Outline>().enabled = true; // 아웃라인 활성화
+            }
+            else obj[i].GetComponent<Outline>().enabled = false; // 아웃라인 비활성화
+        }
+    }
 
 }
