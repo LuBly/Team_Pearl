@@ -38,6 +38,7 @@ public class Weapon : MonoBehaviour
         player = GetComponentInParent<Player>();
         Init();
     }
+    
     private void Update()
     {
         switch (id)
@@ -68,7 +69,7 @@ public class Weapon : MonoBehaviour
                 break;
         }
     }
-    
+
     public void Init()
     {
         switch (id)
