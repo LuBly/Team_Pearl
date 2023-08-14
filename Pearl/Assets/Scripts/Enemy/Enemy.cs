@@ -155,6 +155,7 @@ public class Enemy : MonoBehaviour
         isPlayerInRange = false;
         yield return new WaitForSecondsRealtime(1f);//몬스터 공격속도
         GameManager.instance.player.curHp -= damage;
+        GameManager.instance.player.anim.SetTrigger("hurt");
         isPlayerInRange = true;
     }
 

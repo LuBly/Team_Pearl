@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
     Transform trans;
-    Animator anim;
+    public Animator anim;
     [Header("Player 이동속도")]
     public float moveSpeed = 5f;
     [Header("Player MaxHp")]
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         scanner = GetComponent<Scanner>();
         scale = trans.localScale.x;
         curHp = maxHp;
