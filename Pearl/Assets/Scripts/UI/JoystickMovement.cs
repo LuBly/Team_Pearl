@@ -29,6 +29,7 @@ public class JoystickMovement : MonoBehaviour
     Vector3 stickFirstPosition;
     public Vector3 joyVec;
     float stickRadius;
+    
     void Start()
     {
         stickRadius = bGStick.gameObject.GetComponent<RectTransform>().sizeDelta.y / 2;

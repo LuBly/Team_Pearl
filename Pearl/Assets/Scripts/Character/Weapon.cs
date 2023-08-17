@@ -36,6 +36,10 @@ public class Weapon : MonoBehaviour
     private void Awake()
     {
         player = GetComponentInParent<Player>();
+    }
+    
+    private void Start() 
+    {
         Init();
     }
     
@@ -85,6 +89,7 @@ public class Weapon : MonoBehaviour
                 break;
         }
     }
+
     //총알을 BulletManager에서 가지고 오면 된다.
     void RifleFire()
     {   
