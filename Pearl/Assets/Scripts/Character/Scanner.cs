@@ -30,6 +30,11 @@ public class Scanner : MonoBehaviour
         {
             Vector3 myPos = transform.position;
             Vector3 targetPos = target.transform.position;
+            float distance = Vector3.Distance(myPos, targetPos);
+            
+            //설정된 최소거리보다 monster와의 거리가 짧으면 공격X
+            //Bullet이 이상하게 나가는 현상 방지용
+            if (GameManager.instance.player.minDistance > distance) continue;
             Vector2 dir = targetPos - myPos;
             float angle;
             if (transform.localScale.x < 0)//왼쪽을 바라보고 있을 때

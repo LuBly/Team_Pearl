@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
     Transform trans;
-    Animator anim;
+    public Animator anim;
     [Header("Player 이동속도")]
     public float moveSpeed = 5f;
     [Header("Player MaxHp")]
@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public float curHp;
     [Header("무적시간 (초)")]
     public float invincibleTime;
+    [Header("(몬스터와 Player사이의)최소 거리")]
+    public float minDistance;
     public TextMeshProUGUI health;
     public Scanner scanner;
     private float scale;
@@ -23,7 +25,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         scanner = GetComponent<Scanner>();
         scale = trans.localScale.x;
         curHp = maxHp;
@@ -47,7 +49,7 @@ public class Player : MonoBehaviour
         if (scanner.nearestTarget)
         {
             float distance = Vector2.Distance(scanner.nearestTarget.position, trans.position);
-            if(distance > 0.05f)
+            if(distance > minDistance)
                 anim.SetBool("isAttack", true);
         }
         else
