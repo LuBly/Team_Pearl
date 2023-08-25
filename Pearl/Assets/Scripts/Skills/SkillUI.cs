@@ -6,22 +6,24 @@ using TMPro;
 
 public class SkillUI : MonoBehaviour
 {
-    public Weapon weapon;
     public GameObject[] hideSkillButtons;
     public GameObject[] textPros;
+    public SkillController skillController;
     public TextMeshProUGUI[] hideSkillTimeTexts;
     public Image[] hideSkillImages;
-    public SkillData[] skillDatas;
+    public SkillData skillData;
     
     private bool[] isHideSkills = {false, false, false};    // 스킬 사용 중인지 확인하기 위한 bool 변수
     private float[] getSkillTimes = {0, 0, 0};              // 스킬 사용 이후 지난 시간
-    private int weaponId;
+    private int weaponId;                                   // 활성화할 무기의 종류 skillController에서 호출
     void Awake()
     {
-        weaponId = weapon.gameObject.GetComponent<Weapon>().id;
+        weaponId = skillController.GetComponent<SkillController>().weaponId;
     }
     void Start()
-    {   
+    {
+        Debug.Log(weaponId);
+        skillData = skillController.skillDatas[weaponId];
         for(int i = 0; i < textPros.Length; i++)
         {
             hideSkillTimeTexts[i] = textPros[i].GetComponent<TextMeshProUGUI>();
@@ -29,7 +31,7 @@ public class SkillUI : MonoBehaviour
         }
         for(int i = 0; i < 3; i++)
         {
-            skillDatas[weaponId].skills[i].SetActive(true);
+            skillData.skillIcons[i].SetActive(true);
         }
     }
     // Update is called once per frame
@@ -38,11 +40,15 @@ public class SkillUI : MonoBehaviour
         HideSkillCheck();
     }
 
-    // 버튼을 눌렀을 때, 쿨타임이 도는 UI 활성화
+    /// <summary>
+    /// 버튼을 눌렀을 때, 쿨타임이 도는 UI 활성화 
+    /// Skill Time : 쿨타임 + 스킬 지속 시간
+    /// </summary>
+    /// <param name="skillIdx"></param>
     public void HideSkillSetting(int skillIdx)
     {
         hideSkillButtons[skillIdx].SetActive(true);
-        getSkillTimes[skillIdx] = skillDatas[weaponId].skillCoolTimes[skillIdx];
+        getSkillTimes[skillIdx] = skillData.skillCoolTimes[skillIdx] + skillData.skillActiveTimes[skillIdx];
         isHideSkills[skillIdx] = true;
     }
 
@@ -51,7 +57,7 @@ public class SkillUI : MonoBehaviour
     {
         if(isHideSkills[skillIdx])
         {
-            Debug.Log(weaponId + " " + skillIdx);
+            skillController.ActiveSkill(skillIdx);
         }
     }
 
@@ -72,7 +78,11 @@ public class SkillUI : MonoBehaviour
             StartCoroutine(SkillTimeCheck(2));
         }
     }
-    
+    /// <summary>
+    /// 스킬 쿨타임 동안 Skill CoolDown을 나타내줄 UI
+    /// </summary>
+    /// <param name="skillIdx"></param>
+    /// <returns></returns>
     IEnumerator SkillTimeCheck(int skillIdx)
     {
         yield return null;
@@ -90,17 +100,8 @@ public class SkillUI : MonoBehaviour
 
             hideSkillTimeTexts[skillIdx].text = getSkillTimes[skillIdx].ToString("00");
 
-            float time = getSkillTimes[skillIdx] / skillDatas[weaponId].skillCoolTimes[skillIdx];
+            float time = getSkillTimes[skillIdx] / skillData.skillCoolTimes[skillIdx] + skillData.skillActiveTimes[skillIdx];
             hideSkillImages[skillIdx].fillAmount = time;
         }
     }
-}
-
-// 총기 종류별 스킬 쿨타임을 지정할 Data배열
-[System.Serializable]
-public class SkillData
-{
-    [Header("총기 종류별 스킬 쿨타임")]
-    public float[] skillCoolTimes;             // 스킬의 총 쿨타임
-    public GameObject[] skills;                // 활성화 할 게임 오브젝트
 }

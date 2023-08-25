@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ public class Enemy : MonoBehaviour
     private float damage;
     private float knockbackPower;
     private bool isPlayerInRange = true;
+    private bool isSkillAttack = true;
 
     Animator anim;
     Rigidbody2D rigid;
@@ -149,7 +151,43 @@ public class Enemy : MonoBehaviour
                 StartCoroutine("EnemyAttack");
             }
         }
+
+        //피격 당할 때
+        if (collision.CompareTag("Skill"))
+        {
+            if (isSkillAttack)
+            {
+                StartCoroutine(skillAttack(collision));
+            }
+            
+            
+        }
     }
+    IEnumerator skillAttack(Collider2D collision)
+    {
+        isSkillAttack = false;
+        //"ArSkill0" 이 아닌 공통 Component로 수정 필요
+        health -= collision.GetComponent<ArSkill0>().damage;
+        knockbackPower = collision.GetComponent<ArSkill0>().knockbackPower;
+        if (health > 0)
+        {
+            // Live, HitAction
+            // 몬스터의 체력바 조정
+            hpPercent.localScale = new Vector3(health / maxHealth, 1, 1);
+            // 피격시 몬스터 Hit animation 추가
+            anim.SetTrigger("Hit");
+            StartCoroutine("KnockBack");
+        }
+
+        else
+        {
+            // Die
+            Dead();
+        }
+        yield return new WaitForSeconds(collision.GetComponent<ArSkill0>().attackTime);
+        isSkillAttack = true;
+    }
+
     IEnumerator EnemyAttack()
     {
         isPlayerInRange = false;
