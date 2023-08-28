@@ -5,8 +5,7 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rb;
-    Transform trans;
+    
     public Animator anim;
     [Header("Player 이동속도")]
     public float moveSpeed = 5f;
@@ -17,6 +16,9 @@ public class Player : MonoBehaviour
     [Header("무적시간 (초)")]
     public float invincibleTime;
     [Header("(몬스터와 Player사이의)최소 거리")]
+
+    Rigidbody2D rb;
+    Transform trans;
     public float minDistance;
     public TextMeshProUGUI health;
     public Scanner scanner;

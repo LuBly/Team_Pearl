@@ -30,6 +30,10 @@ public class Weapon : MonoBehaviour
 
     [Header("삿건 총알간 각도 (단위 : 도)")]
     public float ShotGunAngle = 10f;            // SG 총알간 각도
+
+    [Header("총기 각도 담당 Bone")]
+    public Transform weaponBone;
+
     float timer = 0f;
     Player player;
 
@@ -111,8 +115,17 @@ public class Weapon : MonoBehaviour
         // 총알이 바라보는 방향(dir = 캐릭터 -> 몬스터 방향)
         bullet.rotation = Quaternion.FromToRotation(Vector3.down, dir);
         bullet.GetComponent<Bullet>().Init(damage, count, knockbackPower, AssertRifleLifeTime, dir);
+        if (dir.x > 0)
+        {
+            weaponBone.rotation = Quaternion.FromToRotation(Vector3.right, dir);
+        }
+        // 몬스터가 왼쪽에 있는 경우
+        if (dir.x < 0)
+        {
+            weaponBone.rotation = Quaternion.FromToRotation(Vector3.left, dir);
+        }
     }
-
+    
     void ShotGunFire()
     {   
         //대상이 없다면 발사 X
@@ -132,7 +145,18 @@ public class Weapon : MonoBehaviour
         dirs[2]= Quaternion.Euler(0,0,-ShotGunAngle)*dir;
         dirs[3]= Quaternion.Euler(0,0,ShotGunAngle*2)*dir;
         dirs[4]= Quaternion.Euler(0,0,-ShotGunAngle*2)*dir;
-        
+
+        // 총구 회전
+        if (dir.x > 0)
+        {
+            weaponBone.rotation = Quaternion.FromToRotation(Vector3.right, dir);
+        }
+        // 몬스터가 왼쪽에 있는 경우
+        if (dir.x < 0)
+        {
+            weaponBone.rotation = Quaternion.FromToRotation(Vector3.left, dir);
+        }
+
         Transform[] bullets = new Transform[5];
         for(int bulletIdx = 0; bulletIdx < 5 ; bulletIdx++)
         {

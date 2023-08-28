@@ -55,7 +55,6 @@ public class Scanner : MonoBehaviour
                     result = target.transform;
                 }
             }
-            
         }
         return result;
     }
