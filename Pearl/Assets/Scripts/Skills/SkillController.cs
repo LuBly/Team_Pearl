@@ -6,12 +6,11 @@ using UnityEngine;
 public class SkillController : MonoBehaviour
 {   
     public SkillData[] skillDatas;
-    public Weapon weapon;
-    public int weaponId;
+    private int weaponId;
 
     private void Awake()
     {
-        weaponId = weapon.gameObject.GetComponent<Weapon>().id;
+        weaponId = DataManager.Instance.id;
     }
     
     public void ActiveSkill(int skillIdx)

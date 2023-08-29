@@ -18,7 +18,7 @@ public class SkillUI : MonoBehaviour
     private int weaponId;                                   // 활성화할 무기의 종류 skillController에서 호출
     void Awake()
     {
-        weaponId = skillController.GetComponent<SkillController>().weaponId;
+        weaponId = DataManager.Instance.id;
     }
     void Start()
     {
