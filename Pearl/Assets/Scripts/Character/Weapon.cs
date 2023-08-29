@@ -4,8 +4,16 @@ using System.Threading;
 using UnityEditor;
 using UnityEngine;
 
+
 public class Weapon : MonoBehaviour
 {
+    enum weaponType
+    {
+        AR,
+        SG,
+        SR
+    }
+
     /*
      * 무기 관리를 위한 Script
      */
@@ -16,6 +24,7 @@ public class Weapon : MonoBehaviour
     public float gunRapid;                      // 공격 속도(몇 초에 한번 발사하는가)
     public int count;                           // 관통력(체크용)
     
+    [Header("개발용 데이터")]
     [Header("AR 사정거리 및 적 스캔범위")]
     public float AssertRifleLifeTime = 0.5f;    // AR 사정거리 
     public float AssertRifleRange = 5.0f;       // AR 적 스캔범위
@@ -51,7 +60,7 @@ public class Weapon : MonoBehaviour
     {
         switch (id)
         {
-            case 0:
+            case (int)weaponType.AR:
                 timer += Time.deltaTime;
                 if (timer > gunRapid)
                 {
@@ -59,7 +68,7 @@ public class Weapon : MonoBehaviour
                     timer = 0f;
                 }
                 break;
-            case 1:
+            case (int)weaponType.SG:
                 timer += Time.deltaTime;
                 if (timer > gunRapid)
                 {
@@ -67,7 +76,7 @@ public class Weapon : MonoBehaviour
                     timer = 0f;
                 }
                 break;
-            case 2:
+            case (int)weaponType.SR:
                 timer += Time.deltaTime;
                 if (timer > gunRapid)
                 {
@@ -80,16 +89,22 @@ public class Weapon : MonoBehaviour
 
     public void Init()
     {
+        id = player.id;
+        damage = player.gunAtk;
+        gunRapid = player.gunRapid; 
         switch (id)
         {
-            case 0://AR
+            case (int)weaponType.AR://AR
                 player.scanner.scanRange = AssertRifleRange;
+                count = 0;
                 break;
-            case 1://SR
+            case (int)weaponType.SG://SG
                 player.scanner.scanRange = ShotGunRange;
+                count = 0;
                 break;
-            case 2://SG
+            case (int)weaponType.SR://SR
                 player.scanner.scanRange = SniperRifleRange;
+                count = 2;
                 break;
         }
     }

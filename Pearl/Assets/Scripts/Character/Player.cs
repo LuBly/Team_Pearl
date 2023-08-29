@@ -5,35 +5,58 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
-    
     public Animator anim;
-    [Header("Player 이동속도")]
-    public float moveSpeed = 5f;
-    [Header("Player MaxHp")]
-    public float maxHp = 100;
     [Header("Player curHp")]
     public float curHp;
     [Header("무적시간 (초)")]
     public float invincibleTime;
     [Header("(몬스터와 Player사이의)최소 거리")]
 
-    Rigidbody2D rb;
-    Transform trans;
     public float minDistance;
-    public TextMeshProUGUI health;
+    public TextMeshProUGUI playerHp;
     public Scanner scanner;
+
+    // CharacterBase에서 가져올 데이터
+    [Header("총기 id")] public int id;             
+    [Header("공격력")] public int atk;
+    [Header("총기 공격력")] public int gunAtk;
+    [Header("총기 숙련도")] public int gunProficiency;
+    [Header("총기 공격속도")] public float gunRapid;
+    [Header("체력")] public int health;
+    [Header("크리티컬 확률")] public int critical;
+    [Header("크리티컬 데미지")] public int criticalDmg;
+    [Header("이동속도")] public int moveSpeed;
+    //
+
+    private Rigidbody2D rb;
+    private Transform trans;
     private float scale;
-    void Awake()
+    private void Awake()
     {
+        Init();
         rb = GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
         anim = GetComponentInChildren<Animator>();
         scanner = GetComponent<Scanner>();
-        scale = trans.localScale.x;
-        curHp = maxHp;
     }
-
-    void FixedUpdate()
+    private void Start()
+    {
+        scale = trans.localScale.x;
+        curHp = health;
+    }
+    private void Init()
+    {
+        id              = DataManager.Instance.id;
+        atk             = DataManager.Instance.atk;
+        gunAtk          = DataManager.Instance.gunAtk;
+        gunProficiency  = DataManager.Instance.gunProficiency;
+        gunRapid        = DataManager.Instance.gunRapid;
+        health          = DataManager.Instance.health;
+        critical        = DataManager.Instance.critical;
+        criticalDmg     = DataManager.Instance.criticalDmg;
+        moveSpeed       = DataManager.Instance.moveSpeed;
+    }
+    private void FixedUpdate()
     {
         if (JoystickMovement.Instance.joyVec.x != 0 || JoystickMovement.Instance.joyVec.y != 0)
         {
@@ -46,7 +69,7 @@ public class Player : MonoBehaviour
     }
     private void LateUpdate()
     {
-        health.text = "Health : "+curHp.ToString();
+        playerHp.text = "Health : "+curHp.ToString();
         //주변에 적이 있을 때 attack anim 상태로 변환
         if (scanner.nearestTarget)
         {

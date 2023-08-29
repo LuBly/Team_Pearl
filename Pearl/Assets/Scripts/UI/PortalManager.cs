@@ -7,6 +7,7 @@ public class PortalManager : MonoBehaviour
 {
     public void BtnClick()
     {
+        DataManager.Instance.Load();
         SceneManager.LoadScene("IdleStage");
     }
 }
