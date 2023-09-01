@@ -166,9 +166,8 @@ public class Enemy : MonoBehaviour
     IEnumerator skillAttack(Collider2D collision)
     {
         isSkillAttack = false;
-        //"ArSkill0" 이 아닌 공통 Component로 수정 필요
-        health -= collision.GetComponent<ArSkill0>().damage;
-        knockbackPower = collision.GetComponent<ArSkill0>().knockbackPower;
+        health -= collision.GetComponent<Skill>().damage;
+        knockbackPower = collision.GetComponent<Skill>().knockbackPower;
         if (health > 0)
         {
             // Live, HitAction
@@ -184,7 +183,7 @@ public class Enemy : MonoBehaviour
             // Die
             Dead();
         }
-        yield return new WaitForSeconds(collision.GetComponent<ArSkill0>().attackTime);
+        yield return new WaitForSeconds(collision.GetComponent<Skill>().attackTime);
         isSkillAttack = true;
     }
 

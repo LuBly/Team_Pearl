@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4dbe7d3956f984ebc6718a5c9d57ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
+  id: 0
   atk: 0
   gunAtk: 100
   gunProficiency: 0
@@ -436,7 +436,7 @@ MonoBehaviour:
   health: 200
   critical: 20
   criticalDmg: 50
-  moveSpeed: 1
+  moveSpeed: 5
 --- !u!1 &18486192
 GameObject:
   m_ObjectHideFlags: 0
