@@ -153,13 +153,9 @@ MonoBehaviour:
   gunRapid: 0.3
   count: 0
   AssertRifleLifeTime: 0.5
-  AssertRifleRange: 5
   ShotGunlifeTime: 0.25
-  ShotGunRange: 2.5
   SniperRifleLifeTime: 0.75
-  SniperRifleRange: 7.5
   ShotGunAngle: 10
-  player: {fileID: 0}
 --- !u!1 &3705737015859748619
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,17 +604,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 3705737016811803455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aec9231446a8494fbd9b15e2f2a7106, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c21f345ece67a8418cd6f689310dd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  moveSpeed: 5
-  maxHp: 100
   curHp: 0
-  invincibleTime: 0.5
-  minDistance: 0.05
-  health: {fileID: 0}
+  invincibleTime: 0
+  minDistance: 0
+  playerHp: {fileID: 0}
   scanner: {fileID: 0}
+  id: 0
+  atk: 0
+  gunAtk: 0
+  gunProficiency: 0
+  gunRapid: 0
+  health: 0
+  critical: 0
+  criticalDmg: 0
+  moveSpeed: 0
+  dirInput: {fileID: 0}
+  dir: {x: 0, y: 0, z: 0}
 --- !u!114 &3705737016811803425
 MonoBehaviour:
   m_ObjectHideFlags: 0

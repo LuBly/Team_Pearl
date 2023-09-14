@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public float minDistance;
     public TextMeshProUGUI playerHp;
     public Scanner scanner;
-
+    
     // CharacterBase에서 가져올 데이터
     [Header("총기 id")] public int id;             
     [Header("공격력")] public int atk;
@@ -27,7 +27,8 @@ public class Player : MonoBehaviour
     [Header("크리티컬 데미지")] public int criticalDmg;
     [Header("이동속도")] public int moveSpeed;
     //
-
+    // 총기 발사 방향 
+    public AttackDirUI dirInput;
     private Rigidbody2D rb;
     private Transform trans;
     private float scale;
@@ -70,32 +71,26 @@ public class Player : MonoBehaviour
     private void LateUpdate()
     {
         playerHp.text = "Health : "+curHp.ToString();
-        //주변에 적이 있을 때 attack anim 상태로 변환
-        if (scanner.nearestTarget)
-        {
-            float distance = Vector2.Distance(scanner.nearestTarget.position, trans.position);
-            if(distance > minDistance)
-                anim.SetBool("isAttack", true);
-        }
-        else
-            anim.SetBool("isAttack", false);
 
         //조이스틱 값이 들어갈 때 run anim 상태로 변환
         if (JoystickMovement.Instance.joyVec == Vector3.zero)
         {
-            anim.SetBool("isRun", false);
+            anim.SetBool("isAttack", false);
         }
         else
         {
-            anim.SetBool("isRun", true);
+            anim.SetBool("isAttack", true);
         }
         
-        //조이스틱 방향에 따른 좌우 반전
-        if (JoystickMovement.Instance.joyVec.x != 0)
+        //공격 방향에 따른 좌우 반전
+        if (dirInput.dir == Vector3.left)
         {
-            trans.localScale = JoystickMovement.Instance.joyVec.x > 0
-                ? new Vector3(scale, scale, 1.0f) 
-                : new Vector3(-scale, scale, 1.0f);
+            trans.localScale = new Vector3(-scale, scale, 1.0f);
+        }
+
+        else if (dirInput.dir == Vector3.right)
+        {
+            trans.localScale = new Vector3(scale, scale, 1.0f);
         }
 
     }
