@@ -64,6 +64,4 @@ public class JoystickMovement : MonoBehaviour
         joyVec = Vector3.zero;
         bGStick.SetActive(false);
     }
-    
-    
 }

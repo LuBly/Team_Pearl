@@ -15,11 +15,9 @@ public class AttackDirUI : MonoBehaviour
     public void leftFire()
     {
         dir = Vector3.left;
-        Debug.Log(dir);
     }
     public void rightFire()
     {
         dir = Vector3.right;
-        Debug.Log(dir);
     }
 }

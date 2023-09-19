@@ -22,7 +22,6 @@ public class SkillUI : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log(weaponId);
         skillData = skillController.skillDatas[weaponId];
         for(int i = 0; i < textPros.Length; i++)
         {
