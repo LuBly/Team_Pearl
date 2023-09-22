@@ -2,26 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class JoystickMovement : MonoBehaviour
-{
-    public static JoystickMovement Instance
-    {
-        get
-        {
-            if(instance == null)
-            {
-                instance = FindObjectOfType<JoystickMovement>();
-                if (instance == null)
-                {
-                    var instanceContainer = new GameObject("JoystickMovement");
-                    instance = instanceContainer.AddComponent<JoystickMovement>();
-                }
-            }
-            return instance;
-        }
-    }
-
-    private static JoystickMovement instance;
-
+{ 
     public GameObject smallStick;
     public GameObject bGStick;
     

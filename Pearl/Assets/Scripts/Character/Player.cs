@@ -6,15 +6,14 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     public Animator anim;
+    // 여러개의 joystick 사용을 위해 조이스틱의 instance화 해제
+    public JoystickMovement joystickMovement;
     [Header("Player curHp")]
     public float curHp;
     [Header("무적시간 (초)")]
     public float invincibleTime;
-    [Header("(몬스터와 Player사이의)최소 거리")]
 
-    public float minDistance;
     public TextMeshProUGUI playerHp;
-    public Scanner scanner;
     
     // CharacterBase에서 가져올 데이터
     [Header("총기 id")] public int id;             
@@ -28,6 +27,7 @@ public class Player : MonoBehaviour
     [Header("이동속도")] public int moveSpeed;
     //
     // 총기 발사 방향 
+    [Header("총기 발사 방향")]
     public AttackDirUI dirInput;
     private Rigidbody2D rb;
     private Transform trans;
@@ -38,7 +38,6 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
         anim = GetComponentInChildren<Animator>();
-        scanner = GetComponent<Scanner>();
     }
     private void Start()
     {
@@ -59,9 +58,9 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (JoystickMovement.Instance.joyVec.x != 0 || JoystickMovement.Instance.joyVec.y != 0)
+        if (joystickMovement.joyVec.x != 0 || joystickMovement.joyVec.y != 0)
         {
-            rb.velocity = new Vector3(JoystickMovement.Instance.joyVec.x, JoystickMovement.Instance.joyVec.y,0)*moveSpeed;
+            rb.velocity = new Vector3(joystickMovement.joyVec.x, joystickMovement.joyVec.y,0)*moveSpeed;
         }
         else//x,y 둘다 0 일때 멈추기
         {
@@ -73,7 +72,7 @@ public class Player : MonoBehaviour
         playerHp.text = "Health : "+curHp.ToString();
 
         //조이스틱 값이 들어갈 때 run anim 상태로 변환
-        if (JoystickMovement.Instance.joyVec == Vector3.zero)
+        if (joystickMovement.joyVec == Vector3.zero)
         {
             anim.SetBool("isAttack", false);
         }

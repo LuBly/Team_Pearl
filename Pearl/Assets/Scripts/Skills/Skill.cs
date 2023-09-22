@@ -15,14 +15,18 @@ public class ContinuousAtk
     public float enableTime;
     public float attackTime;
 }
-public class QuickAtk
+
+[Serializable]
+public class GrenadeAtk
 {
-    
+    public Scanner scanner;
+    public Transform attackPoint;
 }
+
 public enum SkillType
 {
     continuousAttack, // 지속 공격 ex) 제압사격
-    quickAttack,      // 즉발 공격 ex) 수류탄
+    grenadeAttack,    // 즉발 공격 ex) 수류탄
 }
 public class Skill : MonoBehaviour
 {
@@ -36,7 +40,7 @@ public class Skill : MonoBehaviour
     /// </summary>
     [HideInInspector][SerializeField] SkillType skillType;
     [HideInInspector][SerializeField] private ContinuousAtk continuousAtk;
-    [HideInInspector][SerializeField] private QuickAtk quickAtk;
+    [HideInInspector][SerializeField] private GrenadeAtk grenadeAtk;
     // 항상 사용
     public float damage;
     public float knockbackPower;
@@ -49,7 +53,16 @@ public class Skill : MonoBehaviour
                 attackTime = continuousAtk.attackTime;
                 StartCoroutine(activeSkill());
                 break;
-            case SkillType.quickAttack:
+            case SkillType.grenadeAttack:
+                // 주변에 적이 있다면 공격
+                if (grenadeAtk.scanner.nearestTarget)
+                {
+                    grenadeAtk.attackPoint.position = grenadeAtk.scanner.nearestTarget.position;
+                }   
+                else
+                {
+                    Debug.Log("No Enemy");
+                }
                 break;
         }
         
@@ -61,7 +74,7 @@ public class Skill : MonoBehaviour
             case SkillType.continuousAttack:
                 StopCoroutine(activeSkill());
                 break;
-            case SkillType.quickAttack:
+            case SkillType.grenadeAttack:
                 break;
         }
     }
