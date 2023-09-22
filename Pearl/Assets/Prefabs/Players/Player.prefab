@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 536590613}
   - component: {fileID: 536590614}
   - component: {fileID: 536590615}
-  - component: {fileID: 536590616}
   m_Layer: 9
   m_Name: AttackPoint
   m_TagString: Skill
@@ -187,28 +186,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 1
---- !u!114 &536590616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 536590612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001aa4d00f803334f860747d243750cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillType: 1
-  continuousAtk:
-    enableTime: 0
-    attackTime: 0
-  grenadeAtk:
-    scanner: {fileID: 3705737016811803425}
-    attackPoint: {fileID: 536590613}
-  damage: 5
-  knockbackPower: 1
-  attackTime: 0.5
 --- !u!1 &1736445833026502648
 GameObject:
   m_ObjectHideFlags: 0

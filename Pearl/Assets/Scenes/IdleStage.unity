@@ -908,6 +908,17 @@ Transform:
   m_Father: {fileID: 361886028}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &226423688 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3705737016811803425, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
+  m_PrefabInstance: {fileID: 3705737016843568401}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c79efc45e2b0c4db7a633349b3da3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &246235288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1191,11 @@ Transform:
   m_Father: {fileID: 361886028}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &330011942 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 536590612, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
+  m_PrefabInstance: {fileID: 3705737016843568401}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &336173050
 GameObject:
   m_ObjectHideFlags: 0
@@ -3630,6 +3646,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 44, y: 14.5}
   m_EdgeRadius: 0
+--- !u!1 &1313595426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7540017831979554961, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
+  m_PrefabInstance: {fileID: 3705737016843568401}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1313595428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313595426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001aa4d00f803334f860747d243750cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillType: 1
+  continuousAtk:
+    enableTime: 0
+    attackTime: 0
+  grenadeAtk:
+    scanner: {fileID: 226423688}
+    attackPoint: {fileID: 330011942}
+  damage: 5
+  knockbackPower: 1
+  attackTime: 0.5
 --- !u!1 &1332805236
 GameObject:
   m_ObjectHideFlags: 0
@@ -5316,6 +5359,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 215646402, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 536590612, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1800865696, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
       propertyPath: skillDatas.Array.data[0].skillIcons.Array.data[0]
       value: 
@@ -5411,6 +5462,18 @@ PrefabInstance:
     - target: {fileID: 3705737016811803455, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394230614617912103, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394230614617912106, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7540017831979554961, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 798a9e50d22de0b48883868e4879c464, type: 3}

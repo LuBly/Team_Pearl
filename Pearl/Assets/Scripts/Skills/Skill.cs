@@ -20,7 +20,7 @@ public class ContinuousAtk
 public class GrenadeAtk
 {
     public Scanner scanner;
-    public Transform attackPoint;
+    public GameObject attackPoint;
 }
 
 public enum SkillType
@@ -38,7 +38,7 @@ public class Skill : MonoBehaviour
     /// damage         : 틱 당 데미지
     /// knockbackPower : 틱 당 넉백 정도
     /// </summary>
-    [HideInInspector][SerializeField] SkillType skillType;
+    [HideInInspector][SerializeField] public SkillType skillType;
     [HideInInspector][SerializeField] private ContinuousAtk continuousAtk;
     [HideInInspector][SerializeField] private GrenadeAtk grenadeAtk;
     // 항상 사용
@@ -57,7 +57,8 @@ public class Skill : MonoBehaviour
                 // 주변에 적이 있다면 공격
                 if (grenadeAtk.scanner.nearestTarget)
                 {
-                    grenadeAtk.attackPoint.position = grenadeAtk.scanner.nearestTarget.position;
+                    grenadeAtk.attackPoint.SetActive(true);
+                    grenadeAtk.attackPoint.transform.position = grenadeAtk.scanner.nearestTarget.position;
                 }   
                 else
                 {

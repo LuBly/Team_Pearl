@@ -114,6 +114,40 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        // 스킬 피격
+        if (collision.CompareTag("Skill"))
+        {
+            Skill curSkill = collision.GetComponent<Skill>() ? collision.GetComponent<Skill>() : collision.GetComponentInParent<Skill>();
+            switch (curSkill.skillType)
+            {
+                case SkillType.continuousAttack:
+                    if (isSkillAttack)
+                    {
+                        StartCoroutine(skillAttack(collision));
+                    }
+                    break;
+                case SkillType.grenadeAttack:
+                    health -= curSkill.damage;
+                    knockbackPower = curSkill.knockbackPower;
+                    if (health > 0)
+                    {
+                        // Live, HitAction
+                        // 몬스터의 체력바 조정
+                        hpPercent.localScale = new Vector3(health / maxHealth, 1, 1);
+                        // 피격시 몬스터 Hit animation 추가
+                        anim.SetTrigger("Hit");
+                        StartCoroutine("KnockBack");
+                    }
+
+                    else
+                    {
+                        // Die
+                        Dead();
+                    }
+                    break;
+            }
+        }
+
         //플레이어를 공격할 때
         /*
          * 플레이어를 공격할 수 있는 범위인 atked Range와 충돌
@@ -153,15 +187,7 @@ public class Enemy : MonoBehaviour
         }
 
         //피격 당할 때
-        if (collision.CompareTag("Skill"))
-        {
-            if (isSkillAttack)
-            {
-                StartCoroutine(skillAttack(collision));
-            }
-            
-            
-        }
+        
     }
     IEnumerator skillAttack(Collider2D collision)
     {
