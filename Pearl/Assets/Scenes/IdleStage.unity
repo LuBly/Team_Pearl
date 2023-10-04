@@ -2032,6 +2032,8 @@ MonoBehaviour:
   smallStick: {fileID: 1252133285}
   bGStick: {fileID: 2070759138}
   joyVec: {x: 0, y: 0, z: 0}
+  stickDistance: 0
+  isDrag: 0
 --- !u!1 &615393272
 GameObject:
   m_ObjectHideFlags: 0
@@ -3002,18 +3004,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1172225976}
-          m_TargetAssemblyTypeName: SkillUI, Assembly-CSharp
-          m_MethodName: DragSkill
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1139123132}
           m_TargetAssemblyTypeName: JoystickMovement, Assembly-CSharp
           m_MethodName: Drag
@@ -3022,6 +3012,18 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1172225976}
+          m_TargetAssemblyTypeName: SkillUI, Assembly-CSharp
+          m_MethodName: DragSkill
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -3042,6 +3044,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1172225976}
+          m_TargetAssemblyTypeName: SkillUI, Assembly-CSharp
+          m_MethodName: EndDragSkill
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1139123132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3057,6 +3071,8 @@ MonoBehaviour:
   smallStick: {fileID: 801752178}
   bGStick: {fileID: 435547478}
   joyVec: {x: 0, y: 0, z: 0}
+  stickDistance: 0
+  isDrag: 0
 --- !u!1 &1172225974
 GameObject:
   m_ObjectHideFlags: 0
@@ -3688,7 +3704,6 @@ MonoBehaviour:
     attackPoint: {fileID: 330011942}
     skillImpact: {fileID: 1663225833}
     skillJoystickMovement: {fileID: 1139123132}
-    isDrag: 0
   damage: 5
   knockbackPower: 1
   attackTime: 0.5
@@ -5442,7 +5457,7 @@ PrefabInstance:
       objectReference: {fileID: 1692000536}
     - target: {fileID: 1800865696, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
       propertyPath: skillDatas.Array.data[0].skillActiveTimes.Array.data[1]
-      value: 5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3705737016811803424, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
       propertyPath: dirInput
@@ -5518,7 +5533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7540017831979554961, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9186269606222546670, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
       propertyPath: m_IsActive

@@ -7,6 +7,8 @@ public class JoystickMovement : MonoBehaviour
     public GameObject bGStick;
     
     public Vector3 joyVec;
+    public float stickDistance;
+    public bool isDrag;
     Vector3 stickFirstPosition;
     float stickRadius;
 
@@ -24,10 +26,12 @@ public class JoystickMovement : MonoBehaviour
     }
     public void Drag(BaseEventData baseEventData)
     {
+        isDrag = true;
         //조이스틱이 꺼져있는 상태라면 on
         if (bGStick.activeSelf == false) 
         {
             bGStick.SetActive(true);
+            smallStick.transform.position = bGStick.transform.position;
             stickFirstPosition = smallStick.transform.position;
         } 
 
@@ -35,7 +39,7 @@ public class JoystickMovement : MonoBehaviour
         Vector3 dragPosition = pointerEventData.position;
 
         joyVec = (dragPosition - stickFirstPosition).normalized;
-        float stickDistance = Vector3.Distance(dragPosition, stickFirstPosition);
+        stickDistance = Vector3.Distance(dragPosition, stickFirstPosition);
 
         if (stickDistance < stickRadius)
         {
@@ -43,12 +47,14 @@ public class JoystickMovement : MonoBehaviour
         }
         else
         {
+            stickDistance = stickRadius;
             smallStick.transform.position = stickFirstPosition + joyVec * stickRadius;
         }
     }
-
+    
     public void OnEndDrag()
     {
+        isDrag = false;
         joyVec = Vector3.zero;
         bGStick.SetActive(false);
     }

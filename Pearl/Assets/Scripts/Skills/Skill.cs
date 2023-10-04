@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor.TextCore.Text;
 
 [Serializable]
 public class ContinuousAtk
@@ -24,7 +25,6 @@ public class GrenadeAtk
     public GameObject attackPoint;
     public GameObject skillImpact;
     public JoystickMovement skillJoystickMovement;
-    public bool isDrag = false;
 }
 
 public enum SkillType
@@ -48,13 +48,19 @@ public class Skill : MonoBehaviour
     // 항상 사용
     public float damage;
     public float knockbackPower;
-    [HideInInspector] public float attackTime;
+    [HideInInspector] public float attackTime;  
 
     private void FixedUpdate()
     {
-        if (skillType == SkillType.grenadeAttack)
+        if (skillType == SkillType.grenadeAttack && grenadeAtk.skillJoystickMovement.isDrag == true)
         {
-            grenadeAtk.attackPoint.transform.position = grenadeAtk.skillJoystickMovement.joyVec * 2;
+            // 방향 (JoyVec)
+            // 크기 L2 = L1*R/r
+            grenadeAtk.attackPoint.transform.position = 
+                grenadeAtk.skillRange.transform.position 
+                + grenadeAtk.skillJoystickMovement.joyVec 
+                * grenadeAtk.skillJoystickMovement.stickDistance
+                / 20f;
         }
         
     }
@@ -68,36 +74,32 @@ public class Skill : MonoBehaviour
                 StartCoroutine(activeSkill());
                 break;
             case SkillType.grenadeAttack:
-                // Joystick이 활성화 되지 않은 상태라면 point 공격
-                if(grenadeAtk.skillJoystickMovement.bGStick.activeSelf == false)
+                bool isDrag = grenadeAtk.skillJoystickMovement.isDrag;
+                // Drag 공격
+                if (isDrag)
                 {
-                    // Drag 공격일 때
-                    if (grenadeAtk.isDrag)
-                    {
-                        grenadeAtk.skillImpact.SetActive(true);
-                    }
-
-                    // 일반 공격일 때
-                    else
-                    {
-                        if (grenadeAtk.scanner.nearestTarget)
-                        {
-                            grenadeAtk.attackPoint.SetActive(true);
-                            grenadeAtk.skillImpact.SetActive(true);
-                            grenadeAtk.attackPoint.transform.position = grenadeAtk.scanner.nearestTarget.position;
-                        }
-                        else
-                        {
-                            Debug.Log("No Enemy");
-                        }
-                    }
-                }
-                // joystick이 움직이는 상태라면 범위와 target지점이 동시에 움직임
-                else
-                {
-                    grenadeAtk.isDrag = true;
+                    Debug.Log("Drag");
                     grenadeAtk.skillRange.SetActive(true);
                     grenadeAtk.attackPoint.SetActive(true);
+                    grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = false;
+                }
+
+                // 일반 공격
+                else
+                {
+                    if (grenadeAtk.scanner.nearestTarget)
+                    {
+                        Debug.Log("idle");
+                        grenadeAtk.attackPoint.SetActive(true);
+                        grenadeAtk.skillImpact.SetActive(true);
+                        grenadeAtk.attackPoint.transform.position = grenadeAtk.scanner.nearestTarget.position;
+
+                        //쿨타임 돌게 신호 전달
+                    }
+                    else
+                    {
+                        Debug.Log("No Enemy");
+                    }
                 }
                 break;
         }
@@ -111,9 +113,29 @@ public class Skill : MonoBehaviour
                 StopCoroutine(activeSkill());
                 break;
             case SkillType.grenadeAttack:
+                grenadeAtk.attackPoint.SetActive(false);
+                grenadeAtk.skillImpact.SetActive(false);
+                grenadeAtk.skillRange.SetActive(false);
+                StopCoroutine(activeInstantSkill());
+                grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = true;
                 break;
         }
     }
+
+    public void DragSkillFire()
+    {
+        Debug.Log("DragSkillAttack");
+        StartCoroutine(activeInstantSkill());
+    }
+
+    IEnumerator activeInstantSkill()
+    {
+        grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = true;
+        grenadeAtk.skillImpact.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = false;
+    }
+
     IEnumerator activeSkill()
     {
         // 1초 공격 피해 (기존 Collider active 상태)

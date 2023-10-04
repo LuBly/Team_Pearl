@@ -23,8 +23,25 @@ public class SkillController : MonoBehaviour
         StopCoroutine(UseSkill(skillIdx));
         StartCoroutine(UseSkill(skillIdx));
     }
-    
-    
+
+    public void DragSkill(int skillIdx)
+    {
+        skillDatas[weaponId].skills[skillIdx].SetActive(true);
+    }
+
+    public void EndDragSkill(int skillIdx)
+    {
+        StopCoroutine(UseDragSkill(skillIdx));
+        StartCoroutine(UseDragSkill(skillIdx));
+    }
+
+    IEnumerator UseDragSkill(int skillIdx)
+    {
+        skillDatas[weaponId].skills[skillIdx].GetComponent<Skill>().DragSkillFire();
+        yield return new WaitForSeconds(0.5f);
+        skillDatas[weaponId].skills[skillIdx].SetActive(false);
+    }
+
     IEnumerator UseSkill(int skillIdx)
     {
         skillDatas[weaponId].skills[skillIdx].SetActive(true);

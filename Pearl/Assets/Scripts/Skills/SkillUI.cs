@@ -62,13 +62,14 @@ public class SkillUI : MonoBehaviour
 
     public void DragSkill(int skillIdx)
     {
-        skillController.ActiveSkill(skillIdx);
-        if (isCoolTime[skillIdx])
-        {
-            Debug.Log("Drag");
-            
-        }
+        skillController.DragSkill(skillIdx);
     }
+
+    public void EndDragSkill(int skillIdx)
+    {
+        skillController.EndDragSkill(skillIdx);
+    }
+
     private void HideSkillCheck()
     {
         if(isCoolTime[0])
