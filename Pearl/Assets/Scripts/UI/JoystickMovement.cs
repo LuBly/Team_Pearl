@@ -24,6 +24,13 @@ public class JoystickMovement : MonoBehaviour
     }
     public void Drag(BaseEventData baseEventData)
     {
+        //조이스틱이 꺼져있는 상태라면 on
+        if (bGStick.activeSelf == false) 
+        {
+            bGStick.SetActive(true);
+            stickFirstPosition = smallStick.transform.position;
+        } 
+
         PointerEventData pointerEventData = baseEventData as PointerEventData;
         Vector3 dragPosition = pointerEventData.position;
 

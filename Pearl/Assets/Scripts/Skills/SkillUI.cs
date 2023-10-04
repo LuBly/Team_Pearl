@@ -13,9 +13,9 @@ public class SkillUI : MonoBehaviour
     public Image[] hideSkillImages;
     public SkillData skillData;
     
-    private bool[] isHideSkills = {false, false, false};    // 스킬 사용 중인지 확인하기 위한 bool 변수
-    private float[] getSkillTimes = {0, 0, 0};              // 스킬 사용 이후 지난 시간
-    private int weaponId;                                   // 활성화할 무기의 종류 skillController에서 호출
+    private bool[] isCoolTime = {false, false, false};    // 스킬 사용 중인지 확인하기 위한 bool 변수
+    private float[] getSkillTimes = {0, 0, 0};            // 스킬 사용 이후 지난 시간
+    private int weaponId;                                 // 활성화할 무기의 종류 skillController에서 호출
     void Awake()
     {
         weaponId = DataManager.Instance.id;
@@ -48,31 +48,40 @@ public class SkillUI : MonoBehaviour
     {
         hideSkillButtons[skillIdx].SetActive(true);
         getSkillTimes[skillIdx] = skillData.skillCoolTimes[skillIdx] + skillData.skillActiveTimes[skillIdx];
-        isHideSkills[skillIdx] = true;
+        isCoolTime[skillIdx] = true;
     }
 
     
     public void ActiveSkill(int skillIdx)
     {
-        if(isHideSkills[skillIdx])
+        if(isCoolTime[skillIdx])
         {
             skillController.ActiveSkill(skillIdx);
         }
     }
 
+    public void DragSkill(int skillIdx)
+    {
+        skillController.ActiveSkill(skillIdx);
+        if (isCoolTime[skillIdx])
+        {
+            Debug.Log("Drag");
+            
+        }
+    }
     private void HideSkillCheck()
     {
-        if(isHideSkills[0])
+        if(isCoolTime[0])
         {
             StartCoroutine(SkillTimeCheck(0));
         }
 
-        if(isHideSkills[1])
+        if(isCoolTime[1])
         {
             StartCoroutine(SkillTimeCheck(1));
         }
 
-        if(isHideSkills[2])
+        if(isCoolTime[2])
         {
             StartCoroutine(SkillTimeCheck(2));
         }
@@ -93,7 +102,7 @@ public class SkillUI : MonoBehaviour
             if(getSkillTimes[skillIdx] < 0)
             {
                 getSkillTimes[skillIdx] = 0;
-                isHideSkills[skillIdx] = false;
+                isCoolTime[skillIdx] = false;
                 hideSkillButtons[skillIdx].SetActive(false);
             }
 

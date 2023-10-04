@@ -31,7 +31,10 @@ public class ObjectInspectorEditor : Editor
             case SkillType.grenadeAttack:
                 {
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("grenadeAtk.scanner"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("grenadeAtk.skillRange"));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("grenadeAtk.attackPoint"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("grenadeAtk.skillImpact"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("grenadeAtk.skillJoystickMovement"));
                 }
                 break;
         }

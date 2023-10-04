@@ -20,7 +20,11 @@ public class ContinuousAtk
 public class GrenadeAtk
 {
     public Scanner scanner;
+    public GameObject skillRange;
     public GameObject attackPoint;
+    public GameObject skillImpact;
+    public JoystickMovement skillJoystickMovement;
+    public bool isDrag = false;
 }
 
 public enum SkillType
@@ -45,6 +49,16 @@ public class Skill : MonoBehaviour
     public float damage;
     public float knockbackPower;
     [HideInInspector] public float attackTime;
+
+    private void FixedUpdate()
+    {
+        if (skillType == SkillType.grenadeAttack)
+        {
+            grenadeAtk.attackPoint.transform.position = grenadeAtk.skillJoystickMovement.joyVec * 2;
+        }
+        
+    }
+
     private void OnEnable()
     {
         switch (skillType)
@@ -54,15 +68,36 @@ public class Skill : MonoBehaviour
                 StartCoroutine(activeSkill());
                 break;
             case SkillType.grenadeAttack:
-                // 주변에 적이 있다면 공격
-                if (grenadeAtk.scanner.nearestTarget)
+                // Joystick이 활성화 되지 않은 상태라면 point 공격
+                if(grenadeAtk.skillJoystickMovement.bGStick.activeSelf == false)
                 {
-                    grenadeAtk.attackPoint.SetActive(true);
-                    grenadeAtk.attackPoint.transform.position = grenadeAtk.scanner.nearestTarget.position;
-                }   
+                    // Drag 공격일 때
+                    if (grenadeAtk.isDrag)
+                    {
+                        grenadeAtk.skillImpact.SetActive(true);
+                    }
+
+                    // 일반 공격일 때
+                    else
+                    {
+                        if (grenadeAtk.scanner.nearestTarget)
+                        {
+                            grenadeAtk.attackPoint.SetActive(true);
+                            grenadeAtk.skillImpact.SetActive(true);
+                            grenadeAtk.attackPoint.transform.position = grenadeAtk.scanner.nearestTarget.position;
+                        }
+                        else
+                        {
+                            Debug.Log("No Enemy");
+                        }
+                    }
+                }
+                // joystick이 움직이는 상태라면 범위와 target지점이 동시에 움직임
                 else
                 {
-                    Debug.Log("No Enemy");
+                    grenadeAtk.isDrag = true;
+                    grenadeAtk.skillRange.SetActive(true);
+                    grenadeAtk.attackPoint.SetActive(true);
                 }
                 break;
         }
