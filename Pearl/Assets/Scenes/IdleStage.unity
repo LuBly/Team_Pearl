@@ -3056,6 +3056,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1172225976}
+          m_TargetAssemblyTypeName: SkillUI, Assembly-CSharp
+          m_MethodName: HideSkillSetting
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1139123132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5388,7 +5400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1114658406705935570, guid: 6039a2189050bd049baac7db5312d2b3, type: 3}
       propertyPath: gunRapid
-      value: 0.2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1114658406705935570, guid: 6039a2189050bd049baac7db5312d2b3, type: 3}
       propertyPath: moveSpeed
@@ -5455,6 +5467,10 @@ PrefabInstance:
       propertyPath: skillDatas.Array.data[2].skillIcons.Array.data[2]
       value: 
       objectReference: {fileID: 1692000536}
+    - target: {fileID: 1800865696, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
+      propertyPath: skillDatas.Array.data[0].skillCoolTimes.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1800865696, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
       propertyPath: skillDatas.Array.data[0].skillActiveTimes.Array.data[1]
       value: 0.5

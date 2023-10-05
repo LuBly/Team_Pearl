@@ -14,7 +14,7 @@ public class SkillUI : MonoBehaviour
     public SkillData skillData;
     
     private bool[] isCoolTime = {false, false, false};    // 스킬 사용 중인지 확인하기 위한 bool 변수
-    private float[] getSkillTimes = {0, 0, 0};            // 스킬 사용 이후 지난 시간
+    private float[] getSkillTimes = {0, 0, 0};            // 다음 스킬 사용가능 시간까지 남은 시간
     private int weaponId;                                 // 활성화할 무기의 종류 skillController에서 호출
     void Awake()
     {
@@ -54,10 +54,7 @@ public class SkillUI : MonoBehaviour
     
     public void ActiveSkill(int skillIdx)
     {
-        if(isCoolTime[skillIdx])
-        {
-            skillController.ActiveSkill(skillIdx);
-        }
+        skillController.ActiveSkill(skillIdx);
     }
 
     public void DragSkill(int skillIdx)
@@ -109,7 +106,7 @@ public class SkillUI : MonoBehaviour
 
             hideSkillTimeTexts[skillIdx].text = getSkillTimes[skillIdx].ToString("00");
 
-            float time = getSkillTimes[skillIdx] / skillData.skillCoolTimes[skillIdx] + skillData.skillActiveTimes[skillIdx];
+            float time = getSkillTimes[skillIdx] / (skillData.skillCoolTimes[skillIdx] + skillData.skillActiveTimes[skillIdx]);
             hideSkillImages[skillIdx].fillAmount = time;
         }
     }

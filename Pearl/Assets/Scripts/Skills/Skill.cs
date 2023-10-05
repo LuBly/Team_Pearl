@@ -13,7 +13,9 @@ public class ContinuousAtk
     /// -> 1초 공격(피해 0.2초 단위) -> 1초 비활성화 -> 1초 공격(피해 0.2초 단위)
     /// enableTime     : 활성화 시간
     /// attackTime     : 피해를 주는 시간 단위
+    [Header("활성화 시간")]
     public float enableTime;
+    [Header("피해를 주는 시간 단위")]
     public float attackTime;
 }
 
@@ -71,14 +73,13 @@ public class Skill : MonoBehaviour
         {
             case SkillType.continuousAttack:
                 attackTime = continuousAtk.attackTime;
-                StartCoroutine(activeSkill());
+                StartCoroutine(activeContinuousSkill());
                 break;
             case SkillType.grenadeAttack:
                 bool isDrag = grenadeAtk.skillJoystickMovement.isDrag;
                 // Drag 공격
                 if (isDrag)
                 {
-                    Debug.Log("Drag");
                     grenadeAtk.skillRange.SetActive(true);
                     grenadeAtk.attackPoint.SetActive(true);
                     grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = false;
@@ -89,7 +90,6 @@ public class Skill : MonoBehaviour
                 {
                     if (grenadeAtk.scanner.nearestTarget)
                     {
-                        Debug.Log("idle");
                         grenadeAtk.attackPoint.SetActive(true);
                         grenadeAtk.skillImpact.SetActive(true);
                         grenadeAtk.attackPoint.transform.position = grenadeAtk.scanner.nearestTarget.position;
@@ -110,7 +110,7 @@ public class Skill : MonoBehaviour
         switch (skillType)
         {
             case SkillType.continuousAttack:
-                StopCoroutine(activeSkill());
+                StopCoroutine(activeContinuousSkill());
                 break;
             case SkillType.grenadeAttack:
                 grenadeAtk.attackPoint.SetActive(false);
@@ -124,7 +124,6 @@ public class Skill : MonoBehaviour
 
     public void DragSkillFire()
     {
-        Debug.Log("DragSkillAttack");
         StartCoroutine(activeInstantSkill());
     }
 
@@ -136,7 +135,7 @@ public class Skill : MonoBehaviour
         grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = false;
     }
 
-    IEnumerator activeSkill()
+    IEnumerator activeContinuousSkill()
     {
         // 1초 공격 피해 (기존 Collider active 상태)
         yield return new WaitForSeconds(continuousAtk.enableTime);

@@ -121,10 +121,6 @@ public class Enemy : MonoBehaviour
             switch (curSkill.skillType)
             {
                 case SkillType.continuousAttack:
-                    if (isSkillAttack)
-                    {
-                        StartCoroutine(skillAttack(collision));
-                    }
                     break;
                 case SkillType.grenadeAttack:
                     health -= curSkill.damage;
@@ -187,7 +183,22 @@ public class Enemy : MonoBehaviour
         }
 
         //피격 당할 때
-        
+        // 스킬 피격
+        if (collision.CompareTag("Skill"))
+        {
+            Skill curSkill = collision.GetComponent<Skill>() ? collision.GetComponent<Skill>() : collision.GetComponentInParent<Skill>();
+            switch (curSkill.skillType)
+            {
+                case SkillType.continuousAttack:
+                    if (isSkillAttack)
+                    {
+                        StartCoroutine(skillAttack(collision));
+                    }
+                    break;
+                case SkillType.grenadeAttack:
+                    break;
+            }
+        }
     }
     IEnumerator skillAttack(Collider2D collision)
     {
