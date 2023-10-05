@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 // 스킬에 대한 전반적인 정보를 다루는 Script
 public class SkillController : MonoBehaviour
 {   
     public SkillData[] skillDatas;
-    public Weapon weapon;
-    public int weaponId;
+    private int weaponId;
 
     private void Awake()
     {
-        weaponId = weapon.gameObject.GetComponent<Weapon>().id;
+        weaponId = DataManager.Instance.id;
     }
     
     public void ActiveSkill(int skillIdx)
@@ -23,8 +23,25 @@ public class SkillController : MonoBehaviour
         StopCoroutine(UseSkill(skillIdx));
         StartCoroutine(UseSkill(skillIdx));
     }
-    
-    
+
+    public void DragSkill(int skillIdx)
+    {
+        skillDatas[weaponId].skills[skillIdx].SetActive(true);
+    }
+
+    public void EndDragSkill(int skillIdx)
+    {
+        StopCoroutine(UseDragSkill(skillIdx));
+        StartCoroutine(UseDragSkill(skillIdx));
+    }
+
+    IEnumerator UseDragSkill(int skillIdx)
+    {
+        skillDatas[weaponId].skills[skillIdx].GetComponent<Skill>().DragSkillFire();
+        yield return new WaitForSeconds(0.5f);
+        skillDatas[weaponId].skills[skillIdx].SetActive(false);
+    }
+
     IEnumerator UseSkill(int skillIdx)
     {
         skillDatas[weaponId].skills[skillIdx].SetActive(true);
@@ -34,7 +51,7 @@ public class SkillController : MonoBehaviour
 }
 
 // 총기 종류별 스킬 쿨타임을 지정할 Data배열
-[System.Serializable]
+[Serializable]
 public class SkillData
 {
     [Header("총기 종류별 스킬 쿨타임")]

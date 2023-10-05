@@ -2,13 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
-해당 문서는 캐릭터 기본 스테이터스를 저장하기 위한 문서입니다.
-*/
-
-
-public class CharacterBase : MonoBehaviour
+public class DataManager : Singleton<DataManager>
 {
+    public CharacterBase characterData;
     public int id; // 총기 id
     public int atk; // 공격력
     public int gunAtk; // 총기 공격력
@@ -18,4 +14,17 @@ public class CharacterBase : MonoBehaviour
     public int critical; // 크리티컬 확률
     public int criticalDmg; // 크리티컬 데미지
     public int moveSpeed; // 이동속도
+
+    public void Load()
+    {
+        id = characterData.id;
+        atk = characterData.atk;
+        gunAtk = characterData.gunAtk;
+        gunProficiency = characterData.gunProficiency;
+        gunRapid = characterData.gunRapid;
+        health = characterData.health;
+        critical = characterData.critical;
+        criticalDmg = characterData.criticalDmg;
+        moveSpeed = characterData.moveSpeed;
+    }
 }

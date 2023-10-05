@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    static public CameraController instance;
-
     [SerializeField]
     private Transform player;
 
@@ -23,18 +21,6 @@ public class CameraController : MonoBehaviour
     // 카메라의 반높이 값을 구할 속성 이용
     private Camera theCamera;
 
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(this.gameObject);
-            instance= this;
-        }
-    }
     void Start()
     {
         theCamera = GetComponent<Camera>();

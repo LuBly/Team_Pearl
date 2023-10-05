@@ -1,35 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class JoystickMovement : MonoBehaviour
-{
-    public static JoystickMovement Instance
-    {
-        get
-        {
-            if(instance == null)
-            {
-                instance = FindObjectOfType<JoystickMovement>();
-                if (instance == null)
-                {
-                    var instanceContainer = new GameObject("JoystickMovement");
-                    instance = instanceContainer.AddComponent<JoystickMovement>();
-                }
-            }
-            return instance;
-        }
-    }
-
-    private static JoystickMovement instance;
-
+{ 
     public GameObject smallStick;
     public GameObject bGStick;
-    Vector3 stickFirstPosition;
-    public Vector3 joyVec;
-    float stickRadius;
     
+    public Vector3 joyVec;
+    public float stickDistance;
+    public bool isDrag;
+    Vector3 stickFirstPosition;
+    float stickRadius;
+
     void Start()
     {
         stickRadius = bGStick.gameObject.GetComponent<RectTransform>().sizeDelta.y / 2;
@@ -44,26 +26,36 @@ public class JoystickMovement : MonoBehaviour
     }
     public void Drag(BaseEventData baseEventData)
     {
-        PointerEventData pointerEventData = baseEventData as PointerEventData;
-        Vector3 DragPosition = pointerEventData.position;
-        joyVec = (DragPosition - stickFirstPosition).normalized;
-        float stickDistacne = Vector3.Distance(DragPosition, stickFirstPosition);
-
-        if (stickDistacne < stickRadius)
+        isDrag = true;
+        //조이스틱이 꺼져있는 상태라면 on
+        if (bGStick.activeSelf == false) 
         {
-            smallStick.transform.position = stickFirstPosition+joyVec*stickDistacne;
+            bGStick.SetActive(true);
+            smallStick.transform.position = bGStick.transform.position;
+            stickFirstPosition = smallStick.transform.position;
+        } 
+
+        PointerEventData pointerEventData = baseEventData as PointerEventData;
+        Vector3 dragPosition = pointerEventData.position;
+
+        joyVec = (dragPosition - stickFirstPosition).normalized;
+        stickDistance = Vector3.Distance(dragPosition, stickFirstPosition);
+
+        if (stickDistance < stickRadius)
+        {
+            smallStick.transform.position = stickFirstPosition + joyVec * stickDistance;
         }
         else
         {
-            smallStick.transform.position = stickFirstPosition+joyVec*stickRadius;
+            stickDistance = stickRadius;
+            smallStick.transform.position = stickFirstPosition + joyVec * stickRadius;
         }
     }
-
-    public void Drop()
+    
+    public void OnEndDrag()
     {
+        isDrag = false;
         joyVec = Vector3.zero;
         bGStick.SetActive(false);
     }
-    
-    
 }
