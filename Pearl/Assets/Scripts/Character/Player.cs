@@ -12,8 +12,6 @@ public class Player : MonoBehaviour
     public float curHp;
     [Header("무적시간 (초)")]
     public float invincibleTime;
-
-    public TextMeshProUGUI playerHp;
     
     // CharacterBase에서 가져올 데이터
     [Header("총기 id")] public int id;             
@@ -69,8 +67,6 @@ public class Player : MonoBehaviour
     }
     private void LateUpdate()
     {
-        playerHp.text = "Health : "+curHp.ToString();
-
         //조이스틱 값이 들어갈 때 run anim 상태로 변환
         if (joystickMovement.joyVec == Vector3.zero)
         {
