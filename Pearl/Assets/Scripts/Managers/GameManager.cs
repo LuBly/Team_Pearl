@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Spawner spawner;
     public Player player;
     public Weapon weapon; // player의 무기정보를 가져올 변수
-    public int stageIdx;
+    public int killCount;
 
     void Awake()
     {
