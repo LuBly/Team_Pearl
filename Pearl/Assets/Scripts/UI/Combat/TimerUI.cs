@@ -11,7 +11,7 @@ public class TimerUI : MonoBehaviour
     float time;
     float min;
     float sec;
-    public TextMeshProUGUI textTimer;
+    public TextMeshProUGUI timerText;
     void Update()
     {
         LimitTime -= Time.deltaTime;
@@ -22,8 +22,8 @@ public class TimerUI : MonoBehaviour
         
         if (sec >= 10)
         {
-            textTimer.text = "0"+ min +" : " + sec;
+            timerText.text = "0"+ min +" : " + sec;
         }   
-        else textTimer.text = "0" + min + " : 0" + sec;
+        else timerText.text = "0" + min + " : 0" + sec;
     }
 }

@@ -447,8 +447,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 690, y: 65}
+  m_AnchoredPosition: {x: 0, y: 1}
+  m_SizeDelta: {x: 690, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &116948276
 MonoBehaviour:
@@ -4227,7 +4227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LimitTime: 70
-  textTimer: {fileID: 1809891599}
+  timerText: {fileID: 1809891599}
 --- !u!1 &1509116657
 GameObject:
   m_ObjectHideFlags: 0
@@ -4261,7 +4261,7 @@ MonoBehaviour:
   spawner: {fileID: 361886029}
   player: {fileID: 32462385}
   weapon: {fileID: 1397420983}
-  stageIdx: 0
+  killCount: 0
 --- !u!4 &1509116659
 Transform:
   m_ObjectHideFlags: 0
@@ -4708,6 +4708,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4774f24175a681b459e31dfd73d6170c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counterText: {fileID: 2007349660}
+  counterGauge: {fileID: 116948276}
 --- !u!1 &1663225833 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7394230614617912106, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
@@ -5863,7 +5865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1114658406705935570, guid: 6039a2189050bd049baac7db5312d2b3, type: 3}
       propertyPath: gunRapid
-      value: 10
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1114658406705935570, guid: 6039a2189050bd049baac7db5312d2b3, type: 3}
       propertyPath: moveSpeed
