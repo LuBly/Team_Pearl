@@ -15,6 +15,7 @@ public class DataManager : Singleton<DataManager>
     public int criticalDmg; // 크리티컬 데미지
     public int moveSpeed; // 이동속도
 
+    public int stageIdx;
     public void Load()
     {
         id = characterData.id;

@@ -252,6 +252,7 @@ public class Enemy : MonoBehaviour
         isPlayerInRange = true;
         gameObject.SetActive(false);
         GameManager.instance.spawner.enemyCount--;
+        GameManager.instance.killCount++;
     }
 
     
