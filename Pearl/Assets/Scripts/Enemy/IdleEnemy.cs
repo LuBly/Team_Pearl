@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 /*
 방치화면 적 관련 스크립트입니다.
@@ -14,9 +15,12 @@ public class IdleEnemy : MonoBehaviour
     public Sprite[] enemySprite; // 적 이미지 배열
     public SpriteRenderer nowEnemySprite; // 현재 적 이미지
 
+    List<Dictionary<string, object>> enemyDataT;
+
     CharacterBase stat; // 캐릭터 스탯
     IngameGoods goods; // 현재 재화
     BackGroundManager backGround; //현재 배경
+    List<List<string>> chapter1 = new List<List<string>>();
 
     [Header ("시작 스테이지 (1-1~4 = 1~4, 2-1~4 = 5~8, 3-1~4 = 9~12)")]
     public int nowStage; // 현재 스테이지 (1-1~4 = 1~4, 2-1~4 = 5~8, 3-1~4 = 9~12)
@@ -36,6 +40,7 @@ public class IdleEnemy : MonoBehaviour
         goods = GameObject.Find("Goods").GetComponent<IngameGoods>();
         backGround = GameObject.Find("BackGround").GetComponent<BackGroundManager>();
         nowEnemySprite = GetComponent<SpriteRenderer>();
+        enemyDataT = CSVReader.Read("EnemyStatTable");
     }
 
     public void Start()
@@ -46,6 +51,7 @@ public class IdleEnemy : MonoBehaviour
         backGround.BackImageChange(nowChapter); //배경 이미지 변경
         StartCoroutine("CharAttackRoutine");
         StartCoroutine("EnemyAttackRoutine");
+        EnemyDataRead();
     }
 
     IEnumerator CharAttackRoutine() // 공격속도 마다 캐릭터 공격 설정
@@ -129,6 +135,24 @@ public class IdleEnemy : MonoBehaviour
     public void Stoproutine() // 코루틴 전체 정지
     {
         StopAllCoroutines();
+    }
+
+    void EnemyDataRead()
+    {
+        int count = 0;
+        for(int i = 0; i < enemyDataT.Count; i++)
+        {
+            if(enemyDataT[i].First().Value.ToString() == "1") count++;
+        }
+        for(int i = 0; i < count; i++)
+        {
+            chapter1.Add(new List<string>());
+            foreach(KeyValuePair<string, object> e in enemyDataT[i])
+            {
+                chapter1[i].Add(e.Key.ToString());
+            }
+        }
+        Debug.Log(chapter1.Count);
     }
 }
 

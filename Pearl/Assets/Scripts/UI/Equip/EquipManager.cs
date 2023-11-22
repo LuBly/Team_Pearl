@@ -37,6 +37,7 @@ public class EquipManager : MonoBehaviour
     public void EquipClick() // 장착 버튼 클릭 시 동작
     {
         GunDataRead();
+        GunDataReadTemp();
     }
 
     void GunDataRead()
@@ -59,6 +60,12 @@ public class EquipManager : MonoBehaviour
         dmg.GunDmgSet();
         stat.gunRapid = (float)System.Convert.ToDouble(gunData[id]["Rapid"]); // CSV 파일 Rapid 라인 id번 숫자 가져오기
         //System.Conver 형식에 Float이 없어서 Double형으로 변경 후, float형 변경. (float)만 사용해서 변경할 경우, InvaildCastException 즉, 올바르지 않은 형변환 에러가 나타남.
+    }
+
+    void GunDataReadTemp()
+    {
+        List<Dictionary<string, object>> gunDataT = CSVReader.Read("GunTable");
+        Debug.Log(gunDataT[1]["GunID"]);
     }
 
     public void BtnARClick()
