@@ -9,29 +9,48 @@ public class StageControl : MonoBehaviour
     IdleEnemy Stage;
     GameObject BtnLeft, BtnRight;
     public TextMeshProUGUI ChapterText;
-    int now;
+    int now = 1;
 
     void Start()
     {
         Stage = GameObject.Find("MainEnemy").GetComponent<IdleEnemy>();
         BtnLeft = GameObject.Find("BtnLeft");
         BtnRight = GameObject.Find("BtnRight");
+    }
+
+    public void StageClick()
+    {
+        ClearCheck();
         now = Stage.nowChapter;
         if(now == 1)
         {
             BtnLeft.SetActive(false);
+            if(!ClearManager.isClear["c2s1"]) BtnRight.SetActive(false);
+            else BtnRight.SetActive(true);
             ChapterText.text = "Chapter 1";
         }
         else if(now == 2)
         {
             BtnLeft.SetActive(true);
-            BtnRight.SetActive(true);
+            if(ClearManager.isClear["c3s1"]) BtnRight.SetActive(true);
             ChapterText.text = "Chapter 2";
         }
         else if(now == 3)
         {
             BtnRight.SetActive(false);
             ChapterText.text = "Chapter 3";
+        }
+    }
+
+    void ClearCheck()
+    {
+        for(int i = 0; i < 4; i++) // 스테이지 수
+        {
+            if(ClearManager.isClear["c" + now + "s" + (i + 1)])
+            {
+                GameObject.Find("Chapter").transform.GetChild(i).gameObject.SetActive(true);
+            }
+            else GameObject.Find("Chapter").transform.GetChild(i).gameObject.SetActive(false);
         }
     }
 
