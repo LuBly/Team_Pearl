@@ -11,9 +11,9 @@ using TMPro;
 public class IngameGoods : MonoBehaviour
 {
     public TextMeshProUGUI nowGold, nowManaStone, nowCrystal;
-    public uint gold; // 금화
-    public uint manaStone; // 마력석
-    public uint crystal; // 보석
+    public int gold; // 금화
+    public int manaStone; // 마력석
+    public int crystal; // 보석
 
     void Update()
     {

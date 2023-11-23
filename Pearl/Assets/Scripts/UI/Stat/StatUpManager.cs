@@ -14,8 +14,8 @@ public class StatUpManager : MonoBehaviour
     IngameGoods goods;
     GameObject neg; // Not Enough Gold
     public TextMeshProUGUI nowSpeedText, nowDmgText, nowHpText, nowSpeedLevelText, nowDmgLevelText, nowHpLevelText, speedGoldText, dmgGoldText, hpGoldText;
-    uint speedUpPoint, dmgUpPoint, hpUpPoint;
-    uint speedGold, dmgGold, hpGold;
+    int speedUpPoint, dmgUpPoint, hpUpPoint;
+    int speedGold, dmgGold, hpGold;
     bool flag; //NEG 중복 발생 방지
 
     void Start()
@@ -24,9 +24,9 @@ public class StatUpManager : MonoBehaviour
         goods = GameObject.Find("Goods").GetComponent<IngameGoods>();
         neg = GameObject.Find("Neg");
         NegDisappear();
-        speedUpPoint = (uint)stat.moveSpeed - 1; // 레벨업 포인트 초기화
-        dmgUpPoint = (uint)stat.atk; // 공격력업 포인트 초기화
-        hpUpPoint = ((uint)stat.health - 200) % 10; //체력업 포인트 초기화
+        speedUpPoint = (int)stat.moveSpeed - 1; // 레벨업 포인트 초기화
+        dmgUpPoint = (int)stat.atk; // 공격력업 포인트 초기화
+        hpUpPoint = ((int)stat.health - 200) % 10; //체력업 포인트 초기화
         SpeedGoldSetting();
         DmgGoldSetting();
         HpGoldSetting();

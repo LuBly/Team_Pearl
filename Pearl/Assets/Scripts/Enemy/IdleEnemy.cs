@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
-
+using System;
 /*
 방치화면 적 관련 스크립트입니다.
 */
@@ -11,8 +11,6 @@ using System.Linq;
 
 public class IdleEnemy : MonoBehaviour
 {
-    public EnemyData[] enemyData;
-    public Sprite[] enemySprite; // 적 이미지 배열
     public SpriteRenderer nowEnemySprite; // 현재 적 이미지
 
     List<Dictionary<string, object>> enemyDataT;
@@ -20,15 +18,15 @@ public class IdleEnemy : MonoBehaviour
     CharacterBase stat; // 캐릭터 스탯
     IngameGoods goods; // 현재 재화
     BackGroundManager backGround; //현재 배경
-    List<List<string>> chapter1 = new List<List<string>>();
+    List<List<string>> chapter1 = new List<List<string>>(), chapter2 = new List<List<string>>(), chapter3 = new List<List<string>>();
 
-    [Header ("시작 스테이지 (1-1~4 = 1~4, 2-1~4 = 5~8, 3-1~4 = 9~12)")]
-    public int nowStage; // 현재 스테이지 (1-1~4 = 1~4, 2-1~4 = 5~8, 3-1~4 = 9~12)
-    [Header ("시작 챕터(영향 X)")]
+    [Header ("시작 스테이지")]
+    public int nowStage; // 현재 스테이지
+    [Header ("시작 챕터")]
     public int nowChapter; //현재 챕터 (1, 2, 3)
 
     int enemyHp, enemyAtk, enemyRapid; // 상대 체력, 공격력, 공격속도
-    uint rewardGold, rewardManaStone; // 보상 골드, 보상 마력석*/
+    int rewardGold, rewardManaStone; // 보상 골드, 보상 마력석*/
     int stageText; // 스테이지 텍스트 작성용 변수
     public TextMeshProUGUI nowStageText;
     float nowDmg; // 현재 공격력
@@ -47,11 +45,11 @@ public class IdleEnemy : MonoBehaviour
     {
         NowHpSet();
         GunDmgSet();
-        SetEnemy(nowStage);
+        EnemyDataRead();
+        SetEnemyT(nowStage);
         backGround.BackImageChange(nowChapter); //배경 이미지 변경
         StartCoroutine("CharAttackRoutine");
         StartCoroutine("EnemyAttackRoutine");
-        EnemyDataRead();
     }
 
     IEnumerator CharAttackRoutine() // 공격속도 마다 캐릭터 공격 설정
@@ -64,7 +62,7 @@ public class IdleEnemy : MonoBehaviour
     IEnumerator EnemyAttackRoutine() // 공격속도 마다 캐릭터 공격 설정
     {
         AttackChar();
-        yield return new WaitForSecondsRealtime(enemyRapid);
+        yield return new WaitForSecondsRealtime(enemyRapid / 1000);
         StartCoroutine(EnemyAttackRoutine());
     }
 
@@ -75,7 +73,7 @@ public class IdleEnemy : MonoBehaviour
         {
             goods.gold = goods.gold + rewardGold;
             goods.manaStone = goods.manaStone + rewardManaStone;
-            SetEnemy(nowStage);
+            SetEnemyT(nowStage);
             NowHpSet();
         }
     }
@@ -91,7 +89,7 @@ public class IdleEnemy : MonoBehaviour
                 nowStage = nowStage - 1;
             }
             NowHpSet();
-            SetEnemy(nowStage);
+            SetEnemyT(nowStage);
         }
     }
 
@@ -105,31 +103,36 @@ public class IdleEnemy : MonoBehaviour
         nowHp = stat.health;
     }
 
-    void SetEnemy(int stage) //스테이지 별 상대 스펙 설정
+    void SetEnemyT(int stage)
     {
-        enemyHp = enemyData[stage - 1].enemyHp; // 적 체력 설정
-        enemyAtk = enemyData[stage - 1].enemyAtk; //적 공격력 설정
-        enemyRapid = enemyData[stage - 1].enemyRapid; // 적 공격속도 설정
-        rewardGold = enemyData[stage - 1].rewardGold; // 적 보상 골드 설정
-        rewardManaStone = enemyData[stage - 1].rewardManaStone; // 적 보상 마력석 설정
-        nowEnemySprite.sprite = enemySprite[stage - 1]; // 적 스프라이트 변경
-        if(stage >=1 && stage <=4)
+        switch(nowChapter)
         {
-            nowChapter = 1;
-            stageText = stage;
-        } 
-        else if(stage >=5 && stage <=8)
-        {
-            nowChapter = 2;
-            stageText = stage - 4;
+            case 1:
+                enemyHp = Int32.Parse(chapter1[stage-1][2]);
+                enemyAtk = Int32.Parse(chapter1[stage-1][3]);
+                enemyRapid = Int32.Parse(chapter1[stage-1][4]);
+                rewardGold = Int32.Parse(chapter1[stage-1][5]);
+                rewardManaStone = Int32.Parse(chapter1[stage-1][6]);
+                nowEnemySprite.sprite = Resources.Load<Sprite>("EnemyPrefabs/" + chapter1[stage-1][7]);
+                break;
+            case 2:
+                enemyHp = Int32.Parse(chapter2[stage-1][2]);
+                enemyAtk = Int32.Parse(chapter2[stage-1][3]);
+                enemyRapid = Int32.Parse(chapter2[stage-1][4]);
+                rewardGold = Int32.Parse(chapter2[stage-1][5]);
+                rewardManaStone = Int32.Parse(chapter2[stage-1][6]);
+                nowEnemySprite.sprite = Resources.Load<Sprite>("EnemyPrefabs/" + chapter2[stage-1][7]);
+                break;
+            case 3:
+                enemyHp = Int32.Parse(chapter3[stage-1][2]);
+                enemyAtk = Int32.Parse(chapter3[stage-1][3]);
+                enemyRapid = Int32.Parse(chapter3[stage-1][4]);
+                rewardGold = Int32.Parse(chapter3[stage-1][5]);
+                rewardManaStone = Int32.Parse(chapter3[stage-1][6]);
+                nowEnemySprite.sprite = Resources.Load<Sprite>("EnemyPrefabs/" + chapter3[stage-1][7]);
+                break;
         }
-        else if(stage >=9 && stage <=12)
-        {
-            nowChapter = 3;
-            stageText = stage - 8;
-        }
-        else nowChapter = 99; // Error!
-        nowStageText.text = nowChapter.ToString() + " - " + stageText.ToString() + " 소탕중"; // 챕터 - 스테이지
+        nowStageText.text = nowChapter.ToString() + " - " + nowStage.ToString() + " 소탕중"; // 챕터 - 스테이지
     }
 
     public void Stoproutine() // 코루틴 전체 정지
@@ -139,38 +142,47 @@ public class IdleEnemy : MonoBehaviour
 
     void EnemyDataRead()
     {
-        int count = 0;
+        int count1 = 0, count2 = 0, count3 = 0;
+        //Chapter 1 Write
         for(int i = 0; i < enemyDataT.Count; i++)
         {
-            if(enemyDataT[i].First().Value.ToString() == "1") count++;
+            if(enemyDataT[i].First().Value.ToString() == "1") count1++;
         }
-        for(int i = 0; i < count; i++)
+        for(int i = 0; i < count1; i++)
         {
             chapter1.Add(new List<string>());
             foreach(KeyValuePair<string, object> e in enemyDataT[i])
             {
-                chapter1[i].Add(e.Key.ToString());
+                chapter1[i].Add(e.Value.ToString());
             }
         }
-        Debug.Log(chapter1.Count);
+        //Chapter 2 Write
+        count2 = count1;
+        for(int i = count1; i < enemyDataT.Count; i++)
+        {
+            if(enemyDataT[i].First().Value.ToString() == "2") count2++;
+        }
+        for(int i = count1; i < count2; i++)
+        {
+            chapter2.Add(new List<string>());
+            foreach(KeyValuePair<string, object> e in enemyDataT[i])
+            {
+                chapter2[i - count1].Add(e.Value.ToString());
+            }
+        }
+        //Chapter 3 Write
+        count3 = count2;
+        for(int i = count2; i < enemyDataT.Count; i++)
+        {
+            if(enemyDataT[i].First().Value.ToString() == "3") count3++;
+        }
+        for(int i = count2; i < count3; i++)
+        {
+            chapter3.Add(new List<string>());
+            foreach(KeyValuePair<string, object> e in enemyDataT[i])
+            {
+                chapter3[i - count2].Add(e.Value.ToString());
+            }
+        }
     }
-}
-
-[System.Serializable]
-public class EnemyData
-{
-    [Header ("스테이지")]
-    public int nowStage;
-    [Header ("챕터")]
-    public int nowChapter;
-    [Header ("적 체력")]
-    public int enemyHp;
-    [Header ("적 공격력")]
-    public int enemyAtk;
-    [Header ("적 공격속도 (공격 주기입니다. ex)0.1 = 초당 10회")]
-    public int enemyRapid;
-    [Header ("보상 골드")]
-    public uint rewardGold;
-    [Header ("보상 마력석")]
-    public uint rewardManaStone;
 }
