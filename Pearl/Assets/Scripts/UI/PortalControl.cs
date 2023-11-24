@@ -3,37 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.SceneManagement;
 
-public class StageControl : MonoBehaviour
+public class PortalControl : MonoBehaviour
 {
     public GameObject pChapter;
     IdleEnemy Stage;
-    GameObject BtnLeft, BtnRight;
+    public GameObject BtnLeft, BtnRight;
     public TextMeshProUGUI ChapterText;
     int now = 1;
 
     void Start()
     {
         Stage = GameObject.Find("MainEnemy").GetComponent<IdleEnemy>();
-        BtnLeft = GameObject.Find("BtnLeft");
-        BtnRight = GameObject.Find("BtnRight");
     }
 
-    public void StageClick()
+    public void PortalClick()
     {
         ClearCheck();
         now = Stage.nowChapter;
         if(now == 1)
         {
             BtnLeft.SetActive(false);
-            if(!ClearManager.isClear["c2s1"]) BtnRight.SetActive(false);
+            if(!ClearManager.isClear["c1s4"]) BtnRight.SetActive(false);
             else BtnRight.SetActive(true);
             ChapterText.text = "Chapter 1";
         }
         else if(now == 2)
         {
             BtnLeft.SetActive(true);
-            if(ClearManager.isClear["c3s1"]) BtnRight.SetActive(true);
+            if(ClearManager.isClear["c2s4"]) BtnRight.SetActive(true);
             ChapterText.text = "Chapter 2";
         }
         else if(now == 3)
@@ -45,9 +44,9 @@ public class StageControl : MonoBehaviour
 
     void ClearCheck()
     {
-        for(int i = 0; i < 4; i++) // 스테이지 수
+        for(int i = 1; i <= 3; i++) // 스테이지 수
         {
-            if(ClearManager.isClear["c" + now + "s" + (i + 1)])
+            if(ClearManager.isClear["c" + now + "s" + i])
             {
                 pChapter.transform.GetChild(i).gameObject.SetActive(true);
             }
@@ -87,29 +86,23 @@ public class StageControl : MonoBehaviour
         }
     }
 
-    public void StageBtnClick()
+    public void PortalBtnClick()
     {
         GameObject clickObject = EventSystem.current.currentSelectedGameObject;
-        if(now == 1)
+        switch(now)
         {
-            Stage.nowStage = int.Parse(clickObject.name);
-            Stage.nowChapter = now;
-            Stage.Stoproutine();
-            Stage.Start();
-        }
-        else if(now == 2)
-        {
-            Stage.nowStage = int.Parse(clickObject.name);
-            Stage.nowChapter = now;
-            Stage.Stoproutine();
-            Stage.Start();
-        }
-        else if(now == 3)
-        {
-            Stage.nowStage = int.Parse(clickObject.name);
-            Stage.nowChapter = now;
-            Stage.Stoproutine();
-            Stage.Start();
+            case 1:
+                DataManager.Instance.Load();
+                SceneManager.LoadScene("IdleStage");
+                break;
+            case 2:
+                DataManager.Instance.Load();
+                SceneManager.LoadScene("IdleStage");
+                break;
+            case 3:
+                DataManager.Instance.Load();
+                SceneManager.LoadScene("IdleStage");
+                break;
         }
     }
 }

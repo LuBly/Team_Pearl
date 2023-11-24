@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class EquipManager : MonoBehaviour
 {
+    public TextMeshProUGUI equipText;
     CharacterBase stat;
     IdleEnemy dmg;
     GameObject ar, sg, sr;
@@ -37,35 +40,30 @@ public class EquipManager : MonoBehaviour
     public void EquipClick() // 장착 버튼 클릭 시 동작
     {
         GunDataRead();
-        GunDataReadTemp();
     }
 
     void GunDataRead()
     {
-        List<Dictionary<string, object>> gunData = CSVReader.Read("GunId"); // CSV 파일 "GunId" 에서 gunData 변수로 읽어오는 기능, CSVREADER.cs는 외부에서 가져옴. https://github.com/tikonen/blog/blob/master/csvreader/CSVReader.cs
-        if(equip > 100 && equip <= 200)
+        List<Dictionary<string, object>> gunData = CSVReader.Read("GunTable");
+        int now = -1;
+        for(int i = 0; i < gunData.Count; i++)
         {
-            id = equip%100 - 1;
+            if((int)gunData[i]["GunID"] == equip)
+            {
+                now = i;
+                break;
+            }
         }
-        else if(equip >200 && equip <= 300)
+        if(now == -1) Debug.Log("잘못된 ID 입력!"); // 예외처리 필요
+        else
         {
-            id = equip%200 + 99;
+            stat.id = (int)gunData[now]["GunID"];
+            equipText.text = gunData[now]["GunName"].ToString();
+            if((int)gunData[now]["GunAtk1"] == 0) stat.gunAtk = (int)gunData[now]["GunAtk2"];
+            else stat.gunAtk = (int)gunData[now]["GunAtk1"];
+            dmg.GunDmgSet();
+            stat.gunRapid = (float)System.Convert.ToDouble(gunData[now]["Rapid"]);
         }
-        else if(equip > 300 && equip <= 400)
-        {
-            id = equip%300 + 199;
-        }
-        else Debug.Log("Error!"); // 예외처리 할 부분
-        stat.gunAtk = (int)gunData[id]["Attack"]; // CSV 파일 Attack 라인 id번 숫자 가져오기
-        dmg.GunDmgSet();
-        stat.gunRapid = (float)System.Convert.ToDouble(gunData[id]["Rapid"]); // CSV 파일 Rapid 라인 id번 숫자 가져오기
-        //System.Conver 형식에 Float이 없어서 Double형으로 변경 후, float형 변경. (float)만 사용해서 변경할 경우, InvaildCastException 즉, 올바르지 않은 형변환 에러가 나타남.
-    }
-
-    void GunDataReadTemp()
-    {
-        List<Dictionary<string, object>> gunDataT = CSVReader.Read("GunTable");
-        Debug.Log(gunDataT[1]["GunID"]);
     }
 
     public void BtnARClick()

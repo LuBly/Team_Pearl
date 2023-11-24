@@ -56,7 +56,7 @@ public class IdleEnemy : MonoBehaviour
     IEnumerator CharAttackRoutine() // 공격속도 마다 캐릭터 공격 설정
     {
         AttackEnemy();
-        yield return new WaitForSecondsRealtime(stat.gunRapid);
+        yield return new WaitForSecondsRealtime(stat.gunRapid / 1000);
         StartCoroutine(CharAttackRoutine());
     }
 
