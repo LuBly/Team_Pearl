@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Enemy : MonoBehaviour
     [Header("체력바 BackGround")]
     public GameObject hpBackground;
     [Header("체력바")]
-    public Transform hpPercent;
+    public Image hpPercent;
 
     private bool isLive;
     private float speed;
@@ -79,7 +80,7 @@ public class Enemy : MonoBehaviour
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
         isLive = true;
         health = maxHealth;
-        hpPercent.localScale = orig;
+        hpPercent.fillAmount = 1;
     }
     //초기속성을 적용하는 함수
     public void Init(SpawnData data)
@@ -99,12 +100,7 @@ public class Enemy : MonoBehaviour
             knockbackPower = collision.GetComponent<Bullet>().knockbackPower;
             if (health > 0)
             {
-                // Live, HitAction
-                // 몬스터의 체력바 조정
-                hpPercent.localScale = new Vector3(health / maxHealth, 1, 1);
-                // 피격시 몬스터 Hit animation 추가
-                anim.SetTrigger("Hit");
-                StartCoroutine("KnockBack");
+                Hit();
             }
 
             else
@@ -127,12 +123,7 @@ public class Enemy : MonoBehaviour
                     knockbackPower = curSkill.knockbackPower;
                     if (health > 0)
                     {
-                        // Live, HitAction
-                        // 몬스터의 체력바 조정
-                        hpPercent.localScale = new Vector3(health / maxHealth, 1, 1);
-                        // 피격시 몬스터 Hit animation 추가
-                        anim.SetTrigger("Hit");
-                        StartCoroutine("KnockBack");
+                        Hit();
                     }
 
                     else
@@ -209,7 +200,7 @@ public class Enemy : MonoBehaviour
         {
             // Live, HitAction
             // 몬스터의 체력바 조정
-            hpPercent.localScale = new Vector3(health / maxHealth, 1, 1);
+            hpPercent.fillAmount = health / maxHealth;
             // 피격시 몬스터 Hit animation 추가
             anim.SetTrigger("Hit");
             StartCoroutine("KnockBack");
@@ -243,6 +234,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void Hit()
+    {
+        // Live, HitAction
+        // 몬스터의 체력바 조정
+        hpPercent.fillAmount = health / maxHealth;
+        // 피격시 몬스터 Hit animation 추가
+        anim.SetTrigger("Hit");
+        StartCoroutine("KnockBack");
+    }
 
     private void Dead()
     {

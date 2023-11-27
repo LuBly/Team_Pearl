@@ -79,10 +79,11 @@ MonoBehaviour:
   characterData: {fileID: 0}
   id: 0
   atk: 0
-  gunAtk: 0
+  gunAtk: 1
   gunProficiency: 0
-  gunRapid: 0
-  health: 0
+  gunRapid: 0.5
+  health: 100
   critical: 0
   criticalDmg: 0
-  moveSpeed: 0
+  moveSpeed: 5
+  stageIdx: 0

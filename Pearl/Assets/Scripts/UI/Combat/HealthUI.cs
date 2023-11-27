@@ -20,6 +20,11 @@ public class HealthUI : MonoBehaviour
     void Update()
     {
         curHealth = player.curHp;
+        if(curHealth <= 0)
+        {
+            curHealth = 0;
+            GameManager.instance.isFail = true;
+        }
         healthBar.fillAmount = curHealth / maxHealth;
         healthText.text = ((curHealth / maxHealth)*100).ToString() + "%";
     }

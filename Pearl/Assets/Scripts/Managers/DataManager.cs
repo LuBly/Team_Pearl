@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
-    public CharacterBase characterData;
+    
     public int id; // 총기 id
     public int atk; // 공격력
     public int gunAtk; // 총기 공격력
@@ -16,8 +16,10 @@ public class DataManager : Singleton<DataManager>
     public int moveSpeed; // 이동속도
 
     public int stageIdx;
+    CharacterBase characterData;
     public void Load()
     {
+        characterData = GameObject.Find("MainChar").GetComponent<CharacterBase>();
         id = characterData.id;
         atk = characterData.atk;
         gunAtk = characterData.gunAtk;
@@ -27,5 +29,19 @@ public class DataManager : Singleton<DataManager>
         critical = characterData.critical;
         criticalDmg = characterData.criticalDmg;
         moveSpeed = characterData.moveSpeed;
+    }
+
+    public void Init()
+    {
+        // 부모 오브젝트가 있는 경우 
+        if (transform.parent != null && transform.root != null)
+        {
+            Destroy(transform.root.gameObject);
+        }
+        // 본인 스스로가 최상위라면
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
