@@ -13,6 +13,7 @@ ClearManager.isClear["c1s1"] = true;를 추가해 주시면 클리어 처리 됩
 public class ClearManager
 {
     public static Dictionary<string, bool> isClear = new Dictionary<string, bool>();
+    public static bool isFirst = true; // 임시 변수 추후 세이브 관련 구현 시 교체될 예정.
 
     public static void ResetClear()
     {

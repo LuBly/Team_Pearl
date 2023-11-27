@@ -39,7 +39,11 @@ public class IdleEnemy : MonoBehaviour
         backGround = GameObject.Find("BackGround").GetComponent<BackGroundManager>();
         nowEnemySprite = GetComponent<SpriteRenderer>();
         enemyDataT = CSVReader.Read("EnemyStatTable");
-        ClearManager.ResetClear();
+        if(ClearManager.isFirst) 
+        {
+            ClearManager.ResetClear();
+            ClearManager.isFirst = false;
+        }
     }
 
     public void Start()
