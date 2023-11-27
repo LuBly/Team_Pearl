@@ -14,5 +14,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IdleStage.unity
     guid: 8d67979abf479b344a3b277e91d5a464
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: 7ee8ed2b2564f43e79da2ea7f3b3a39f
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: ca57d9cc557d04b0fb32f09fe1529c42
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: b984d4e6ab8bd32448f3b2e0abe9eb8e, type: 2}
