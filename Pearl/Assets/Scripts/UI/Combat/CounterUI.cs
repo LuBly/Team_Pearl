@@ -18,6 +18,11 @@ public class CounterUI : MonoBehaviour
     void Update()
     {
         killCount = GameManager.instance.killCount;
+        if(killCount >= targetKillCount)
+        {
+            killCount = targetKillCount;
+            GameManager.instance.isClear = true;
+        }
         counterGauge.fillAmount = killCount / targetKillCount;
         counterText.text = killCount.ToString() + " / " + targetKillCount.ToString();
     }

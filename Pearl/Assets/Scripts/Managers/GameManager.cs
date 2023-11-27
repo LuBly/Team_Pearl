@@ -31,7 +31,9 @@ public class GameManager : MonoBehaviour
     // 
     void Awake()
     {
-        instance = this;    
+        instance = this;
+        isFail = false;
+        isClear = false;
     }
 
     private void Update()
@@ -41,7 +43,7 @@ public class GameManager : MonoBehaviour
             failStage();
         }
 
-        else if (isClear)
+        if (isClear)
         {
             clearStage();
         }
@@ -49,14 +51,20 @@ public class GameManager : MonoBehaviour
 
     public void failStage()
     {
-        hud.SetActive(false);
-        FailMenu.SetActive(true);
+        if(!isClear)
+        {
+            hud.SetActive(false);
+            FailMenu.SetActive(true);
+        }
     }
 
     public void clearStage()
     {
-        hud.SetActive(false);
-        ClearMenu.SetActive(true);
+        if(!isFail)
+        {
+            hud.SetActive(false);
+            ClearMenu.SetActive(true);
+        }
     }
 
     public void activePauseMenu()
@@ -76,7 +84,7 @@ public class GameManager : MonoBehaviour
     {
         if (isClear)
         {
-            Debug.Log("clear");
+            Debug.Log("stageManager에 클리어 여부 저장");
         }
         SceneManager.LoadScene("Idle");
         DataManager.Instance.Init();
