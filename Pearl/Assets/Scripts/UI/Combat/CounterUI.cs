@@ -9,11 +9,16 @@ public class CounterUI : MonoBehaviour
     public TextMeshProUGUI counterText;
     public Image counterGauge;
     float killCount;
-    // Update is called once per frame
+    float targetKillCount;
+
+    private void Start()
+    {
+        targetKillCount = GameManager.instance.targetKillCount;
+    }
     void Update()
     {
         killCount = GameManager.instance.killCount;
-        counterGauge.fillAmount = killCount / 100f;
-        counterText.text = killCount.ToString() + " / 100";
+        counterGauge.fillAmount = killCount / targetKillCount;
+        counterText.text = killCount.ToString() + " / " + targetKillCount.ToString();
     }
 }
