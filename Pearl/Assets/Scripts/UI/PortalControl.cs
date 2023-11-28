@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PortalControl : MonoBehaviour
 {
@@ -89,20 +90,9 @@ public class PortalControl : MonoBehaviour
     public void PortalBtnClick()
     {
         GameObject clickObject = EventSystem.current.currentSelectedGameObject;
-        switch(now)
-        {
-            case 1:
-                DataManager.Instance.Load();
-                SceneManager.LoadScene("IdleStage");
-                break;
-            case 2:
-                DataManager.Instance.Load();
-                SceneManager.LoadScene("IdleStage");
-                break;
-            case 3:
-                DataManager.Instance.Load();
-                SceneManager.LoadScene("IdleStage");
-                break;
-        }
+        String pStage = "c" + now.ToString() + "s" + clickObject.name;
+        DataManager.Instance.stageInfo = pStage;
+        DataManager.Instance.Load();
+        SceneManager.LoadScene("IdleStage");
     }
 }
