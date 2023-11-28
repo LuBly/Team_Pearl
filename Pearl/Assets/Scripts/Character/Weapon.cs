@@ -9,15 +9,15 @@ public class Weapon : MonoBehaviour
 {
     enum weaponType
     {
-        AR,
-        SG,
-        SR
+        AR = 1,
+        SG = 2,
+        SR = 3
     }
 
     /*
      * 무기 관리를 위한 Script
      */
-    public int id;                              // 무기 종류(AR,SG,SR)
+    public int weaponIdx;                       // 무기 종류(AR,SG,SR)
     public int prefabId;                        // 총알 종류(SR1,SR2~~)
     public float knockbackPower;                // 총알 넉백 파워
     public float damage;                        // 총알 데미지
@@ -58,7 +58,7 @@ public class Weapon : MonoBehaviour
     
     private void Update()
     {
-        switch (id)
+        switch (weaponIdx)
         {
             case (int)weaponType.AR:
                 timer += Time.deltaTime;
@@ -89,10 +89,11 @@ public class Weapon : MonoBehaviour
 
     public void Init()
     {
-        id = player.id;
+        weaponIdx = player.id / 100;
+        prefabId = player.id % 100;
         damage = player.gunAtk;
         gunRapid = player.gunRapid / 1000f; 
-        switch (id)
+        switch (weaponIdx)
         {
             case (int)weaponType.AR://AR
                 //player.scanner.scanRange = AssertRifleRange;

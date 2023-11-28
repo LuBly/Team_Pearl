@@ -11,7 +11,7 @@ public class SkillController : MonoBehaviour
 
     private void Awake()
     {
-        weaponId = DataManager.Instance.id;
+        weaponId = DataManager.Instance.weaponIdx;
     }
     
     public void ActiveSkill(int skillIdx)

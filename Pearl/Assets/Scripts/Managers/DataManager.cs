@@ -14,9 +14,9 @@ public class DataManager : Singleton<DataManager>
     public int critical; // 크리티컬 확률
     public int criticalDmg; // 크리티컬 데미지
     public int moveSpeed; // 이동속도
-
-    public int stageIdx;
+    public string stageInfo;
     CharacterBase characterData;
+    public int weaponIdx;
     public void Load()
     {
         characterData = GameObject.Find("MainChar").GetComponent<CharacterBase>();
@@ -29,6 +29,10 @@ public class DataManager : Singleton<DataManager>
         critical = characterData.critical;
         criticalDmg = characterData.criticalDmg;
         moveSpeed = characterData.moveSpeed;
+
+        weaponIdx = id / 100 - 1;
+        //stageInfo 입력 업데이트 필요
+
     }
 
     public void Init()

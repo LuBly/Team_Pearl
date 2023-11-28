@@ -29,8 +29,21 @@ public class GameManager : MonoBehaviour
     // Fail의 조건
     // Time out_, 캐릭터 사망_
     // 
+    public static Dictionary<string, int> stageInfo = new Dictionary<string, int>();
     void Awake()
     {
+        stageInfo.Add("c1s1", 0);
+        stageInfo.Add("c1s2", 1);
+        stageInfo.Add("c1s3", 2);
+        stageInfo.Add("c1s4", 3);
+        stageInfo.Add("c2s1", 4);
+        stageInfo.Add("c2s2", 5);
+        stageInfo.Add("c2s3", 6);
+        stageInfo.Add("c2s4", 7);
+        stageInfo.Add("c3s1", 8);
+        stageInfo.Add("c3s2", 9);
+        stageInfo.Add("c3s3", 10);
+        stageInfo.Add("c3s4", 11);
         instance = this;
         isFail = false;
         isClear = false;
@@ -48,7 +61,7 @@ public class GameManager : MonoBehaviour
             clearStage();
         }
     }
-
+    
     public void failStage()
     {
         if(!isClear)
@@ -62,6 +75,7 @@ public class GameManager : MonoBehaviour
     {
         if(!isFail)
         {
+            ClearManager.isClear[DataManager.Instance.stageInfo] = true;
             hud.SetActive(false);
             ClearMenu.SetActive(true);
         }

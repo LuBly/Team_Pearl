@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
         spawnPoints = GetComponentsInChildren<Transform>();
     }
     private void Start() {
-        stageIdx = DataManager.Instance.stageIdx;
+        stageIdx = GameManager.stageInfo[DataManager.Instance.stageInfo];
     }
     private void Update()
     {

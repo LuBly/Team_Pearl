@@ -11,7 +11,7 @@ public class ClearUI : MonoBehaviour
     public float countDownTime;
     private void OnEnable()
     {
-        clearMessage.text = "스테이지 " + (DataManager.Instance.stageIdx + 1).ToString() + " 클리어";
+        clearMessage.text = "스테이지 " + (GameManager.stageInfo[DataManager.Instance.stageInfo] + 1).ToString() + " 클리어";
         StartCoroutine("CountDown");
     }
 
