@@ -29,6 +29,8 @@ public class Bullet : MonoBehaviour
             //정해진 dir 방향으로 이동
             rigid.velocity = dir*10f;
         }
+
+        StartCoroutine("Delete");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,11 +48,6 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        StartCoroutine(Delete());
-    }
-
     private void OnDisable()
     {
         StopCoroutine(Delete());
@@ -58,7 +55,7 @@ public class Bullet : MonoBehaviour
 
     IEnumerator Delete()
     {
-        yield return new WaitForSeconds(lifeTime);
+        yield return new WaitForSecondsRealtime(lifeTime);
         //총알 초기화
         rigid.velocity = Vector2.zero;
         gameObject.SetActive(false);

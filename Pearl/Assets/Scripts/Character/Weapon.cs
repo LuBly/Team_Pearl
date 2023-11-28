@@ -91,7 +91,7 @@ public class Weapon : MonoBehaviour
     {
         id = player.id;
         damage = player.gunAtk;
-        gunRapid = player.gunRapid; 
+        gunRapid = player.gunRapid / 1000f; 
         switch (id)
         {
             case (int)weaponType.AR://AR

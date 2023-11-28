@@ -76,14 +76,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3ed2f6cb9665448a411a24e90015d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterData: {fileID: 0}
-  id: 0
+  id: 101
   atk: 0
-  gunAtk: 1
+  gunAtk: 10
   gunProficiency: 0
-  gunRapid: 0.5
-  health: 100
-  critical: 0
-  criticalDmg: 0
+  gunRapid: 500
+  health: 200
+  critical: 20
+  criticalDmg: 50
   moveSpeed: 5
   stageIdx: 0

@@ -2426,9 +2426,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1114658405858055729, guid: 6039a2189050bd049baac7db5312d2b3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 1114658406705935570, guid: 6039a2189050bd049baac7db5312d2b3, type: 3}
+      propertyPath: id
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6039a2189050bd049baac7db5312d2b3, type: 3}
@@ -6193,9 +6193,9 @@ MonoBehaviour:
   PauseMenu: {fileID: 239680105}
   FailMenu: {fileID: 2083520151}
   ClearMenu: {fileID: 458227668}
-  LimitTime: 10
+  LimitTime: 80
   killCount: 0
-  targetKillCount: 1
+  targetKillCount: 100
   isFail: 0
   isClear: 0
 --- !u!4 &1509116659
