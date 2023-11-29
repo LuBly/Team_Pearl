@@ -9,10 +9,11 @@ using TMPro;
 public class EquipManager : MonoBehaviour
 {
     public TextMeshProUGUI equipText;
+    public SaveManager sManager;
     CharacterBase stat;
     IdleEnemy dmg;
     GameObject ar, sg, sr;
-    public int equip;
+    int equip = 0;
     int id;
     string reset; // OutlineControl 초기화용 변수
     GameObject clickObject;
@@ -40,18 +41,33 @@ public class EquipManager : MonoBehaviour
     public void EquipClick() // 장착 버튼 클릭 시 동작
     {
         GunDataRead();
+        sManager.Save();
     }
 
     void GunDataRead()
     {
         List<Dictionary<string, object>> gunData = CSVReader.Read("GunTable");
         int now = -1;
-        for(int i = 0; i < gunData.Count; i++)
+        if(equip == 0)
         {
-            if((int)gunData[i]["GunID"] == equip)
+            for(int i = 0; i < gunData.Count; i++)
             {
-                now = i;
-                break;
+                if((int)gunData[i]["GunID"] == stat.id)
+                {
+                    now = i;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            for(int i = 0; i < gunData.Count; i++)
+            {
+                if((int)gunData[i]["GunID"] == equip)
+                {
+                    now = i;
+                    break;
+                }
             }
         }
         if(now == -1) Debug.Log("잘못된 ID 입력!"); // 예외처리 필요

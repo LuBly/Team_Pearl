@@ -12,6 +12,7 @@ public class PortalControl : MonoBehaviour
     IdleEnemy Stage;
     public GameObject BtnLeft, BtnRight;
     public TextMeshProUGUI ChapterText;
+    public SaveManager sManager;
     int now = 1;
 
     void Start()
@@ -91,6 +92,7 @@ public class PortalControl : MonoBehaviour
     {
         GameObject clickObject = EventSystem.current.currentSelectedGameObject;
         String pStage = "c" + now.ToString() + "s" + clickObject.name;
+        sManager.Save();
         DataManager.Instance.stageInfo = pStage;
         DataManager.Instance.Load();
         LoadingScene.LoadScene("IdleStage");

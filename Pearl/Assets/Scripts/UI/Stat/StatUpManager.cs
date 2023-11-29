@@ -10,11 +10,12 @@ using TMPro;
 
 public class StatUpManager : MonoBehaviour
 {
+    public SaveManager sManager;
     CharacterBase stat;
     IngameGoods goods;
     GameObject neg; // Not Enough Gold
     public TextMeshProUGUI nowSpeedText, nowDmgText, nowHpText, nowSpeedLevelText, nowDmgLevelText, nowHpLevelText, speedGoldText, dmgGoldText, hpGoldText;
-    int speedUpPoint, dmgUpPoint, hpUpPoint;
+    public int speedUpPoint, dmgUpPoint, hpUpPoint;
     int speedGold, dmgGold, hpGold;
     bool flag; //NEG 중복 발생 방지
 
@@ -24,9 +25,9 @@ public class StatUpManager : MonoBehaviour
         goods = GameObject.Find("Goods").GetComponent<IngameGoods>();
         neg = GameObject.Find("Neg");
         NegDisappear();
-        speedUpPoint = (int)stat.moveSpeed - 1; // 레벨업 포인트 초기화
-        dmgUpPoint = (int)stat.atk; // 공격력업 포인트 초기화
-        hpUpPoint = ((int)stat.health - 200) % 10; //체력업 포인트 초기화
+        speedUpPoint = stat.moveSpeed - 1; // 레벨업 포인트 초기화
+        dmgUpPoint = stat.atk; // 공격력업 포인트 초기화
+        hpUpPoint = (stat.health - 200) % 10; //체력업 포인트 초기화
         SpeedGoldSetting();
         DmgGoldSetting();
         HpGoldSetting();
@@ -52,6 +53,7 @@ public class StatUpManager : MonoBehaviour
             speedUpPoint = speedUpPoint + 1;
             stat.moveSpeed = stat.moveSpeed + 1;
             SpeedGoldSetting();
+            sManager.Save();
         }
         else if(flag == false)
         {
@@ -69,6 +71,7 @@ public class StatUpManager : MonoBehaviour
             dmgUpPoint = dmgUpPoint + 1;
             stat.atk = stat.atk + 1;
             DmgGoldSetting();
+            sManager.Save();
         }
         else if(flag == false)
         {
@@ -86,6 +89,7 @@ public class StatUpManager : MonoBehaviour
             hpUpPoint = hpUpPoint + 1;
             stat.health = stat.health + 10;
             HpGoldSetting();
+            sManager.Save();
         }
         else if(flag == false)
         {

@@ -15,11 +15,9 @@ public class IngameGoods : MonoBehaviour
     public int manaStone; // 마력석
     public int crystal; // 보석
 
-    void Update()
+    void Start()
     {
-        nowGold.text = gold.ToString();
-        nowCrystal.text = crystal.ToString();
-        nowManaStone.text = manaStone.ToString();
+        GoodsUpdate();
     }
 
     public void GoodsUpdate()

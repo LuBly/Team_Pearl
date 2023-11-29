@@ -954,7 +954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipText: {fileID: 1488427125}
-  equip: 0
+  sManager: {fileID: 1233303635}
 --- !u!1 &64102330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,7 +1777,7 @@ GameObject:
   - component: {fileID: 110468672}
   - component: {fileID: 110468674}
   m_Layer: 5
-  m_Name: Statup_UI
+  m_Name: StatupUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1867,6 +1867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2869f0cd5766daf458d4fea9193ecb4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sManager: {fileID: 1233303635}
   nowSpeedText: {fileID: 1544227734}
   nowDmgText: {fileID: 524615919}
   nowHpText: {fileID: 187340940}
@@ -1876,6 +1877,9 @@ MonoBehaviour:
   speedGoldText: {fileID: 1524558484}
   dmgGoldText: {fileID: 1186221286}
   hpGoldText: {fileID: 1656747870}
+  speedUpPoint: 0
+  dmgUpPoint: 0
+  hpUpPoint: 0
 --- !u!1 &110653983
 GameObject:
   m_ObjectHideFlags: 0
@@ -6701,6 +6705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pChapter: {fileID: 203995930}
   ChapterText: {fileID: 554037338}
+  sManager: {fileID: 1233303635}
 --- !u!1 &550386460
 GameObject:
   m_ObjectHideFlags: 0
@@ -10448,6 +10453,7 @@ MonoBehaviour:
   BtnLeft: {fileID: 1528923505}
   BtnRight: {fileID: 76891924}
   ChapterText: {fileID: 310497475}
+  sManager: {fileID: 1233303635}
 --- !u!1 &837665307
 GameObject:
   m_ObjectHideFlags: 0
@@ -15755,6 +15761,7 @@ GameObject:
   - component: {fileID: 1233303633}
   - component: {fileID: 1233303632}
   - component: {fileID: 1233303631}
+  - component: {fileID: 1233303635}
   m_Layer: 5
   m_Name: MainDisplay
   m_TagString: Untagged
@@ -15844,6 +15851,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1233303635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233303630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af29e2634bc86a948883dec2993e97e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1238522068
 GameObject:
   m_ObjectHideFlags: 0
@@ -22130,6 +22149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5158846364491b34cb6478508fc5e2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sManager: {fileID: 1233303635}
   boxGold: 0
   boxManaStone: 0
 --- !u!1 &1747934662
