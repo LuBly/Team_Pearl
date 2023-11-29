@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
         if(!isFail)
         {
             ClearManager.isClear[DataManager.Instance.stageInfo] = true;
+            ClearManager.nowClear = true;
             hud.SetActive(false);
             ClearMenu.SetActive(true);
         }

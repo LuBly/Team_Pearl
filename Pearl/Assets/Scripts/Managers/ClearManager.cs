@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 /*
@@ -14,6 +13,7 @@ public class ClearManager
 {
     public static Dictionary<string, bool> isClear = new Dictionary<string, bool>();
     public static bool isFirst = true; // 임시 변수 추후 세이브 관련 구현 시 교체될 예정.
+    public static bool nowClear; // 전투 스테이지 클리어 보상 관리 변수
 
     public static void ResetClear()
     {

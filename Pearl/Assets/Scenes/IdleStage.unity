@@ -6836,7 +6836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 4839606553373449741, guid: 54a8bc04e1cfbfb479755d7870d098da, type: 3}
-  - {fileID: 4839606553373449741, guid: b3b0ae2291ef3de46b58c2287382045f, type: 3}
+  - {fileID: 4839606553373449741, guid: 54a8bc04e1cfbfb479755d7870d098da, type: 3}
   bulletPrefabs:
   - {fileID: 8590832229344618564, guid: eb84da81f18773f4d9921b7b87e80be4, type: 3}
   - {fileID: 8590832229344618564, guid: 7ef89ef326009694986aae22077ab4e9, type: 3}

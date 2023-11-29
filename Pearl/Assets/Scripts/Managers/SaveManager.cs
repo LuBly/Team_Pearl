@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
@@ -79,6 +80,7 @@ public class SaveManager : MonoBehaviour
         saveData.speedP = stat.speedUpPoint;
         saveData.hpP = stat.hpUpPoint;
         saveData.dmgP = stat.dmgUpPoint;
+        SetStageClearData();
     }
 
     void LoadSaveData()
@@ -93,6 +95,27 @@ public class SaveManager : MonoBehaviour
         stat.hpUpPoint = saveData.hpP;
         stat.dmgUpPoint = saveData.dmgP;
         goods.GoodsUpdate();
+        if(!ClearManager.nowClear) GetStageClearData();
+    }
+
+    void SetStageClearData()
+    {
+        foreach(string i in ClearManager.isClear.Keys)
+        {
+            saveData.stage.Add(i);
+        }
+        foreach(bool i in ClearManager.isClear.Values)
+        {
+            saveData.stageClear.Add(i);
+        }
+    }
+
+    void GetStageClearData()
+    {
+        for(int i = 0; i < saveData.stage.Count; i++)
+        {
+            ClearManager.isClear[saveData.stage[i]] = saveData.stageClear[i];
+        }
     }
 }
 
@@ -103,6 +126,7 @@ public class SaveData
     public int gold, manastone, crystal; // 재화
     public int bGold, bManastone; // 보상 상자 재화
     public int speedP, hpP, dmgP; // 스탯 업그레이드 포인트
-    public Dictionary<string, bool> isClear = new Dictionary<string, bool>(); // 클리어 데이터
+    public List<string> stage = new List<string>();
+    public List<bool> stageClear = new List<bool>();
 }
 

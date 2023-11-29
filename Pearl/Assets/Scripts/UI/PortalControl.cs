@@ -93,6 +93,7 @@ public class PortalControl : MonoBehaviour
         GameObject clickObject = EventSystem.current.currentSelectedGameObject;
         String pStage = "c" + now.ToString() + "s" + clickObject.name;
         sManager.Save();
+        ClearManager.nowClear = false;
         DataManager.Instance.stageInfo = pStage;
         DataManager.Instance.Load();
         LoadingScene.LoadScene("IdleStage");
