@@ -48,6 +48,7 @@ public class StatUpManager : MonoBehaviour
         if(goods.gold >= speedGold)
         {
             goods.gold = goods.gold - speedGold;
+            goods.GoodsUpdate();
             speedUpPoint = speedUpPoint + 1;
             stat.moveSpeed = stat.moveSpeed + 1;
             SpeedGoldSetting();
@@ -64,6 +65,7 @@ public class StatUpManager : MonoBehaviour
         if(goods.gold >= dmgGold)
         {
             goods.gold = goods.gold - dmgGold;
+            goods.GoodsUpdate();
             dmgUpPoint = dmgUpPoint + 1;
             stat.atk = stat.atk + 1;
             DmgGoldSetting();
@@ -80,6 +82,7 @@ public class StatUpManager : MonoBehaviour
         if(goods.gold >= hpGold)
         {
             goods.gold = goods.gold - hpGold;
+            goods.GoodsUpdate();
             hpUpPoint = hpUpPoint + 1;
             stat.health = stat.health + 10;
             HpGoldSetting();

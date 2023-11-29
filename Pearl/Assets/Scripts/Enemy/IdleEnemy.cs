@@ -16,7 +16,7 @@ public class IdleEnemy : MonoBehaviour
     List<Dictionary<string, object>> enemyDataT;
 
     CharacterBase stat; // 캐릭터 스탯
-    IngameGoods goods; // 현재 재화
+    RewardBoxManager goods; // 현재 재화
     BackGroundManager backGround; //현재 배경
     List<List<string>> chapter1 = new List<List<string>>(), chapter2 = new List<List<string>>(), chapter3 = new List<List<string>>();
 
@@ -35,7 +35,7 @@ public class IdleEnemy : MonoBehaviour
     public void Awake()
     {
         stat = GameObject.Find("MainChar").GetComponent<CharacterBase>();
-        goods = GameObject.Find("Goods").GetComponent<IngameGoods>();
+        goods = GameObject.Find("BtnBox").GetComponent<RewardBoxManager>();
         backGround = GameObject.Find("BackGround").GetComponent<BackGroundManager>();
         nowEnemySprite = GetComponent<SpriteRenderer>();
         enemyDataT = CSVReader.Read("EnemyStatTable");
@@ -76,8 +76,8 @@ public class IdleEnemy : MonoBehaviour
         enemyHp = enemyHp - (int)nowDmg;
         if(enemyHp <= 0) 
         {
-            goods.gold = goods.gold + rewardGold;
-            goods.manaStone = goods.manaStone + rewardManaStone;
+            goods.boxGold = goods.boxGold + rewardGold;
+            goods.boxManaStone = goods.boxManaStone + rewardManaStone;
             SetEnemyT(nowStage);
             NowHpSet();
         }

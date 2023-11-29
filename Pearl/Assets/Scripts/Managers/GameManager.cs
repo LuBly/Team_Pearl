@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("stageManager에 클리어 여부 저장");
         }
-        SceneManager.LoadScene("Idle");
+        LoadingScene.LoadScene("Idle");
         DataManager.Instance.Init();
     }
 

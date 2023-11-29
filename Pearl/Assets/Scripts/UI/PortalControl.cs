@@ -93,6 +93,6 @@ public class PortalControl : MonoBehaviour
         String pStage = "c" + now.ToString() + "s" + clickObject.name;
         DataManager.Instance.stageInfo = pStage;
         DataManager.Instance.Load();
-        SceneManager.LoadScene("IdleStage");
+        LoadingScene.LoadScene("IdleStage");
     }
 }
