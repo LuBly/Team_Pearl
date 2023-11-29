@@ -13,6 +13,7 @@ using UnityEngine.TextCore.Text;
 
 public class SaveManager : MonoBehaviour
 {
+    public UnityEngine.Events.UnityEvent SaveDone;
     SaveData saveData;
     CharacterBase cBase;
     RewardBoxManager box;
@@ -50,6 +51,8 @@ public class SaveManager : MonoBehaviour
         jsonData = JsonUtility.ToJson(saveData); // saveData json 변환
         
         File.WriteAllText(filePath, jsonData); // 생성했던 임시파일 덮어쓰기
+
+        SaveDone.Invoke();
     }
 
     public void Load()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 /*
@@ -8,9 +9,17 @@ using UnityEngine;
 
 public class Setting : MonoBehaviour
 {
-    
-    public void ExitBtnClick() // 게임 종료
+    public SaveManager sManager;
+    bool canExit;
+    public void ExitBtnClick() // 게임 종료 버튼 클릭
     {
-        Application.Quit();
+        canExit = true;
+        sManager.Save();
+    }
+
+    public void isExit() // SaveDone 이벤트 호출 후 실행(save가 완료되기 전에 꺼지는 경우 방지)
+    {
+        if(canExit) Application.Quit();
+        else return;
     }
 }
