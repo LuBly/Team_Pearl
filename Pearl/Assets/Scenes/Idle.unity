@@ -955,6 +955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipText: {fileID: 1488427125}
   sManager: {fileID: 1233303635}
+  iManager: {fileID: 1233303636}
 --- !u!1 &64102330
 GameObject:
   m_ObjectHideFlags: 0
@@ -15762,6 +15763,7 @@ GameObject:
   - component: {fileID: 1233303632}
   - component: {fileID: 1233303631}
   - component: {fileID: 1233303635}
+  - component: {fileID: 1233303636}
   m_Layer: 5
   m_Name: MainDisplay
   m_TagString: Untagged
@@ -15878,6 +15880,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  saveData:
+    id: 0
+    gold: 0
+    manastone: 0
+    crystal: 0
+    bGold: 0
+    bManastone: 0
+    speedP: 0
+    hpP: 0
+    dmgP: 0
+    stage: []
+    stageClear: 
+    gunID: []
+    gunCount: 
+  cBase: {fileID: 17716334}
+  box: {fileID: 1737587820}
+  goods: {fileID: 950284709}
+  stat: {fileID: 110468674}
+  iManager: {fileID: 1233303636}
+--- !u!114 &1233303636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233303630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d538b97112a90154689ba068191bcf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1238522068
 GameObject:
   m_ObjectHideFlags: 0
@@ -27205,6 +27238,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2026615677}
         m_TargetAssemblyTypeName: UIMove, Assembly-CSharp
         m_MethodName: SetParentPos
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 37323243}
+        m_TargetAssemblyTypeName: EquipManager, Assembly-CSharp
+        m_MethodName: CountControl
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -10,6 +10,7 @@ public class EquipManager : MonoBehaviour
 {
     public TextMeshProUGUI equipText;
     public SaveManager sManager;
+    public InventoryManager iManager;
     CharacterBase stat;
     IdleEnemy dmg;
     GameObject ar, sg, sr;
@@ -34,8 +35,11 @@ public class EquipManager : MonoBehaviour
     public void GunClick() // 총기 아이콘 클릭 시 동작
     {
         clickObject = EventSystem.current.currentSelectedGameObject; // 현재 클릭한 오브젝트 받아오기
-        equip = int.Parse(clickObject.name); // 클릭한 오브젝트 이름을 int형으로 치환
-        OutlineControl(clickObject.name); // Outline 동작
+        if(clickObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text != "0")
+        {
+            equip = int.Parse(clickObject.name); // 클릭한 오브젝트 이름을 int형으로 치환
+            OutlineControl(clickObject.name); // Outline 동작
+        }
     }
 
     public void EquipClick() // 장착 버튼 클릭 시 동작
@@ -46,13 +50,12 @@ public class EquipManager : MonoBehaviour
 
     void GunDataRead()
     {
-        List<Dictionary<string, object>> gunData = CSVReader.Read("GunTable");
         int now = -1;
         if(equip == 0)
         {
-            for(int i = 0; i < gunData.Count; i++)
+            for(int i = 0; i < iManager.gunData.Count; i++)
             {
-                if((int)gunData[i]["GunID"] == stat.id)
+                if((int)iManager.gunData[i]["GunID"] == stat.id)
                 {
                     now = i;
                     break;
@@ -61,9 +64,9 @@ public class EquipManager : MonoBehaviour
         }
         else
         {
-            for(int i = 0; i < gunData.Count; i++)
+            for(int i = 0; i < iManager.gunData.Count; i++)
             {
-                if((int)gunData[i]["GunID"] == equip)
+                if((int)iManager.gunData[i]["GunID"] == equip)
                 {
                     now = i;
                     break;
@@ -73,12 +76,12 @@ public class EquipManager : MonoBehaviour
         if(now == -1) Debug.Log("잘못된 ID 입력!"); // 예외처리 필요
         else
         {
-            stat.id = (int)gunData[now]["GunID"];
-            equipText.text = gunData[now]["GunName"].ToString();
-            if((int)gunData[now]["GunAtk1"] == 0) stat.gunAtk = (int)gunData[now]["GunAtk2"];
-            else stat.gunAtk = (int)gunData[now]["GunAtk1"];
+            stat.id = (int)iManager.gunData[now]["GunID"];
+            equipText.text = iManager.gunData[now]["GunName"].ToString();
+            if((int)iManager.gunData[now]["GunAtk1"] == 0) stat.gunAtk = (int)iManager.gunData[now]["GunAtk2"];
+            else stat.gunAtk = (int)iManager.gunData[now]["GunAtk1"];
             dmg.GunDmgSet();
-            stat.gunRapid = (float)System.Convert.ToDouble(gunData[now]["Rapid"]);
+            stat.gunRapid = (float)System.Convert.ToDouble(iManager.gunData[now]["Rapid"]);
         }
     }
 
@@ -88,6 +91,7 @@ public class EquipManager : MonoBehaviour
         ar.SetActive(true);
         sg.SetActive(false);
         sr.SetActive(false);
+        CountControl();
     }
 
     public void BtnSGClick()
@@ -96,6 +100,7 @@ public class EquipManager : MonoBehaviour
         ar.SetActive(false);
         sg.SetActive(true);
         sr.SetActive(false);
+        CountControl();
     }
 
     public void BtnSRClick()
@@ -104,6 +109,7 @@ public class EquipManager : MonoBehaviour
         ar.SetActive(false);
         sg.SetActive(false);
         sr.SetActive(true);
+        CountControl();
     }
 
     void OutlineControl(string gunId) // 아웃라인 활성화 함수
@@ -116,6 +122,15 @@ public class EquipManager : MonoBehaviour
                 obj[i].GetComponent<Outline>().enabled = true; // 아웃라인 활성화
             }
             else obj[i].GetComponent<Outline>().enabled = false; // 아웃라인 비활성화
+        }
+    }
+
+    public void CountControl()
+    {
+        GameObject [] obj = GameObject.FindGameObjectsWithTag("Gun");
+        for(int i = 0; i < obj.Length; i++)
+        {
+            obj[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = iManager.gunList[obj[i].name].ToString();
         }
     }
 
