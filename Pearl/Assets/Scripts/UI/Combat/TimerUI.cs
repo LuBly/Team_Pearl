@@ -10,17 +10,17 @@ public class TimerUI : MonoBehaviour
     float min;
     float sec;
     public TextMeshProUGUI timerText;
-
+    public GameManager gameManager;
     private void Start()
     {
-        LimitTime = GameManager.instance.LimitTime;
+        LimitTime = gameManager.LimitTime;
     }
     void Update()
     {
         LimitTime -= Time.deltaTime;
         if (LimitTime <= 0)
         {
-            GameManager.instance.isFail = true;
+            gameManager.isFail = true;
             LimitTime = 0;
         }
         time = Mathf.Round(LimitTime);

@@ -8,6 +8,7 @@ public class HealthUI : MonoBehaviour
     public Image healthBar;
     public Player player;
     public TextMeshProUGUI healthText;
+    public GameManager gameManager;
     float maxHealth;
     float curHealth;
 
@@ -23,7 +24,7 @@ public class HealthUI : MonoBehaviour
         if(curHealth <= 0)
         {
             curHealth = 0;
-            GameManager.instance.isFail = true;
+            gameManager.isFail = true;
         }
         healthBar.fillAmount = curHealth / maxHealth;
         healthText.text = ((curHealth / maxHealth)*100).ToString() + "%";

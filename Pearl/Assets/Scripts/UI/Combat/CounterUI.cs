@@ -8,20 +8,21 @@ public class CounterUI : MonoBehaviour
 {
     public TextMeshProUGUI counterText;
     public Image counterGauge;
+    public GameManager gameManager;
     float killCount;
     float targetKillCount;
 
     private void Start()
     {
-        targetKillCount = GameManager.instance.targetKillCount;
+        targetKillCount = gameManager.targetKillCount;
     }
     void Update()
     {
-        killCount = GameManager.instance.killCount;
+        killCount = gameManager.killCount;
         if(killCount >= targetKillCount)
         {
             killCount = targetKillCount;
-            GameManager.instance.isClear = true;
+            gameManager.isClear = true;
         }
         counterGauge.fillAmount = killCount / targetKillCount;
         counterText.text = killCount.ToString() + " / " + targetKillCount.ToString();

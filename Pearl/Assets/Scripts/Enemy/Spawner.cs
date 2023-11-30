@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public GameManager gameManager;
     public SpawnData[] spawnData;
     public int enemyCount;    // 현재 화면에 나타나 있는 Enemy의 수
     [Header("화면에 나타날 수 있는 최대 마리 수")]
@@ -18,7 +19,7 @@ public class Spawner : MonoBehaviour
         spawnPoints = GetComponentsInChildren<Transform>();
     }
     private void Start() {
-        stageIdx = GameManager.instance.stageInfo[DataManager.Instance.stageInfo];
+        stageIdx = gameManager.stageInfo[DataManager.Instance.stageInfo];
     }
     private void Update()
     {
@@ -34,7 +35,7 @@ public class Spawner : MonoBehaviour
     private void Spawn()
     {
         int idx = Random.Range(1, spawnPoints.Length);
-        GameObject enemy = GameManager.instance.pool.EnemyGet(spawnData[stageIdx].prefabId);
+        GameObject enemy = gameManager.pool.EnemyGet(spawnData[stageIdx].prefabId);
         enemy.transform.position = spawnPoints[idx].position;
         enemy.GetComponentInChildren<Enemy>().Init(spawnData[stageIdx]);
     }

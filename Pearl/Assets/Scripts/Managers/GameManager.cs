@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //바로 메모리에 올려버린다.
-    public static GameManager instance;
     public PoolManager pool;
     public Spawner spawner;
     public Player player;
@@ -44,7 +42,6 @@ public class GameManager : MonoBehaviour
         stageInfo.Add("c3s2", 9);
         stageInfo.Add("c3s3", 10);
         stageInfo.Add("c3s4", 11);
-        instance = this;
         isFail = false;
         isClear = false;
     }

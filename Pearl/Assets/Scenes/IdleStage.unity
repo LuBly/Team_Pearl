@@ -1707,6 +1707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3f76cb1319754459a9460480c3ea7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1509116658}
   spawnData:
   - spawnTime: 0.3
     prefabId: 0
@@ -2097,6 +2098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clearMessage: {fileID: 1157573589}
   countMessage: {fileID: 1037733674}
+  gameManager: {fileID: 1509116658}
   countDownTime: 10
 --- !u!1 &465154028
 GameObject:
@@ -6164,6 +6166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1809891599}
+  gameManager: {fileID: 1509116658}
 --- !u!1 &1509116657
 GameObject:
   m_ObjectHideFlags: 0
@@ -6789,6 +6792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counterText: {fileID: 2007349660}
   counterGauge: {fileID: 116948276}
+  gameManager: {fileID: 1509116658}
 --- !u!1 &1663225833 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7394230614617912106, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
@@ -7762,6 +7766,7 @@ MonoBehaviour:
   healthBar: {fileID: 81732190}
   player: {fileID: 32462385}
   healthText: {fileID: 2073816653}
+  gameManager: {fileID: 1509116658}
 --- !u!1 &2007349658
 GameObject:
   m_ObjectHideFlags: 0
@@ -8430,6 +8435,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3705737015411036998, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1509116658}
     - target: {fileID: 3705737016811803424, guid: 798a9e50d22de0b48883868e4879c464, type: 3}
       propertyPath: atk
       value: 1

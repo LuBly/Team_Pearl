@@ -23,7 +23,7 @@ public class Weapon : MonoBehaviour
     public float damage;                        // 총알 데미지
     public float gunRapid;                      // 공격 속도(몇 초에 한번 발사하는가)
     public int count;                           // 관통력(체크용)
-    
+    public GameManager gameManager;
     [Header("개발용 데이터")]
     [Header("AR 사정거리 및 적 스캔범위")]
     public float AssertRifleLifeTime = 0.5f;    // AR 사정거리 
@@ -118,7 +118,7 @@ public class Weapon : MonoBehaviour
         // 속도(크기를 포함한 방향벡터) = 목표 위치 - 내 위치
         Vector3 dir = player.dirInput.dir;
         dir = dir.normalized;//정규화
-        Transform bullet = GameManager.instance.pool.BulletGet(prefabId).transform;
+        Transform bullet = gameManager.pool.BulletGet(prefabId).transform;
         
         // 총알의 시작지점
         bullet.position = transform.position;
@@ -157,7 +157,7 @@ public class Weapon : MonoBehaviour
         for(int bulletIdx = 0; bulletIdx < 5 ; bulletIdx++)
         {
             //Pool에서 bullet 생성
-            bullets[bulletIdx] = GameManager.instance.pool.BulletGet(prefabId).transform;
+            bullets[bulletIdx] = gameManager.pool.BulletGet(prefabId).transform;
             
             // 총알의 시작지점
             bullets[bulletIdx].position = transform.position;

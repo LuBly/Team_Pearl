@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public GameObject hpBackground;
     [Header("체력바")]
     public Image hpPercent;
+    public GameManager gameManager;
 
     private bool isLive;
     private float speed;
@@ -33,6 +34,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         anim = GetComponent<Animator>();
         rigid = GetComponentInParent<Rigidbody2D>();
         originalTransform = GetComponentInParent<Transform>();
@@ -77,7 +79,7 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        target = GameManager.instance.player.GetComponent<Rigidbody2D>();
+        target = gameManager.player.GetComponent<Rigidbody2D>();
         isLive = true;
         health = maxHealth;
         hpPercent.fillAmount = 1;
@@ -152,7 +154,7 @@ public class Enemy : MonoBehaviour
         yield return wait;
 
         // 플레이어 위치와 반대 방향으로 넉백
-        Vector3 playerPos = GameManager.instance.player.transform.position;
+        Vector3 playerPos = gameManager.player.transform.position;
         Vector3 dirVec = originalTransform.position - playerPos;
         rigid.AddForce(dirVec.normalized * knockbackPower, ForceMode2D.Impulse);
     }
@@ -219,8 +221,8 @@ public class Enemy : MonoBehaviour
     {
         isPlayerInRange = false;
         yield return new WaitForSecondsRealtime(1f);//몬스터 공격속도
-        GameManager.instance.player.curHp -= damage;
-        GameManager.instance.player.anim.SetTrigger("hurt");
+        gameManager.player.curHp -= damage;
+        gameManager.player.anim.SetTrigger("hurt");
         isPlayerInRange = true;
     }
 
@@ -251,8 +253,8 @@ public class Enemy : MonoBehaviour
         StopCoroutine("EnemyAttack");
         isPlayerInRange = true;
         gameObject.SetActive(false);
-        GameManager.instance.spawner.enemyCount--;
-        GameManager.instance.killCount++;
+        gameManager.spawner.enemyCount--;
+        gameManager.killCount++;
     }
 
     

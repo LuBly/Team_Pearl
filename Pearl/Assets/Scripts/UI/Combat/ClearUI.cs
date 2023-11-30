@@ -8,10 +8,11 @@ public class ClearUI : MonoBehaviour
 {
     public TextMeshProUGUI clearMessage;
     public TextMeshProUGUI countMessage;
+    public GameManager gameManager;
     public float countDownTime;
     private void OnEnable()
     {
-        clearMessage.text = "스테이지 " + (GameManager.instance.stageInfo[DataManager.Instance.stageInfo] + 1).ToString() + " 클리어";
+        clearMessage.text = "스테이지 " + (gameManager.stageInfo[DataManager.Instance.stageInfo] + 1).ToString() + " 클리어";
         StartCoroutine("CountDown");
     }
 
@@ -23,6 +24,6 @@ public class ClearUI : MonoBehaviour
             yield return new WaitForSecondsRealtime(1f);
         }
 
-        GameManager.instance.exitStage();
+        gameManager.exitStage();
     }
 }
