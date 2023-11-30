@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -14,19 +15,12 @@ using UnityEngine.TextCore.Text;
 public class SaveManager : MonoBehaviour
 {
     public UnityEngine.Events.UnityEvent SaveDone;
-    SaveData saveData;
-    CharacterBase cBase;
-    RewardBoxManager box;
-    IngameGoods goods;
-    StatUpManager stat;
-
-    void Awake()
-    {
-        cBase = GameObject.Find("MainChar").GetComponent<CharacterBase>();
-        box = GameObject.Find("BtnBox").GetComponent<RewardBoxManager>();
-        goods = GameObject.Find("Goods").GetComponent<IngameGoods>();
-        stat = GameObject.Find("StatupUI").GetComponent<StatUpManager>();
-    }
+    public SaveData saveData;
+    public CharacterBase cBase;
+    public RewardBoxManager box;
+    public IngameGoods goods;
+    public StatUpManager stat;
+    public InventoryManager iManager;
 
     public void Save()
     {
@@ -84,6 +78,7 @@ public class SaveManager : MonoBehaviour
         saveData.hpP = stat.hpUpPoint;
         saveData.dmgP = stat.dmgUpPoint;
         SetStageClearData();
+        SetGunCountData();
     }
 
     void LoadSaveData()
@@ -99,6 +94,7 @@ public class SaveManager : MonoBehaviour
         stat.dmgUpPoint = saveData.dmgP;
         goods.GoodsUpdate();
         if(!ClearManager.nowClear) GetStageClearData();
+        GetGunCountData();
     }
 
     void SetStageClearData()
@@ -120,6 +116,26 @@ public class SaveManager : MonoBehaviour
             ClearManager.isClear[saveData.stage[i]] = saveData.stageClear[i];
         }
     }
+
+    void SetGunCountData()
+    {
+        foreach(int i in iManager.gunList.Values)
+        {
+            saveData.gunCount.Add(i);
+        }
+        foreach(string i in iManager.gunList.Keys)
+        {
+            saveData.gunID.Add(i);
+        }
+    }
+
+    void GetGunCountData()
+    {
+        for(int i = 0; i < saveData.gunCount.Count; i++)
+        {
+            iManager.gunList[saveData.gunID[i]] = saveData.gunCount[i];
+        }
+    }
 }
 
 [System.Serializable]
@@ -129,8 +145,11 @@ public class SaveData
     public int gold, manastone, crystal; // 재화
     public int bGold, bManastone; // 보상 상자 재화
     public int speedP, hpP, dmgP; // 스탯 업그레이드 포인트
-    public List<string> stage = new List<string>();
+    
+    // Dictionary 변수는 UtilityJson을 통한 Json 변환이 불가능하여, Key와 Value 각각을 리스트로 저장하여 저장
+    public List<string> stage = new List<string>(); 
     public List<bool> stageClear = new List<bool>();
+    public List<string> gunID = new List<string>();
     public List<int> gunCount = new List<int>();
 }
 

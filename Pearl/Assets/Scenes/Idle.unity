@@ -15880,6 +15880,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  saveData:
+    id: 0
+    gold: 0
+    manastone: 0
+    crystal: 0
+    bGold: 0
+    bManastone: 0
+    speedP: 0
+    hpP: 0
+    dmgP: 0
+    stage: []
+    stageClear: 
+    gunID: []
+    gunCount: 
+  cBase: {fileID: 17716334}
+  box: {fileID: 1737587820}
+  goods: {fileID: 950284709}
+  stat: {fileID: 110468674}
+  iManager: {fileID: 1233303636}
 --- !u!114 &1233303636
 MonoBehaviour:
   m_ObjectHideFlags: 0
