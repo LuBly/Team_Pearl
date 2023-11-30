@@ -6705,6 +6705,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pChapter: {fileID: 203995930}
+  Stage: {fileID: 1847329709}
+  BtnLeft: {fileID: 1470490491}
+  BtnRight: {fileID: 1226152877}
   ChapterText: {fileID: 554037338}
   sManager: {fileID: 1233303635}
 --- !u!1 &550386460
@@ -10451,6 +10454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pChapter: {fileID: 121749256}
+  Stage: {fileID: 1847329709}
   BtnLeft: {fileID: 1528923505}
   BtnRight: {fileID: 76891924}
   ChapterText: {fileID: 310497475}
@@ -23568,6 +23572,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nowEnemySprite: {fileID: 1847329710}
+  stat: {fileID: 17716334}
+  goods: {fileID: 1737587820}
+  backGround: {fileID: 745209136}
   nowStage: 1
   nowChapter: 1
   nowStageText: {fileID: 2056562779}

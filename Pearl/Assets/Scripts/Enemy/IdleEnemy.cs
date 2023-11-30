@@ -15,9 +15,9 @@ public class IdleEnemy : MonoBehaviour
 
     List<Dictionary<string, object>> enemyDataT;
 
-    CharacterBase stat; // 캐릭터 스탯
-    RewardBoxManager goods; // 현재 재화
-    BackGroundManager backGround; //현재 배경
+    public CharacterBase stat; // 캐릭터 스탯
+    public RewardBoxManager goods; // 현재 재화
+    public BackGroundManager backGround; //현재 배경
     List<List<string>> chapter1 = new List<List<string>>(), chapter2 = new List<List<string>>(), chapter3 = new List<List<string>>();
 
     [Header ("시작 스테이지")]
@@ -32,11 +32,8 @@ public class IdleEnemy : MonoBehaviour
     float nowDmg; // 현재 공격력
     int nowHp; // 현재 체력
 
-    public void Awake()
+    void Awake()
     {
-        stat = GameObject.Find("MainChar").GetComponent<CharacterBase>();
-        goods = GameObject.Find("BtnBox").GetComponent<RewardBoxManager>();
-        backGround = GameObject.Find("BackGround").GetComponent<BackGroundManager>();
         nowEnemySprite = GetComponent<SpriteRenderer>();
         enemyDataT = CSVReader.Read("EnemyStatTable");
         if(ClearManager.isFirst) 

@@ -7,18 +7,11 @@ using TMPro;
 public class StageControl : MonoBehaviour
 {
     public GameObject pChapter;
-    IdleEnemy Stage;
-    GameObject BtnLeft, BtnRight;
+    public IdleEnemy Stage;
+    public GameObject BtnLeft, BtnRight;
     public TextMeshProUGUI ChapterText;
     public SaveManager sManager;
     int now = 1;
-
-    void Start()
-    {
-        Stage = GameObject.Find("MainEnemy").GetComponent<IdleEnemy>();
-        BtnLeft = GameObject.Find("BtnLeft");
-        BtnRight = GameObject.Find("BtnRight");
-    }
 
     public void StageClick()
     {
