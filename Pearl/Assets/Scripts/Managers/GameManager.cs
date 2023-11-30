@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     // Fail의 조건
     // Time out_, 캐릭터 사망_
     // 
-    public static Dictionary<string, int> stageInfo = new Dictionary<string, int>();
+    public Dictionary<string, int> stageInfo = new Dictionary<string, int>();
     void Awake()
     {
         stageInfo.Add("c1s1", 0);
