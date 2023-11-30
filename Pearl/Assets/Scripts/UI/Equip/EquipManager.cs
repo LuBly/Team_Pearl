@@ -50,13 +50,12 @@ public class EquipManager : MonoBehaviour
 
     void GunDataRead()
     {
-        List<Dictionary<string, object>> gunData = CSVReader.Read("GunTable");
         int now = -1;
         if(equip == 0)
         {
-            for(int i = 0; i < gunData.Count; i++)
+            for(int i = 0; i < iManager.gunData.Count; i++)
             {
-                if((int)gunData[i]["GunID"] == stat.id)
+                if((int)iManager.gunData[i]["GunID"] == stat.id)
                 {
                     now = i;
                     break;
@@ -65,9 +64,9 @@ public class EquipManager : MonoBehaviour
         }
         else
         {
-            for(int i = 0; i < gunData.Count; i++)
+            for(int i = 0; i < iManager.gunData.Count; i++)
             {
-                if((int)gunData[i]["GunID"] == equip)
+                if((int)iManager.gunData[i]["GunID"] == equip)
                 {
                     now = i;
                     break;
@@ -77,12 +76,12 @@ public class EquipManager : MonoBehaviour
         if(now == -1) Debug.Log("잘못된 ID 입력!"); // 예외처리 필요
         else
         {
-            stat.id = (int)gunData[now]["GunID"];
-            equipText.text = gunData[now]["GunName"].ToString();
-            if((int)gunData[now]["GunAtk1"] == 0) stat.gunAtk = (int)gunData[now]["GunAtk2"];
-            else stat.gunAtk = (int)gunData[now]["GunAtk1"];
+            stat.id = (int)iManager.gunData[now]["GunID"];
+            equipText.text = iManager.gunData[now]["GunName"].ToString();
+            if((int)iManager.gunData[now]["GunAtk1"] == 0) stat.gunAtk = (int)iManager.gunData[now]["GunAtk2"];
+            else stat.gunAtk = (int)iManager.gunData[now]["GunAtk1"];
             dmg.GunDmgSet();
-            stat.gunRapid = (float)System.Convert.ToDouble(gunData[now]["Rapid"]);
+            stat.gunRapid = (float)System.Convert.ToDouble(iManager.gunData[now]["Rapid"]);
         }
     }
 

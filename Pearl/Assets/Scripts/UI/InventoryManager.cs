@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    List<Dictionary<string, object>> gunData;
+    public List<Dictionary<string, object>> gunData;
     public Dictionary<string, int> gunList = new Dictionary<string, int>(); // 총기 정보(ID, 개수)
     void Awake()
     {
