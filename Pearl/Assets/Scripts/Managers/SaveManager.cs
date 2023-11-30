@@ -20,6 +20,7 @@ public class SaveManager : MonoBehaviour
     public IngameGoods goods;
     public StatUpManager stat;
     public InventoryManager iManager;
+    public IdleEnemy enemy;
 
     public void Save()
     {
@@ -65,6 +66,15 @@ public class SaveManager : MonoBehaviour
         LoadSaveData();
     }
 
+    public static bool isExsitSaveFile()
+    {
+        string path = Application.persistentDataPath + "/saves/";
+        string filePath = path + "AGSave" + ".json";
+
+        if(File.Exists(filePath)) return true; // 세이브 파일이 있을 경우
+        else return false;
+    }
+
     void SetSaveData()
     {
         saveData.id = cBase.id;
@@ -76,6 +86,8 @@ public class SaveManager : MonoBehaviour
         saveData.speedP = stat.speedUpPoint;
         saveData.hpP = stat.hpUpPoint;
         saveData.dmgP = stat.dmgUpPoint;
+        saveData.nowStage = enemy.nowStage;
+        saveData.nowChapter = enemy.nowChapter;
         SetStageClearData();
         SetGunCountData();
     }
@@ -91,6 +103,8 @@ public class SaveManager : MonoBehaviour
         stat.speedUpPoint = saveData.speedP;
         stat.hpUpPoint = saveData.hpP;
         stat.dmgUpPoint = saveData.dmgP;
+        enemy.nowStage = saveData.nowStage;
+        enemy.nowChapter = saveData.nowChapter;
         goods.GoodsUpdate();
         if(!ClearManager.nowClear) GetStageClearData();
         GetGunCountData();
@@ -144,6 +158,7 @@ public class SaveData
     public int gold, manastone, crystal; // 재화
     public int bGold, bManastone; // 보상 상자 재화
     public int speedP, hpP, dmgP; // 스탯 업그레이드 포인트
+    public int nowStage, nowChapter; // 소탕 스테이지 저장
     
     // Dictionary 변수는 UtilityJson을 통한 Json 변환이 불가능하여, Key와 Value 각각을 리스트로 저장하여 저장
     public List<string> stage = new List<string>(); 

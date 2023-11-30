@@ -36,11 +36,6 @@ public class IdleEnemy : MonoBehaviour
     {
         nowEnemySprite = GetComponent<SpriteRenderer>();
         enemyDataT = CSVReader.Read("EnemyStatTable");
-        if(ClearManager.isFirst) 
-        {
-            ClearManager.ResetClear();
-            ClearManager.isFirst = false;
-        }
     }
 
     public void Start()

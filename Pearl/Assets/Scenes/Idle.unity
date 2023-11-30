@@ -15894,6 +15894,8 @@ MonoBehaviour:
     speedP: 0
     hpP: 0
     dmgP: 0
+    nowStage: 0
+    nowChapter: 0
     stage: []
     stageClear: 
     gunID: []
@@ -15903,6 +15905,7 @@ MonoBehaviour:
   goods: {fileID: 950284709}
   stat: {fileID: 110468674}
   iManager: {fileID: 1233303636}
+  enemy: {fileID: 1847329709}
 --- !u!114 &1233303636
 MonoBehaviour:
   m_ObjectHideFlags: 0

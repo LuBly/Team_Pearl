@@ -12,12 +12,11 @@ ClearManager.isClear["c1s1"] = true;를 추가해 주시면 클리어 처리 됩
 public class ClearManager
 {
     public static Dictionary<string, bool> isClear = new Dictionary<string, bool>();
-    public static bool isFirst = true; // 임시 변수 추후 세이브 관련 구현 시 교체될 예정.
     public static bool nowClear; // 전투 스테이지 클리어 보상 관리 변수
 
     public static void ResetClear()
     {
-        isClear.Add("c1s1", true);
+        isClear.Add("c1s1", false);
         isClear.Add("c1s2", false);
         isClear.Add("c1s3", false);
         isClear.Add("c1s4", false);
@@ -29,14 +28,5 @@ public class ClearManager
         isClear.Add("c3s2", false);
         isClear.Add("c3s3", false);
         isClear.Add("c3s4", false);
-    }
-
-    public static void SetAllClear()
-    {
-        List<string> key = new List<string>(isClear.Keys);
-        for(int i = 0; i < key.Count; i++)
-        {
-            isClear[key[i]] = true;
-        }
     }
 }

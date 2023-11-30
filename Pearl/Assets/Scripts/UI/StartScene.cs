@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using JetBrains.Annotations;
 
 public class StartScene : MonoBehaviour
 {
@@ -42,7 +43,25 @@ public class StartScene : MonoBehaviour
     {
         if(Input.anyKeyDown)
         {
-            LoadingScene.LoadScene("Idle");
+            if(SaveManager.isExsitSaveFile())
+            {
+                LoadingScene.LoadScene("Idle");
+            }
+            else
+            {
+                ClearManager.ResetClear();
+                DataManager.Instance.stageInfo = "c1s1";
+                DataManager.Instance.id = 101;
+                DataManager.Instance.atk = 0;
+                DataManager.Instance.gunAtk = 10;
+                DataManager.Instance.gunProficiency = 0;
+                DataManager.Instance.gunRapid = 660;
+                DataManager.Instance.health = 200;
+                DataManager.Instance.critical = 20;
+                DataManager.Instance.criticalDmg = 50;
+                DataManager.Instance.moveSpeed = 5;
+                LoadingScene.LoadScene("IdleStage");
+            }
         }
     }
 }
