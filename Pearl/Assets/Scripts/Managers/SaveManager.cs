@@ -131,5 +131,6 @@ public class SaveData
     public int speedP, hpP, dmgP; // 스탯 업그레이드 포인트
     public List<string> stage = new List<string>();
     public List<bool> stageClear = new List<bool>();
+    public List<int> gunCount = new List<int>();
 }
 
