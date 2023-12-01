@@ -11,9 +11,9 @@ using TMPro;
 public class StatUpManager : MonoBehaviour
 {
     public SaveManager sManager;
-    CharacterBase stat;
-    IngameGoods goods;
-    GameObject neg; // Not Enough Gold
+    public CharacterBase stat;
+    public IngameGoods goods;
+    public GameObject neg; // Not Enough Gold
     public TextMeshProUGUI nowSpeedText, nowDmgText, nowHpText, nowSpeedLevelText, nowDmgLevelText, nowHpLevelText, speedGoldText, dmgGoldText, hpGoldText;
     public int speedUpPoint, dmgUpPoint, hpUpPoint;
     int speedGold, dmgGold, hpGold;
@@ -21,11 +21,8 @@ public class StatUpManager : MonoBehaviour
 
     void Start()
     {
-        stat = GameObject.Find("MainChar").GetComponent<CharacterBase>(); // 변수에 MainChar 오브젝트의 CharacterBase 값 가져오기.
-        goods = GameObject.Find("Goods").GetComponent<IngameGoods>();
-        neg = GameObject.Find("Neg");
         NegDisappear();
-        speedUpPoint = stat.moveSpeed - 1; // 레벨업 포인트 초기화
+        speedUpPoint = stat.moveSpeed - 1; // 이동속도업 포인트 초기화
         dmgUpPoint = stat.atk; // 공격력업 포인트 초기화
         hpUpPoint = (stat.health - 200) % 10; //체력업 포인트 초기화
         SpeedGoldSetting();

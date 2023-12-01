@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using System;
@@ -11,7 +12,7 @@ using System;
 
 public class IdleEnemy : MonoBehaviour
 {
-    public SpriteRenderer nowEnemySprite; // 현재 적 이미지
+    public Image nowEnemySprite; // 현재 적 이미지
 
     List<Dictionary<string, object>> enemyDataT;
 
@@ -34,7 +35,6 @@ public class IdleEnemy : MonoBehaviour
 
     void Awake()
     {
-        nowEnemySprite = GetComponent<SpriteRenderer>();
         enemyDataT = CSVReader.Read("EnemyStatTable");
     }
 
@@ -80,13 +80,21 @@ public class IdleEnemy : MonoBehaviour
         nowHp = nowHp - enemyAtk;
         if(nowHp <= 0)
         {
-            if(nowStage == 1) nowStage = 1; // 1-1이하로 감소 방지
+            if(nowStage == 1)
+            {
+                if(nowChapter != 1) 
+                {
+                    nowChapter--;
+                    nowStage = 4;
+                }
+            }
             else 
             {
                 nowStage = nowStage - 1;
             }
             NowHpSet();
             SetEnemyT(nowStage);
+            backGround.BackImageChange(nowChapter);
         }
     }
 

@@ -78,6 +78,10 @@ public class SaveManager : MonoBehaviour
     void SetSaveData()
     {
         saveData.id = cBase.id;
+        saveData.atk = cBase.atk;
+        saveData.health = cBase.health;
+        saveData.moveSpeed = cBase.moveSpeed;
+        saveData.gunPro = cBase.gunProficiency;
         saveData.gold = goods.gold;
         saveData.manastone = goods.manaStone;
         saveData.crystal = goods.crystal;
@@ -95,6 +99,10 @@ public class SaveManager : MonoBehaviour
     void LoadSaveData()
     {
         cBase.id = saveData.id;
+        cBase.atk = saveData.atk;
+        cBase.health = saveData.health;
+        cBase.moveSpeed = saveData.moveSpeed;
+        cBase.gunProficiency = saveData.gunPro;
         goods.gold = saveData.gold;
         goods.manaStone = saveData.manastone;
         goods.crystal = saveData.crystal;
@@ -155,6 +163,7 @@ public class SaveManager : MonoBehaviour
 public class SaveData
 {
     public int id; // 총기 id
+    public int atk, health, moveSpeed, gunPro; // 공격력, 체력, 이동속도, 총기 숙련도
     public int gold, manastone, crystal; // 재화
     public int bGold, bManastone; // 보상 상자 재화
     public int speedP, hpP, dmgP; // 스탯 업그레이드 포인트

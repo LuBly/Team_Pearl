@@ -19,7 +19,7 @@ public class CharacterBase : MonoBehaviour
     public int criticalDmg; // 크리티컬 데미지
     public int moveSpeed; // 이동속도
 
-    void Start()
+    void Awake()
     {
         GameObject.Find("MainDisplay").GetComponent<SaveManager>().Load();
         GameObject.Find("EquipPanel").GetComponent<EquipManager>().EquipClick();
