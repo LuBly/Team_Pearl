@@ -80,12 +80,17 @@ public class IdleEnemy : MonoBehaviour
         nowHp = nowHp - enemyAtk;
         if(nowHp <= 0)
         {
-            if(nowStage == 1)
+            if(nowStage <= 1)
             {
                 if(nowChapter != 1) 
                 {
                     nowChapter--;
                     nowStage = 4;
+                }
+                else
+                {
+                    nowChapter = 1;
+                    nowStage = 1;
                 }
             }
             else 
