@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 /*
 상점 시스템 관련 스크립트 입니다. 장비 소환 및 재화를 이용한 아이템 구매 등 전반적인 기능을 모두 담당합니다.
@@ -10,20 +11,21 @@ using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
-    public IngameGoods goods;
-    public InventoryManager iManager;
-    public SaveManager sManager;
-    public TextMeshProUGUI cText, LvText;
-    public Slider gLv;
+    public IngameGoods goods; // 재화
+    public InventoryManager iManager; // 인벤토리
+    public SaveManager sManager; // 세이브
+    public TextMeshProUGUI cText, LvText; // 뽑기 횟수, 뽑기 레벨
+    public UnityEngine.UI.Slider gLv; // 뽑기 횟수 게이지
     public string gachaLevel = "Lv1"; // 뽑기 레벨
     public int gachaCount = 0; // 뽑기 횟수
+    public GameObject layout; // 뽑기 화면
 
     List<Dictionary<string, object>> gachaT = new List<Dictionary<string, object>>(); // 뽑기 표
     List<string> grade = new List<string>(); // 등급
     List<int> Lv1 = new List<int>(); // 뽑기레벨 1 확률
     List<int> Lv2 = new List<int>(); // 뽑기레벨 2 확률
     List<int> Lv3 = new List<int>(); // 뽑기레벨 3 확률
-    List<int> gLvPoint = new List<int> {100, 500};
+    List<int> gLvPoint = new List<int> {100, 500}; // 뽑기 레벨 게이지 (1, 2)
 
     void Start()
     {
@@ -39,17 +41,17 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    void TextUpdate()
+    void TextUpdate() // 뽑기 레벨 텍스트 업데이트 함수
     {
-        LvText.text = gachaLevel;
-        if(gachaLevel != "Lv3")
+        LvText.text = gachaLevel; // 현재 뽑기 레벨
+        if(gachaLevel != "Lv3") // 3레벨(MAX레벨)이 아닐경우
         {
-            cText.text = gachaCount.ToString() + " / " + gLvPoint[gachaLevel[2] - '1'].ToString();
-            gLv.maxValue = gLvPoint[gachaLevel[2] - '1'];
+            cText.text = gachaCount.ToString() + " / " + gLvPoint[gachaLevel[2] - '1'].ToString(); // 뽑기 횟수 기록
+            gLv.maxValue = gLvPoint[gachaLevel[2] - '1']; // 뽑기 횟수 게이지 설정
             gLv.minValue = 0;
             gLv.value = gachaCount;
         }
-        else
+        else // 3레벨일 경우
         {
             cText.text = "LvMAX";
             gLv.maxValue = 1;
@@ -68,11 +70,12 @@ public class ShopManager : MonoBehaviour
 
     public void Btn1Click() // 1회 소환
     {
-        int ran = Random.Range(1, 10001);
+        int ran = Random.Range(1, 10001); // 1~10000까지 숫자를 이용한 확률 구현(소수점 두자릿수까지 표현 가능)
         string nGrade = "";
-        List<string> nList = new List<string>();
+        List<string> nList = new List<string>(); // 현재 뽑기 후보 리스트(등급을 우선으로 뽑은 후, 해당 등급 장비 중 하나를 랜덤하게 뽑아서 구현)
         if(goods.crystal >= 100)
         {
+            layout.GetComponent<GridLayoutGroup>().childAlignment = TextAnchor.MiddleCenter;
             goods.crystal -= 100;
             goods.GoodsUpdate();
             switch (gachaLevel)
@@ -113,14 +116,24 @@ public class ShopManager : MonoBehaviour
                 Debug.Log("버그 발생!"); // 예외처리 필요
                 return;
             }
-            for(int i = 0; i < iManager.gunData.Count; i++)
+            for(int i = 0; i < iManager.gunData.Count; i++) // 총기 데이터 테이블에서 해당되는 등급 ID 다 갖고오기
             {
                 if(iManager.gunData[i]["Grade"].ToString() == nGrade) nList.Add(iManager.gunData[i]["GunID"].ToString());
             }
             ran = Random.Range(0, nList.Count);
-            iManager.gunList[nList[ran]] += 1;
-            gachaCount++;
-            if(gachaLevel[2] != '3' && gachaCount >= gLvPoint[gachaLevel[2] - '1'])
+            for(int i = 0; i < iManager.gunData.Count; i++)
+            {
+                if(iManager.gunData[i]["GunID"].ToString() == nList[ran]) // 총기 데이터 테이블에서 결정된 총기 Prefab 가져오기
+                {
+                    GameObject prefab = Resources.Load<GameObject>("GunPrefab/" + iManager.gunData[i]["GunPrefab"].ToString());
+                    GameObject summon = Instantiate(prefab); // 해당 총기 Prefab 생성 
+                    summon.transform.SetParent(layout.transform); // 생성된 프리펩을 Layout 밑으로 보내기
+                    break;
+                }
+            }
+            iManager.gunList[nList[ran]] += 1; // 인벤토리 총기 수 증가
+            gachaCount++; // 뽑기 횟수 증가
+            if(gachaLevel[2] != '3' && gachaCount >= gLvPoint[gachaLevel[2] - '1']) // 뽑기 레벨이 최대가 아니고, 뽑기 횟수가 승급 횟수에 도달했을경우
             {
                 gachaLevel = "Lv" + (gachaLevel[2] - '0' + 1).ToString();
                 gachaCount = 0;
@@ -134,10 +147,11 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void Btn10Click()
+    public void Btn10Click() // 10회 반복
     {
         if(goods.crystal >= 1000)
         {
+            layout.GetComponent<GridLayoutGroup>().childAlignment = TextAnchor.UpperLeft;
             for(int j = 0; j < 10; j++)
             {
                 int ran = Random.Range(1, 10001);
@@ -188,6 +202,16 @@ public class ShopManager : MonoBehaviour
                     if(iManager.gunData[i]["Grade"].ToString() == nGrade) nList.Add(iManager.gunData[i]["GunID"].ToString());
                 }
                 ran = Random.Range(0, nList.Count);
+                for(int i = 0; i < iManager.gunData.Count; i++)
+                {
+                    if(iManager.gunData[i]["GunID"].ToString() == nList[ran])
+                    {
+                        GameObject prefab = Resources.Load<GameObject>("GunPrefab/" + iManager.gunData[i]["GunPrefab"].ToString());
+                        GameObject summon = Instantiate(prefab);
+                        summon.transform.SetParent(layout.transform);
+                        break;
+                    }
+                }
                 iManager.gunList[nList[ran]] += 1;
                 gachaCount++;
                 if(gachaLevel[2] != '3' && gachaCount >= gLvPoint[gachaLevel[2] - '1'])
@@ -206,8 +230,9 @@ public class ShopManager : MonoBehaviour
 
     }
 
-    public void Btn30Click()
+    public void Btn30Click() // 30회 반복
     {
+        layout.GetComponent<GridLayoutGroup>().childAlignment = TextAnchor.UpperLeft;
         if(goods.crystal >= 3000)
         {
             for(int j = 0; j < 30; j++)
@@ -260,6 +285,16 @@ public class ShopManager : MonoBehaviour
                     if(iManager.gunData[i]["Grade"].ToString() == nGrade) nList.Add(iManager.gunData[i]["GunID"].ToString());
                 }
                 ran = Random.Range(0, nList.Count);
+                for(int i = 0; i < iManager.gunData.Count; i++)
+                {
+                    if(iManager.gunData[i]["GunID"].ToString() == nList[ran])
+                    {
+                        GameObject prefab = Resources.Load<GameObject>("GunPrefab/" + iManager.gunData[i]["GunPrefab"].ToString());
+                        GameObject summon = Instantiate(prefab);
+                        summon.transform.SetParent(layout.transform);
+                        break;
+                    }
+                }
                 iManager.gunList[nList[ran]] += 1;
                 gachaCount++;
                 if(gachaLevel[2] != '3' && gachaCount >= gLvPoint[gachaLevel[2] - '1'])
@@ -277,5 +312,13 @@ public class ShopManager : MonoBehaviour
             //크리스탈 부족
         }
 
+    }
+
+    public void NowSummonDestroy() // 현재 LayOut 안에 소환된 오브젝트 모두 삭제
+    {
+        foreach(Transform child in layout.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 }
