@@ -10,8 +10,6 @@ public class RewardBoxManager : MonoBehaviour
     void Awake()
     {
         goods = GameObject.Find("Goods").GetComponent<IngameGoods>();
-        boxGold = 0;
-        boxManaStone = 0;
     }
 
     public void GetReward()
