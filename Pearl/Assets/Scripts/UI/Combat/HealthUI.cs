@@ -6,7 +6,7 @@ using TMPro;
 public class HealthUI : MonoBehaviour
 {
     public Image healthBar;
-    public Player player;
+    public PlayerStatus player;
     public TextMeshProUGUI healthText;
     public GameManager gameManager;
     float maxHealth;

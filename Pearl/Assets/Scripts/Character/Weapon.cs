@@ -44,11 +44,11 @@ public class Weapon : MonoBehaviour
     //public Transform weaponBone;
 
     float timer = 0f;
-    Player player;
+    PlayerStatus player;
 
     private void Awake()
     {
-        player = GetComponentInParent<Player>();
+        player = GetComponentInParent<PlayerStatus>();
     }
     
     private void Start() 

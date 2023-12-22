@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class rotate : MonoBehaviour
 {
-    Player player;
+    PlayerStatus player;
     public Transform weaponBone;
 
     private void Awake()
     {
-        player = GetComponentInParent<Player>();
+        player = GetComponentInParent<PlayerStatus>();
         
     }
     void idleRotate()
