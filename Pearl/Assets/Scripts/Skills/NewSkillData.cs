@@ -12,10 +12,13 @@ public class SkillSetting
 {
     public string skillName = "";
     public int skillIdx;
+    public SkillType skillType;
     public Texture2D icon;
     public Sprite iconSprite;
     public int skillLevel = 1;
-    public Transform skillPrefabs;
+    public GameObject skillPrefabs;
+    public GameObject skillUI;
+    public GameObject Joystick;
     public AnimationClip skillAnimation;
     public float castTime = 0.5f;
     public float skillDelay = 0.3f;

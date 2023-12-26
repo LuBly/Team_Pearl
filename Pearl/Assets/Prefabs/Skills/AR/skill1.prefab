@@ -195,13 +195,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5453294836397189252}
+  - component: {fileID: 1861601027586073869}
   m_Layer: 9
   m_Name: skill1
   m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5453294836397189252
 Transform:
   m_ObjectHideFlags: 0
@@ -219,6 +220,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1861601027586073869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7137236311506836696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001aa4d00f803334f860747d243750cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillType: 1
+  continuousAtk:
+    enableTime: 0
+    attackTime: 0
+  grenadeAtk:
+    scanner: {fileID: 0}
+    skillRange: {fileID: 841901381948818571}
+    attackPoint: {fileID: 841901382198459741}
+    skillImpact: {fileID: 7868524440017745763}
+    skillJoystickMovement: {fileID: 0}
+  damage: 5
+  knockbackPower: 1
+  attackTime: 0
 --- !u!1001 &4089942420937901058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,6 +346,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e17d9a3f04750764c8c0a7a0461e4c3b, type: 3}
+--- !u!1 &7868524440017745763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6192724089161036641, guid: e17d9a3f04750764c8c0a7a0461e4c3b, type: 3}
+  m_PrefabInstance: {fileID: 4089942420937901058}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7868524440017745774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6192724089161036652, guid: e17d9a3f04750764c8c0a7a0461e4c3b, type: 3}

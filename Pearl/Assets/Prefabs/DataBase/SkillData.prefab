@@ -47,10 +47,13 @@ MonoBehaviour:
   skill:
   - skillName: 
     skillIdx: 0
+    skillType: 0
     icon: {fileID: 0}
     iconSprite: {fileID: 0}
     skillLevel: 0
     skillPrefabs: {fileID: 0}
+    skillUI: {fileID: 0}
+    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
     castTime: 0
     skillDelay: 0
@@ -61,10 +64,13 @@ MonoBehaviour:
     soundEffect: {fileID: 0}
   - skillName: Suppressive Fire Lv1
     skillIdx: 1
+    skillType: 1
     icon: {fileID: 2800000, guid: b01dc389f30e0d64eb5ade7b6933fcd0, type: 3}
     iconSprite: {fileID: 21300000, guid: b01dc389f30e0d64eb5ade7b6933fcd0, type: 3}
     skillLevel: 1
-    skillPrefabs: {fileID: 5755367692647241478, guid: 4cd2c786d49006445870322c92e2f8f1, type: 3}
+    skillPrefabs: {fileID: 6690066888769112075, guid: 4cd2c786d49006445870322c92e2f8f1, type: 3}
+    skillUI: {fileID: 0}
+    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
     castTime: 0.1
     skillDelay: 0.1
@@ -75,10 +81,13 @@ MonoBehaviour:
     soundEffect: {fileID: 0}
   - skillName: Suppressive Fire Lv2
     skillIdx: 2
+    skillType: 1
     icon: {fileID: 2800000, guid: b01dc389f30e0d64eb5ade7b6933fcd0, type: 3}
     iconSprite: {fileID: 21300000, guid: b01dc389f30e0d64eb5ade7b6933fcd0, type: 3}
     skillLevel: 2
-    skillPrefabs: {fileID: 0}
+    skillPrefabs: {fileID: 6690066888769112075, guid: 4cd2c786d49006445870322c92e2f8f1, type: 3}
+    skillUI: {fileID: 0}
+    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
     castTime: 0.1
     skillDelay: 0.1
@@ -89,10 +98,13 @@ MonoBehaviour:
     soundEffect: {fileID: 0}
   - skillName: Suppressive Fire Lv3
     skillIdx: 3
+    skillType: 1
     icon: {fileID: 2800000, guid: b01dc389f30e0d64eb5ade7b6933fcd0, type: 3}
     iconSprite: {fileID: 21300000, guid: b01dc389f30e0d64eb5ade7b6933fcd0, type: 3}
     skillLevel: 3
-    skillPrefabs: {fileID: 0}
+    skillPrefabs: {fileID: 6690066888769112075, guid: 4cd2c786d49006445870322c92e2f8f1, type: 3}
+    skillUI: {fileID: 0}
+    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
     castTime: 0.1
     skillDelay: 0.1
@@ -103,84 +115,102 @@ MonoBehaviour:
     soundEffect: {fileID: 0}
   - skillName: Plasma Grenade Lv1
     skillIdx: 4
+    skillType: 2
     icon: {fileID: 2800000, guid: 0d8eac8b998067b45ac05a271dcaa063, type: 3}
     iconSprite: {fileID: 21300000, guid: 0d8eac8b998067b45ac05a271dcaa063, type: 3}
     skillLevel: 1
-    skillPrefabs: {fileID: 0}
+    skillPrefabs: {fileID: 7137236311506836696, guid: 01766fc7833f25c4db4f752b95920624, type: 3}
+    skillUI: {fileID: 4028686966355782888, guid: 262d4e1b63eedb745a97e67032e67b63, type: 3}
+    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
     castTime: 0.1
     skillDelay: 0.1
-    coolDown: 5
+    coolDown: 5000
     description: 
     castEffect: {fileID: 0}
     sendMsg: 
     soundEffect: {fileID: 0}
   - skillName: Plasma Grenade Lv2
     skillIdx: 5
+    skillType: 2
     icon: {fileID: 2800000, guid: 0d8eac8b998067b45ac05a271dcaa063, type: 3}
     iconSprite: {fileID: 21300000, guid: 0d8eac8b998067b45ac05a271dcaa063, type: 3}
     skillLevel: 1
-    skillPrefabs: {fileID: 0}
+    skillPrefabs: {fileID: 7137236311506836696, guid: 01766fc7833f25c4db4f752b95920624, type: 3}
+    skillUI: {fileID: 4028686966355782888, guid: 262d4e1b63eedb745a97e67032e67b63, type: 3}
+    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
     castTime: 0.1
     skillDelay: 0.1
-    coolDown: 5
+    coolDown: 5000
     description: 
     castEffect: {fileID: 0}
     sendMsg: 
     soundEffect: {fileID: 0}
   - skillName: Plasma Grenade Lv3
     skillIdx: 6
+    skillType: 2
     icon: {fileID: 2800000, guid: 0d8eac8b998067b45ac05a271dcaa063, type: 3}
     iconSprite: {fileID: 21300000, guid: 0d8eac8b998067b45ac05a271dcaa063, type: 3}
     skillLevel: 1
-    skillPrefabs: {fileID: 0}
+    skillPrefabs: {fileID: 7137236311506836696, guid: 01766fc7833f25c4db4f752b95920624, type: 3}
+    skillUI: {fileID: 4028686966355782888, guid: 262d4e1b63eedb745a97e67032e67b63, type: 3}
+    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
     castTime: 0.1
     skillDelay: 0.1
-    coolDown: 5
+    coolDown: 5000
     description: 
     castEffect: {fileID: 0}
     sendMsg: 
     soundEffect: {fileID: 0}
   - skillName: Danger Close Lv1
     skillIdx: 7
+    skillType: 0
     icon: {fileID: 2800000, guid: 47efc07f65c7fe9449e63b9c516d25f5, type: 3}
     iconSprite: {fileID: 21300000, guid: 47efc07f65c7fe9449e63b9c516d25f5, type: 3}
     skillLevel: 1
     skillPrefabs: {fileID: 0}
+    skillUI: {fileID: 0}
+    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
     castTime: 0.3
     skillDelay: 0.3
-    coolDown: 9
+    coolDown: 9000
     description: 
     castEffect: {fileID: 0}
     sendMsg: "\uC544\uC9C1 \uAC1C\uBC1C\uC911\uC785\uB2C8\uB2E4."
     soundEffect: {fileID: 0}
   - skillName: Danger Close Lv2
     skillIdx: 8
+    skillType: 0
     icon: {fileID: 2800000, guid: 47efc07f65c7fe9449e63b9c516d25f5, type: 3}
     iconSprite: {fileID: 21300000, guid: 47efc07f65c7fe9449e63b9c516d25f5, type: 3}
     skillLevel: 2
     skillPrefabs: {fileID: 0}
+    skillUI: {fileID: 0}
+    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
     castTime: 0.3
     skillDelay: 0.3
-    coolDown: 9
+    coolDown: 9000
     description: 
     castEffect: {fileID: 0}
     sendMsg: "\uC544\uC9C1 \uAC1C\uBC1C\uC911\uC785\uB2C8\uB2E4."
     soundEffect: {fileID: 0}
   - skillName: Danger Close Lv3
     skillIdx: 9
+    skillType: 0
     icon: {fileID: 2800000, guid: 47efc07f65c7fe9449e63b9c516d25f5, type: 3}
     iconSprite: {fileID: 21300000, guid: 47efc07f65c7fe9449e63b9c516d25f5, type: 3}
     skillLevel: 3
     skillPrefabs: {fileID: 0}
+    skillUI: {fileID: 0}
+    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
     castTime: 0.3
     skillDelay: 0.3
-    coolDown: 9
+    coolDown: 9000
     description: 
     castEffect: {fileID: 0}
     sendMsg: "\uC544\uC9C1 \uAC1C\uBC1C\uC911\uC785\uB2C8\uB2E4."

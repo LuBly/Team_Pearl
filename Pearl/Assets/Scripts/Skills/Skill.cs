@@ -30,6 +30,7 @@ public class GrenadeAtk
 
 public enum SkillType
 {
+    defaultAtk,
     continuousAttack, // 지속 공격 ex) 제압사격
     grenadeAttack,    // 즉발 공격 ex) 수류탄
 }

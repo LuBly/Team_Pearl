@@ -49,7 +49,6 @@ public class SkillController : MonoBehaviour
         skillDatas[weaponId].skills[skillIdx].SetActive(false);
     }
 }
-
 // 총기 종류별 스킬 쿨타임을 지정할 Data배열
 [Serializable]
 public class SkillData
