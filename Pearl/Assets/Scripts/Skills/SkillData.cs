@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewSkillData : MonoBehaviour
+public class SkillData : MonoBehaviour
 {
     public SkillSetting[] skill = new SkillSetting[3];
 }
@@ -18,11 +18,9 @@ public class SkillSetting
     public int skillLevel = 1;
     public GameObject skillPrefabs;
     public GameObject skillUI;
-    public GameObject Joystick;
     public AnimationClip skillAnimation;
-    public float castTime = 0.5f;
-    public float skillDelay = 0.3f;
-    public int coolDown = 1;
+    public float coolDown = 1000;
+    public float activeTime = 100;
     public string description = "";
     public GameObject castEffect;
     public string sendMsg = "";//Send Message calling function when use this skill.

@@ -50,7 +50,16 @@ public class Skill : MonoBehaviour
     // 항상 사용
     public float damage;
     public float knockbackPower;
-    [HideInInspector] public float attackTime;  
+    [HideInInspector] public float attackTime;
+
+    private void Awake()
+    {
+        if(skillType == SkillType.grenadeAttack)
+        {
+            grenadeAtk.scanner = GameObject.FindWithTag("Player").GetComponent<Scanner>();
+            grenadeAtk.skillJoystickMovement = GameObject.FindWithTag("Skill_Grenade").GetComponent<JoystickMovement>();
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -67,19 +76,20 @@ public class Skill : MonoBehaviour
         
     }
 
-    private void OnEnable()
+    private void Start()
     {
         switch (skillType)
         {
             case SkillType.continuousAttack:
                 attackTime = continuousAtk.attackTime;
-                StartCoroutine(activeContinuousSkill());
+                StartCoroutine(ActiveContinuousSkill());
                 break;
             case SkillType.grenadeAttack:
                 bool isDrag = grenadeAtk.skillJoystickMovement.isDrag;
                 // Drag 공격
                 if (isDrag)
                 {
+                    Debug.Log("Skill Drag");
                     grenadeAtk.skillRange.SetActive(true);
                     grenadeAtk.attackPoint.SetActive(true);
                     grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = false;
@@ -88,6 +98,7 @@ public class Skill : MonoBehaviour
                 // 일반 공격
                 else
                 {
+                    Debug.Log("Skill point");
                     if (grenadeAtk.scanner.nearestTarget)
                     {
                         grenadeAtk.attackPoint.SetActive(true);
@@ -105,18 +116,18 @@ public class Skill : MonoBehaviour
         }
         
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         switch (skillType)
         {
             case SkillType.continuousAttack:
-                StopCoroutine(activeContinuousSkill());
+                StopCoroutine(ActiveContinuousSkill());
                 break;
             case SkillType.grenadeAttack:
                 grenadeAtk.attackPoint.SetActive(false);
                 grenadeAtk.skillImpact.SetActive(false);
                 grenadeAtk.skillRange.SetActive(false);
-                StopCoroutine(activeInstantSkill());
+                StopCoroutine(ActiveInstantSkill());
                 grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = true;
                 break;
         }
@@ -124,10 +135,10 @@ public class Skill : MonoBehaviour
 
     public void DragSkillFire()
     {
-        StartCoroutine(activeInstantSkill());
+        StartCoroutine(ActiveInstantSkill());
     }
 
-    IEnumerator activeInstantSkill()
+    IEnumerator ActiveInstantSkill()
     {
         grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = true;
         grenadeAtk.skillImpact.SetActive(true);
@@ -135,7 +146,7 @@ public class Skill : MonoBehaviour
         grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = false;
     }
 
-    IEnumerator activeContinuousSkill()
+    IEnumerator ActiveContinuousSkill()
     {
         // 1초 공격 피해 (기존 Collider active 상태)
         yield return new WaitForSeconds(continuousAtk.enableTime);

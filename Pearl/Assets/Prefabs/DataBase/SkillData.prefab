@@ -53,11 +53,9 @@ MonoBehaviour:
     skillLevel: 0
     skillPrefabs: {fileID: 0}
     skillUI: {fileID: 0}
-    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
-    castTime: 0
-    skillDelay: 0
     coolDown: 0
+    activeTime: 100
     description: 
     castEffect: {fileID: 0}
     sendMsg: 
@@ -70,11 +68,9 @@ MonoBehaviour:
     skillLevel: 1
     skillPrefabs: {fileID: 6690066888769112075, guid: 4cd2c786d49006445870322c92e2f8f1, type: 3}
     skillUI: {fileID: 0}
-    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
-    castTime: 0.1
-    skillDelay: 0.1
     coolDown: 5000
+    activeTime: 3000
     description: 
     castEffect: {fileID: 0}
     sendMsg: 
@@ -87,11 +83,9 @@ MonoBehaviour:
     skillLevel: 2
     skillPrefabs: {fileID: 6690066888769112075, guid: 4cd2c786d49006445870322c92e2f8f1, type: 3}
     skillUI: {fileID: 0}
-    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
-    castTime: 0.1
-    skillDelay: 0.1
     coolDown: 4500
+    activeTime: 3000
     description: 
     castEffect: {fileID: 0}
     sendMsg: 
@@ -104,11 +98,9 @@ MonoBehaviour:
     skillLevel: 3
     skillPrefabs: {fileID: 6690066888769112075, guid: 4cd2c786d49006445870322c92e2f8f1, type: 3}
     skillUI: {fileID: 0}
-    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
-    castTime: 0.1
-    skillDelay: 0.1
     coolDown: 4000
+    activeTime: 3000
     description: 
     castEffect: {fileID: 0}
     sendMsg: 
@@ -121,11 +113,9 @@ MonoBehaviour:
     skillLevel: 1
     skillPrefabs: {fileID: 7137236311506836696, guid: 01766fc7833f25c4db4f752b95920624, type: 3}
     skillUI: {fileID: 4028686966355782888, guid: 262d4e1b63eedb745a97e67032e67b63, type: 3}
-    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
-    castTime: 0.1
-    skillDelay: 0.1
     coolDown: 5000
+    activeTime: 500
     description: 
     castEffect: {fileID: 0}
     sendMsg: 
@@ -138,11 +128,9 @@ MonoBehaviour:
     skillLevel: 1
     skillPrefabs: {fileID: 7137236311506836696, guid: 01766fc7833f25c4db4f752b95920624, type: 3}
     skillUI: {fileID: 4028686966355782888, guid: 262d4e1b63eedb745a97e67032e67b63, type: 3}
-    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
-    castTime: 0.1
-    skillDelay: 0.1
     coolDown: 5000
+    activeTime: 500
     description: 
     castEffect: {fileID: 0}
     sendMsg: 
@@ -155,11 +143,9 @@ MonoBehaviour:
     skillLevel: 1
     skillPrefabs: {fileID: 7137236311506836696, guid: 01766fc7833f25c4db4f752b95920624, type: 3}
     skillUI: {fileID: 4028686966355782888, guid: 262d4e1b63eedb745a97e67032e67b63, type: 3}
-    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
-    castTime: 0.1
-    skillDelay: 0.1
     coolDown: 5000
+    activeTime: 500
     description: 
     castEffect: {fileID: 0}
     sendMsg: 
@@ -172,11 +158,9 @@ MonoBehaviour:
     skillLevel: 1
     skillPrefabs: {fileID: 0}
     skillUI: {fileID: 0}
-    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
-    castTime: 0.3
-    skillDelay: 0.3
     coolDown: 9000
+    activeTime: 100
     description: 
     castEffect: {fileID: 0}
     sendMsg: "\uC544\uC9C1 \uAC1C\uBC1C\uC911\uC785\uB2C8\uB2E4."
@@ -189,11 +173,9 @@ MonoBehaviour:
     skillLevel: 2
     skillPrefabs: {fileID: 0}
     skillUI: {fileID: 0}
-    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
-    castTime: 0.3
-    skillDelay: 0.3
     coolDown: 9000
+    activeTime: 100
     description: 
     castEffect: {fileID: 0}
     sendMsg: "\uC544\uC9C1 \uAC1C\uBC1C\uC911\uC785\uB2C8\uB2E4."
@@ -206,11 +188,9 @@ MonoBehaviour:
     skillLevel: 3
     skillPrefabs: {fileID: 0}
     skillUI: {fileID: 0}
-    Joystick: {fileID: 0}
     skillAnimation: {fileID: 0}
-    castTime: 0.3
-    skillDelay: 0.3
     coolDown: 9000
+    activeTime: 100
     description: 
     castEffect: {fileID: 0}
     sendMsg: "\uC544\uC9C1 \uAC1C\uBC1C\uC911\uC785\uB2C8\uB2E4."
