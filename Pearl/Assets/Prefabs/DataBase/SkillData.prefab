@@ -152,11 +152,11 @@ MonoBehaviour:
     soundEffect: {fileID: 0}
   - skillName: Danger Close Lv1
     skillIdx: 7
-    skillType: 0
+    skillType: 3
     icon: {fileID: 2800000, guid: 47efc07f65c7fe9449e63b9c516d25f5, type: 3}
     iconSprite: {fileID: 21300000, guid: 47efc07f65c7fe9449e63b9c516d25f5, type: 3}
     skillLevel: 1
-    skillPrefabs: {fileID: 0}
+    skillPrefabs: {fileID: 102747191258271058, guid: b7daeb6e59736fa4fb14ed56d1599ceb, type: 3}
     skillUI: {fileID: 0}
     skillAnimation: {fileID: 0}
     coolDown: 9000

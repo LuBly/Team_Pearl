@@ -16,8 +16,10 @@ public class PlayerSkill : MonoBehaviour
     public GameObject[] textPros;
     public TextMeshProUGUI[] hideSkillTimeTexts;
     public Image[] hideSkillImages;
-    public Image[] SkillImages;
-    public Transform AttackPoint;
+    public Image[] skillImages;
+    public Transform attackPoint;
+    public GameObject hud;
+    public Transform myCanvas;
 
     private bool[] isCoolTime = { false, false, false };    // 스킬 사용 중인지 확인하기 위한 bool 변수
     private float[] getSkillTimes = { 0, 0, 0 };            // 다음 스킬 사용가능 시간까지 남은 시간
@@ -72,7 +74,7 @@ public class PlayerSkill : MonoBehaviour
         }
         for (int i = 0; i < 3; i++)
         {
-            SkillImages[i].sprite = dataSkill.skill[skillIdxs[i]].iconSprite;
+            skillImages[i].sprite = dataSkill.skill[skillIdxs[i]].iconSprite;
         }
     }
     // Update is called once per frame
@@ -109,9 +111,17 @@ public class PlayerSkill : MonoBehaviour
             Debug.Log(dataSkill.skill[skillIdxs[skillIdx]].sendMsg);
             return;
         }
-        
-        GameObject cpSkillPref = Instantiate(dataSkill.skill[skillIdxs[skillIdx]].skillPrefabs, AttackPoint);
-        Destroy(cpSkillPref, dataSkill.skill[skillIdxs[skillIdx]].activeTime / 1000f);
+
+        if (dataSkill.skill[skillIdxs[skillIdx]].skillType == SkillType.snipperAttack)
+        {
+            Instantiate(dataSkill.skill[skillIdxs[skillIdx]].skillPrefabs, myCanvas);
+            hud.SetActive(false);
+        }
+        else
+        {
+            GameObject cpSkillPref = Instantiate(dataSkill.skill[skillIdxs[skillIdx]].skillPrefabs, attackPoint);
+            Destroy(cpSkillPref, dataSkill.skill[skillIdxs[skillIdx]].activeTime / 1000f);
+        }
     }
 
     public void BeginDragSkill(int skillIdx)
@@ -177,7 +187,6 @@ public class PlayerSkill : MonoBehaviour
             Debug.Log("Now Dragging, no Fire");
             return;
         }
-        Debug.Log("Pointer Down");
         ActiveSkill(idx);
         HideSkillSetting(idx);
     }

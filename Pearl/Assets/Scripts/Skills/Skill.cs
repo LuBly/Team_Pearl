@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 [Serializable]
 public class ContinuousAtk
@@ -28,11 +29,23 @@ public class GrenadeAtk
     public JoystickMovement skillJoystickMovement;
 }
 
+[Serializable]
+public class SnipperAtk
+{
+    [Header("공격 범위")]
+    public float attackRange;
+    [Header("탄창")]
+    public int ammoCnt;
+
+    public TextMeshProUGUI ammoText;
+}
+
 public enum SkillType
 {
     defaultAtk,
     continuousAttack, // 지속 공격 ex) 제압사격
     grenadeAttack,    // 즉발 공격 ex) 수류탄
+    snipperAttack,    // 범위 선택 공격 ex) 포격요청
 }
 public class Skill : MonoBehaviour
 {
@@ -47,6 +60,8 @@ public class Skill : MonoBehaviour
     [HideInInspector][SerializeField] public SkillType skillType;
     [HideInInspector][SerializeField] private ContinuousAtk continuousAtk;
     [HideInInspector][SerializeField] private GrenadeAtk grenadeAtk;
+    [HideInInspector][SerializeField] private SnipperAtk snipperAtk;
+
     // 항상 사용
     public float damage;
     public float knockbackPower;
@@ -89,7 +104,6 @@ public class Skill : MonoBehaviour
                 // Drag 공격
                 if (isDrag)
                 {
-                    Debug.Log("Skill Drag");
                     grenadeAtk.skillRange.SetActive(true);
                     grenadeAtk.attackPoint.SetActive(true);
                     grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = false;
@@ -98,7 +112,6 @@ public class Skill : MonoBehaviour
                 // 일반 공격
                 else
                 {
-                    Debug.Log("Skill point");
                     if (grenadeAtk.scanner.nearestTarget)
                     {
                         grenadeAtk.attackPoint.SetActive(true);
@@ -138,6 +151,7 @@ public class Skill : MonoBehaviour
         StartCoroutine(ActiveInstantSkill());
     }
 
+    // 즉발 공격, 데미지 처리 공식을 변경해야할 수 있다.
     IEnumerator ActiveInstantSkill()
     {
         grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = true;

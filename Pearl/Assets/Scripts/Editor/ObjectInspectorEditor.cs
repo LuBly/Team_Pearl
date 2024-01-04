@@ -37,6 +37,14 @@ public class ObjectInspectorEditor : Editor
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("grenadeAtk.skillJoystickMovement"));
                 }
                 break;
+
+            case SkillType.snipperAttack:
+                {
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.attackRange"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.ammoCnt"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.ammoText"));
+                }
+                break;
         }
 
         // 변경된 프로퍼티를 저장해줍니다.
