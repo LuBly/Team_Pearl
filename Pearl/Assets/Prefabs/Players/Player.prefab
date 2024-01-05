@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403675030743335915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.8, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -352,10 +352,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  SkillImages:
+  skillImages:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  attackPoint: {fileID: 4875350861358000385}
+  hud: {fileID: 0}
+  myCanvas: {fileID: 0}
 --- !u!1001 &3705737015610700074
 PrefabInstance:
   m_ObjectHideFlags: 0

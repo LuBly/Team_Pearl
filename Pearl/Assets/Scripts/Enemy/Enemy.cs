@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.FindWithTag("GM").GetComponent<GameManager>();
         anim = GetComponent<Animator>();
         rigid = GetComponentInParent<Rigidbody2D>();
         originalTransform = GetComponentInParent<Transform>();
@@ -193,6 +193,22 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    public void TakeDamage(float damage, float knockbackPower)
+    {
+        health -= damage;
+        this.knockbackPower = knockbackPower;
+        if (health > 0)
+        {
+            Hit();
+        }
+
+        else
+        {
+            // Die
+            Dead();
+        }
+    }
+
     IEnumerator skillAttack(Collider2D collision)
     {
         isSkillAttack = false;

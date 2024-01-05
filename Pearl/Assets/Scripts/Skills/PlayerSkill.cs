@@ -115,7 +115,6 @@ public class PlayerSkill : MonoBehaviour
         if (dataSkill.skill[skillIdxs[skillIdx]].skillType == SkillType.snipperAttack)
         {
             Instantiate(dataSkill.skill[skillIdxs[skillIdx]].skillPrefabs, myCanvas);
-            hud.SetActive(false);
         }
         else
         {
@@ -187,8 +186,13 @@ public class PlayerSkill : MonoBehaviour
             Debug.Log("Now Dragging, no Fire");
             return;
         }
+        
         ActiveSkill(idx);
         HideSkillSetting(idx);
+        if(dataSkill.skill[skillIdxs[idx]].skillType == SkillType.snipperAttack)
+        {
+            hud.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+        }
     }
     void OnBeginDrag(PointerEventData data, int idx)
     {

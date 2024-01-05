@@ -41,8 +41,11 @@ public class ObjectInspectorEditor : Editor
             case SkillType.snipperAttack:
                 {
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.attackRange"));
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.ammoCnt"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.fullAmmo"));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.ammoText"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.castTime"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.targetDeltaTime"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.fireEffect"));
                 }
                 break;
         }

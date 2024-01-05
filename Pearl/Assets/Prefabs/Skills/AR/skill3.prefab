@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 102747191258271061}
   - component: {fileID: 102747191258271060}
   - component: {fileID: 102747191258271062}
+  - component: {fileID: 1420243871}
   m_Layer: 9
   m_Name: skill3
   m_TagString: Skill
@@ -26,7 +27,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102747191258271058}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -70,11 +71,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 53d7cf26f104b3645bd513691464f49d, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -102,12 +103,49 @@ MonoBehaviour:
     skillImpact: {fileID: 0}
     skillJoystickMovement: {fileID: 0}
   snipperAtk:
-    attackRange: 5
-    ammoCnt: 5
+    attackRange: 1.5
+    fullAmmo: 5
+    curAmmo: 0
+    castTime: 1
+    targetDeltaTime: 0.15
+    fireEffect: {fileID: 8038344524183138613, guid: 0277167a12290af47801444830a2be97, type: 3}
     ammoText: {fileID: 102747192187609390}
+    fillImage: {fileID: 0}
   damage: 5
   knockbackPower: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
   attackTime: 0
+--- !u!114 &1420243871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102747191258271058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 102747191258271062}
+          m_TargetAssemblyTypeName: Skill, Assembly-CSharp
+          m_MethodName: TouchPointAttack
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &102747191890425177
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +293,7 @@ GameObject:
   - component: {fileID: 102747192070343924}
   - component: {fileID: 102747192070343923}
   - component: {fileID: 102747192070343922}
+  - component: {fileID: 3314207913581336879}
   m_Layer: 9
   m_Name: CancleButton
   m_TagString: Untagged
@@ -364,19 +403,36 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 102747192070343923}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 102747191258271058}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &3314207913581336879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102747192070343920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 102747191258271062}
+          m_TargetAssemblyTypeName: Skill, Assembly-CSharp
+          m_MethodName: DeActivateSkill
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &102747192187609388
 GameObject:
   m_ObjectHideFlags: 0

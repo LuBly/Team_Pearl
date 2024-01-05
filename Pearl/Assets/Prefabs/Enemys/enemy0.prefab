@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 2530956123773942366}
   - component: {fileID: 5226288990818992072}
   - component: {fileID: 1556375988868048630}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -188,6 +188,7 @@ MonoBehaviour:
   target: {fileID: 0}
   hpBackground: {fileID: 6054748599551748869}
   hpPercent: {fileID: 6054748599880146347}
+  gameManager: {fileID: 0}
 --- !u!1 &4839606553373449741
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4839606553373449743}
   - component: {fileID: 1479216101124255166}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: enemy0
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -253,7 +254,7 @@ GameObject:
   - component: {fileID: 6054748599551748870}
   - component: {fileID: 6054748599551748864}
   - component: {fileID: 6054748599551748871}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +331,7 @@ GameObject:
   - component: {fileID: 6054748599880146346}
   - component: {fileID: 6054748599880146260}
   - component: {fileID: 6054748599880146347}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hpPercent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +408,7 @@ GameObject:
   - component: {fileID: 6054748599889644612}
   - component: {fileID: 6054748599889644635}
   - component: {fileID: 6054748599889644634}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +506,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6054748600031064085}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HPBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

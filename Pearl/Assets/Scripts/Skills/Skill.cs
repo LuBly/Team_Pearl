@@ -1,8 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using TMPro;
+using System.Runtime.CompilerServices;
 
 [Serializable]
 public class ContinuousAtk
@@ -35,9 +36,18 @@ public class SnipperAtk
     [Header("공격 범위")]
     public float attackRange;
     [Header("탄창")]
-    public int ammoCnt;
+    public int fullAmmo;
+    public int curAmmo;
+    [Header("영역 전개 시간")]
+    public float castTime;
 
+    [Header("느려지는 정도 _ 낮을 수록 많이 느려집니다.")]
+    [Range(0f, 1f)]
+    public float targetDeltaTime;
+
+    public GameObject fireEffect;
     public TextMeshProUGUI ammoText;
+    public Image fillImage;
 }
 
 public enum SkillType
@@ -65,7 +75,10 @@ public class Skill : MonoBehaviour
     // 항상 사용
     public float damage;
     public float knockbackPower;
+    public LayerMask enemyLayer;
     [HideInInspector] public float attackTime;
+
+    
 
     private void Awake()
     {
@@ -73,6 +86,17 @@ public class Skill : MonoBehaviour
         {
             grenadeAtk.scanner = GameObject.FindWithTag("Player").GetComponent<Scanner>();
             grenadeAtk.skillJoystickMovement = GameObject.FindWithTag("Skill_Grenade").GetComponent<JoystickMovement>();
+        }
+    }
+    private void Update()
+    {
+        if (skillType == SkillType.snipperAttack)
+        { 
+            snipperAtk.ammoText.text = snipperAtk.curAmmo.ToString() + " / " + snipperAtk.fullAmmo.ToString();
+            if (snipperAtk.curAmmo == 0)
+            {
+                DeActivateSkill();
+            }
         }
     }
 
@@ -99,6 +123,7 @@ public class Skill : MonoBehaviour
                 attackTime = continuousAtk.attackTime;
                 StartCoroutine(ActiveContinuousSkill());
                 break;
+
             case SkillType.grenadeAttack:
                 bool isDrag = grenadeAtk.skillJoystickMovement.isDrag;
                 // Drag 공격
@@ -126,6 +151,12 @@ public class Skill : MonoBehaviour
                     }
                 }
                 break;
+
+            case SkillType.snipperAttack:
+                snipperAtk.curAmmo = snipperAtk.fullAmmo;
+                snipperAtk.fillImage = this.GetComponent<Image>();
+                StartCoroutine(ActiveArea());
+                break;
         }
         
     }
@@ -146,6 +177,29 @@ public class Skill : MonoBehaviour
         }
     }
 
+    public void TouchPointAttack()
+    {
+        Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        snipperAtk.curAmmo--;
+        // touchPos에 이펙트 생성 및 데미지
+        Instantiate(snipperAtk.fireEffect, touchPos, Quaternion.identity, transform);
+
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(touchPos, snipperAtk.attackRange, enemyLayer);
+        foreach(Collider2D hitCollider in hitColliders)
+        {
+            Enemy enemy = hitCollider.GetComponentInChildren<Enemy>();
+            if(enemy != null)
+            {
+                enemy.TakeDamage(damage, knockbackPower);
+            }
+        }
+    }
+    public void DeActivateSkill()
+    {
+        Destroy(this.gameObject);
+        GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().hud.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        Time.timeScale = 1f;
+    }
     public void DragSkillFire()
     {
         StartCoroutine(ActiveInstantSkill());
@@ -170,5 +224,21 @@ public class Skill : MonoBehaviour
         yield return new WaitForSeconds(continuousAtk.enableTime);
         gameObject.GetComponent<PolygonCollider2D>().enabled = true;
 
+    }
+
+    IEnumerator ActiveArea()
+    {
+        float elapsedTime = 0f;
+        float startFillAmount = 0f;
+        float targetFillAmount = 1.1f; // 목표 fillAmount
+
+        Time.timeScale = snipperAtk.targetDeltaTime;
+
+        while (elapsedTime < snipperAtk.castTime)
+        {
+            snipperAtk.fillImage.fillAmount = Mathf.Lerp(startFillAmount, targetFillAmount, elapsedTime / snipperAtk.castTime);
+            elapsedTime += Time.deltaTime * (1 / Time.timeScale); // Time.timeScale 고려
+            yield return null; // 한 프레임 기다립니다.
+        }
     }
 }

@@ -11,6 +11,7 @@ public class TimerUI : MonoBehaviour
     float sec;
     public TextMeshProUGUI timerText;
     public GameManager gameManager;
+
     private void Start()
     {
         LimitTime = gameManager.LimitTime;
