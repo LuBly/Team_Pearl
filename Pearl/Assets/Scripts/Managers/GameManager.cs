@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public PoolManager pool;
     public Spawner spawner;
-    public Player player;
+    public PlayerStatus player;
     public Weapon weapon; // player의 무기정보를 가져올 변수
     public GameObject hud;
     public GameObject PauseMenu;

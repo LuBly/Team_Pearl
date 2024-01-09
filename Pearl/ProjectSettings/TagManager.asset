@@ -9,6 +9,8 @@ TagManager:
   - Bullet
   - Gun
   - Skill
+  - Skill_Grenade
+  - GM
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Enemy
   - Bullet
   - Skill
-  - 
+  - EnemyBoundary
   - 
   - 
   - 

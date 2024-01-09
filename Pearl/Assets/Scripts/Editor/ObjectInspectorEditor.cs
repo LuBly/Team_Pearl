@@ -37,6 +37,26 @@ public class ObjectInspectorEditor : Editor
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("grenadeAtk.skillJoystickMovement"));
                 }
                 break;
+
+            case SkillType.snipperAttack:
+                {
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.attackRange"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.fullAmmo"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.ammoText"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.castTime"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.targetDeltaTime"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("snipperAtk.fireEffect"));
+                }
+                break;
+
+            case SkillType.autoAttack:
+                {
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("autoAtk.scanner"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("autoAtk.skillRange"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("autoAtk.attackDelay"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("autoAtk.bulletIdx"));
+                }
+                break;
         }
 
         // 변경된 프로퍼티를 저장해줍니다.

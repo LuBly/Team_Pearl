@@ -14,6 +14,11 @@ public class JoystickMovement : MonoBehaviour
 
     void Start()
     {
+        if(smallStick == null || bGStick == null)
+        {
+            bGStick = transform.Find("Joystick(Clone)").gameObject;
+            smallStick = bGStick.transform.Find("stick").gameObject;
+        }
         stickRadius = bGStick.gameObject.GetComponent<RectTransform>().sizeDelta.y / 2;
     }
 
@@ -52,7 +57,7 @@ public class JoystickMovement : MonoBehaviour
         }
     }
     
-    public void OnEndDrag()
+    public void EndDrag()
     {
         isDrag = false;
         joyVec = Vector3.zero;
