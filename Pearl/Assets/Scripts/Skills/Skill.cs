@@ -176,7 +176,7 @@ public class Skill : MonoBehaviour
                         grenadeAtk.skillRange.transform.position
                         + grenadeAtk.skillJoystickMovement.joyVec
                         * grenadeAtk.skillJoystickMovement.stickDistance
-                        / 40f;
+                        / 20f;
                 }
                 break;
 
