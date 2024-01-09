@@ -9,15 +9,16 @@ public class Scanner : MonoBehaviour
      * 가장 가까운 적에게 공격
     */
 
-    public float scanRange;         // 범위
+    public float scanRange = 0f;    // 범위
     public LayerMask targetLayer;   // 레이어
-    public RaycastHit2D[] targets;  // 스캔 결과 배열
     public Transform nearestTarget; // 가장 가까운 타겟
 
-    void FixedUpdate()
+    Collider2D[] targets;  // 스캔 결과 배열
+
+    void Update()
     {
         //범위 탐색을 시작할 위치, 원의 반지름, 범위 탐색 방향, 범위 탐색 길이, 대상 레이어
-        targets=Physics2D.CircleCastAll(transform.position,scanRange,Vector2.zero,0,targetLayer);
+        targets = Physics2D.OverlapCircleAll(transform.position, scanRange, targetLayer);
         nearestTarget = GetNearest();
     }
 
@@ -25,8 +26,7 @@ public class Scanner : MonoBehaviour
     {
         Transform result = null;
         float diff = 3000;//비교 기준
-
-        foreach (RaycastHit2D target in targets)
+        foreach (Collider2D target in targets)
         {
             Vector3 myPos = transform.position;
             Vector3 targetPos = target.transform.position;

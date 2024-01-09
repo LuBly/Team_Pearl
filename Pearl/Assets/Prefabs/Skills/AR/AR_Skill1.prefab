@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2570372220643328756}
   - component: {fileID: 2570372220643328757}
   m_Layer: 9
-  m_Name: skill1
+  m_Name: AR_Skill1
   m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -195,3 +195,18 @@ MonoBehaviour:
     castEffect: {fileID: 0}
     sendMsg: "\uC544\uC9C1 \uAC1C\uBC1C\uC911\uC785\uB2C8\uB2E4."
     soundEffect: {fileID: 0}
+  - skillName: Dron Support Lv1
+    skillIdx: 10
+    skillType: 4
+    icon: {fileID: 0}
+    iconSprite: {fileID: 0}
+    skillLevel: 1
+    skillPrefabs: {fileID: 7075224627229107478, guid: 27be9f68a06caa44bafc100685903d6b, type: 3}
+    skillUI: {fileID: 0}
+    skillAnimation: {fileID: 0}
+    coolDown: 0
+    activeTime: 0
+    description: 
+    castEffect: {fileID: 0}
+    sendMsg: "\uC544\uC9C1 \uAC1C\uBC1C\uC911\uC785\uB2C8\uB2E4."
+    soundEffect: {fileID: 0}

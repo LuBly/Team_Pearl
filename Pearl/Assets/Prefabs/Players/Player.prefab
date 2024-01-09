@@ -328,6 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   database: {fileID: 6356238079560136024, guid: 8396b810f6f208445a4ff3d587e9285b, type: 3}
   skillIdxs: 010000000400000007000000
+  autoSkillIdxs: 0a0000000d000000
   skillFolder:
   - {fileID: 0}
   - {fileID: 0}

@@ -8,8 +8,12 @@ public class PlayerSkill : MonoBehaviour
 {
     public GameObject database;
 
+    [Header("Active Skill")]
     public int[] skillIdxs = new int[3];
-
+    
+    [Header("Auto Fire Skill")]
+    public int[] autoSkillIdxs = new int[2];
+    
     public GameObject[] skillFolder;
     public GameObject[] skillButtons;
     public GameObject[] hideSkillButtons;
@@ -76,6 +80,8 @@ public class PlayerSkill : MonoBehaviour
         {
             skillImages[i].sprite = dataSkill.skill[skillIdxs[i]].iconSprite;
         }
+
+
     }
     // Update is called once per frame
     void Update()

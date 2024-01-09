@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1801452221844734595}
   - component: {fileID: 8929679276123907347}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Boundary
   m_TagString: Enemy
   m_Icon: {fileID: 0}
