@@ -136,6 +136,24 @@ MonoBehaviour:
     attackPoint: {fileID: 0}
     skillImpact: {fileID: 0}
     skillJoystickMovement: {fileID: 0}
+  snipperAtk:
+    attackRange: 0
+    fullAmmo: 0
+    curAmmo: 0
+    castTime: 0
+    targetDeltaTime: 0
+    fireEffect: {fileID: 0}
+    ammoText: {fileID: 0}
+    fillImage: {fileID: 0}
+  autoAtk:
+    scanner: {fileID: 0}
+    skillRange: 0
+    attackDelay: 0
+    bulletIdx: 0
   damage: 1
   knockbackPower: 0.5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isStopFire: 1
   attackTime: 0.2

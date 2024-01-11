@@ -261,6 +261,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 0
+  isStopFire: 1
   attackTime: 0
 --- !u!1001 &4089942420937901058
 PrefabInstance:

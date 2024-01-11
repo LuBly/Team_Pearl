@@ -36,8 +36,20 @@ public class PlayerSkill : MonoBehaviour
     }
     void Start()
     {
+        try
+        {
+            for (int i = 0; i < autoSkillIdxs.Length; i++)
+            {
+                Instantiate(dataSkill.skill[autoSkillIdxs[i]].skillPrefabs, this.transform);
+            }
+        }
+        catch
+        {
+            Debug.LogError("Skill Index Error, Skill Idx를 DB와 교차검증해봐주세요.");
+        }
+    
         // 이벤트 트리거 생성
-        for(int i = 0; i < skillButtons.Length; i++)
+        for (int i = 0; i < skillButtons.Length; i++)
         {
             EventTrigger eventTrigger = skillButtons[i].AddComponent<EventTrigger>();
             int index = i;

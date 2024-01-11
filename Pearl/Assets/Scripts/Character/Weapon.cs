@@ -58,32 +58,36 @@ public class Weapon : MonoBehaviour
     
     private void Update()
     {
-        switch (weaponIdx)
+        // 시스템 상으로 StopFire이 아닐 경우에만 총기 발사
+        if (!GameObject.FindWithTag("GM").GetComponent<GameManager>().isStopFire)
         {
-            case (int)weaponType.AR:
-                timer += Time.deltaTime;
-                if (timer > gunRapid)
-                {
-                    RifleFire();
-                    timer = 0f;
-                }
-                break;
-            case (int)weaponType.SG:
-                timer += Time.deltaTime;
-                if (timer > gunRapid)
-                {
-                    ShotGunFire();
-                    timer = 0f;
-                }
-                break;
-            case (int)weaponType.SR:
-                timer += Time.deltaTime;
-                if (timer > gunRapid)
-                {
-                    RifleFire();
-                    timer = 0f;
-                }
-                break;
+            switch (weaponIdx)
+            {
+                case (int)weaponType.AR:
+                    timer += Time.deltaTime;
+                    if (timer > gunRapid)
+                    {
+                        RifleFire();
+                        timer = 0f;
+                    }
+                    break;
+                case (int)weaponType.SG:
+                    timer += Time.deltaTime;
+                    if (timer > gunRapid)
+                    {
+                        ShotGunFire();
+                        timer = 0f;
+                    }
+                    break;
+                case (int)weaponType.SR:
+                    timer += Time.deltaTime;
+                    if (timer > gunRapid)
+                    {
+                        RifleFire();
+                        timer = 0f;
+                    }
+                    break;
+            }
         }
     }
 

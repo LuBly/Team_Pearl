@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     [Header("목표 처치 수")]
     public int targetKillCount;
 
+    [Header("일반 공격 시전 (true = 멈춤, false = 공격")]
+    public bool isStopFire = false;
+
     public bool isFail = false;
     public bool isClear = false;
     // Fail의 조건

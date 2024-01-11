@@ -111,11 +111,17 @@ MonoBehaviour:
     fireEffect: {fileID: 8038344524183138613, guid: 0277167a12290af47801444830a2be97, type: 3}
     ammoText: {fileID: 102747192187609390}
     fillImage: {fileID: 0}
+  autoAtk:
+    scanner: {fileID: 0}
+    skillRange: 0
+    attackDelay: 0
+    bulletIdx: 0
   damage: 5
   knockbackPower: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  isStopFire: 1
   attackTime: 0
 --- !u!114 &1420243871
 MonoBehaviour:

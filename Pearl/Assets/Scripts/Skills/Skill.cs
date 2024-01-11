@@ -68,7 +68,7 @@ public enum SkillType
     continuousAttack, // 지속 공격 ex) 제압사격
     grenadeAttack,    // 즉발 공격 ex) 수류탄
     snipperAttack,    // 범위 선택 공격 ex) 포격요청
-    autoAttack,
+    autoAttack,       // 자동 공격 ex) 드론 공격
 }
 public class Skill : MonoBehaviour
 {
@@ -90,6 +90,7 @@ public class Skill : MonoBehaviour
     public float damage;
     public float knockbackPower;
     public LayerMask enemyLayer;
+    public bool isStopFire;
     [HideInInspector] public float attackTime;
 
     // 자동공격 때 사용할 쿨타임
@@ -108,6 +109,7 @@ public class Skill : MonoBehaviour
             case SkillType.autoAttack:
                 autoAtk.scanner.scanRange = autoAtk.skillRange;
                 autoAtk.scanner.targetLayer = enemyLayer;
+                curTime = 0;
                 //Dev Debugging
                 transform.Find("SkillRange").GetComponent<Transform>().localScale = new Vector3(autoAtk.skillRange * 4, autoAtk.skillRange * 4, 1);
                 break;
@@ -116,6 +118,10 @@ public class Skill : MonoBehaviour
 
     private void Start()
     {
+        if (isStopFire)
+        {
+            GameObject.FindWithTag("GM").GetComponent<GameManager>().isStopFire = true;
+        }
         switch (skillType)
         {
             case SkillType.continuousAttack:
@@ -158,7 +164,6 @@ public class Skill : MonoBehaviour
                 break;
 
             case SkillType.autoAttack:
-                curTime = autoAtk.attackDelay;
                 break;
         }
     }
@@ -205,6 +210,7 @@ public class Skill : MonoBehaviour
     }
     private void OnDestroy()
     {
+        GameObject.FindWithTag("GM").GetComponent<GameManager>().isStopFire = false;
         switch (skillType)
         {
             case SkillType.continuousAttack:
