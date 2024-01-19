@@ -28,8 +28,6 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rigid;
     Transform trans;
     Transform originalTransform;
-    Vector3 orig = new Vector3(1, 1, 0);
-    Vector3 flipOrig = new Vector3(-1, 1, 0);
     WaitForFixedUpdate wait;
 
     private void Awake()
@@ -63,17 +61,13 @@ public class Enemy : MonoBehaviour
         if (distance > 0.05f)
         {
             //캐릭터가 몬스터 기준 왼쪽에 있는 경우 scale 그대로
-            if (target.position.x < rigid.position.x)
-            {
-                trans.transform.localScale = orig;
-                hpBackground.transform.localScale = orig;
-            }
             //캐릭터가 몬스터 기준 오른쪽에 있는 경우 scale * -1
-            else
+            if (target.position.x > rigid.position.x)
             {
-                trans.transform.localScale = flipOrig;
-                hpBackground.transform.localScale = flipOrig;
+                trans.transform.localScale = new Vector3(-trans.transform.localScale.x, trans.transform.localScale.y, trans.transform.localScale.z);
+                hpBackground.transform.localScale = new Vector3(-hpBackground.transform.localScale.x, hpBackground.transform.localScale.y, hpBackground.transform.localScale.z); ;
             }
+            
         }
     }
 
