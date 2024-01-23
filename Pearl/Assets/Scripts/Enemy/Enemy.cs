@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     Transform trans;
     Transform originalTransform;
     WaitForFixedUpdate wait;
-
+    Vector3 EnemyOrig, EnemyFlip, HpOrig, HpFlip;
     private void Awake()
     {
         gameManager = GameObject.FindWithTag("GM").GetComponent<GameManager>();
@@ -38,6 +38,10 @@ public class Enemy : MonoBehaviour
         originalTransform = GetComponentInParent<Transform>();
         trans = GetComponent<Transform>();
         wait = new WaitForFixedUpdate();
+        EnemyOrig = new Vector3(trans.transform.localScale.x, trans.transform.localScale.y, trans.transform.localScale.z);
+        EnemyFlip = new Vector3(-trans.transform.localScale.x, trans.transform.localScale.y, trans.transform.localScale.z);
+        HpOrig = new Vector3(hpBackground.transform.localScale.x, hpBackground.transform.localScale.y, hpBackground.transform.localScale.z); ;
+        HpFlip = new Vector3(-hpBackground.transform.localScale.x, hpBackground.transform.localScale.y, hpBackground.transform.localScale.z); ;
     }
 
     private void FixedUpdate()
@@ -64,8 +68,13 @@ public class Enemy : MonoBehaviour
             //캐릭터가 몬스터 기준 오른쪽에 있는 경우 scale * -1
             if (target.position.x > rigid.position.x)
             {
-                trans.transform.localScale = new Vector3(-trans.transform.localScale.x, trans.transform.localScale.y, trans.transform.localScale.z);
-                hpBackground.transform.localScale = new Vector3(-hpBackground.transform.localScale.x, hpBackground.transform.localScale.y, hpBackground.transform.localScale.z); ;
+                trans.transform.localScale = EnemyFlip;
+                hpBackground.transform.localScale = HpOrig;
+            }
+            else
+            {
+                trans.transform.localScale = EnemyOrig;
+                hpBackground.transform.localScale = HpFlip;
             }
             
         }
