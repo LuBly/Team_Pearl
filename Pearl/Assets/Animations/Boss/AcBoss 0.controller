@@ -156,7 +156,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AcEnemy 0
+  m_Name: AcBoss 0
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Hit
@@ -204,7 +204,7 @@ AnimatorStateMachine:
     m_Position: {x: 30, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6060092035430956476}
-    m_Position: {x: 310, y: 140, z: 0}
+    m_Position: {x: 300, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7721464105759413891}
     m_Position: {x: 30, y: -30, z: 0}
@@ -270,7 +270,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 166613992c9902f45963c19d05231fc1, type: 2}
+  m_Motion: {fileID: 7400000, guid: bb6aa34a692c0f649b221cee2e9aac1b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -297,7 +297,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 555b3a9f3208a8a4aa4c2bf854386d5d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 28478ba90b1f6894ca487846b8539fd9, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

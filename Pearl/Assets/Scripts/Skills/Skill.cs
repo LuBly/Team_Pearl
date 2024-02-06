@@ -95,10 +95,12 @@ public class Skill : MonoBehaviour
 
     // 자동공격 때 사용할 쿨타임
     float curTime;
-    
+
+    GameManager gameManager;
 
     private void Awake()
     {
+        gameManager = GameObject.FindWithTag("GM").GetComponent<GameManager>();
         switch (skillType)
         {
             case SkillType.grenadeAttack :
@@ -120,7 +122,7 @@ public class Skill : MonoBehaviour
     {
         if (isStopFire)
         {
-            GameObject.FindWithTag("GM").GetComponent<GameManager>().isStopFire = true;
+            gameManager.isStopFire = true;
         }
         switch (skillType)
         {
@@ -210,7 +212,7 @@ public class Skill : MonoBehaviour
     }
     private void OnDestroy()
     {
-        GameObject.FindWithTag("GM").GetComponent<GameManager>().isStopFire = false;
+        gameManager.isStopFire = false;
         switch (skillType)
         {
             case SkillType.continuousAttack:
@@ -246,9 +248,7 @@ public class Skill : MonoBehaviour
     public void DeActivateSkill()
     {
         Destroy(this.gameObject);
-        GameObject.FindWithTag("GM")
-                  .GetComponent<GameManager>().hud
-                  .GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        gameManager.hud.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         Time.timeScale = 1f;
     }
     public void DragSkillFire()

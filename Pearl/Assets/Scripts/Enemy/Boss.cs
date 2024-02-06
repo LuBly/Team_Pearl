@@ -5,12 +5,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Boss : MonoBehaviour
 {
     [Header("몬스터가 따라갈 Player")]
     public Rigidbody2D target;
-    [Header("체력바 BackGround")]
-    public GameObject hpBackground;
+
     [Header("체력바")]
     public Image hpPercent;
     
@@ -30,22 +29,22 @@ public class Enemy : MonoBehaviour
     Transform originalTransform;
     WaitForFixedUpdate wait;
     GameManager gameManager;
-    Vector3 EnemyOrig, EnemyFlip, HpOrig, HpFlip;
+    Vector3 EnemyOrig, EnemyFlip;
     
     private void Awake()
     {
         gameManager = GameObject.FindWithTag("GM").GetComponent<GameManager>();
-        anim = GetComponent<Animator>();
-        rigid = GetComponentInParent<Rigidbody2D>();
-        originalTransform = GetComponentInParent<Transform>();
-        trans = GetComponent<Transform>();
+        anim = GetComponentInChildren<Animator>();
+        rigid = GetComponent<Rigidbody2D>();
+        originalTransform = GetComponent<Transform>();
+        trans = GetComponentInChildren<Transform>();
         wait = new WaitForFixedUpdate();
+    }
+    private void Start()
+    {
         EnemyOrig = new Vector3(trans.transform.localScale.x, trans.transform.localScale.y, trans.transform.localScale.z);
         EnemyFlip = new Vector3(-trans.transform.localScale.x, trans.transform.localScale.y, trans.transform.localScale.z);
-        HpOrig = new Vector3(hpBackground.transform.localScale.x, hpBackground.transform.localScale.y, hpBackground.transform.localScale.z); ;
-        HpFlip = new Vector3(-hpBackground.transform.localScale.x, hpBackground.transform.localScale.y, hpBackground.transform.localScale.z); ;
     }
-
     private void FixedUpdate()
     {
         //Enemy가 죽거나 피격당하고 있을 때 이동 Update를 잠시 멈춘다.
@@ -71,12 +70,10 @@ public class Enemy : MonoBehaviour
             if (target.position.x > rigid.position.x)
             {
                 trans.transform.localScale = EnemyFlip;
-                hpBackground.transform.localScale = HpOrig;
             }
             else
             {
                 trans.transform.localScale = EnemyOrig;
-                hpBackground.transform.localScale = HpFlip;
             }
             
         }
