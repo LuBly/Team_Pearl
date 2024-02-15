@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3766864753073381362}
   - component: {fileID: 8562044538387465}
   - component: {fileID: 2530956123773942366}
-  - component: {fileID: 5226288990818992072}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -72,9 +71,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 18
+  m_SortingLayerID: -1186330425
+  m_SortingLayer: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2092964637, guid: 4104ee12b4d54f54b91b3ba875787837, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -106,22 +105,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!70 &5226288990818992072
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767341101188882709}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.1, y: 1.1}
-  m_Direction: 0
 --- !u!1 &4839606553373449741
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4839606553373449743}
   - component: {fileID: 1479216101124255166}
+  - component: {fileID: 4538206514776809320}
   - component: {fileID: 140269449405142109}
   m_Layer: 7
   m_Name: boss0
@@ -177,6 +161,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!70 &4538206514776809320
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4839606553373449741}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.1, y: 1.1}
+  m_Direction: 0
 --- !u!114 &140269449405142109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,4 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  hpPercent: {fileID: 0}
+  speed: 0
+  health: 0
+  maxHealth: 0
+  damage: 0

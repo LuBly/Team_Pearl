@@ -10,12 +10,9 @@ public class Boss : MonoBehaviour
     [Header("몬스터가 따라갈 Player")]
     public Rigidbody2D target;
 
-    [Header("체력바")]
-    public Image hpPercent;
-
     [Header("이동속도")]
     public float speed;
-
+    
     [Header("현재 체력")]
     public float health;
 
@@ -51,6 +48,9 @@ public class Boss : MonoBehaviour
     {
         EnemyOrig = new Vector3(trans.transform.localScale.x, trans.transform.localScale.y, trans.transform.localScale.z);
         EnemyFlip = new Vector3(-trans.transform.localScale.x, trans.transform.localScale.y, trans.transform.localScale.z);
+        target = gameManager.player.GetComponent<Rigidbody2D>();
+        isLive = true;
+        health = maxHealth;
     }
     private void FixedUpdate()
     {
@@ -84,13 +84,6 @@ public class Boss : MonoBehaviour
             }
             
         }
-    }
-
-    private void OnEnable()
-    {
-        target = gameManager.player.GetComponent<Rigidbody2D>();
-        isLive = true;
-        health = maxHealth;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -195,6 +188,7 @@ public class Boss : MonoBehaviour
     }
     public void TakeDamage(float damage, float knockbackPower)
     {
+        Debug.Log("IM hit");
         health -= damage;
         this.knockbackPower = knockbackPower;
         if (health > 0)
@@ -216,9 +210,6 @@ public class Boss : MonoBehaviour
         knockbackPower = collision.GetComponent<Skill>().knockbackPower;
         if (health > 0)
         {
-            // Live, HitAction
-            // 몬스터의 체력바 조정
-            hpPercent.fillAmount = health / maxHealth;
             // 피격시 몬스터 Hit animation 추가
             anim.SetTrigger("Hit");
             StartCoroutine("KnockBack");
@@ -268,8 +259,7 @@ public class Boss : MonoBehaviour
         isLive = false;
         StopCoroutine("EnemyAttack");
         isPlayerInRange = true;
-        gameObject.SetActive(false);
-        gameManager.spawner.enemyCount--;
+        Destroy(this.gameObject);
         gameManager.killCount++;
     }
 }
