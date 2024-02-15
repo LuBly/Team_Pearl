@@ -12,14 +12,21 @@ public class Boss : MonoBehaviour
 
     [Header("체력바")]
     public Image hpPercent;
-    
 
-    private bool isLive;
-    private float speed;
-    private float health;
-    private float maxHealth;
-    private float damage;
+    [Header("이동속도")]
+    public float speed;
+
+    [Header("현재 체력")]
+    public float health;
+
+    [Header("최대 체력")]
+    public float maxHealth;
+
+    [Header("공격력")]
+    public float damage;
+
     private float knockbackPower;
+    private bool isLive;
     private bool isPlayerInRange = true;
     private bool isSkillAttack = true;
 
@@ -84,15 +91,6 @@ public class Boss : MonoBehaviour
         target = gameManager.player.GetComponent<Rigidbody2D>();
         isLive = true;
         health = maxHealth;
-        hpPercent.fillAmount = 1;
-    }
-    //초기속성을 적용하는 함수
-    public void Init(SpawnData data)
-    {
-        maxHealth = data.health;
-        health = data.health;
-        speed = data.speed;
-        damage = data.damage;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -235,6 +233,9 @@ public class Boss : MonoBehaviour
         isSkillAttack = true;
     }
 
+    /*
+     피해당하는 로직을 Player로 이식 필요
+     */
     IEnumerator EnemyAttack()
     {
         isPlayerInRange = false;
@@ -256,9 +257,6 @@ public class Boss : MonoBehaviour
 
     private void Hit()
     {
-        // Live, HitAction
-        // 몬스터의 체력바 조정
-        hpPercent.fillAmount = health / maxHealth;
         // 피격시 몬스터 Hit animation 추가
         anim.SetTrigger("Hit");
         StartCoroutine("KnockBack");
@@ -274,6 +272,4 @@ public class Boss : MonoBehaviour
         gameManager.spawner.enemyCount--;
         gameManager.killCount++;
     }
-
-    
 }

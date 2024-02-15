@@ -1333,9 +1333,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 361886028}
-  - component: {fileID: 361886029}
   m_Layer: 0
-  m_Name: BossSpawner
+  m_Name: BossSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1349,35 +1348,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361886027}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.5, z: 0}
+  m_LocalPosition: {x: 7, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1691029849}
+  - {fileID: 1242257106}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &361886029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361886027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a3f76cb1319754459a9460480c3ea7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 1509116658}
-  spawnData:
-  - spawnTime: 0.3
-    prefabId: 0
-    health: 1000
-    speed: 2
-    damage: 5
-  enemyCount: 0
-  maxCount: 1
 --- !u!1 &428151610
 GameObject:
   m_ObjectHideFlags: 0
@@ -4035,8 +4013,24 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1691029849}
+    m_TransformParent: {fileID: 361886028}
     m_Modifications:
+    - target: {fileID: 140269449405142109, guid: 9238adcae3710fa40912455a37a3b24c, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 140269449405142109, guid: 9238adcae3710fa40912455a37a3b24c, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 140269449405142109, guid: 9238adcae3710fa40912455a37a3b24c, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 140269449405142109, guid: 9238adcae3710fa40912455a37a3b24c, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4839606553373449741, guid: 9238adcae3710fa40912455a37a3b24c, type: 3}
       propertyPath: m_Name
       value: boss0
@@ -4063,15 +4057,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4839606553373449743, guid: 9238adcae3710fa40912455a37a3b24c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4839606553373449743, guid: 9238adcae3710fa40912455a37a3b24c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4839606553373449743, guid: 9238adcae3710fa40912455a37a3b24c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4839606553373449743, guid: 9238adcae3710fa40912455a37a3b24c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4092,6 +4086,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4839606553373449743, guid: 9238adcae3710fa40912455a37a3b24c, type: 3}
   m_PrefabInstance: {fileID: 1242257105}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1242257107 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 140269449405142109, guid: 9238adcae3710fa40912455a37a3b24c, type: 3}
+  m_PrefabInstance: {fileID: 1242257105}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f0e8eb96fd9394b8beaa34e70b82fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1245571609
 GameObject:
   m_ObjectHideFlags: 0
@@ -4554,7 +4559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pool: {fileID: 1670224360}
-  spawner: {fileID: 361886029}
+  spawner: {fileID: 0}
   player: {fileID: 32462385}
   weapon: {fileID: 1397420983}
   hud: {fileID: 1502820693}
@@ -4841,12 +4846,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1659222234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4774f24175a681b459e31dfd73d6170c, type: 3}
+  m_Script: {fileID: 11500000, guid: f62400102fb83eb47b6db11ff84472fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counterText: {fileID: 2007349660}
-  counterGauge: {fileID: 116948276}
-  gameManager: {fileID: 1509116658}
+  BossHpText: {fileID: 2007349660}
+  BossHpGauge: {fileID: 116948276}
+  bossMonster: {fileID: 1242257107}
 --- !u!1 &1670224358
 GameObject:
   m_ObjectHideFlags: 0
@@ -4898,38 +4903,6 @@ MonoBehaviour:
   - {fileID: 8590832229344618564, guid: 7ef89ef326009694986aae22077ab4e9, type: 3}
   skillBulletPrefabs:
   - {fileID: 8590832229344618564, guid: 7ef89ef326009694986aae22077ab4e9, type: 3}
---- !u!1 &1691029848
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1691029849}
-  m_Layer: 0
-  m_Name: place1
-  m_TagString: Untagged
-  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1691029849
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691029848}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1242257106}
-  m_Father: {fileID: 361886028}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1717804883
 GameObject:
   m_ObjectHideFlags: 0
@@ -5901,7 +5874,7 @@ GameObject:
   - component: {fileID: 2007349661}
   - component: {fileID: 2007349660}
   m_Layer: 5
-  m_Name: CounterText
+  m_Name: HpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
