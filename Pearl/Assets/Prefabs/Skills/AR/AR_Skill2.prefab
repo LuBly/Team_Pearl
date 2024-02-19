@@ -233,9 +233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 2
-  continuousAtk:
-    enableTime: 0
-    attackTime: 0
   grenadeAtk:
     scanner: {fileID: 0}
     skillRange: {fileID: 841901381948818571}
@@ -260,9 +257,8 @@ MonoBehaviour:
   knockbackPower: 1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   isStopFire: 1
-  attackTime: 0
 --- !u!1001 &4089942420937901058
 PrefabInstance:
   m_ObjectHideFlags: 0

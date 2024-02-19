@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5755367692647241478}
   - component: {fileID: 1709503868873588323}
   - component: {fileID: 2570372220643328756}
-  - component: {fileID: 2570372220643328757}
+  - component: {fileID: 7320628824807145087}
   m_Layer: 9
   m_Name: AR_Skill1
   m_TagString: Skill
@@ -114,7 +114,7 @@ PolygonCollider2D:
     - - {x: 0, y: 0.5773587}
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
---- !u!114 &2570372220643328757
+--- !u!114 &7320628824807145087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,13 +123,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6690066888769112075}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001aa4d00f803334f860747d243750cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 13364c5fe756440468d6f6b921348ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillType: 1
-  continuousAtk:
-    enableTime: 0.3
-    attackTime: 0.1
+  skillType: 0
+  continuousAtk: {fileID: 0}
   grenadeAtk:
     scanner: {fileID: 0}
     skillRange: {fileID: 0}
@@ -156,4 +154,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   isStopFire: 1
-  attackTime: 0.2
+  attackTime: 0.3
+  enableTime: 3
+  attackTerm: 0.1

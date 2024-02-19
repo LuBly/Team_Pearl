@@ -8,7 +8,7 @@ public class BossHpUI : MonoBehaviour
 {
     public TextMeshProUGUI BossHpText;
     public Image BossHpGauge;
-    public Boss bossMonster;
+    public Enemy bossMonster;
 
     private float maxHealth;
     private float curHealth;

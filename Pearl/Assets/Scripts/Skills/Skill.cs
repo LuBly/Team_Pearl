@@ -6,21 +6,6 @@ using TMPro;
 using System.Runtime.CompilerServices;
 
 [Serializable]
-public class ContinuousAtk
-{
-    /// <summary>
-    /// 활성화 되었을 때 스킬 발동
-    /// 범위내에 있는 모든 적들에게 피해를 주는 방식
-    /// -> 1초 공격(피해 0.2초 단위) -> 1초 비활성화 -> 1초 공격(피해 0.2초 단위)
-    /// enableTime     : 활성화 시간
-    /// attackTime     : 피해를 주는 시간 단위
-    [Header("활성화 시간")]
-    public float enableTime;
-    [Header("피해를 주는 시간 단위")]
-    public float attackTime;
-}
-
-[Serializable]
 public class GrenadeAtk
 {
     public Scanner scanner;
@@ -65,7 +50,7 @@ public class AutoAtk
 public enum SkillType
 {
     defaultAtk,
-    continuousAttack, // 지속 공격 ex) 제압사격
+    continuousAttack,
     grenadeAttack,    // 즉발 공격 ex) 수류탄
     snipperAttack,    // 범위 선택 공격 ex) 포격요청
     autoAttack,       // 자동 공격 ex) 드론 공격
@@ -81,7 +66,6 @@ public class Skill : MonoBehaviour
     /// knockbackPower : 틱 당 넉백 정도
     /// </summary>
     [HideInInspector][SerializeField] public SkillType skillType;
-    [HideInInspector][SerializeField] private ContinuousAtk continuousAtk;
     [HideInInspector][SerializeField] private GrenadeAtk grenadeAtk;
     [HideInInspector][SerializeField] private SnipperAtk snipperAtk;
     [HideInInspector][SerializeField] private AutoAtk autoAtk;
@@ -91,7 +75,6 @@ public class Skill : MonoBehaviour
     public float knockbackPower;
     public LayerMask enemyLayer;
     public bool isStopFire;
-    [HideInInspector] public float attackTime;
 
     // 자동공격 때 사용할 쿨타임
     float curTime;
@@ -126,11 +109,6 @@ public class Skill : MonoBehaviour
         }
         switch (skillType)
         {
-            case SkillType.continuousAttack:
-                attackTime = continuousAtk.attackTime;
-                StartCoroutine(ActiveContinuousSkill());
-                break;
-
             case SkillType.grenadeAttack:
                 bool isDrag = grenadeAtk.skillJoystickMovement.isDrag;
                 // Drag 공격
@@ -215,9 +193,6 @@ public class Skill : MonoBehaviour
         gameManager.isStopFire = false;
         switch (skillType)
         {
-            case SkillType.continuousAttack:
-                StopCoroutine(ActiveContinuousSkill());
-                break;
             case SkillType.grenadeAttack:
                 grenadeAtk.attackPoint.SetActive(false);
                 grenadeAtk.skillImpact.SetActive(false);
@@ -238,16 +213,10 @@ public class Skill : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(touchPos, snipperAtk.attackRange, enemyLayer);
         foreach (Collider2D hitCollider in hitColliders)
         {
-            Enemy enemy = hitCollider.GetComponentInChildren<Enemy>();
-            Boss boss = hitCollider.GetComponent<Boss>();
+            Enemy enemy = hitCollider.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage, knockbackPower);
-            }
-
-            if(boss != null)
-            {
-                boss.TakeDamage(damage, knockbackPower);
             }
         }
     }
@@ -284,19 +253,7 @@ public class Skill : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = false;
     }
-
-    IEnumerator ActiveContinuousSkill()
-    {
-        // 1초 공격 피해 (기존 Collider active 상태)
-        yield return new WaitForSeconds(continuousAtk.enableTime);
-        // 1초 이후 Collider Off
-        gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-        // 1초 대기 후 Collider On
-        yield return new WaitForSeconds(continuousAtk.enableTime);
-        gameObject.GetComponent<PolygonCollider2D>().enabled = true;
-
-    }
-
+    
     // 포격요청 Area 선언 및 시간 정지
     IEnumerator ActiveArea()
     {

@@ -13,16 +13,20 @@ public class Enemy : MonoBehaviour
     public GameObject hpBackground;
     [Header("체력바")]
     public Image hpPercent;
-    
+    [Header("이동속도")]
+    public float speed;
+    [Header("현재 체력")]
+    public float health;
+    [Header("최대 체력")]
+    public float maxHealth;
+    [Header("공격력")]
+    public float damage;
+
+    public bool isBoss;
 
     private bool isLive;
-    private float speed;
-    private float health;
-    private float maxHealth;
-    private float damage;
     private float knockbackPower;
     private bool isPlayerInRange = true;
-    private bool isSkillAttack = true;
 
     Animator anim;
     Rigidbody2D rigid;
@@ -35,15 +39,18 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         gameManager = GameObject.FindWithTag("GM").GetComponent<GameManager>();
-        anim = GetComponent<Animator>();
-        rigid = GetComponentInParent<Rigidbody2D>();
-        originalTransform = GetComponentInParent<Transform>();
-        trans = GetComponent<Transform>();
+        anim = GetComponentInChildren<Animator>();
+        rigid = GetComponent<Rigidbody2D>();
+        originalTransform = GetComponent<Transform>();
+        trans = GetComponentInChildren<Transform>();
         wait = new WaitForFixedUpdate();
         EnemyOrig = new Vector3(trans.transform.localScale.x, trans.transform.localScale.y, trans.transform.localScale.z);
         EnemyFlip = new Vector3(-trans.transform.localScale.x, trans.transform.localScale.y, trans.transform.localScale.z);
-        HpOrig = new Vector3(hpBackground.transform.localScale.x, hpBackground.transform.localScale.y, hpBackground.transform.localScale.z); ;
-        HpFlip = new Vector3(-hpBackground.transform.localScale.x, hpBackground.transform.localScale.y, hpBackground.transform.localScale.z); ;
+        if (!isBoss)
+        {
+            HpOrig = new Vector3(hpBackground.transform.localScale.x, hpBackground.transform.localScale.y, hpBackground.transform.localScale.z); 
+            HpFlip = new Vector3(-hpBackground.transform.localScale.x, hpBackground.transform.localScale.y, hpBackground.transform.localScale.z);
+        }
     }
 
     private void FixedUpdate()
@@ -71,12 +78,14 @@ public class Enemy : MonoBehaviour
             if (target.position.x > rigid.position.x)
             {
                 trans.transform.localScale = EnemyFlip;
-                hpBackground.transform.localScale = HpOrig;
+                if(!isBoss)
+                    hpBackground.transform.localScale = HpOrig;
             }
             else
             {
                 trans.transform.localScale = EnemyOrig;
-                hpBackground.transform.localScale = HpFlip;
+                if(!isBoss) 
+                    hpBackground.transform.localScale = HpFlip;
             }
             
         }
@@ -87,7 +96,8 @@ public class Enemy : MonoBehaviour
         target = gameManager.player.GetComponent<Rigidbody2D>();
         isLive = true;
         health = maxHealth;
-        hpPercent.fillAmount = 1;
+        if(!isBoss)
+            hpPercent.fillAmount = 1;
     }
     //초기속성을 적용하는 함수
     public void Init(SpawnData data)
@@ -123,8 +133,6 @@ public class Enemy : MonoBehaviour
             Skill curSkill = collision.GetComponent<Skill>() ? collision.GetComponent<Skill>() : collision.GetComponentInParent<Skill>();
             switch (curSkill.skillType)
             {
-                case SkillType.continuousAttack:
-                    break;
                 case SkillType.grenadeAttack:
                     health -= curSkill.damage;
                     knockbackPower = curSkill.knockbackPower;
@@ -179,24 +187,6 @@ public class Enemy : MonoBehaviour
                 StartCoroutine("EnemyAttack");
             }
         }
-
-        //피격 당할 때
-        // 스킬 피격
-        if (collision.CompareTag("Skill"))
-        {
-            Skill curSkill = collision.GetComponent<Skill>() ? collision.GetComponent<Skill>() : collision.GetComponentInParent<Skill>();
-            switch (curSkill.skillType)
-            {
-                case SkillType.continuousAttack:
-                    if (isSkillAttack)
-                    {
-                        StartCoroutine(skillAttack(collision));
-                    }
-                    break;
-                case SkillType.grenadeAttack:
-                    break;
-            }
-        }
     }
     public void TakeDamage(float damage, float knockbackPower)
     {
@@ -212,30 +202,6 @@ public class Enemy : MonoBehaviour
             // Die
             Dead();
         }
-    }
-
-    IEnumerator skillAttack(Collider2D collision)
-    {
-        isSkillAttack = false;
-        health -= collision.GetComponent<Skill>().damage;
-        knockbackPower = collision.GetComponent<Skill>().knockbackPower;
-        if (health > 0)
-        {
-            // Live, HitAction
-            // 몬스터의 체력바 조정
-            hpPercent.fillAmount = health / maxHealth;
-            // 피격시 몬스터 Hit animation 추가
-            anim.SetTrigger("Hit");
-            StartCoroutine("KnockBack");
-        }
-
-        else
-        {
-            // Die
-            Dead();
-        }
-        yield return new WaitForSeconds(collision.GetComponent<Skill>().attackTime);
-        isSkillAttack = true;
     }
 
     IEnumerator EnemyAttack()
@@ -261,7 +227,8 @@ public class Enemy : MonoBehaviour
     {
         // Live, HitAction
         // 몬스터의 체력바 조정
-        hpPercent.fillAmount = health / maxHealth;
+        if (hpPercent != null)
+            hpPercent.fillAmount = health / maxHealth;
         // 피격시 몬스터 Hit animation 추가
         anim.SetTrigger("Hit");
         StartCoroutine("KnockBack");
