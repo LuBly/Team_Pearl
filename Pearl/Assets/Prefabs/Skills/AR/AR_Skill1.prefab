@@ -154,6 +154,6 @@ MonoBehaviour:
   knockbackPower: 0.5
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   isStopFire: 1
   attackTime: 0.2

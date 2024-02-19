@@ -236,12 +236,18 @@ public class Skill : MonoBehaviour
         Instantiate(snipperAtk.fireEffect, touchPos, Quaternion.identity, transform);
 
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(touchPos, snipperAtk.attackRange, enemyLayer);
-        foreach(Collider2D hitCollider in hitColliders)
+        foreach (Collider2D hitCollider in hitColliders)
         {
             Enemy enemy = hitCollider.GetComponentInChildren<Enemy>();
-            if(enemy != null)
+            Boss boss = hitCollider.GetComponent<Boss>();
+            if (enemy != null)
             {
                 enemy.TakeDamage(damage, knockbackPower);
+            }
+
+            if(boss != null)
+            {
+                boss.TakeDamage(damage, knockbackPower);
             }
         }
     }

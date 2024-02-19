@@ -188,7 +188,6 @@ public class Boss : MonoBehaviour
     }
     public void TakeDamage(float damage, float knockbackPower)
     {
-        Debug.Log("IM hit");
         health -= damage;
         this.knockbackPower = knockbackPower;
         if (health > 0)
