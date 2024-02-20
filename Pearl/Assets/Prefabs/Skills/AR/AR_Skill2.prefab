@@ -195,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5453294836397189252}
-  - component: {fileID: 1861601027586073869}
+  - component: {fileID: 6089902216879682862}
   m_Layer: 9
   m_Name: AR_Skill2
   m_TagString: Skill
@@ -220,7 +220,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1861601027586073869
+--- !u!114 &6089902216879682862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,16 +229,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7137236311506836696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001aa4d00f803334f860747d243750cb, type: 3}
+  m_Script: {fileID: 11500000, guid: c7fbbc1bdaaed8641bfa894b30331107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillType: 2
-  grenadeAtk:
-    scanner: {fileID: 0}
-    skillRange: {fileID: 841901381948818571}
-    attackPoint: {fileID: 841901382198459741}
-    skillImpact: {fileID: 7868524440017745763}
-    skillJoystickMovement: {fileID: 0}
+  skillType: 0
+  grenadeAtk: {fileID: 0}
   snipperAtk:
     attackRange: 0
     fullAmmo: 0
@@ -259,6 +254,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   isStopFire: 1
+  scanner: {fileID: 0}
+  skillRange: {fileID: 841901381948818571}
+  attackPoint: {fileID: 841901382198459741}
+  skillImpact: {fileID: 7868524440017745763}
+  skillJoystickMovement: {fileID: 0}
 --- !u!1001 &4089942420937901058
 PrefabInstance:
   m_ObjectHideFlags: 0

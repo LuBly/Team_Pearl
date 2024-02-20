@@ -6,16 +6,6 @@ using TMPro;
 using System.Runtime.CompilerServices;
 
 [Serializable]
-public class GrenadeAtk
-{
-    public Scanner scanner;
-    public GameObject skillRange;
-    public GameObject attackPoint;
-    public GameObject skillImpact;
-    public JoystickMovement skillJoystickMovement;
-}
-
-[Serializable]
 public class SnipperAtk
 {
     [Header("공격 범위")]
@@ -86,11 +76,6 @@ public class Skill : MonoBehaviour
         gameManager = GameObject.FindWithTag("GM").GetComponent<GameManager>();
         switch (skillType)
         {
-            case SkillType.grenadeAttack :
-                grenadeAtk.scanner = GameObject.FindWithTag("Player").GetComponent<Scanner>();
-                grenadeAtk.skillJoystickMovement = GameObject.FindWithTag("Skill_Grenade").GetComponent<JoystickMovement>();
-                break;
-
             case SkillType.autoAttack:
                 autoAtk.scanner.scanRange = autoAtk.skillRange;
                 autoAtk.scanner.targetLayer = enemyLayer;
@@ -109,34 +94,6 @@ public class Skill : MonoBehaviour
         }
         switch (skillType)
         {
-            case SkillType.grenadeAttack:
-                bool isDrag = grenadeAtk.skillJoystickMovement.isDrag;
-                // Drag 공격
-                if (isDrag)
-                {
-                    grenadeAtk.skillRange.SetActive(true);
-                    grenadeAtk.attackPoint.SetActive(true);
-                    grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = false;
-                }
-
-                // 일반 공격
-                else
-                {
-                    if (grenadeAtk.scanner.nearestTarget)
-                    {
-                        grenadeAtk.attackPoint.SetActive(true);
-                        grenadeAtk.skillImpact.SetActive(true);
-                        grenadeAtk.attackPoint.transform.position = grenadeAtk.scanner.nearestTarget.position;
-
-                        //쿨타임 돌게 신호 전달
-                    }
-                    else
-                    {
-                        Debug.Log("No Enemy");
-                    }
-                }
-                break;
-
             case SkillType.snipperAttack:
                 snipperAtk.curAmmo = snipperAtk.fullAmmo;
                 snipperAtk.fillImage = this.GetComponent<Image>();
@@ -152,19 +109,6 @@ public class Skill : MonoBehaviour
     {
         switch (skillType)
         {
-            case SkillType.grenadeAttack:
-                if (grenadeAtk.skillJoystickMovement.isDrag == true)
-                {
-                    // 방향 (JoyVec)
-                    // 크기 L2 = L1*R/r
-                    grenadeAtk.attackPoint.transform.position =
-                        grenadeAtk.skillRange.transform.position
-                        + grenadeAtk.skillJoystickMovement.joyVec
-                        * grenadeAtk.skillJoystickMovement.stickDistance
-                        / 20f;
-                }
-                break;
-
             case SkillType.snipperAttack:
                 snipperAtk.ammoText.text = snipperAtk.curAmmo.ToString() + " / " + snipperAtk.fullAmmo.ToString();
                 if (snipperAtk.curAmmo == 0)
@@ -191,16 +135,6 @@ public class Skill : MonoBehaviour
     private void OnDestroy()
     {
         gameManager.isStopFire = false;
-        switch (skillType)
-        {
-            case SkillType.grenadeAttack:
-                grenadeAtk.attackPoint.SetActive(false);
-                grenadeAtk.skillImpact.SetActive(false);
-                grenadeAtk.skillRange.SetActive(false);
-                StopCoroutine(ActiveInstantSkill());
-                grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = true;
-                break;
-        }
     }
 
     public void TouchPointAttack()
@@ -220,17 +154,15 @@ public class Skill : MonoBehaviour
             }
         }
     }
+
+
     public void DeActivateSkill()
     {
         Destroy(this.gameObject);
         gameManager.hud.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         Time.timeScale = 1f;
     }
-    public void DragSkillFire()
-    {
-        StartCoroutine(ActiveInstantSkill());
-    }
-
+    
     public void DronFire(Transform target)
     {
         Vector3 targetPos = target.position;
@@ -244,16 +176,6 @@ public class Skill : MonoBehaviour
         bullet.GetComponent<Bullet>().Init(damage, 0, knockbackPower, 3f, dir);
     }
 
-
-    // 즉발 공격, 데미지 처리 공식을 변경해야할 수 있다.
-    IEnumerator ActiveInstantSkill()
-    {
-        grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = true;
-        grenadeAtk.skillImpact.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        grenadeAtk.attackPoint.GetComponent<CapsuleCollider2D>().enabled = false;
-    }
-    
     // 포격요청 Area 선언 및 시간 정지
     IEnumerator ActiveArea()
     {

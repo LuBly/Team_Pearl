@@ -148,7 +148,7 @@ public class PlayerSkill : MonoBehaviour
 
     public void EndDragSkill(int skillIdx)
     {
-        curSkill.GetComponent<Skill>().DragSkillFire();
+        curSkill.GetComponent<GrenadeAtk>().DragSkillFire();
         Destroy(curSkill, dataSkill.skill[skillIdxs[skillIdx]].activeTime / 1000f);
     }
 
