@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 102747191258271059}
   - component: {fileID: 102747191258271061}
   - component: {fileID: 102747191258271060}
-  - component: {fileID: 102747191258271062}
   - component: {fileID: 1420243871}
+  - component: {fileID: 8079425040122330929}
   m_Layer: 9
   m_Name: AR_Skill3
   m_TagString: Skill
@@ -80,45 +80,6 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &102747191258271062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 102747191258271058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001aa4d00f803334f860747d243750cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillType: 3
-  grenadeAtk:
-    scanner: {fileID: 0}
-    skillRange: {fileID: 0}
-    attackPoint: {fileID: 0}
-    skillImpact: {fileID: 0}
-    skillJoystickMovement: {fileID: 0}
-  snipperAtk:
-    attackRange: 1.5
-    fullAmmo: 5
-    curAmmo: 0
-    castTime: 1
-    targetDeltaTime: 0.15
-    fireEffect: {fileID: 8038344524183138613, guid: 0277167a12290af47801444830a2be97, type: 3}
-    ammoText: {fileID: 102747192187609390}
-    fillImage: {fileID: 0}
-  autoAtk:
-    scanner: {fileID: 0}
-    skillRange: 0
-    attackDelay: 0
-    bulletIdx: 0
-  damage: 5
-  knockbackPower: 1
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  isStopFire: 1
 --- !u!114 &1420243871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,8 +97,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 102747191258271062}
-          m_TargetAssemblyTypeName: Skill, Assembly-CSharp
+        - m_Target: {fileID: 8079425040122330929}
+          m_TargetAssemblyTypeName: SnipperAtk, Assembly-CSharp
           m_MethodName: TouchPointAttack
           m_Mode: 1
           m_Arguments:
@@ -148,6 +109,40 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &8079425040122330929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102747191258271058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834f78e4538961f468cbbd4ccd2f804b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillType: 3
+  snipperAtk: {fileID: 0}
+  autoAtk:
+    scanner: {fileID: 0}
+    skillRange: 0
+    attackDelay: 0
+    bulletIdx: 0
+  gameManager: {fileID: 0}
+  damage: 5
+  knockbackPower: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  isStopFire: 1
+  attackRange: 1.5
+  fullAmmo: 5
+  curAmmo: 0
+  castTime: 1
+  targetDeltaTime: 0.15
+  fireEffect: {fileID: 8038344524183138613, guid: 0277167a12290af47801444830a2be97, type: 3}
+  ammoText: {fileID: 102747192187609390}
+  fillImage: {fileID: 0}
 --- !u!1 &102747191890425177
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +418,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 102747191258271062}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Skill, Assembly-CSharp
           m_MethodName: DeActivateSkill
           m_Mode: 1
