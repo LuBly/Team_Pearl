@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1659448383}
   - component: {fileID: 7075224627229107476}
   - component: {fileID: 7330401012242813193}
+  - component: {fileID: 1966394241652720320}
   m_Layer: 0
   m_Name: G_Skill0
   m_TagString: Untagged
@@ -184,26 +185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 4
-  grenadeAtk:
-    scanner: {fileID: 0}
-    skillRange: {fileID: 0}
-    attackPoint: {fileID: 0}
-    skillImpact: {fileID: 0}
-    skillJoystickMovement: {fileID: 0}
-  snipperAtk:
-    attackRange: 0
-    fullAmmo: 0
-    curAmmo: 0
-    castTime: 0
-    targetDeltaTime: 0
-    fireEffect: {fileID: 0}
-    ammoText: {fileID: 0}
-    fillImage: {fileID: 0}
-  autoAtk:
-    scanner: {fileID: 7330401012242813193}
-    skillRange: 5
-    attackDelay: 3
-    bulletIdx: 0
+  autoAtk: {fileID: 0}
+  gameManager: {fileID: 0}
   damage: 3
   knockbackPower: 1
   enemyLayer:
@@ -227,3 +210,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   nearestTarget: {fileID: 0}
+--- !u!114 &1966394241652720320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075224627229107478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58f2bbb6496da14d9ea65ddb7675951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillType: 0
+  autoAtk: {fileID: 0}
+  gameManager: {fileID: 0}
+  damage: 3
+  knockbackPower: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  isStopFire: 0
+  skillRange: 5
+  attackDelay: 3
+  bulletIdx: 0

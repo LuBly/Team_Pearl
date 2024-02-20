@@ -122,12 +122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 3
-  snipperAtk: {fileID: 0}
-  autoAtk:
-    scanner: {fileID: 0}
-    skillRange: 0
-    attackDelay: 0
-    bulletIdx: 0
   gameManager: {fileID: 0}
   damage: 5
   knockbackPower: 1
@@ -142,7 +136,6 @@ MonoBehaviour:
   targetDeltaTime: 0.15
   fireEffect: {fileID: 8038344524183138613, guid: 0277167a12290af47801444830a2be97, type: 3}
   ammoText: {fileID: 102747192187609390}
-  fillImage: {fileID: 0}
 --- !u!1 &102747191890425177
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,8 +411,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Skill, Assembly-CSharp
+        - m_Target: {fileID: 8079425040122330929}
+          m_TargetAssemblyTypeName: SnipperAtk, Assembly-CSharp
           m_MethodName: DeActivateSkill
           m_Mode: 1
           m_Arguments:
