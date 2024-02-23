@@ -19,6 +19,7 @@ public class GrenadeAtk : Skill
 
     private void Start()
     {
+        CheckStop();
         skillType = SkillType.grenadeAttack;
 
         bool isDrag = skillJoystickMovement.isDrag;
@@ -68,7 +69,8 @@ public class GrenadeAtk : Skill
         attackPoint.SetActive(false);
         skillImpact.SetActive(false);
         skillRange.SetActive(false);
-        StopCoroutine(ActiveInstantSkill());
+        StopAllCoroutines();
+        EndSkill();
         attackPoint.GetComponent<CapsuleCollider2D>().enabled = true;
     }
 

@@ -123,12 +123,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillType: 3
   gameManager: {fileID: 0}
+  caster: {fileID: 0}
   damage: 5
   knockbackPower: 1
+  coolDown: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  isStopFire: 1
+  isEnemy: 0
+  isStop: 1
   attackRange: 1.5
   fullAmmo: 5
   curAmmo: 0

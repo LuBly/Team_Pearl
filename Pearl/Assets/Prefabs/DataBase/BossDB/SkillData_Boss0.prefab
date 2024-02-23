@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill:
-  - skillName: 
-    skillIdx: 0
+  - skillName: rushAtk
+    skillIdx: 1
     skillType: 0
     icon: {fileID: 0}
     iconSprite: {fileID: 0}
@@ -54,8 +54,8 @@ MonoBehaviour:
     skillPrefabs: {fileID: 0}
     skillUI: {fileID: 0}
     skillAnimation: {fileID: 0}
-    coolDown: 0
-    activeTime: 100
+    coolDown: 1000
+    activeTime: 200
     description: 
     castEffect: {fileID: 0}
     sendMsg: 

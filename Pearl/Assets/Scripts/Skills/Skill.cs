@@ -1,8 +1,9 @@
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public enum SkillType
 {
-    defaultAtk,
+    rushAtk,          // 돌진 공격 ex) 돌진공격
     continuousAttack, // 지속 공격 ex) 제압사격
     grenadeAttack,    // 즉발 공격 ex) 수류탄
     snipperAttack,    // 범위 선택 공격 ex) 포격요청
@@ -11,30 +12,43 @@ public enum SkillType
 public class Skill : MonoBehaviour
 {
     [HideInInspector][SerializeField] public SkillType skillType;
-    [HideInInspector][SerializeField] public GameManager gameManager;
-
+    
+    public GameObject caster;
     // 항상 사용
     public float damage;
     public float knockbackPower;
+    // Boss Skill에서만 사용
+    [Header("for BossSkill")]
+    public float coolDown;
     public LayerMask enemyLayer;
-    public bool isStopFire;
+    public bool isEnemy;
+    public bool isStop;
     
-    private void Awake()
+    public void CheckStop()
     {
-        gameManager = GameObject.FindWithTag("GM").GetComponent<GameManager>();
-    }
-
-    private void Start()
-    {
-        if (isStopFire)
+        if (isStop)
         {
-            gameManager.isStopFire = true;
+            if (isEnemy)
+            {
+                caster.GetComponent<Enemy>().isStop = true;
+            }
+            else
+            {
+                GameObject.FindWithTag("GM")
+                          .GetComponent<GameManager>().isStopFire = true;
+            }
         }
     }
-
-    private void OnDestroy()
+    public void EndSkill()
     {
-        if(gameManager != null)
-            gameManager.isStopFire = false;
+        if(isEnemy)
+        {
+            caster.GetComponent<Enemy>().isStop = true;
+        }
+        else
+        {
+            if (GameObject.FindWithTag("GM").GetComponent<GameManager>() != null)
+                GameObject.FindWithTag("GM").GetComponent<GameManager>().isStopFire = false;
+        }
     }
 }

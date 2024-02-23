@@ -15,6 +15,7 @@ public class ContinuousAtk : Skill
     // Start is called before the first frame update
     void Start()
     {
+        CheckStop();
         skillType = SkillType.continuousAttack;
         StartCoroutine(ActiveContinuousSkill());
     }
@@ -30,7 +31,8 @@ public class ContinuousAtk : Skill
     }
     private void OnDestroy()
     {
-        StopCoroutine(ActiveContinuousSkill());
+        StopAllCoroutines();
+        EndSkill();
     }
 
     IEnumerator ActiveContinuousSkill()

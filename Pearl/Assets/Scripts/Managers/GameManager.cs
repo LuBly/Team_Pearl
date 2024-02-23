@@ -102,6 +102,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("stageManager에 클리어 여부 저장");
         }
         LoadingScene.LoadScene("Idle");
+        /*
+         현재 씬에서 사용된 Coroutine 종료 필요.
+         */
         DataManager.Instance.Init();
     }
 

@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -855352005
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0.3137255}
@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7075224627229107479}
   - component: {fileID: 1659448383}
-  - component: {fileID: 7075224627229107476}
   - component: {fileID: 7330401012242813193}
   - component: {fileID: 1966394241652720320}
   m_Layer: 0
@@ -158,9 +157,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -855352005
+  m_SortingLayer: 7
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 78d29199097deb14cae4511cb42607ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -172,27 +171,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7075224627229107476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7075224627229107478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001aa4d00f803334f860747d243750cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillType: 4
-  autoAtk: {fileID: 0}
-  gameManager: {fileID: 0}
-  damage: 3
-  knockbackPower: 1
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  isStopFire: 0
 --- !u!114 &7330401012242813193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,14 +201,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 0
-  autoAtk: {fileID: 0}
   gameManager: {fileID: 0}
+  caster: {fileID: 0}
   damage: 3
   knockbackPower: 1
+  coolDown: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  isStopFire: 0
+  isEnemy: 0
+  isStop: 0
   skillRange: 5
   attackDelay: 3
   bulletIdx: 0

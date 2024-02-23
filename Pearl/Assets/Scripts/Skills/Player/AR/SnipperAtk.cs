@@ -25,6 +25,7 @@ public class SnipperAtk : Skill
 
     private void Start()
     {
+        CheckStop();
         skillType = SkillType.snipperAttack;
         curAmmo = fullAmmo;
         fillImage = GetComponent<Image>();
@@ -62,7 +63,11 @@ public class SnipperAtk : Skill
     public void DeActivateSkill()
     {
         Destroy(this.gameObject);
-        gameManager.hud.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        StopAllCoroutines();
+        EndSkill();
+        GameObject.FindWithTag("GM")
+                  .GetComponent<GameManager>().hud
+                  .GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         Time.timeScale = 1f;
     }
 

@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -855352005
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0, g: 0, b: 1, a: 0.60784316}
@@ -127,33 +127,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 0
-  continuousAtk: {fileID: 0}
-  grenadeAtk:
-    scanner: {fileID: 0}
-    skillRange: {fileID: 0}
-    attackPoint: {fileID: 0}
-    skillImpact: {fileID: 0}
-    skillJoystickMovement: {fileID: 0}
-  snipperAtk:
-    attackRange: 0
-    fullAmmo: 0
-    curAmmo: 0
-    castTime: 0
-    targetDeltaTime: 0
-    fireEffect: {fileID: 0}
-    ammoText: {fileID: 0}
-    fillImage: {fileID: 0}
-  autoAtk:
-    scanner: {fileID: 0}
-    skillRange: 0
-    attackDelay: 0
-    bulletIdx: 0
+  gameManager: {fileID: 0}
+  caster: {fileID: 0}
   damage: 1
   knockbackPower: 0.5
+  coolDown: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  isStopFire: 1
-  attackTime: 0.3
+  isEnemy: 0
+  isStop: 1
   enableTime: 3
   attackTerm: 0.1

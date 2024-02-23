@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -855352005
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.3443396, g: 1, b: 0.52722186, a: 0.49019608}
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -855352005
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.9433962, g: 0.43025687, b: 0.40494838, a: 1}
@@ -233,27 +233,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 0
-  grenadeAtk: {fileID: 0}
-  snipperAtk:
-    attackRange: 0
-    fullAmmo: 0
-    curAmmo: 0
-    castTime: 0
-    targetDeltaTime: 0
-    fireEffect: {fileID: 0}
-    ammoText: {fileID: 0}
-    fillImage: {fileID: 0}
-  autoAtk:
-    scanner: {fileID: 0}
-    skillRange: 0
-    attackDelay: 0
-    bulletIdx: 0
+  gameManager: {fileID: 0}
+  caster: {fileID: 0}
   damage: 5
   knockbackPower: 1
+  coolDown: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  isStopFire: 1
+  isEnemy: 0
+  isStop: 1
   scanner: {fileID: 0}
   skillRange: {fileID: 841901381948818571}
   attackPoint: {fileID: 841901382198459741}

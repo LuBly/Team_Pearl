@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     public float damage;
 
     public bool isBoss;
+    public bool isStop = false;
 
     private bool isLive;
     private float knockbackPower;
@@ -58,11 +59,14 @@ public class Enemy : MonoBehaviour
         //Enemy가 죽거나 피격당하고 있을 때 이동 Update를 잠시 멈춘다.
         if(!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
             return;
-            
-        //캐릭터의 위치 - 몬스터의 위치 = 방향
-        Vector2 dirVec = target.position - rigid.position;
-        Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;//프레임 상관없이 일정 거리 이동
-        rigid.MovePosition(rigid.position + nextVec);
+
+        if (!isStop)
+        {
+            //캐릭터의 위치 - 몬스터의 위치 = 방향
+            Vector2 dirVec = target.position - rigid.position;
+            Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;//프레임 상관없이 일정 거리 이동
+            rigid.MovePosition(rigid.position + nextVec);
+        }
         rigid.velocity = Vector2.zero;//물리 속도가 이동에 영향을 주지 않도록 속도 제거
     }
 
