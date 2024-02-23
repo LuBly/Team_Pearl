@@ -43,7 +43,7 @@ public class Skill : MonoBehaviour
     {
         if(isEnemy)
         {
-            caster.GetComponent<Enemy>().isStop = true;
+            caster.GetComponent<Enemy>().isStop = false;
         }
         else
         {

@@ -36,7 +36,6 @@ public class AutoAtk : Skill
             // 스캐너에 걸리는 몬스터가 있다면 
             if (scanner.nearestTarget != null)
             {
-                Debug.Log("Fire");
                 DronFire(scanner.nearestTarget);
                 curTime = 0f;
             }

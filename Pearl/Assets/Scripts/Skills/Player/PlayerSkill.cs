@@ -181,7 +181,6 @@ public class PlayerSkill : MonoBehaviour
         if (getSkillTimes[skillIdx] > 0)
         {
             getSkillTimes[skillIdx] -= Time.deltaTime;
-
             if (getSkillTimes[skillIdx] < 0)
             {
                 getSkillTimes[skillIdx] = 0;
