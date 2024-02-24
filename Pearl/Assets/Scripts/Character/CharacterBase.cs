@@ -13,7 +13,7 @@ public class CharacterBase : MonoBehaviour
     public int atk; // 공격력
     public int gunAtk; // 총기 공격력
     public int gunProficiency; // 총기 숙련도
-    public float gunRapid; // 총기 공격속도 (공격속도 수치가 공격 간격입니다. ex 0.5 = 0.5초에 한번 공격, 1 = 1초에 한번 공격)
+    public float gunRapid; // 총기 공격속도
     public int health; // 체력
     public int critical; // 크리티컬 확률
     public int criticalDmg; // 크리티컬 데미지
