@@ -19,7 +19,7 @@ public class Boss0_Skill0 : Skill
     public float rushSpeed;
     public float minTargetSearchTime, maxTargetSearchTime;
     public float minRushDelay, maxRushDelay;
-    public float minRushRatio, maxRushRatio;
+    //public float minRushRatio, maxRushRatio;
 
     public Transform DirIndicatorBG;
     public Transform DirIndicator;
@@ -28,7 +28,7 @@ public class Boss0_Skill0 : Skill
 
     private float targetSearchTime;
     private float rushDelay;
-    private float rushRatio;
+    //private float rushRatio;
     private float curTime;
 
     private bool targetSearch;
@@ -42,7 +42,7 @@ public class Boss0_Skill0 : Skill
         skillType = SkillType.rushAtk;
         targetSearchTime = Random.Range(minTargetSearchTime, maxTargetSearchTime);
         rushDelay = Random.Range(minRushDelay, maxRushDelay);
-        rushRatio = Random.Range(minRushRatio, maxRushRatio);
+        //rushRatio = Random.Range(minRushRatio, maxRushRatio);
         transform.position = caster.transform.position + new Vector3(0, -1, 0);
 
         DirIndicator.localScale = new Vector3(1, 0, 0);
@@ -98,10 +98,10 @@ public class Boss0_Skill0 : Skill
     private void StartRush(Vector3 targetPosition)
     {
         DirIndicatorBG.gameObject.SetActive(false);
-        caster.transform.position = Vector3.MoveTowards(caster.transform.position, targetPosition * rushRatio, rushSpeed * Time.deltaTime);
+        caster.transform.position = Vector3.MoveTowards(caster.transform.position, targetPosition, rushSpeed * Time.deltaTime);
 
         // 달리기가 목표 지점에 도달했다면 스킬 종료.
-        float dis = Vector3.Distance(targetPosition * rushRatio, caster.transform.position);
+        float dis = Vector3.Distance(targetPosition, caster.transform.position);
         
         if (dis < 1.05f)
         {
