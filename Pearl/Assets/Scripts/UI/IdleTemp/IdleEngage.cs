@@ -52,7 +52,7 @@ public class IdleEngage : MonoBehaviour
 
     public void GunDmgSet()
     {
-        nowDmg = ((float)cBase.atk / 100 * cBase.gunAtk) + cBase.gunAtk;
+        nowDmg = cBase.atk + ((float)cBase.atk * ((float)cBase.gunAtk2 / 100)) + cBase.gunAtk;
         if(cBase.id / 100 == 2) // 샷건일 경우
         {
             nowDmg = nowDmg / 3; // 공격력 1/3 처리
