@@ -11,6 +11,7 @@ TagManager:
   - Skill
   - Skill_Grenade
   - GM
+  - Reward
   layers:
   - Default
   - TransparentFX
