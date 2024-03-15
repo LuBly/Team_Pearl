@@ -12,7 +12,7 @@ public class EnemyManager : MonoBehaviour
 {
     public StageManager sManager;
     public GameObject enemyP;
-    List<Dictionary<string, object>> enemyData;
+    public List<Dictionary<string, object>> enemyData;
 
     private void Awake()
     {
