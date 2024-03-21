@@ -113,6 +113,6 @@ public class Boss0_Skill0 : Skill
         enemySkill.isSkillActive = false;
         EndSkill();
         StopAllCoroutines();
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

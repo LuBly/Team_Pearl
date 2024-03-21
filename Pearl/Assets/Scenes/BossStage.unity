@@ -2360,6 +2360,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7600660448337597629, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
   m_PrefabInstance: {fileID: 7600660447907444114}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &733501322 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2073839403063869056, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+  m_PrefabInstance: {fileID: 7600660447907444114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &770248552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2920,6 +2925,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896924661}
   m_CullTransparentMesh: 1
+--- !u!1 &908841904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8554683054192057635, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+  m_PrefabInstance: {fileID: 7600660447907444114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &922787234
 GameObject:
   m_ObjectHideFlags: 0
@@ -5614,6 +5624,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839140494}
   m_CullTransparentMesh: 1
+--- !u!1 &1853465630 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7530772454794559594, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+  m_PrefabInstance: {fileID: 7600660447907444114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1955030354
 GameObject:
   m_ObjectHideFlags: 0
@@ -6807,6 +6822,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e4d705def2e89479489c4e6e1f4e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5292256632942128337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6519466467605731001, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+  m_PrefabInstance: {fileID: 7600660447907444114}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397775878b58fa645ad41c0186ac2ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7600660447907444114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6814,14 +6840,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 361886028}
     m_Modifications:
-    - target: {fileID: 3824253220486601044, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 620122341280165788, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+      propertyPath: isStop
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 620122341280165788, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+      propertyPath: enemySkill
+      value: 
+      objectReference: {fileID: 5292256632942128337}
+    - target: {fileID: 4696093991670973038, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+      propertyPath: isStop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696093991670973038, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+      propertyPath: enemySkill
+      value: 
+      objectReference: {fileID: 5292256632942128337}
+    - target: {fileID: 6519466467605731001, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+      propertyPath: skills.Array.data[1]
+      value: 
+      objectReference: {fileID: 1853465630}
+    - target: {fileID: 6519466467605731001, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+      propertyPath: skills.Array.data[2]
+      value: 
+      objectReference: {fileID: 733501322}
+    - target: {fileID: 6519466467605731001, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+      propertyPath: skills.Array.data[3]
+      value: 
+      objectReference: {fileID: 908841904}
     - target: {fileID: 7600660447359346566, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 32462383}
+    - target: {fileID: 7600660447359346566, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+      propertyPath: coolDown
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7600660448337597628, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
       propertyPath: m_Name
       value: boss0
@@ -6870,6 +6924,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8108924121033648207, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+      propertyPath: isStop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8108924121033648207, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
+      propertyPath: enemySkill
+      value: 
+      objectReference: {fileID: 5292256632942128337}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b4757eaa70c8fe44a244514e14f80f1, type: 3}
 --- !u!1001 &8695850259301845768

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class EnemySkill : MonoBehaviour
 {
-    public GameObject[] skills;
+
     [Header("위에 있을 수록(idx가 작을 수록) 스킬의 우선순위가 높습니다.")]
-    public int[] prioritySkillIdxs;
+    public GameObject[] skills;
     public bool isSkillActive = false;
 
     private bool[] isCoolTime;
@@ -20,23 +20,20 @@ public class EnemySkill : MonoBehaviour
 
     private void Update()
     {
+        if (isSkillActive) return;
+        
         // 시전 스킬 선택
-        if(!isSkillActive)
+        /*
+         배열 인덱스가 낮을 수록 우선순위 높음.
+         */
+        for(int idx = 0; idx < skills.Length; idx++)
         {
-            for(int idx = 0; idx < skills.Length; idx++)
+            if (isCoolTime[idx]) continue;
+            else
             {
-                if (!isCoolTime[idx])
-                {
-                    if (skills[idx].GetComponent<Skill>().skillType == SkillType.rushAtk)
-                    {
-                        if (true)//isPlayerInRange
-                        {
-                            ActiveSkillSetting(idx);
-                            ActiveSkillCoolTime(idx);
-                            break;
-                        }
-                    }
-                }
+                ActiveSkillSetting(idx);
+                ActiveSkillCoolTime(idx);
+                break;
             }
         }
     }

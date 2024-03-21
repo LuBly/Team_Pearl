@@ -134,7 +134,7 @@ MonoBehaviour:
   caster: {fileID: 0}
   damage: 5
   knockbackPower: 0
-  coolDown: 10
+  coolDown: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
