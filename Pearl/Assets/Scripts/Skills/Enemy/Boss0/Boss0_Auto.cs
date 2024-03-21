@@ -48,11 +48,8 @@ public class Boss0_Auto : Skill
      */
     private void Attack()
     {
-        Transform bullet = GameObject.FindWithTag("GM")
-                                     .GetComponent<GameManager>().pool
-                                     .BossSkillBulletGet().transform;
-
+        GameObject bullet = GameObject.FindWithTag("GM").GetComponent<GameManager>().pool.BossSkillBulletGet();
+        bullet.transform.position = caster.transform.position;
         bullet.GetComponent<TrackingBullet>().Init(damage, bulletSpeed, enemyLayer);
-
     }
 }
