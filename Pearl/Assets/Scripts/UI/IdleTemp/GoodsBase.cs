@@ -16,12 +16,15 @@ public class GoodsBase : MonoBehaviour
     public int manaStone;
     public int crystal;
 
-    public TextMeshProUGUI idleGold, idleManaStone, idleCrystal;
+    public TextMeshProUGUI idleGold, idleManaStone, idleCrystal, summonCrystal, summonCrystal2, shopCrystal;
 
     public void GoodsUpdate()
     {
         idleGold.text = gold.ToString();
         idleManaStone.text = manaStone.ToString();
         idleCrystal.text = crystal.ToString();
+        summonCrystal.text = crystal.ToString();
+        summonCrystal2.text = crystal.ToString();
+        shopCrystal.text = crystal.ToString();
     }
 }

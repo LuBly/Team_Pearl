@@ -1,0 +1,6 @@
+﻿ProductID,ProductName,DisplayCategory,DisplaySeq,DisplayType,Price,DiscountPrice,SaleStart,SaleEnd,CountLimit,ResetPeriod,RequiredQuestKey,ProductIcon,ProductDesc,ItemID
+0,크리스탈 100개,1,,,1100,0,2024-03-22,2099-12-31,0,0,0,Crystal_100,크리스탈 100개 묶음,0
+1,크리스탈 1000개,1,,,10000,0,2024-01-01,2024-03-21,0,0,0,Crystal_1000,크리스탈 1000개 묶음,1
+2,크리스탈 10000개,1,,,99000,0,2024-01-01,2024-03-21,0,0,0,Crystal_10000,크리스탈 10000개 묶음,2
+3,크리스탈 + 골드 패키지,0,,,4900,0,2024-01-01,2024-03-21,2,0,0,Crystal_Gold,크리스탈 400개%n+%n2000골드 ,3
+4,크리스탈 + 마력석 패키지,0,,,4900,0,2024-01-01,2024-03-21,2,0,0,Crystal_Manastone,크리스탈 400개%n+%n100마력석 ,4
