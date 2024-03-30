@@ -91,9 +91,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skills:
   - {fileID: 3824253220486601044}
-  - {fileID: 3824253220486601044}
-  - {fileID: 3824253220486601044}
-  - {fileID: 3824253220486601044}
+  - {fileID: 7530772454794559594}
+  - {fileID: 2073839403063869056}
+  - {fileID: 8554683054192057635}
   isSkillActive: 0
 --- !u!1 &4827603076073464187
 GameObject:
@@ -345,11 +345,20 @@ PrefabInstance:
       propertyPath: caster
       value: 
       objectReference: {fileID: 1824081756723388003}
+    - target: {fileID: 8386779695819284600, guid: 57569fffe4602734cb72792a2fa247f5, type: 3}
+      propertyPath: enemySkill
+      value: 
+      objectReference: {fileID: 6519466467605731001}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57569fffe4602734cb72792a2fa247f5, type: 3}
 --- !u!4 &7466401076550237353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7167056649731191966, guid: 57569fffe4602734cb72792a2fa247f5, type: 3}
+  m_PrefabInstance: {fileID: 354513561445910583}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8554683054192057635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8237975273964901652, guid: 57569fffe4602734cb72792a2fa247f5, type: 3}
   m_PrefabInstance: {fileID: 354513561445910583}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &599401718862811507
@@ -477,8 +486,17 @@ PrefabInstance:
       propertyPath: caster
       value: 
       objectReference: {fileID: 1824081756723388003}
+    - target: {fileID: 5483843543696352917, guid: a8dc066b0ecf79249a1407d7de3444e4, type: 3}
+      propertyPath: enemySkill
+      value: 
+      objectReference: {fileID: 6519466467605731001}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8dc066b0ecf79249a1407d7de3444e4, type: 3}
+--- !u!1 &7530772454794559594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3171439018437839203, guid: a8dc066b0ecf79249a1407d7de3444e4, type: 3}
+  m_PrefabInstance: {fileID: 4936397495218374921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8765983396395917792 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4406380991069300969, guid: a8dc066b0ecf79249a1407d7de3444e4, type: 3}
@@ -495,6 +513,10 @@ PrefabInstance:
       propertyPath: caster
       value: 
       objectReference: {fileID: 1824081756723388003}
+    - target: {fileID: 2507822788323676661, guid: 4bede660b1275a144b3bbf346af696a5, type: 3}
+      propertyPath: enemySkill
+      value: 
+      objectReference: {fileID: 6519466467605731001}
     - target: {fileID: 7927487846660557969, guid: 4bede660b1275a144b3bbf346af696a5, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -550,6 +572,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7927487846660557969, guid: 4bede660b1275a144b3bbf346af696a5, type: 3}
   m_PrefabInstance: {fileID: 7198567580994147227}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2073839403063869056 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9160799793400311067, guid: 4bede660b1275a144b3bbf346af696a5, type: 3}
+  m_PrefabInstance: {fileID: 7198567580994147227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7600660446991509883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -567,7 +594,7 @@ PrefabInstance:
       objectReference: {fileID: 1824081756723388003}
     - target: {fileID: 914181885, guid: 9466a92acaa783345ab01320065aa0b8, type: 3}
       propertyPath: coolDown
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 914181885, guid: 9466a92acaa783345ab01320065aa0b8, type: 3}
       propertyPath: enemySkill

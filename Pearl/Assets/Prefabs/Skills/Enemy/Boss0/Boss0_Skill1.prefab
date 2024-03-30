@@ -54,3 +54,5 @@ MonoBehaviour:
     m_Bits: 8
   isEnemy: 1
   isStop: 1
+  enemySkill: {fileID: 0}
+  skillDelay: 2
