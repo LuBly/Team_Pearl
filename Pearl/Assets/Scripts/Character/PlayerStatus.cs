@@ -19,7 +19,7 @@ public class PlayerStatus : MonoBehaviour
     [Header("총기 공격력")] public int gunAtk;
     [Header("총기 숙련도")] public int gunProficiency;
     [Header("총기 공격속도")] public float gunRapid;
-    [Header("체력")] public int health;
+    [Header("체력")] public float health;
     [Header("크리티컬 확률")] public int critical;
     [Header("크리티컬 데미지")] public int criticalDmg;
     [Header("이동속도")] public int moveSpeed;
@@ -88,5 +88,10 @@ public class PlayerStatus : MonoBehaviour
             trans.localScale = new Vector3(scale, scale, 1.0f);
         }
 
+    }
+
+    public void TakeDamage(float damage)
+    {
+        curHp -= damage;
     }
 }

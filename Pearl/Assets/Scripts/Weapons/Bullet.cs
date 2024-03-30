@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
         //충돌한 것이 몬스터일 경우만 check
         if (!collision.CompareTag("Enemy") || count<0)
             return;
-
+        collision.gameObject.GetComponentInParent<Enemy>().TakeDamage(damage, knockbackPower);
         count--;
         if (count < 0)
         {

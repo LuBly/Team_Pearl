@@ -114,23 +114,6 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //피격 당할 때
-        if (collision.CompareTag("Bullet"))
-        {
-            health -= collision.GetComponent<Bullet>().damage;
-            knockbackPower = collision.GetComponent<Bullet>().knockbackPower;
-            if (health > 0)
-            {
-                Hit();
-            }
-
-            else
-            {
-                // Die
-                Dead();
-            }
-        }
-
         // 스킬 피격
         if (collision.CompareTag("Skill"))
         {
