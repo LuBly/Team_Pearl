@@ -82,7 +82,7 @@ public class SaveManager : MonoBehaviour
         saveData.atk = cBase.atk;
         saveData.health = cBase.health;
         saveData.moveSpeed = cBase.moveSpeed;
-        saveData.gunPro = cBase.gunProficiency;
+        saveData.gunPro = cBase.gunSkill;
         saveData.gold = goods.gold;
         saveData.manastone = goods.manaStone;
         saveData.crystal = goods.crystal;
@@ -105,7 +105,7 @@ public class SaveManager : MonoBehaviour
         cBase.atk = saveData.atk;
         cBase.health = saveData.health;
         cBase.moveSpeed = saveData.moveSpeed;
-        cBase.gunProficiency = saveData.gunPro;
+        cBase.gunSkill = saveData.gunPro;
         goods.gold = saveData.gold;
         goods.manaStone = saveData.manastone;
         goods.crystal = saveData.crystal;

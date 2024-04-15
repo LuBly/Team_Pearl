@@ -23,7 +23,7 @@ public class DataManager : Singleton<DataManager>
         id = characterData.id;
         atk = characterData.atk;
         gunAtk = characterData.gunAtk;
-        gunProficiency = characterData.gunProficiency;
+        gunProficiency = characterData.gunSkill;
         gunRapid = characterData.gunRapid;
         health = characterData.health;
         critical = characterData.critical;

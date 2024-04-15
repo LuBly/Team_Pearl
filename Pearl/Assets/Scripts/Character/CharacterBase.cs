@@ -13,7 +13,7 @@ public class CharacterBase : MonoBehaviour
     public int atk; // 공격력
     public int gunAtk; // 총기 공격력
     public int gunAtk2; // 총기 공격력2
-    public int gunProficiency; // 총기 숙련도
+    public int gunSkill; // 총기 숙련도
     public float gunRapid; // 총기 공격속도
     public int health; // 체력
     public int critical; // 크리티컬 확률

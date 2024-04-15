@@ -13,6 +13,7 @@ public class IdleEngage : MonoBehaviour
     public UnityEngine.Events.UnityEvent EngageDone; // 전투 종료 이벤트
     public CharacterBase cBase;
     public GoodsBase gBase;
+    public SkillManager sKBase;
     float nowDmg;
     float nowRapid;
     GameObject reward;
@@ -57,9 +58,23 @@ public class IdleEngage : MonoBehaviour
         }
     }
 
-    public void GunDmgSet()
+    void GunDmgSet()
     {
-        nowDmg = cBase.atk + ((float)cBase.atk * ((float)cBase.gunAtk2 / 100)) + cBase.gunAtk;
+        int gun = cBase.id / 100; // 총기 종류 탐색
+        int nowSkill = 0; // 현재 총기 숙련도
+        switch(gun)
+        {
+            case 1:
+                nowSkill = sKBase.ARLv; // AR 숙련도
+                break;
+            case 2:
+                nowSkill = sKBase.SGLv * 3; // SG 숙련도(레벨 * 3이 상승한 공격력)
+                break;
+            case 3:
+                nowSkill = sKBase.SRLv * 6; // SR 숙련도(레벨 * 6이 상승한 공격력)
+                break;
+        }
+        nowDmg = nowSkill + ((float)nowSkill * (((float)cBase.gunAtk2 + (float)cBase.atk) / 100)) + cBase.gunAtk;
         if(cBase.id / 100 == 2) // 샷건일 경우
         {
             nowDmg = nowDmg / 3; // 공격력 1/3 처리
@@ -77,6 +92,7 @@ public class IdleEngage : MonoBehaviour
     {
         SetTarget();
         int gun = cBase.id / 100; // 총기 종류 탐색
+        Debug.Log(nowDmg);
 
         while(enemyL.Any()) // 적이 남아 있을 경우
         {
@@ -194,7 +210,7 @@ public class IdleEngage : MonoBehaviour
         yield break; // 코루틴 종료
     }
 
-    void MoveReward()
+    void MoveReward() // 보상 습득 애니메이션 함수
     {
         for(int i = 0; i < rewardPos.transform.childCount; i++)
         {
@@ -202,7 +218,7 @@ public class IdleEngage : MonoBehaviour
         }
     }
 
-    void GetGoods()
+    void GetGoods() // 보상 습득 적용
     {
         gBase.gold += tGold;
         gBase.manaStone += tMs;

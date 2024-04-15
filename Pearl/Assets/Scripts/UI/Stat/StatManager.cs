@@ -20,7 +20,7 @@ public class StatManager : MonoBehaviour
         speedText.text = stat.moveSpeed.ToString();
         atkText.text = stat.atk.ToString() + "%";
         gunAttackText.text = stat.gunAtk.ToString();
-        gunLevelText.text = stat.gunProficiency.ToString();
+        gunLevelText.text = stat.gunSkill.ToString();
         healthText.text = stat.health.ToString();
         criticalText.text = stat.critical.ToString();
         criticalDmgText.text = stat.criticalDmg.ToString();

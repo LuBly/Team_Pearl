@@ -5,6 +5,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using UnityEngine.U2D.IK;
+using Unity.Burst.Intrinsics;
+using System;
+using System.Linq;
 
 /*
 장비 장착 및 관리 스크립트입니다.(EquipUI에 삽입)
@@ -143,5 +147,24 @@ public class EquipControl : MonoBehaviour
             failText.color = new Color(failText.color.r, failText.color.g, failText.color.b, nowAlpha);
         }
         yield break;
+    }
+
+    public void AllSynthesize() // 일괄 합성
+    {
+        for(int i = 0; i < iManager.gunList.Count; i++) // 총기 리스트 탐색
+        {
+            int nV = iManager.gunList.Values.ToList()[i];
+            string nK = iManager.gunList.Keys.ToList()[i];
+            if(Int32.Parse(nK) == cBase.id) nV -= 1; // 현재 장착중인 총기일 경우 장착 중인 1개 제외하고 합성 진행
+            if(nV >= 3 && Int32.Parse(nK) % 100 < 11) // 총기 수량이 3개 이상이고, 각 총기의 10번 총기까지만 합성 11번 -> 12번은 합성으로 습득X
+            {
+                int up = nV / 3; // 생성된 다음 등급 총기 수
+                int rest = nV % 3; // 남은 현재 등급 총기 수
+                iManager.gunList[nK] = rest; // 현재 등급 총기 수 적용
+                if(Int32.Parse(nK) == cBase.id) iManager.gunList[nK] += 1; // 장착 중이던 1개 제외한 총기 수 적용
+                iManager.gunList[(Int32.Parse(nK) + 1).ToString()] += up; // 다음 등급 총기 수 적용
+            }
+        }
+        CountControl(); // 총기 개수 업데이트
     }
 }
