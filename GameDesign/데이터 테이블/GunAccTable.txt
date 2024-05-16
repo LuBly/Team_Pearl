@@ -1,0 +1,151 @@
+AccID,AccName,Grade,CritChance%,CritDmg%,SkillDmg%,BasicAtkDmg%,AccPrefab
+401,노말 도트 사이트,Normal,0,0,0,3,Scope_Dot1
+402,레어 도트 사이트,Rare,0,0,0,6,Scope_Dot2
+403,에픽 도트 사이트,Epic,0,0,0,9,Scope_Dot3
+404,유니크 도트 사이트,Unique,0,0,0,12,Scope_Dot4
+405,전설 도트 사이트,Legend,0,0,0,15,Scope_Dot5
+406,신화 도트 사이트 +1,Mystic1,0,0,0,20,Scope_Dot6
+407,신화 도트 사이트 +2,Mystic2,0,0,0,22,Scope_Dot6
+408,신화 도트 사이트 +3,Mystic3,0,0,0,24,Scope_Dot6
+409,신화 도트 사이트 +4,Mystic4,0,0,0,26,Scope_Dot6
+410,신화 도트 사이트 +5,Mystic5,0,0,0,28,Scope_Dot6
+411,신화 도트 사이트 +6,Mystic6,0,0,0,30,Scope_Dot6
+412,신화 도트 사이트 +7,Mystic7,0,0,0,32,Scope_Dot6
+413,신화 도트 사이트 +8,Mystic8,0,0,0,34,Scope_Dot6
+414,신화 도트 사이트 +9,Mystic9,0,0,0,36,Scope_Dot6
+415,신화 도트 사이트 +10,Mystic10,0,0,0,38,Scope_Dot6
+416,신화 도트 사이트 +11,Mystic11,0,0,0,40,Scope_Dot6
+417,신화 도트 사이트 +12,Mystic12,0,0,0,42,Scope_Dot6
+418,신화 도트 사이트 +13,Mystic13,0,0,0,44,Scope_Dot6
+419,신화 도트 사이트 +14,Mystic14,0,0,0,46,Scope_Dot6
+420,신화 도트 사이트 +15,Mystic15,0,0,0,48,Scope_Dot6
+421,신화 도트 사이트 +16,Mystic16,0,0,0,50,Scope_Dot6
+422,신화 도트 사이트 +17,Mystic17,0,0,0,52,Scope_Dot6
+423,신화 도트 사이트 +18,Mystic18,0,0,0,54,Scope_Dot6
+424,신화 도트 사이트 +19,Mystic19,0,0,0,56,Scope_Dot6
+425,신화 도트 사이트 +20,Mystic20,0,0,0,58,Scope_Dot6
+501,노말 배율 조준경,Normal,0,0,3,0,Scope_Mag1
+502,레어 배율 조준경,Rare,0,0,6,0,Scope_Mag2
+503,에픽 배율 조준경,Epic,0,0,9,0,Scope_Mag3
+504,유니크 배율 조준경,Unique,0,0,12,0,Scope_Mag4
+505,전설 배율 조준경,Legend,0,0,15,0,Scope_Mag5
+506,신화 배율 조준경 +1,Mystic1,0,0,20,0,Scope_Mag6
+507,신화 배율 조준경 +2,Mystic2,0,0,22,0,Scope_Mag6
+508,신화 배율 조준경 +3,Mystic3,0,0,24,0,Scope_Mag6
+509,신화 배율 조준경 +4,Mystic4,0,0,26,0,Scope_Mag6
+510,신화 배율 조준경 +5,Mystic5,0,0,28,0,Scope_Mag6
+511,신화 배율 조준경 +6,Mystic6,0,0,30,0,Scope_Mag6
+512,신화 배율 조준경 +7,Mystic7,0,0,32,0,Scope_Mag6
+513,신화 배율 조준경 +8,Mystic8,0,0,34,0,Scope_Mag6
+514,신화 배율 조준경 +9,Mystic9,0,0,36,0,Scope_Mag6
+515,신화 배율 조준경 +10,Mystic10,0,0,38,0,Scope_Mag6
+516,신화 배율 조준경 +11,Mystic11,0,0,40,0,Scope_Mag6
+517,신화 배율 조준경 +12,Mystic12,0,0,42,0,Scope_Mag6
+518,신화 배율 조준경 +13,Mystic13,0,0,44,0,Scope_Mag6
+519,신화 배율 조준경 +14,Mystic14,0,0,46,0,Scope_Mag6
+520,신화 배율 조준경 +15,Mystic15,0,0,48,0,Scope_Mag6
+521,신화 배율 조준경 +16,Mystic16,0,0,50,0,Scope_Mag6
+522,신화 배율 조준경 +17,Mystic17,0,0,52,0,Scope_Mag6
+523,신화 배율 조준경 +18,Mystic18,0,0,54,0,Scope_Mag6
+524,신화 배율 조준경 +19,Mystic19,0,0,56,0,Scope_Mag6
+525,신화 배율 조준경 +20,Mystic20,0,0,58,0,Scope_Mag6
+601,노말 수직 손잡이,Normal,0,0,0,3,Grip_Ver1
+602,레어 수직 손잡이,Rare,0,0,0,6,Grip_Ver2
+603,에픽 수직 손잡이,Epic,0,0,0,9,Grip_Ver3
+604,유니크 수직 손잡이,Unique,0,0,0,12,Grip_Ver4
+605,전설 수직 손잡이,Legend,0,0,0,15,Grip_Ver5
+606,신화 수직 손잡이 +1,Mystic1,0,0,0,20,Grip_Ver6
+607,신화 수직 손잡이 +2,Mystic2,0,0,0,22,Grip_Ver6
+608,신화 수직 손잡이 +3,Mystic3,0,0,0,24,Grip_Ver6
+609,신화 수직 손잡이 +4,Mystic4,0,0,0,26,Grip_Ver6
+610,신화 수직 손잡이 +5,Mystic5,0,0,0,28,Grip_Ver6
+611,신화 수직 손잡이 +6,Mystic6,0,0,0,30,Grip_Ver6
+612,신화 수직 손잡이 +7,Mystic7,0,0,0,32,Grip_Ver6
+613,신화 수직 손잡이 +8,Mystic8,0,0,0,34,Grip_Ver6
+614,신화 수직 손잡이 +9,Mystic9,0,0,0,36,Grip_Ver6
+615,신화 수직 손잡이 +10,Mystic10,0,0,0,38,Grip_Ver6
+616,신화 수직 손잡이 +11,Mystic11,0,0,0,40,Grip_Ver6
+617,신화 수직 손잡이 +12,Mystic12,0,0,0,42,Grip_Ver6
+618,신화 수직 손잡이 +13,Mystic13,0,0,0,44,Grip_Ver6
+619,신화 수직 손잡이 +14,Mystic14,0,0,0,46,Grip_Ver6
+620,신화 수직 손잡이 +15,Mystic15,0,0,0,48,Grip_Ver6
+621,신화 수직 손잡이 +16,Mystic16,0,0,0,50,Grip_Ver6
+622,신화 수직 손잡이 +17,Mystic17,0,0,0,52,Grip_Ver6
+623,신화 수직 손잡이 +18,Mystic18,0,0,0,54,Grip_Ver6
+624,신화 수직 손잡이 +19,Mystic19,0,0,0,56,Grip_Ver6
+625,신화 수직 손잡이 +20,Mystic20,0,0,0,58,Grip_Ver6
+701,노말 앵글 손잡이,Normal,0,0,3,0,Grip_Angle1
+702,레어 앵글 손잡이,Rare,0,0,6,0,Grip_Angle2
+703,에픽 앵글 손잡이,Epic,0,0,9,0,Grip_Angle3
+704,유니크 앵글 손잡이,Unique,0,0,12,0,Grip_Angle4
+705,전설 앵글 손잡이,Legend,0,0,15,0,Grip_Angle5
+706,신화 앵글 손잡이 +1,Mystic1,0,0,20,0,Grip_Angle6
+707,신화 앵글 손잡이 +2,Mystic2,0,0,22,0,Grip_Angle6
+708,신화 앵글 손잡이 +3,Mystic3,0,0,24,0,Grip_Angle6
+709,신화 앵글 손잡이 +4,Mystic4,0,0,26,0,Grip_Angle6
+710,신화 앵글 손잡이 +5,Mystic5,0,0,28,0,Grip_Angle6
+711,신화 앵글 손잡이 +6,Mystic6,0,0,30,0,Grip_Angle6
+712,신화 앵글 손잡이 +7,Mystic7,0,0,32,0,Grip_Angle6
+713,신화 앵글 손잡이 +8,Mystic8,0,0,34,0,Grip_Angle6
+714,신화 앵글 손잡이 +9,Mystic9,0,0,36,0,Grip_Angle6
+715,신화 앵글 손잡이 +10,Mystic10,0,0,38,0,Grip_Angle6
+716,신화 앵글 손잡이 +11,Mystic11,0,0,40,0,Grip_Angle6
+717,신화 앵글 손잡이 +12,Mystic12,0,0,42,0,Grip_Angle6
+718,신화 앵글 손잡이 +13,Mystic13,0,0,44,0,Grip_Angle6
+719,신화 앵글 손잡이 +14,Mystic14,0,0,46,0,Grip_Angle6
+720,신화 앵글 손잡이 +15,Mystic15,0,0,48,0,Grip_Angle6
+721,신화 앵글 손잡이 +16,Mystic16,0,0,50,0,Grip_Angle6
+722,신화 앵글 손잡이 +17,Mystic17,0,0,52,0,Grip_Angle6
+723,신화 앵글 손잡이 +18,Mystic18,0,0,54,0,Grip_Angle6
+724,신화 앵글 손잡이 +19,Mystic19,0,0,56,0,Grip_Angle6
+725,신화 앵글 손잡이 +20,Mystic20,0,0,58,0,Grip_Angle6
+801,노말 소염기,Normal,0,2,0,0,Muzzle_Flash1
+802,레어 소염기,Rare,0,4,0,0,Muzzle_Flash2
+803,에픽 소염기,Epic,0,6,0,0,Muzzle_Flash3
+804,유니크 소염기,Unique,0,8,0,0,Muzzle_Flash4
+805,전설 소염기,Legend,0,10,0,0,Muzzle_Flash5
+806,신화 소염기 +1,Mystic1,0,11,0,0,Muzzle_Flash6
+807,신화 소염기 +2,Mystic2,0,12,0,0,Muzzle_Flash6
+808,신화 소염기 +3,Mystic3,0,13,0,0,Muzzle_Flash6
+809,신화 소염기 +4,Mystic4,0,14,0,0,Muzzle_Flash6
+810,신화 소염기 +5,Mystic5,0,15,0,0,Muzzle_Flash6
+811,신화 소염기 +6,Mystic6,0,16,0,0,Muzzle_Flash6
+812,신화 소염기 +7,Mystic7,0,17,0,0,Muzzle_Flash6
+813,신화 소염기 +8,Mystic8,0,18,0,0,Muzzle_Flash6
+814,신화 소염기 +9,Mystic9,0,19,0,0,Muzzle_Flash6
+815,신화 소염기 +10,Mystic10,0,20,0,0,Muzzle_Flash6
+816,신화 소염기 +11,Mystic11,0,21,0,0,Muzzle_Flash6
+817,신화 소염기 +12,Mystic12,0,22,0,0,Muzzle_Flash6
+818,신화 소염기 +13,Mystic13,0,23,0,0,Muzzle_Flash6
+819,신화 소염기 +14,Mystic14,0,24,0,0,Muzzle_Flash6
+820,신화 소염기 +15,Mystic15,0,25,0,0,Muzzle_Flash6
+821,신화 소염기 +16,Mystic16,0,26,0,0,Muzzle_Flash6
+822,신화 소염기 +17,Mystic17,0,27,0,0,Muzzle_Flash6
+823,신화 소염기 +18,Mystic18,0,28,0,0,Muzzle_Flash6
+824,신화 소염기 +19,Mystic19,0,29,0,0,Muzzle_Flash6
+825,신화 소염기 +20,Mystic20,0,30,0,0,Muzzle_Flash6
+901,노말 소음기,Normal,2,0,0,0,Muzzle_Sup1
+902,레어 소음기,Rare,4,0,0,0,Muzzle_Sup2
+903,에픽 소음기,Epic,5,0,0,0,Muzzle_Sup3
+904,유니크 소음기,Unique,8,0,0,0,Muzzle_Sup4
+905,전설 소음기,Legend,10,0,0,0,Muzzle_Sup5
+906,신화 소음기 +1,Mystic1,11,0,0,0,Muzzle_Sup6
+907,신화 소음기 +2,Mystic2,12,0,0,0,Muzzle_Sup6
+908,신화 소음기 +3,Mystic3,13,0,0,0,Muzzle_Sup6
+909,신화 소음기 +4,Mystic4,14,0,0,0,Muzzle_Sup6
+910,신화 소음기 +5,Mystic5,15,0,0,0,Muzzle_Sup6
+911,신화 소음기 +6,Mystic6,16,0,0,0,Muzzle_Sup6
+912,신화 소음기 +7,Mystic7,17,0,0,0,Muzzle_Sup6
+913,신화 소음기 +8,Mystic8,18,0,0,0,Muzzle_Sup6
+914,신화 소음기 +9,Mystic9,19,0,0,0,Muzzle_Sup6
+915,신화 소음기 +10,Mystic10,20,0,0,0,Muzzle_Sup6
+916,신화 소음기 +11,Mystic11,21,0,0,0,Muzzle_Sup6
+917,신화 소음기 +12,Mystic12,22,0,0,0,Muzzle_Sup6
+918,신화 소음기 +13,Mystic13,23,0,0,0,Muzzle_Sup6
+919,신화 소음기 +14,Mystic14,24,0,0,0,Muzzle_Sup6
+920,신화 소음기 +15,Mystic15,25,0,0,0,Muzzle_Sup6
+921,신화 소음기 +16,Mystic16,26,0,0,0,Muzzle_Sup6
+922,신화 소음기 +17,Mystic17,27,0,0,0,Muzzle_Sup6
+923,신화 소음기 +18,Mystic18,28,0,0,0,Muzzle_Sup6
+924,신화 소음기 +19,Mystic19,29,0,0,0,Muzzle_Sup6
+925,신화 소음기 +20,Mystic20,30,0,0,0,Muzzle_Sup6

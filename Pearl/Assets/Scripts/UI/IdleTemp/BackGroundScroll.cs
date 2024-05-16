@@ -11,16 +11,16 @@ public class BackGroundScroll : MonoBehaviour
 {
     public UnityEngine.Events.UnityEvent ScrollDone; // 몬스터 및 배경 스크롤 완료 이벤트
     public float scrollSpeed; // 배경 스크롤 속도
-    public Image background;
-    public EnemyManager eManager;
+    public Image background; // 배경 이미지
+    public EnemyManager eManager; // 몬스터 정보
 
     float moveSpeed; // 몬스터 이동 속도 
     //(배경 이동속도와 동일하게 이동하도록 설정. 배경 offset 1이 변하면 배경이 한번 완전히 이동한것. 배경 스크롤 속도 0.01 = 배경 크기의 1/100 속도로 이동이므로 몬스터 이동속도를 배경 사이즈의 1/100으로 설정하면 동일해짐)
 
-    public GameObject enemy;
+    public GameObject enemy; // 몬스터 오브젝트
     public GameObject criterion; // 몬스터 정지 위치 기준
-    float enemy_x;
-    Vector3 defaultPos = new Vector3();
+    float enemy_x; // 몬스터 x 좌표 값
+    Vector3 defaultPos = new Vector3(); // 몬스터 스폰 위치
 
     private Vector2 offset = Vector2.zero; // 배경 오프셋 기본 값
 
@@ -32,7 +32,7 @@ public class BackGroundScroll : MonoBehaviour
         OnScroll();
     }
 
-    public void OnScroll()
+    public void OnScroll() // 스크롤링 시작 함수
     {
         enemy_x = defaultPos.x;
         enemy.transform.position = new Vector3(enemy_x, enemy.transform.position.y, enemy.transform.position.z);

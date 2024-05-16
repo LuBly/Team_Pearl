@@ -11,22 +11,22 @@ Idle 전투 관련 스크립트입니다.(IdleUI 오브젝트에 삽입)
 public class IdleEngage : MonoBehaviour
 {
     public UnityEngine.Events.UnityEvent EngageDone; // 전투 종료 이벤트
-    public CharacterBase cBase;
-    public GoodsBase gBase;
-    public SkillManager sKBase;
-    float nowDmg;
-    float nowRapid;
-    GameObject reward;
-    int tGold = 0;
-    int tMs = 0;
-    public GameObject rewardPos;
+    public CharacterBase cBase; // 캐릭터 정보
+    public GoodsBase gBase; // 재화 정보
+    public SkillManager sKBase; // 숙련도 정보
+    float nowDmg; // 현재 데미지 변수
+    float nowRapid; // 현재 공격속도 변수
+    GameObject reward; // 몬스터 보상
+    int tGold = 0; // 총 드랍 골드
+    int tMs = 0; // 총 드랍 마력석
+    public GameObject rewardPos; // 보상 드랍 위치
 
     List<List<GameObject>> enemyL = new List<List<GameObject>>(); // Enemy 2차원 리스트 샷건 같은 경우에 항상 각 행의 첫번째 열 타겟이 데미지를 입어야 하므로, 리스트의 타겟이 사라졌을때, 자동으로 다시 정렬되므로 리스트를 사용.
     List<List<GameObject>> enemyLA = new List<List<GameObject>>(); // AR용 리스트(AR은 가까운 열부터 공격하기에 열과 행이 반대로 구성되어야 함)
 
     void Start()
     {
-        reward = Resources.Load<GameObject>("Reward/Reward");
+        reward = Resources.Load<GameObject>("Reward/Reward"); // 보상 프리팹
         ResetList();
     }
 
@@ -82,7 +82,24 @@ public class IdleEngage : MonoBehaviour
         nowRapid = cBase.gunRapid;
     }
 
-    public void ReadyToEngage()
+    void MoveReward() // 보상 습득 애니메이션 함수
+    {
+        for(int i = 0; i < rewardPos.transform.childCount; i++)
+        {
+            rewardPos.transform.GetChild(i).GetComponent<Animator>().SetTrigger("isAllDead");
+        }
+    }
+
+    void GetGoods() // 보상 습득 적용
+    {
+        gBase.gold += tGold;
+        gBase.manaStone += tMs;
+        gBase.GoodsUpdate();
+        tGold = 0;
+        tMs = 0;
+    }
+
+    public void ReadyToEngage() // 전투 준비 확인 함수(배경 스크롤 완료 후, Scroll Done Event를 통해 호출함)
     {
         GunDmgSet();
         StartCoroutine(Encounter());
@@ -92,7 +109,6 @@ public class IdleEngage : MonoBehaviour
     {
         SetTarget();
         int gun = cBase.id / 100; // 총기 종류 탐색
-        Debug.Log(nowDmg);
 
         while(enemyL.Any()) // 적이 남아 있을 경우
         {
@@ -103,17 +119,17 @@ public class IdleEngage : MonoBehaviour
                     if(enemyLA[0].Any())
                     {
                         enemyLA[0][0].GetComponent<EnemyBase>().hp -= nowDmg;
-                        if(enemyLA[0][0].GetComponent<EnemyBase>().hp <= 0) 
+                        if(enemyLA[0][0].GetComponent<EnemyBase>().hp <= 0) // 몬스터 체력이 0이하로 떨어질 경우
                         {
-                            GameObject dropReward = Instantiate(reward);
-                            dropReward.transform.SetParent(rewardPos.transform);
-                            dropReward.transform.position = enemyLA[0][0].transform.position;
-                            tGold += enemyLA[0][0].GetComponent<EnemyBase>().rewardGold;
-                            tMs += enemyLA[0][0].GetComponent<EnemyBase>().rewardManaStone;
+                            GameObject dropReward = Instantiate(reward); // 보상 오브젝트 생성
+                            dropReward.transform.SetParent(rewardPos.transform); // 보상 오브젝트 묶음
+                            dropReward.transform.position = enemyLA[0][0].transform.position; // 보상 오브젝트 위치 변경
+                            tGold += enemyLA[0][0].GetComponent<EnemyBase>().rewardGold; // 총 습득 골드 증가
+                            tMs += enemyLA[0][0].GetComponent<EnemyBase>().rewardManaStone; // 총 습득 마력석 증가
                             
-                            enemyLA[0][0].SetActive(false);
-                            enemyLA[0].RemoveAt(0);
-                            if(!enemyLA[0].Any())
+                            enemyLA[0][0].SetActive(false); // 사망 몬스터 비활성화
+                            enemyLA[0].RemoveAt(0); // 사망 몬스터 리스트 제거
+                            if(!enemyLA[0].Any()) // 몬스터가 없을경우
                             {
                                 enemyLA.RemoveAt(0);
                                 if(!enemyLA.Any()) goto EXIT;// enemyLA가 비었을 경우 While문 탈출
@@ -201,29 +217,14 @@ public class IdleEngage : MonoBehaviour
             }
         }
         EXIT:
-        MoveReward();
-        GetGoods();
-        enemyL.Clear();
+        MoveReward(); // 보상 습득 애니메이션 재생
+        GetGoods(); // 보상 증가
+        enemyL.Clear(); // 리스트 초기화
         enemyLA.Clear();
         ResetList();
-        EngageDone.Invoke();
+        EngageDone.Invoke(); // 전투 종료 이벤트 호출
         yield break; // 코루틴 종료
     }
 
-    void MoveReward() // 보상 습득 애니메이션 함수
-    {
-        for(int i = 0; i < rewardPos.transform.childCount; i++)
-        {
-            rewardPos.transform.GetChild(i).GetComponent<Animator>().SetTrigger("isAllDead");
-        }
-    }
-
-    void GetGoods() // 보상 습득 적용
-    {
-        gBase.gold += tGold;
-        gBase.manaStone += tMs;
-        gBase.GoodsUpdate();
-        tGold = 0;
-        tMs = 0;
-    }
+    
 }

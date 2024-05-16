@@ -14,6 +14,7 @@ using Unity.VisualScripting;
 public class SkillManager : MonoBehaviour
 {
     public GoodsBase gBase; // 재화
+    public CharacterBase cBase; // 캐릭터 능력치
     public TextMeshProUGUI statText, nextText, resetText; // 가변 텍스트(현재 스텟, 다음 강화 스텟, 초기화 비용)
     public GameObject alert; // 첫 21강 강화 경고 창
     public int ARLv, SGLv, SRLv; // 각 총기 숙련도 레벨
@@ -86,6 +87,7 @@ public class SkillManager : MonoBehaviour
             else
             {
                 ARLv++;
+                cBase.SkillLvUpdate();
                 if(ARLv > 20) firstTWup = true;
                 SkillPanelUpdate(ARLv, "돌격소총");
             }
@@ -100,6 +102,7 @@ public class SkillManager : MonoBehaviour
             else
             {
                 SGLv++;
+                cBase.SkillLvUpdate();
                 if(SGLv > 20) firstTWup = true;
                 SkillPanelUpdate(SGLv, "산탄총");
             } 
@@ -114,6 +117,7 @@ public class SkillManager : MonoBehaviour
             else
             {
                 SRLv++;
+                cBase.SkillLvUpdate();
                 if(SRLv > 20) firstTWup = true;
                 SkillPanelUpdate(SRLv, "저격소총");
             }
@@ -150,6 +154,7 @@ public class SkillManager : MonoBehaviour
             {
                 refundCost = (int)skillLvTable[ARLv]["RefundCost"];
                 ARLv = 0;
+                cBase.SkillLvUpdate();
                 gBase.crystal -= resetCost;
                 gBase.manaStone += refundCost;
                 SkillPanelUpdate(ARLv, "돌격소총");
@@ -161,6 +166,7 @@ public class SkillManager : MonoBehaviour
             {
                 refundCost = (int)skillLvTable[SGLv]["RefundCost"];
                 SGLv = 0;
+                cBase.SkillLvUpdate();
                 gBase.crystal -= resetCost;
                 gBase.manaStone += refundCost;
                 SkillPanelUpdate(SGLv, "산탄총");
@@ -172,6 +178,7 @@ public class SkillManager : MonoBehaviour
             {
                 refundCost = (int)skillLvTable[SRLv]["RefundCost"];
                 SRLv = 0;
+                cBase.SkillLvUpdate();
                 gBase.crystal -= resetCost;
                 gBase.manaStone += refundCost;
                 SkillPanelUpdate(SRLv, "저격소총");

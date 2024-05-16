@@ -9,6 +9,8 @@ using UnityEngine;
 
 public class CharacterBase : MonoBehaviour
 {
+    [Header("캐릭터 능력치")]
+    public int Lv; //캐릭터 레벨
     public int id; // 총기 id
     public int atk; // 공격력
     public int gunAtk; // 총기 공격력
@@ -20,9 +22,18 @@ public class CharacterBase : MonoBehaviour
     public int criticalDmg; // 크리티컬 데미지
     public int moveSpeed; // 이동속도
 
+    public SkillManager sKManager;
+
     void Awake()
     {
         GameObject.Find("MainDisplay").GetComponent<SaveManager>().Load();
         GameObject.Find("EquipPanel").GetComponent<EquipManager>().EquipClick();
+    }
+
+    public void SkillLvUpdate()
+    {
+        if(id / 100 == 1) gunSkill = sKManager.ARLv;
+        else if(id / 100 == 2) gunSkill = sKManager.SGLv;
+        else gunSkill = sKManager.SRLv;
     }
 }

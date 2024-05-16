@@ -12,15 +12,16 @@ MainDisplay에 삽입
 
 public class GoodsBase : MonoBehaviour
 {
-    public int gold;
-    public int manaStone;
-    public int crystal;
+    public int gold; // 골드
+    public int manaStone; // 마력석
+    public int crystal; // 크리스탈
 
-    public TextMeshProUGUI idleGold, idleManaStone, idleCrystal, summonCrystal, summonCrystal2, shopCrystal;
+    public TextMeshProUGUI idleGold, idleManaStone, idleCrystal, summonCrystal, summonCrystal2, shopCrystal, statGold; // 재화 텍스트
 
-    public void GoodsUpdate()
+    public void GoodsUpdate() // 재화 업데이트 함수
     {
         idleGold.text = gold.ToString();
+        statGold.text = gold.ToString();
         idleManaStone.text = manaStone.ToString();
         idleCrystal.text = crystal.ToString();
         summonCrystal.text = crystal.ToString();

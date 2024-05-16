@@ -10,9 +10,9 @@ Enemy Stat Table 읽어오고 EnemyBase에 전달해주는 Manager 스크립트�
 
 public class EnemyManager : MonoBehaviour
 {
-    public StageManager sManager;
-    public GameObject enemyP;
-    public List<Dictionary<string, object>> enemyData;
+    public StageManager sManager; // 스테이지 정보
+    public GameObject enemyP; // 몬스터 부모(묶음) 오브젝트
+    public List<Dictionary<string, object>> enemyData; // 몬스터 정보 리스트
 
     private void Awake()
     {

@@ -11,12 +11,12 @@ using UnityEngine.UI;
 
 public class ShopManagerTemp : MonoBehaviour
 {
-    public GameObject pScroll, cScroll;
-    public GoodsBase gBase;
-    public List<GameObject> Lcategory;
+    public GameObject pScroll, cScroll; // 패키지 목록, 크리스탈 목록
+    public GoodsBase gBase; // 재화 정보
+    public List<GameObject> Lcategory; // 현재 카테고리 리스트
     int category = 0;// 카테고리(0 : 패키지 1 : 보석 충전)
 
-    List<Dictionary<string, object>> cashTable;
+    List<Dictionary<string, object>> cashTable; // BM 데이터 테이블
 
     private void Awake()
     {
